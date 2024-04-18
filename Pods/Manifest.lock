@@ -1,0 +1,29 @@
+PODS:
+  - IQKeyboardManager (6.5.18)
+  - Spring (1.0.6)
+
+DEPENDENCIES:
+  - IQKeyboardManager
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift5`)
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManager
+
+EXTERNAL SOURCES:
+  Spring:
+    :branch: swift5
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: 459b979c4335d4178fb05771019f6dda916f6998
+    :git: https://github.com/MengTo/Spring.git
+
+SPEC CHECKSUMS:
+  IQKeyboardManager: 67f92bb29b650c094c40bd11c0545b47bdd25c5b
+  Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
+
+PODFILE CHECKSUM: cb5d720e639ada2518c0bd11af736e37de5598f9
+
+COCOAPODS: 1.14.3

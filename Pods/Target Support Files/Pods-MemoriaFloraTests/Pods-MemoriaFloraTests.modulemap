@@ -1,0 +1,6 @@
+framework module Pods_MemoriaFloraTests {
+  umbrella header "Pods-MemoriaFloraTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
