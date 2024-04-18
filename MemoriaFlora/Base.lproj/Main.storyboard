@@ -31,13 +31,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxZ-QP-Vgo">
-                                <rect key="frame" x="170" y="307" width="88" height="38.333333333333314"/>
+                                <rect key="frame" x="174.33333333333334" y="307" width="79.666666666666657" height="37.333333333333314"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="32"/>
                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="kJ8-Ji-HGi">
-                                <rect key="frame" x="40" y="365.33333333333331" width="348" height="104"/>
+                                <rect key="frame" x="40" y="364.33333333333331" width="348" height="104"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Iq-n7-kgO" customClass="DesignableTextField" customModule="Spring">
                                         <rect key="frame" x="0.0" y="0.0" width="348" height="45"/>
@@ -94,13 +94,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_______________" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z30-5X-0Hp">
-                                <rect key="frame" x="40" y="493.66666666666669" width="151.66666666666666" height="20.333333333333314"/>
+                                <rect key="frame" x="40" y="492.66666666666669" width="151.66666666666666" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0P8-rI-iYz" customClass="DesignableButton" customModule="Spring">
-                                <rect key="frame" x="40" y="533.66666666666663" width="348" height="50"/>
+                                <rect key="frame" x="40" y="532.66666666666663" width="348" height="50"/>
                                 <color key="backgroundColor" red="0.47450980392156861" green="0.24313725490196078" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="T3u-4o-7aL"/>
@@ -130,7 +130,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVI-KY-xgv">
-                                <rect key="frame" x="40" y="484.33333333333331" width="151.66666666666666" height="34.333333333333314"/>
+                                <rect key="frame" x="40" y="483.33333333333331" width="151.66666666666666" height="34.333333333333314"/>
                                 <color key="tintColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Forgot Password"/>
@@ -139,13 +139,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_______________" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyR-FW-sd3">
-                                <rect key="frame" x="112.66666666666669" y="601" width="165" height="20.333333333333371"/>
+                                <rect key="frame" x="112.66666666666669" y="600" width="165" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPL-io-PNg">
-                                <rect key="frame" x="112.66666666666669" y="591.66666666666663" width="165" height="34.333333333333371"/>
+                                <rect key="frame" x="112.66666666666669" y="590.66666666666663" width="165" height="34.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="165" id="c2J-qD-mTT"/>
                                 </constraints>
@@ -159,7 +159,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New user?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxg-P6-U83">
-                                <rect key="frame" x="40.000000000000007" y="598.66666666666663" width="80.666666666666686" height="20.333333333333371"/>
+                                <rect key="frame" x="40.000000000000007" y="597.66666666666663" width="80.666666666666686" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -242,13 +242,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uz9-o3-oca">
-                                <rect key="frame" x="157.66666666666666" y="302" width="112.66666666666666" height="38.333333333333314"/>
+                                <rect key="frame" x="163.66666666666666" y="302" width="100.99999999999997" height="37.333333333333314"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="32"/>
                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="gKN-vk-e1o">
-                                <rect key="frame" x="40" y="360.33333333333331" width="348" height="221.99999999999994"/>
+                                <rect key="frame" x="40" y="359.33333333333331" width="348" height="221.99999999999994"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S9z-cU-kgg" customClass="DesignableTextField" customModule="Spring">
                                         <rect key="frame" x="0.0" y="0.0" width="348" height="45"/>
@@ -357,7 +357,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VW9-dF-nZa" customClass="DesignableButton" customModule="Spring">
-                                <rect key="frame" x="40" y="602.33333333333337" width="348" height="50"/>
+                                <rect key="frame" x="40" y="601.33333333333337" width="348" height="50"/>
                                 <color key="backgroundColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5at-g9-xe2"/>
@@ -387,13 +387,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_____" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlE-ix-ggH">
-                                <rect key="frame" x="227" y="669.66666666666663" width="80" height="20.333333333333371"/>
+                                <rect key="frame" x="227" y="668.66666666666663" width="80" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="625-fQ-foD">
-                                <rect key="frame" x="227" y="660.33333333333337" width="80" height="34.333333333333371"/>
+                                <rect key="frame" x="227" y="659.33333333333337" width="80" height="34.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="GhU-qg-KnY"/>
                                 </constraints>
@@ -407,7 +407,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myE-jY-LNC">
-                                <rect key="frame" x="40" y="667.33333333333337" width="195" height="20.333333333333371"/>
+                                <rect key="frame" x="40" y="666.33333333333337" width="195" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -463,13 +463,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sln-Ij-WJ1">
-                                <rect key="frame" x="79" y="307" width="270.33333333333331" height="38.333333333333314"/>
+                                <rect key="frame" x="92" y="307" width="244" height="37.333333333333314"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="32"/>
                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Fgz-gM-oP5">
-                                <rect key="frame" x="40" y="365.33333333333331" width="348" height="45"/>
+                                <rect key="frame" x="40" y="364.33333333333331" width="348" height="45"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ML-bR-zWx" customClass="DesignableTextField" customModule="Spring">
                                         <rect key="frame" x="0.0" y="0.0" width="348" height="45"/>
@@ -500,7 +500,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ex3-c9-UZt" customClass="DesignableButton" customModule="Spring">
-                                <rect key="frame" x="40" y="440.33333333333331" width="348" height="50"/>
+                                <rect key="frame" x="40" y="439.33333333333331" width="348" height="50"/>
                                 <color key="backgroundColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Xil-pm-glv"/>
@@ -530,13 +530,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_____" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AP5-QV-YTJ">
-                                <rect key="frame" x="201" y="507.66666666666669" width="70" height="20.333333333333314"/>
+                                <rect key="frame" x="201" y="506.66666666666669" width="70" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBm-3w-9Vb">
-                                <rect key="frame" x="201" y="498.33333333333331" width="70" height="34.333333333333314"/>
+                                <rect key="frame" x="201" y="497.33333333333331" width="70" height="34.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="0Tz-dD-bof"/>
                                 </constraints>
@@ -550,7 +550,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBx-c0-0qr">
-                                <rect key="frame" x="40" y="505.33333333333331" width="169" height="20.333333333333314"/>
+                                <rect key="frame" x="40" y="504.33333333333331" width="169" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -590,32 +590,35 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="0P8-rI-iYz">
+            <size key="intrinsicContentSize" width="65.666666666666671" height="34.333333333333336"/>
+        </designable>
         <designable name="1ML-bR-zWx">
-            <size key="intrinsicContentSize" width="39.333333333333336" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="38.333333333333336" height="18"/>
         </designable>
         <designable name="7Iq-n7-kgO">
-            <size key="intrinsicContentSize" width="39.333333333333336" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="38.333333333333336" height="18"/>
         </designable>
         <designable name="Ex3-c9-UZt">
             <size key="intrinsicContentSize" width="151.66666666666666" height="34.333333333333336"/>
         </designable>
         <designable name="G13-0r-Imo">
-            <size key="intrinsicContentSize" width="124" height="17"/>
+            <size key="intrinsicContentSize" width="119.66666666666667" height="17"/>
         </designable>
         <designable name="Mwy-1R-oOI">
-            <size key="intrinsicContentSize" width="67.333333333333329" height="17"/>
+            <size key="intrinsicContentSize" width="66" height="17"/>
         </designable>
         <designable name="S9z-cU-kgg">
-            <size key="intrinsicContentSize" width="42.333333333333336" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="41" height="18"/>
         </designable>
         <designable name="VW9-dF-nZa">
             <size key="intrinsicContentSize" width="142.33333333333334" height="34.333333333333336"/>
         </designable>
         <designable name="gId-xP-f5B">
-            <size key="intrinsicContentSize" width="67.333333333333329" height="17"/>
+            <size key="intrinsicContentSize" width="66" height="17"/>
         </designable>
         <designable name="xIz-3y-SMq">
-            <size key="intrinsicContentSize" width="39.333333333333336" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="38.333333333333336" height="18"/>
         </designable>
     </designables>
     <resources>

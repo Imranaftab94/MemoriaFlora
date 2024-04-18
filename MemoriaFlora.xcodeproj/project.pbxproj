@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		154707B89A2FA903796E7FA8 /* Pods_MemoriaFlora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D52F71F7EFF9FBF5BB447F1 /* Pods_MemoriaFlora.framework */; };
-		AEFB1A4846F215EF4E20019A /* Pods_MemoriaFlora_MemoriaFloraUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21BC7685BA240764E4F7D6AA /* Pods_MemoriaFlora_MemoriaFloraUITests.framework */; };
-		D93C5A81368D7F2DB8114860 /* Pods_MemoriaFloraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3420AE3A18AF81D3FA920A2D /* Pods_MemoriaFloraTests.framework */; };
 		E405EAD02BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC32BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf */; };
 		E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC42BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf */; };
 		E405EAD22BD1BFCD005C8673 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC52BD1BFCD005C8673 /* SF-Pro-Text-Light.otf */; };
@@ -26,6 +24,7 @@
 		E405EADE2BD1C2D2005C8673 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E405EADD2BD1C2D2005C8673 /* LoginViewController.swift */; };
 		E405EAE02BD1C2DA005C8673 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E405EADF2BD1C2DA005C8673 /* SignupViewController.swift */; };
 		E405EAE22BD1C2E5005C8673 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E405EAE12BD1C2E5005C8673 /* ForgotPasswordViewController.swift */; };
+		E405EAE42BD1C82E005C8673 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E405EAE32BD1C82E005C8673 /* GoogleService-Info.plist */; };
 		E44686A62BCDCDCC001DF89B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686A52BCDCDCC001DF89B /* AppDelegate.swift */; };
 		E44686A82BCDCDCC001DF89B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686A72BCDCDCC001DF89B /* SceneDelegate.swift */; };
 		E44686AA2BCDCDCC001DF89B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686A92BCDCDCC001DF89B /* ViewController.swift */; };
@@ -56,14 +55,8 @@
 
 /* Begin PBXFileReference section */
 		169007E1CD9FFA86208F5AC9 /* Pods-MemoriaFlora.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora.debug.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora.debug.xcconfig"; sourceTree = "<group>"; };
-		21BC7685BA240764E4F7D6AA /* Pods_MemoriaFlora_MemoriaFloraUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoriaFlora_MemoriaFloraUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3420AE3A18AF81D3FA920A2D /* Pods_MemoriaFloraTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoriaFloraTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		59CFCA346796DD43053A4382 /* Pods-MemoriaFloraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFloraTests.debug.xcconfig"; path = "Target Support Files/Pods-MemoriaFloraTests/Pods-MemoriaFloraTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D52F71F7EFF9FBF5BB447F1 /* Pods_MemoriaFlora.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoriaFlora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F47D59EF42972E083955293 /* Pods-MemoriaFloraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFloraTests.release.xcconfig"; path = "Target Support Files/Pods-MemoriaFloraTests/Pods-MemoriaFloraTests.release.xcconfig"; sourceTree = "<group>"; };
 		8F316B30844F3BAF676ADE20 /* Pods-MemoriaFlora.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora.release.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora.release.xcconfig"; sourceTree = "<group>"; };
-		AFAFB4B60D984440ABDF6470 /* Pods-MemoriaFlora-MemoriaFloraUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora-MemoriaFloraUITests.debug.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora-MemoriaFloraUITests/Pods-MemoriaFlora-MemoriaFloraUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		D1C81F643ECC4A4153759809 /* Pods-MemoriaFlora-MemoriaFloraUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora-MemoriaFloraUITests.release.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora-MemoriaFloraUITests/Pods-MemoriaFlora-MemoriaFloraUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E405EAC32BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
 		E405EAC42BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-MediumItalic.otf"; sourceTree = "<group>"; };
 		E405EAC52BD1BFCD005C8673 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
@@ -80,6 +73,7 @@
 		E405EADD2BD1C2D2005C8673 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E405EADF2BD1C2DA005C8673 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E405EAE12BD1C2E5005C8673 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		E405EAE32BD1C82E005C8673 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E44686A22BCDCDCC001DF89B /* MemoriaFlora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoriaFlora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44686A52BCDCDCC001DF89B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44686A72BCDCDCC001DF89B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +102,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D93C5A81368D7F2DB8114860 /* Pods_MemoriaFloraTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +109,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEFB1A4846F215EF4E20019A /* Pods_MemoriaFlora_MemoriaFloraUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,10 +120,6 @@
 			children = (
 				169007E1CD9FFA86208F5AC9 /* Pods-MemoriaFlora.debug.xcconfig */,
 				8F316B30844F3BAF676ADE20 /* Pods-MemoriaFlora.release.xcconfig */,
-				AFAFB4B60D984440ABDF6470 /* Pods-MemoriaFlora-MemoriaFloraUITests.debug.xcconfig */,
-				D1C81F643ECC4A4153759809 /* Pods-MemoriaFlora-MemoriaFloraUITests.release.xcconfig */,
-				59CFCA346796DD43053A4382 /* Pods-MemoriaFloraTests.debug.xcconfig */,
-				7F47D59EF42972E083955293 /* Pods-MemoriaFloraTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -140,8 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				6D52F71F7EFF9FBF5BB447F1 /* Pods_MemoriaFlora.framework */,
-				21BC7685BA240764E4F7D6AA /* Pods_MemoriaFlora_MemoriaFloraUITests.framework */,
-				3420AE3A18AF81D3FA920A2D /* Pods_MemoriaFloraTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,6 +185,7 @@
 				E44686B02BCDCDCF001DF89B /* LaunchScreen.storyboard */,
 				E405EAC22BD1BFCD005C8673 /* SF-Text */,
 				E44686B32BCDCDCF001DF89B /* Info.plist */,
+				E405EAE32BD1C82E005C8673 /* GoogleService-Info.plist */,
 				E405EADD2BD1C2D2005C8673 /* LoginViewController.swift */,
 				E405EADF2BD1C2DA005C8673 /* SignupViewController.swift */,
 				E405EAE12BD1C2E5005C8673 /* ForgotPasswordViewController.swift */,
@@ -249,7 +236,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E44686CF2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "MemoriaFloraTests" */;
 			buildPhases = (
-				289347D72ED7177AA7EC4DA6 /* [CP] Check Pods Manifest.lock */,
 				E44686B42BCDCDD0001DF89B /* Sources */,
 				E44686B52BCDCDD0001DF89B /* Frameworks */,
 				E44686B62BCDCDD0001DF89B /* Resources */,
@@ -268,11 +254,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E44686D22BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "MemoriaFloraUITests" */;
 			buildPhases = (
-				83BDA3B124FE7E67FDE759C6 /* [CP] Check Pods Manifest.lock */,
 				E44686BE2BCDCDD0001DF89B /* Sources */,
 				E44686BF2BCDCDD0001DF89B /* Frameworks */,
 				E44686C02BCDCDD0001DF89B /* Resources */,
-				4D8E458F79249DA317D63D4D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -332,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E405EAE42BD1C82E005C8673 /* GoogleService-Info.plist in Resources */,
 				E405EADC2BD1BFCD005C8673 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				E44686B22BCDCDCF001DF89B /* LaunchScreen.storyboard in Resources */,
@@ -368,45 +353,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		289347D72ED7177AA7EC4DA6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MemoriaFloraTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4D8E458F79249DA317D63D4D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MemoriaFlora-MemoriaFloraUITests/Pods-MemoriaFlora-MemoriaFloraUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MemoriaFlora-MemoriaFloraUITests/Pods-MemoriaFlora-MemoriaFloraUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MemoriaFlora-MemoriaFloraUITests/Pods-MemoriaFlora-MemoriaFloraUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6545DC253E26D5CBEE0DBAC8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -422,28 +368,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		83BDA3B124FE7E67FDE759C6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MemoriaFlora-MemoriaFloraUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9A289328C0CA0B8F45B943CE /* [CP] Check Pods Manifest.lock */ = {
@@ -663,6 +587,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 756HHPMKS8;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MemoriaFlora/Info.plist;
@@ -694,6 +619,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 756HHPMKS8;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MemoriaFlora/Info.plist;
@@ -719,7 +645,6 @@
 		};
 		E44686D02BCDCDD0001DF89B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59CFCA346796DD43053A4382 /* Pods-MemoriaFloraTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -739,7 +664,6 @@
 		};
 		E44686D12BCDCDD0001DF89B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F47D59EF42972E083955293 /* Pods-MemoriaFloraTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -759,7 +683,6 @@
 		};
 		E44686D32BCDCDD0001DF89B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFAFB4B60D984440ABDF6470 /* Pods-MemoriaFlora-MemoriaFloraUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -777,7 +700,6 @@
 		};
 		E44686D42BCDCDD0001DF89B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1C81F643ECC4A4153759809 /* Pods-MemoriaFlora-MemoriaFloraUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -8,6 +8,9 @@ target 'MemoriaFlora' do
   # Pods for MemoriaFlora
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift5'
   pod 'IQKeyboardManager'
+  pod 'Firebase'
+  pod 'FirebaseCore'
+  pod 'Firebase/Auth'
 
   post_install do |installer|
       installer.generated_projects.each do |project|
@@ -19,13 +22,4 @@ target 'MemoriaFlora' do
       end
   end
   
-  target 'MemoriaFloraTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'MemoriaFloraUITests' do
-    # Pods for testing
-  end
-
 end

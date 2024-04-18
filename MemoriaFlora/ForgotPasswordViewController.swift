@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ForgotPasswordViewController: UIViewController {
 
@@ -20,6 +21,16 @@ class ForgotPasswordViewController: UIViewController {
 
     
     @IBAction func ForgotPasswordTapped(_ sender: UIButton) {
+        Auth.auth().sendPasswordReset(withEmail: emailTextField.text!) { error in
+            if let error = error {
+                // An error occurred while sending password reset email
+                print("An error occurred during sign-up")
+            } else {
+                // Password reset email sent successfully
+                print("An email sent")
+            }
+        }
+
     }
     @IBAction func loginTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignupViewController: UIViewController {
 
@@ -21,8 +22,29 @@ class SignupViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
     @IBAction func signupTapped(_ sender: UIButton) {
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
+            if let error = error {
+                print("An error occurred during sign-up")
+            } else {
+                print(" User successfully signed up")
+                
+                if let user = authResult?.user {
+                    let changeRequest = user.createProfileChangeRequest()
+                    changeRequest.displayName = self.nameTextField.text!
+                    changeRequest.commitChanges(completion: { error in
+                        if let error = error {
+                            print("An error occurred during naming-up")
+
+                        } else {
+                            print("Name Setup")
+                        }
+                    })
+                }
+
+            }
+        }
+
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
