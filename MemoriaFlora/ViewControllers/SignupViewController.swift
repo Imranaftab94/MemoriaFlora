@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseCore
+import FirebaseDatabase
 
 class SignupViewController: BaseViewController {
     
@@ -71,9 +73,32 @@ class SignupViewController: BaseViewController {
                     changeRequest.displayName = self.nameTextField.text!
                     let user = User(name: self.nameTextField.text!, email: self.emailTextField.text!, userDescription: "")
                     MyUserDefaults.setUser(user)
+                    
+                    // Create a reference to the Firebase Realtime Database
+                    let databaseRef = Database.database().reference()
+                    
+                    // Save user data under the user ID
+                    let userData: [String: Any] = [
+                        "name": self.nameTextField.text!,
+                        "email": self.emailTextField.text!,
+                        "userDescription": ""
+                    ]
+                    
+                    guard let uid = Auth.auth().currentUser?.uid else {
+                        return
+                    }
+                    
+                    databaseRef.child("users").child(uid).setValue(userData) { (error, ref) in
+                        if let error = error {
+                            print("An error occurred while saving user data: \(error.localizedDescription)")
+                        } else {
+                            print("User data saved successfully!")
+                        }
+                    }
+                    
                     changeRequest.commitChanges(completion: { error in
                         if let error = error {
-                            print("An error occurred during naming-up")
+                            print("An error occurred during naming-up", error.localizedDescription)
                         } else {
                             self.showAlert(message: "User signed up successfully!") {
                                 self.navigationController?.popViewController(animated: true)

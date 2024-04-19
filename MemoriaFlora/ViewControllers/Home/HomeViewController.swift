@@ -23,9 +23,17 @@ class HomeViewController: BaseViewController {
         userProfileImageView.layer.masksToBounds = true
     }
     
+    @IBAction func onClickProfileButton(_ sender: UIButton) {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+            self.navigationController?.pushViewController(profileVC, animated: true)
+        }
+    }
+    
     @IBAction func onClickCreatePostButton(_ sender: UIButton) {
         DispatchQueue.main.async {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil) // Replace "Main" with your storyboard name if different
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let createPostVC = storyboard.instantiateViewController(withIdentifier: "CreatePostVC") as! CreatePostVC
             self.navigationController?.pushViewController(createPostVC, animated: true)
         }

@@ -28,6 +28,11 @@ class MyUserDefaults: NSObject {
         }
         UserDefaults.standard.synchronize()
     }
+    
+    static func removeUser() {
+        UserDefaults.standard.removeObject(forKey: UserDefaults.keys.user)
+        UserDefaults.standard.synchronize()
+    }
 }
 
 

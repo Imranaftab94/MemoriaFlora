@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreatePostVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -20,6 +20,7 @@ class CreatePostVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var userNameContainer: UIView!
     
     private var imageSelectionAlertViewController: ImageSelectionAlertViewController?
+    private var selectedImage: UIImage?
     
     let activeBorderColor: UIColor = UIColor.init(hexString: "#793EE5")
     let inactiveBorderColor: UIColor = UIColor.init(hexString: "#0B0B0B")
@@ -37,6 +38,7 @@ class CreatePostVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         imageSelectionAlertViewController?.onImageSelected = { (image) in
             if let image = image {
                 self.userProfileImage.image = image
+                self.selectedImage = image
             }
         }
         
@@ -55,6 +57,21 @@ class CreatePostVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     }
     
     @IBAction func onClickShareMemoryButton(_ sender: UIButton) {
+        guard let userName = userNameTextField.text, !userName.isEmpty else {
+            showAlert(message: "Please enter name")
+            return
+        }
+        
+        guard let description = descriptionTextView.text, !description.isEmpty, description != "" else {
+            showAlert(message: "Please enter description")
+            return
+        }
+        
+        guard let image = selectedImage else {
+            showAlert(message: "Please select a picture")
+            return
+        }
+        
         
     }
     
