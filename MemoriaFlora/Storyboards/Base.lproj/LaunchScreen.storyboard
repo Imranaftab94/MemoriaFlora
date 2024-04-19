@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,16 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="vha-TV-5cF">
-                                <rect key="frame" x="40" y="276" width="313" height="325"/>
+                                <rect key="frame" x="40" y="263.66666666666669" width="313" height="325.00000000000006"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="vha-TV-5cF" secondAttribute="trailing" constant="40" id="0mz-Ex-R4J"/>
-                            <constraint firstItem="vha-TV-5cF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="10a-az-SlX"/>
+                            <constraint firstItem="vha-TV-5cF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="10a-az-SlX"/>
                             <constraint firstItem="vha-TV-5cF" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="40" id="YxA-Kr-z7p"/>
-                            <constraint firstItem="vha-TV-5cF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lI4-mJ-xPt"/>
+                            <constraint firstItem="vha-TV-5cF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lI4-mJ-xPt"/>
                         </constraints>
                     </view>
                 </viewController>
