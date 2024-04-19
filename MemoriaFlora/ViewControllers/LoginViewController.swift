@@ -40,6 +40,15 @@ class LoginViewController: BaseViewController {
                 print("Error signing in: \(error.localizedDescription)")
             } else {
                 print("User successfully signed in")
+                
+                if let user = authResult?.user {
+                    let user = User(name: user.displayName ?? "", email: self.emailTextField.text!, userDescription: user.description)
+                    MyUserDefaults.setUser(user)
+                    let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                    let navigationVC = UINavigationController(rootViewController: homeVC)
+                    animateTransition(to: navigationVC, view: self.view)
+
+                }
             }
         }
     }

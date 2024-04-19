@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 import FirebaseCore
 import FirebaseDatabase
@@ -101,7 +102,10 @@ class SignupViewController: BaseViewController {
                             print("An error occurred during naming-up", error.localizedDescription)
                         } else {
                             self.showAlert(message: "User signed up successfully!") {
-                                self.navigationController?.popViewController(animated: true)
+                                let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                                let navigationVC = UINavigationController(rootViewController: homeVC)
+                                animateTransition(to: navigationVC, view: self.view)
+//                                self.navigationController?.popViewController(animated: true)
                             }
                         }
                     })
@@ -126,6 +130,13 @@ class SignupViewController: BaseViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
+//        var components = URLComponents()
+//        components.scheme = "https"
+//        components.host = "www.raywenderlich.com"
+//        components.path = "/about"
+//
+//        
+//        return 1
         self.navigationController?.popViewController(animated: true)
     }
 }

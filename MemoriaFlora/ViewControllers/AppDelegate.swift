@@ -8,6 +8,7 @@
 import UIKit
 import IQKeyboardManager
 import FirebaseCore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared().isEnabled = true
         FirebaseApp.configure()
         return true
+    }
+
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+      let handled = DynamicLinks.dynamicLinks()
+        .handleUniversalLink(userActivity.webpageURL!) { dynamiclink, error in
+          // ...
+        }
+
+      return handled
     }
 
     // MARK: UISceneSession Lifecycle

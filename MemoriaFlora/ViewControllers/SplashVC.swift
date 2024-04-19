@@ -20,7 +20,7 @@ class SplashVC: UIViewController {
                 // User exists, navigate to HomeViewController with animation
                 let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                 let navigationVC = UINavigationController(rootViewController: homeVC)
-                self.animateTransition(to: navigationVC)
+                animateTransition(to: navigationVC, view: self.view)
             } else {
                 // No user, navigate to LoginViewController with animation
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
@@ -29,9 +29,4 @@ class SplashVC: UIViewController {
         }
     }
 
-    private func animateTransition(to viewController: UIViewController) {
-        UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
-            UIApplication.shared.windows.first?.rootViewController = viewController
-        }, completion: nil)
-    }
 }
