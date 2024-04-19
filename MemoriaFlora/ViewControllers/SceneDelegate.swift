@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseDynamicLinks
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -46,6 +47,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        // 1
+        if let url = userActivity.webpageURL {
 
+            let dynamicLinks = DynamicLinks.dynamicLinks()
+            if let dynamicLink = dynamicLinks.dynamicLink(fromCustomSchemeURL: url) {
+                // Handle the dynamic link
+                handleDynamicLink(dynamicLink)
+            }
+        }
+    }
+
+    private func handleDynamicLink(_ dynamicLink: DynamicLink) {
+        if let url = dynamicLink.url {
+            // Extract any parameters from the dynamic link if needed
+            // Then navigate to the appropriate screen
+            print("Dynamic link URL: \(url)")
+            // Navigate to the appropriate screen based on the dynamic link URL
+        }
+    }
 }
-
