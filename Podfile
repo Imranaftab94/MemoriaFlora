@@ -11,6 +11,7 @@ target 'MemoriaFlora' do
   pod 'Firebase'
   pod 'FirebaseCore'
   pod 'Firebase/Auth'
+  pod 'Firebase/DynamicLinks'
 
   post_install do |installer|
       installer.generated_projects.each do |project|

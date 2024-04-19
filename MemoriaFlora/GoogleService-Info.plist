@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.MemoriaFlora.SparkFuse</string>
+	<string>com.MemoriaFlora.App</string>
 	<key>PROJECT_ID</key>
 	<string>memoriaflora</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:404510228538:ios:9e9ff2653d2c764c77f503</string>
+	<string>1:404510228538:ios:fcf9569ddba8136b77f503</string>
 </dict>
 </plist>
