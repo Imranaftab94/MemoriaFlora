@@ -8,12 +8,9 @@
 import UIKit
 import Firebase
 import FirebaseAuth
-<<<<<<< HEAD
 import FirebaseCore
 import FirebaseDatabase
-=======
 import FirebaseDynamicLinks
->>>>>>> d74c22d (dynamic linking and font)
 
 class SignupViewController: BaseViewController {
     
