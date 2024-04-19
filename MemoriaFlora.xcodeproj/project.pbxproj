@@ -21,6 +21,7 @@
 		0BD4AC152BD256090058D204 /* ImageSelectionAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC142BD256090058D204 /* ImageSelectionAlertViewController.swift */; };
 		0BD4AC172BD256370058D204 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC162BD256370058D204 /* UIImage+Extension.swift */; };
 		0BD4AC192BD261E90058D204 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC182BD261E90058D204 /* ProfileViewController.swift */; };
+		0BD4AC1C2BD2D6E80058D204 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */; };
 		154707B89A2FA903796E7FA8 /* Pods_MemoriaFlora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D52F71F7EFF9FBF5BB447F1 /* Pods_MemoriaFlora.framework */; };
 		E405EAD02BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC32BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf */; };
 		E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC42BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf */; };
@@ -83,6 +84,7 @@
 		0BD4AC142BD256090058D204 /* ImageSelectionAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionAlertViewController.swift; sourceTree = "<group>"; };
 		0BD4AC162BD256370058D204 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		0BD4AC182BD261E90058D204 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		169007E1CD9FFA86208F5AC9 /* Pods-MemoriaFlora.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora.debug.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora.debug.xcconfig"; sourceTree = "<group>"; };
 		6D52F71F7EFF9FBF5BB447F1 /* Pods_MemoriaFlora.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoriaFlora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F316B30844F3BAF676ADE20 /* Pods-MemoriaFlora.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora.release.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora.release.xcconfig"; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				0BAFC1982BD23CCA0079C7BD /* UIColor+Extension.swift */,
 				0BD4AC162BD256370058D204 /* UIImage+Extension.swift */,
+				0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				0BD4AC172BD256370058D204 /* UIImage+Extension.swift in Sources */,
 				0BAFC1962BD23C6B0079C7BD /* ProgressHUD.swift in Sources */,
 				E44686AA2BCDCDCC001DF89B /* ViewController.swift in Sources */,
+				0BD4AC1C2BD2D6E80058D204 /* Refreshable.swift in Sources */,
 				0BAFC18B2BD22A200079C7BD /* GraveyardTableViewCell.swift in Sources */,
 				0BAFC19B2BD23D120079C7BD /* BaseViewController.swift in Sources */,
 				0BD4AC152BD256090058D204 /* ImageSelectionAlertViewController.swift in Sources */,

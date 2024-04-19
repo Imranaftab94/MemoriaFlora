@@ -9,6 +9,7 @@ import UIKit
 import IQKeyboardManager
 import FirebaseCore
 import FirebaseAuth
+import FirebaseDynamicLinks
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

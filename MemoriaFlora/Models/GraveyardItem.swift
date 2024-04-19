@@ -7,7 +7,14 @@
 
 import Foundation
 
-struct GraveyardItem: Codable {
-    let title: String
-    let itemDescription: String
+struct Memory {
+    let userName: String
+    let description: String
+    let imageUrl: String
+    
+    init(userName: String, description: String, imageUrl: String) {
+        self.userName = userName
+        self.description = description
+        self.imageUrl = imageUrl
+    }
 }

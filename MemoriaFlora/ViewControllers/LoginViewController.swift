@@ -47,7 +47,6 @@ class LoginViewController: BaseViewController {
                     let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                     let navigationVC = UINavigationController(rootViewController: homeVC)
                     animateTransition(to: navigationVC, view: self.view)
-
                 }
             }
         }

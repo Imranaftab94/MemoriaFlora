@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
+import FirebaseStorage
 
 class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate {
     
@@ -57,6 +60,11 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     }
     
     @IBAction func onClickShareMemoryButton(_ sender: UIButton) {
+        guard let userID = Auth.auth().currentUser?.uid else {
+            showAlert(message: "User not logged in")
+            return
+        }
+        
         guard let userName = userNameTextField.text, !userName.isEmpty else {
             showAlert(message: "Please enter name")
             return
@@ -72,7 +80,69 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             return
         }
         
+        // Convert image to Data
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+            showAlert(message: "Failed to convert image to data")
+            return
+        }
         
+        // Create a unique key for the memory
+        let memoryKey = Database.database().reference().child("users").child(userID).child("memories").childByAutoId().key ?? ""
+        
+        // Reference to the storage
+        let storageRef = Storage.storage().reference().child("memories").child(memoryKey)
+        
+        // Upload image data to the storage
+        let uploadTask = storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+            guard let _ = metadata else {
+                // Handle error
+                print("Error uploading image: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            storageRef.downloadURL { (url, error) in
+                if let error = error {
+                    print("Error getting download URL: \(error.localizedDescription)")
+                    return
+                }
+                
+                guard let downloadURL = url else {
+                    print("Download URL is nil")
+                    return
+                }
+                
+                // Once the image is uploaded, save memory data in the Realtime Database
+                let memoryData: [String: Any] = [
+                    "userName": userName,
+                    "description": description,
+                    "imageUrl": downloadURL.absoluteString // Store the download URL
+                ]
+                
+                // Save memory data in the Realtime Database
+                Database.database().reference().child("users").child(userID).child("memories").child(memoryKey).setValue(memoryData) { (error, ref) in
+                    if let error = error {
+                        print("Error saving memory data: \(error.localizedDescription)")
+                    } else {
+                        print("Memory data saved successfully!")
+                        self.showAlert(message: "Posted successfully", title: "Alert", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
+                            self.navigationController?.popViewController(animated: true)
+                        }))
+                    }
+                }
+            }
+        }
+        
+        uploadTask.observe(.progress) { snapshot in
+            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
+            print(percentComplete)
+        }
+        
+        uploadTask.observe(.failure) { snapshot in
+            if let error = snapshot.error {
+                print("Upload failed: \(error.localizedDescription)")
+                // Notify user about the failure
+                self.showAlert(message: "Upload failed. Please try again.")
+            }
+        }
     }
     
     private func configureTextFields() {

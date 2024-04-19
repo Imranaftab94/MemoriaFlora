@@ -65,7 +65,7 @@ class SignupViewController: BaseViewController {
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
             self.hideProgressHUD()
             if let error = error {
-                print("An error occurred during sign-up")
+                print("An error occurred during sign-up", error.localizedDescription)
             } else {
                 print(" User successfully signed up")
                 
@@ -85,7 +85,7 @@ class SignupViewController: BaseViewController {
                         "userDescription": ""
                     ]
                     
-                    guard let uid = Auth.auth().currentUser?.uid else {
+                    guard let uid = authResult?.user.uid else {
                         return
                     }
                     
@@ -105,7 +105,6 @@ class SignupViewController: BaseViewController {
                                 let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                                 let navigationVC = UINavigationController(rootViewController: homeVC)
                                 animateTransition(to: navigationVC, view: self.view)
-//                                self.navigationController?.popViewController(animated: true)
                             }
                         }
                     })
@@ -121,7 +120,7 @@ class SignupViewController: BaseViewController {
     }
 
     private func showAlert(message: String, okHandler: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: "Validation Error", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             okHandler?() // Call the handler if provided
         }

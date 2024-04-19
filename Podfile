@@ -12,6 +12,10 @@ target 'MemoriaFlora' do
   pod 'FirebaseCore'
   pod 'Firebase/Auth'
   pod 'Firebase/DynamicLinks'
+  pod 'FirebaseDatabase'
+  pod 'FirebaseMessaging'
+  pod 'Firebase/Storage'
+  pod 'Kingfisher'
 
   post_install do |installer|
       installer.generated_projects.each do |project|
@@ -22,5 +26,4 @@ target 'MemoriaFlora' do
           end
       end
   end
-  
 end
