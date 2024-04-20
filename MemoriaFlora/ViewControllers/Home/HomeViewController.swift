@@ -54,6 +54,7 @@ class HomeViewController: BaseViewController, Refreshable {
         
         memoriesRef.observe(.childAdded) { (snapshot) in
             guard let memoryData = snapshot.value as? [String: Any],
+                  let uid = memoryData["id"] as? String,
                   let userName = memoryData["userName"] as? String,
                   let description = memoryData["description"] as? String,
                   let imageUrl = memoryData["imageUrl"] as? String,
@@ -63,7 +64,7 @@ class HomeViewController: BaseViewController, Refreshable {
             }
             let date = Date(timeIntervalSince1970: timestampString)
             // Create Memory object for the new memory
-            let memory = Memory(userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
+            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
             
             // Append the new memory to the array
             self.memories.append(memory)
@@ -92,6 +93,7 @@ class HomeViewController: BaseViewController, Refreshable {
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let memoryData = snapshot.value as? [String: Any],
+                   let uid = memoryData["id"] as? String,
                    let userName = memoryData["userName"] as? String,
                    let description = memoryData["description"] as? String,
                    let imageUrl = memoryData["imageUrl"] as? String,
@@ -99,7 +101,7 @@ class HomeViewController: BaseViewController, Refreshable {
                    let timestampString = memoryData["timestamps"] as? TimeInterval
                 {
                     let date = Date(timeIntervalSince1970: timestampString)
-                    let memory = Memory(userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
+                    let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
                     allMemories.append(memory)
                 }
             }

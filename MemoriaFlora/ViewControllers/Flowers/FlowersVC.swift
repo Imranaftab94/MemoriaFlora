@@ -101,6 +101,12 @@ class FlowersVC: BaseViewController {
         flowersCategoryCollectionView.register(UINib(nibName: "FlowersCategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FlowersCategoryCell")
         flowerItemCollectionView.register(UINib(nibName: "FlowerItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FlowerItemCell")
     }
+    
+    @IBAction func onClickPurchaseFlowerButton(_ sender: UIButton) {
+        let vc = SelectPaymentVC.instantiate(fromAppStoryboard: .Flowers)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 
