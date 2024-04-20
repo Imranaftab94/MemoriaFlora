@@ -23,7 +23,6 @@
 		0BD4AC172BD256370058D204 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC162BD256370058D204 /* UIImage+Extension.swift */; };
 		0BD4AC192BD261E90058D204 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC182BD261E90058D204 /* ProfileViewController.swift */; };
 		0BD4AC1C2BD2D6E80058D204 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */; };
-		4B55453E1A01057E856704DA /* Pods_Caro_Estinto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */; };
 		0BDC27B72BD3D343001BA3BE /* FlowersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27B62BD3D343001BA3BE /* FlowersVC.swift */; };
 		0BDC27BA2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BDC27B92BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib */; };
 		0BDC27BB2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27B82BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift */; };
@@ -33,7 +32,7 @@
 		0BDC27C32BD3E2C7001BA3BE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C22BD3E2C7001BA3BE /* UIViewController+Extension.swift */; };
 		0BDC27C52BD3E2E7001BA3BE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C42BD3E2E7001BA3BE /* Enums.swift */; };
 		0BDC27C72BD3F449001BA3BE /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */; };
-		154707B89A2FA903796E7FA8 /* Pods_MemoriaFlora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D52F71F7EFF9FBF5BB447F1 /* Pods_MemoriaFlora.framework */; };
+		4B55453E1A01057E856704DA /* Pods_Caro_Estinto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */; };
 		E405EAD02BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC32BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf */; };
 		E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC42BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf */; };
 		E405EAD22BD1BFCD005C8673 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC52BD1BFCD005C8673 /* SF-Pro-Text-Light.otf */; };
@@ -59,7 +58,7 @@
 		E44686BD2BCDCDD0001DF89B /* MemoriaFloraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686BC2BCDCDD0001DF89B /* MemoriaFloraTests.swift */; };
 		E44686C72BCDCDD0001DF89B /* MemoriaFloraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686C62BCDCDD0001DF89B /* MemoriaFloraUITests.swift */; };
 		E44686C92BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686C82BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift */; };
-		E45842072BD33A5D00B5937D /* DetailViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E45842062BD33A5D00B5937D /* DetailViews.storyboard */; };
+		E45842072BD33A5D00B5937D /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E45842062BD33A5D00B5937D /* Details.storyboard */; };
 		E458420A2BD3EC3C00B5937D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45842092BD3EC3C00B5937D /* DetailViewController.swift */; };
 		E4D8177C2BD278BC00F2C50D /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8177B2BD278BC00F2C50D /* Functions.swift */; };
 		E4D8177E2BD2822D00F2C50D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4D8177D2BD2822D00F2C50D /* GoogleService-Info.plist */; };
@@ -142,7 +141,7 @@
 		E44686C22BCDCDD0001DF89B /* Caro EstintoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Caro EstintoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44686C62BCDCDD0001DF89B /* MemoriaFloraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraUITests.swift; sourceTree = "<group>"; };
 		E44686C82BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E45842062BD33A5D00B5937D /* DetailViews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViews.storyboard; sourceTree = "<group>"; };
+		E45842062BD33A5D00B5937D /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		E45842092BD3EC3C00B5937D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E4D8177B2BD278BC00F2C50D /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		E4D8177D2BD2822D00F2C50D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -211,7 +210,7 @@
 			children = (
 				E44686AB2BCDCDCC001DF89B /* Main.storyboard */,
 				E44686B02BCDCDCF001DF89B /* LaunchScreen.storyboard */,
-				E45842062BD33A5D00B5937D /* DetailViews.storyboard */,
+				E45842062BD33A5D00B5937D /* Details.storyboard */,
 				0BDC27C02BD3D441001BA3BE /* Flowers.storyboard */,
 			);
 			path = Storyboards;
@@ -491,7 +490,7 @@
 				E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				E44686B22BCDCDCF001DF89B /* LaunchScreen.storyboard in Resources */,
 				E405EAD62BD1BFCD005C8673 /* SF-Pro-Text-RegularItalic.otf in Resources */,
-				E45842072BD33A5D00B5937D /* DetailViews.storyboard in Resources */,
+				E45842072BD33A5D00B5937D /* Details.storyboard in Resources */,
 				0BDC27C12BD3D441001BA3BE /* Flowers.storyboard in Resources */,
 				E405EAD42BD1BFCD005C8673 /* SF-Pro-Text-Bold.otf in Resources */,
 				E405EAD22BD1BFCD005C8673 /* SF-Pro-Text-Light.otf in Resources */,
