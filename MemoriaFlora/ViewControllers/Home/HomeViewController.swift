@@ -25,8 +25,7 @@ class HomeViewController: BaseViewController, Refreshable {
         userProfileImageView.layer.cornerRadius = 16
         userProfileImageView.layer.masksToBounds = true
         observeMemories()
-        
-        self.instantiateRefreshControl()
+        instantiateRefreshControl()
     }
     
     @IBAction func onClickProfileButton(_ sender: UIButton) {

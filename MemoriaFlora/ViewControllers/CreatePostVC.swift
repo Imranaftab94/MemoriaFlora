@@ -93,7 +93,9 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         let storageRef = Storage.storage().reference().child("memories").child(memoryKey)
         
         // Upload image data to the storage
+        self.showProgressHUD()
         let uploadTask = storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+            self.hideProgressHUD()
             guard let _ = metadata else {
                 // Handle error
                 print("Error uploading image: \(error?.localizedDescription ?? "Unknown error")")

@@ -26,7 +26,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3D-Ej-5MS">
                         <rect key="frame" x="16" y="8" width="382" height="115"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="7zg-wp-zRY">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="7zg-wp-zRY">
                                 <rect key="frame" x="16" y="17.666666666666671" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Zqx-9k-sVc"/>
@@ -34,13 +34,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6V-1A-jTY">
-                                <rect key="frame" x="120" y="29" width="246" height="17"/>
+                                <rect key="frame" x="120" y="23" width="246" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="14"/>
                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMy-HN-k0I">
-                                <rect key="frame" x="120" y="56" width="254" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMy-HN-k0I">
+                                <rect key="frame" x="120" y="46" width="254" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="14"/>
                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -51,11 +51,11 @@
                             <constraint firstAttribute="trailing" secondItem="k6V-1A-jTY" secondAttribute="trailing" constant="16" id="8Lz-QT-ziG"/>
                             <constraint firstAttribute="trailing" secondItem="NMy-HN-k0I" secondAttribute="trailing" constant="8" id="GTn-9c-GhZ"/>
                             <constraint firstItem="NMy-HN-k0I" firstAttribute="leading" secondItem="k6V-1A-jTY" secondAttribute="leading" id="MjS-xb-b8w"/>
-                            <constraint firstItem="k6V-1A-jTY" firstAttribute="centerY" secondItem="7zg-wp-zRY" secondAttribute="centerY" constant="-20" id="NFT-je-PaZ"/>
+                            <constraint firstItem="k6V-1A-jTY" firstAttribute="centerY" secondItem="7zg-wp-zRY" secondAttribute="centerY" constant="-26" id="NFT-je-PaZ"/>
                             <constraint firstItem="k6V-1A-jTY" firstAttribute="leading" secondItem="7zg-wp-zRY" secondAttribute="trailing" constant="24" id="QyW-4z-eYf"/>
                             <constraint firstAttribute="height" constant="115" id="VNM-0S-NaH"/>
                             <constraint firstItem="7zg-wp-zRY" firstAttribute="centerY" secondItem="r3D-Ej-5MS" secondAttribute="centerY" id="fZb-qm-U2K"/>
-                            <constraint firstItem="NMy-HN-k0I" firstAttribute="top" secondItem="k6V-1A-jTY" secondAttribute="bottom" constant="10" id="gLp-uk-iCb"/>
+                            <constraint firstItem="NMy-HN-k0I" firstAttribute="top" secondItem="k6V-1A-jTY" secondAttribute="bottom" constant="6" id="gLp-uk-iCb"/>
                             <constraint firstAttribute="width" constant="382" id="noC-YF-HbU"/>
                             <constraint firstItem="7zg-wp-zRY" firstAttribute="leading" secondItem="r3D-Ej-5MS" secondAttribute="leading" constant="16" id="prr-Ss-Hrz"/>
                         </constraints>
