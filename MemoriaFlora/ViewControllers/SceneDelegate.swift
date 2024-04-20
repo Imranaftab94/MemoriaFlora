@@ -29,10 +29,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
-    func handleDeepLink(_ url: URL) {
+    func handleDeepLink(_ deepUrl: URL?) {
         // Process the URL as needed
-        print("Opened with URL: \(url)")
-        showAlertMsg(msg: "\(url)")
+        print("Opened with URL: \(deepUrl)")
+//        showAlertMsg(msg: "\(url)")
+        
+        if let url = deepUrl {
+            
+            DynamicLinks.dynamicLinks().handleUniversalLink(url) { (dynamicLink, error) in
+                guard error == nil else {
+                    print("Error handling dynamic link: \(error!.localizedDescription)")
+                    return
+                }
+                
+                if let dynamicLink = dynamicLink {
+                    // Dynamic link found, handle it
+                    self.handleDynamicLink(dynamicLink)
+                } else {
+                    // Not a dynamic link
+                    print("Not a dynamic link")
+                }
+            }
+        }
+
+        
         // Your logic to handle the deep link
     }
 
@@ -64,27 +84,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-//    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-//        // 1
-//        if let url = userActivity.webpageURL {
-//            
-//            DynamicLinks.dynamicLinks().handleUniversalLink(url) { (dynamicLink, error) in
-//                guard error == nil else {
-//                    print("Error handling dynamic link: \(error!.localizedDescription)")
-//                    return
-//                }
-//                
-//                if let dynamicLink = dynamicLink {
-//                    // Dynamic link found, handle it
-//                    self.handleDynamicLink(dynamicLink)
-//                } else {
-//                    // Not a dynamic link
-//                    print("Not a dynamic link")
-//                }
-//            }
-//            
-//        }
-//    }
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        // 1
+        if let url = userActivity.webpageURL {
+            
+            DynamicLinks.dynamicLinks().handleUniversalLink(url) { (dynamicLink, error) in
+                guard error == nil else {
+                    print("Error handling dynamic link: \(error!.localizedDescription)")
+                    return
+                }
+                
+                if let dynamicLink = dynamicLink {
+                    // Dynamic link found, handle it
+                    self.handleDynamicLink(dynamicLink)
+                } else {
+                    // Not a dynamic link
+                    print("Not a dynamic link")
+                }
+            }
+        }
+    }
 
     private func handleDynamicLink(_ dynamicLink: DynamicLink) {
         if let url = dynamicLink.url {
@@ -93,16 +112,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
                 // Extract any parameters from the dynamic link if needed
                 // Then navigate to the appropriate screen
-                self.showAlertMsg(msg: "hahahahahah")
+//                self.showAlertMsg(msg: "hahahahahah")
 
                 print("Dynamic link URL: \(url)")
+                                if let url = dynamicLink.url,
+                                   let id = URLComponents(url: url, resolvingAgainstBaseURL: false)?
+                                               .queryItems?
+                                               .first(where: { $0.name == "id" })?
+                                               .value {
+                                    print("ID extracted from URL: \(id)")
+
+                                    guard let navigationController = self.window?.rootViewController as? UINavigationController else {
+                                        return
+                                    }
+                
+                                    let memory = Memory(uid: id, userName: "", description: "", imageUrl: "", dateOfDemise: "", timestamp: Date(), condolences: 0)
+                                    let vc = DetailViewController.instantiate(fromAppStoryboard: .Details)
+                                    vc.memory = memory
+                                    navigationController.pushViewController(vc, animated: true)
+
+                                }
+
             }
         }
     }
     
     func showAlertMsg(msg: String?) {
-        DispatchQueue.main.async {
-            
             let alertController = UIAlertController(title: "Alert", message: "Your mexczcxzssage here \(msg)", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
@@ -110,24 +145,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
                 rootViewController.present(alertController, animated: true)
             }
-            //                if let url = dynamicLink.url,
-            //                   let id = URLComponents(url: url, resolvingAgainstBaseURL: false)?
-            //                               .queryItems?
-            //                               .first(where: { $0.name == "id" })?
-            //                               .value {
-            //                    print("ID extracted from URL: \(id)")
-
-            //                    guard let navigationController = self.window?.rootViewController as? UINavigationController else {
-            //                        return
-            //                    }
-            //
-            //                    let memory = Memory(uid: id, userName: "", description: "", imageUrl: "", dateOfDemise: "", timestamp: Date())
-            //                    let vc = DetailViewController.instantiate(fromAppStoryboard: .Details)
-            //                    vc.memory = memory
-            //                    navigationController.pushViewController(vc, animated: true)
-
-            //                }
-
         }
-    }
+    
 }

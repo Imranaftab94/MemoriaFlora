@@ -23,9 +23,6 @@ class DetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBackButtonColor()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-            self.animate()
-        }
         
         if let id = self.memory?.uid {
             observeMemory(withId: id)
@@ -39,6 +36,7 @@ class DetailViewController: BaseViewController {
                 guard let self = self else { return }
                 self.addCondolences()
                 print(category, flower)
+                animate(category.flowerType)
             }
             let navigationVC = UINavigationController.init(rootViewController: vc)
             self.present(navigationVC, animated: true, completion: nil)
@@ -47,7 +45,8 @@ class DetailViewController: BaseViewController {
     
     @IBAction func shareButtonTap(_ sender: UIButton) {
         
-        guard let link = URL(string: "https://memoriaflora.page.link?id=2") else { return }
+        guard let uid = memory?.uid else { return }
+        guard let link = URL(string: "https://memoriaflora.page.link?id=\(uid)") else { return }
         let dynamicLinksDomain = "https://memoriaflora.page.link"
         
         let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: dynamicLinksDomain)//DynamicLinkComponents(link: link, domain: dynamicLinksDomain)
@@ -232,10 +231,10 @@ class DetailViewController: BaseViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#865EE2")]
     }
 
-    func animate() {
+    func animate(_ img: String) {
         
         let numberOfFlowers = 30 // Adjust as needed
-        let flowerImageNames = ["rose"] // Names of your flower images
+        let flowerImageNames = [img] // Names of your flower images
         
         for index in 0..<numberOfFlowers {
             let randomIndex = Int.random(in: 0..<flowerImageNames.count)

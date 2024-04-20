@@ -18,11 +18,11 @@ class FlowersVC: BaseViewController {
     var onSelectPayment: ((_ selectedCategory: FlowerCategoryModel, _ selectedFlower: FlowerModel) -> ())?
     
     var flowerCategories: [FlowerCategoryModel] = [
-        FlowerCategoryModel(flowerType: "Lilies", image: UIImage(named: "lily")!),
-        FlowerCategoryModel(flowerType: "Roses", image: UIImage(named: "rose")!),
-        FlowerCategoryModel(flowerType: "Carnations", image: UIImage(named: "carnation")!),
-        FlowerCategoryModel(flowerType: "Chrysanthemums", image: UIImage(named: "chrysanthemum")!),
-        FlowerCategoryModel(flowerType: "Orchids", image: UIImage(named: "orchid")!)
+        FlowerCategoryModel(flowerType: "Lilies", image: UIImage(named: "Lilies")!),
+        FlowerCategoryModel(flowerType: "Roses", image: UIImage(named: "Roses")!),
+        FlowerCategoryModel(flowerType: "Carnations", image: UIImage(named: "Carnations")!),
+        FlowerCategoryModel(flowerType: "Chrysanthemums", image: UIImage(named: "Chrysanthemums")!),
+        FlowerCategoryModel(flowerType: "Orchids", image: UIImage(named: "Orchids")!)
     ]
     
     // Lilies
@@ -77,6 +77,8 @@ class FlowersVC: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.selectedCategoryIndex = 0
+        self.selectedFlowerCategory = flowerCategories.first
         self.configureCollectionView()
         self.setNavigationBackButtonColor()
         self.flowers = lilies
