@@ -20,6 +20,7 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBackButtonColor()
         config()
     }
     
@@ -87,6 +88,12 @@ class DetailViewController: UIViewController {
         if let url = URL(string: memory?.imageUrl ?? "") {
             imgView.kf.setImage(with: url)
         }
-
     }
+    
+    private func setNavigationBackButtonColor() {
+        self.title = "Pay Tribute"
+        navigationController?.navigationBar.tintColor = UIColor.init(hexString: "#865EE2")
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#865EE2")]
+    }
+
 }
