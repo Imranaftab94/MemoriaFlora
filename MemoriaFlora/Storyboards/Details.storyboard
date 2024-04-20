@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,10 +29,10 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcL-yC-acN">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="627"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="655.33333333333337"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJc-Tj-SGp" customClass="DesignableView" customModule="Spring">
-                                                <rect key="frame" x="20" y="20" width="353" height="473"/>
+                                                <rect key="frame" x="20" y="19.999999999999972" width="353" height="501.33333333333326"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCa-q8-TO9">
                                                         <rect key="frame" x="24" y="24.000000000000004" width="264" height="38.333333333333343"/>
@@ -44,7 +44,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Yl-me-jWq" customClass="DesignableView" customModule="Spring">
-                                                        <rect key="frame" x="24" y="108.66666666666663" width="305" height="300"/>
+                                                        <rect key="frame" x="24" y="136.33333333333337" width="305" height="300"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_grave" translatesAutoresizingMaskIntoConstraints="NO" id="Efz-o5-Bnv" customClass="DesignableImageView" customModule="Spring">
                                                                 <rect key="frame" x="0.0" y="0.0" width="305" height="300"/>
@@ -73,10 +73,10 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m1r-3t-Nmw">
-                                                        <rect key="frame" x="24" y="432.66666666666669" width="305" height="16.333333333333314"/>
+                                                        <rect key="frame" x="24" y="460.33333333333337" width="305" height="17"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg1-Yg-7GG">
-                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="16.333333333333332"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="17"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -96,11 +96,17 @@
                                                             <action selector="shareButtonTap:" destination="pEW-0B-lJi" eventType="touchUpInside" id="0IH-HT-yur"/>
                                                         </connections>
                                                     </button>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PxZ-yV-cnx">
-                                                        <rect key="frame" x="24" y="72.333333333333343" width="305" height="16.333333333333329"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PxZ-yV-cnx">
+                                                        <rect key="frame" x="24" y="72.333333333333343" width="305" height="44"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of demise: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygh-vo-5kZ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="16.333333333333332"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="17"/>
+                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                                <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condolences" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSI-Ie-KnA">
+                                                                <rect key="frame" x="0.0" y="27" width="305" height="17"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -136,7 +142,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AL8-NF-OLg" customClass="DesignableButton" customModule="Spring">
-                                                <rect key="frame" x="44" y="517" width="305" height="50"/>
+                                                <rect key="frame" x="44" y="545.33333333333337" width="305" height="50"/>
                                                 <color key="backgroundColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="ayg-c7-gie"/>
@@ -203,6 +209,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="condolencesLabel" destination="rSI-Ie-KnA" id="2iD-yN-hiI"/>
                         <outlet property="containerView" destination="1Yl-me-jWq" id="wdL-wz-QmS"/>
                         <outlet property="demiseLabel" destination="ygh-vo-5kZ" id="UXF-wc-vCw"/>
                         <outlet property="detailLabel" destination="eg1-Yg-7GG" id="Mk1-RK-Uyj"/>
@@ -217,7 +224,7 @@
     </scenes>
     <designables>
         <designable name="AL8-NF-OLg">
-            <size key="intrinsicContentSize" width="164.66666666666666" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="182.66666666666666" height="31"/>
         </designable>
         <designable name="Efz-o5-Bnv">
             <size key="intrinsicContentSize" width="368" height="559"/>

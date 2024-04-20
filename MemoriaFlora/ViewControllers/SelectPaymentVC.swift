@@ -55,8 +55,8 @@ class SelectPaymentVC: BaseViewController {
     }
     
     @IBAction func onClickPayButton(_ sender: UIButton) {
+        self.onPayCondolences?()
         self.showAlert(message: "Payment Made Successfully", title: "Success", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.onPayCondolences?()
             self.dismiss(animated: true)
         }))
     }

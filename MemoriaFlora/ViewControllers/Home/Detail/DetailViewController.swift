@@ -11,7 +11,7 @@ import Kingfisher
 import FirebaseDatabase
 
 class DetailViewController: BaseViewController {
-
+    @IBOutlet weak var condolencesLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var demiseLabel: UILabel!
@@ -37,6 +37,7 @@ class DetailViewController: BaseViewController {
             let vc = FlowersVC.instantiate(fromAppStoryboard: .Flowers)
             vc.onSelectPayment = { [weak self] (category, flower) in
                 guard let self = self else { return }
+                self.addCondolences()
                 print(category, flower)
             }
             let navigationVC = UINavigationController.init(rootViewController: vc)
@@ -98,16 +99,57 @@ class DetailViewController: BaseViewController {
                   let description = memoryDict["description"] as? String,
                   let imageUrl = memoryDict["imageUrl"] as? String,
                   let dateOfDemise = memoryDict["demiseDate"] as? String,
+                  let condolences = memoryDict["condolences"] as? Int,
                   let timestampString = memoryDict["timestamps"] as? TimeInterval else {
                 return
             }
             
             let date = Date(timeIntervalSince1970: timestampString)
             // Create Memory object for the memory with the specified ID
-            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
+            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences)
             self.memory = memory
             self.config()
+            
+            self.observeMemoryChanges(withId: id)
             // Handle the retrieved memory, such as updating UI or performing any other action
+            print("User: \(memory.userName), Description: \(memory.description), Image URL: \(memory.imageUrl)")
+        }
+    }
+    
+    private func observeMemoryChanges(withId id: String) {
+        // Reference to the memories node for the user
+        let memoriesRef = Database.database().reference().child("memories")
+        
+        // Create a query to find the memory with the specified ID
+        let memoryQuery = memoriesRef.queryOrdered(byChild: "id").queryEqual(toValue: id)
+        
+        // Observe for changes in the memory
+        memoryQuery.observe(.childChanged) { (snapshot) in
+            guard let memoryData = snapshot.value as? [String: Any] else {
+                // Handle if memory data is not available
+                return
+            }
+            
+            // Extract the memory data
+            guard let uid = memoryData["id"] as? String,
+                  let userName = memoryData["userName"] as? String,
+                  let description = memoryData["description"] as? String,
+                  let imageUrl = memoryData["imageUrl"] as? String,
+                  let dateOfDemise = memoryData["demiseDate"] as? String,
+                  let condolences = memoryData["condolences"] as? Int,
+                  let timestampString = memoryData["timestamps"] as? TimeInterval else {
+                return
+            }
+            
+            let date = Date(timeIntervalSince1970: timestampString)
+            // Create Memory object for the memory with the specified ID
+            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences)
+            
+            self.memory = memory
+            
+            self.config()
+            
+            // Handle the changed memory data, such as updating UI or performing any other action
             print("User: \(memory.userName), Description: \(memory.description), Image URL: \(memory.imageUrl)")
         }
     }
@@ -130,11 +172,57 @@ class DetailViewController: BaseViewController {
     }
     
     func config() {
-        nameLabel.text = memory?.userName ?? ""
-        detailLabel.text = memory?.description ?? ""
-        demiseLabel.text = "Date of Demise: \(memory?.dateOfDemise ?? "")"
-        if let url = URL(string: memory?.imageUrl ?? "") {
-            imgView.kf.setImage(with: url)
+        DispatchQueue.main.async {
+            self.nameLabel.text = self.memory?.userName ?? ""
+            self.detailLabel.text = self.memory?.description ?? ""
+            self.demiseLabel.text = "Date of Demise: \(self.memory?.dateOfDemise ?? "")"
+            if let url = URL(string: self.memory?.imageUrl ?? "") {
+                self.imgView.kf.setImage(with: url)
+            }
+            if self.memory?.condolences == 0 {
+                self.condolencesLabel.isHidden = true
+            } else {
+                self.condolencesLabel.isHidden = false
+                self.condolencesLabel.text = "Condolences: \(self.memory?.condolences ?? 0)"
+            }
+        }
+    }
+    
+    private func addCondolences() {
+        let memoriesRef = Database.database().reference().child("memories")
+        
+        guard let id = self.memory?.uid else { return }
+        // Create a query to find the memory with the specified ID
+        let memoryQuery = memoriesRef.queryOrdered(byChild: "id").queryEqual(toValue: id)
+        
+        // Fetch the memory with the specified ID
+        memoryQuery.observeSingleEvent(of: .value) { (snapshot) in
+            guard snapshot.exists(), let memorySnapshot = snapshot.children.allObjects.first as? DataSnapshot,
+                  var memoryData = memorySnapshot.value as? [String: Any] else {
+                print("Memory with ID \(id) not found.")
+                return
+            }
+            
+            guard let currentCondolences = memoryData["condolences"] as? Int else {
+                print("Failed to fetch condolences value.")
+                return
+            }
+            
+            // Increment condolences by 1
+            let updatedCondolences = currentCondolences + 1
+            
+            // Update condolences value in memory data
+            memoryData["condolences"] = updatedCondolences
+            
+            // Update only the "condolences" variable in the memory node
+            memorySnapshot.ref.updateChildValues(["condolences": updatedCondolences]) { (error, ref) in
+                if let error = error {
+                    print("Error updating condolences: \(error.localizedDescription)")
+                } else {
+                    print("Condolences updated successfully!")
+                    // Show alert or perform other actions if needed
+                }
+            }
         }
     }
     
