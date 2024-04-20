@@ -8,8 +8,9 @@
 import UIKit
 import FirebaseDynamicLinks
 import Kingfisher
+import FirebaseDatabase
 
-class DetailViewController: UIViewController {
+class DetailViewController: BaseViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
@@ -22,9 +23,12 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBackButtonColor()
-        config()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
             self.animate()
+        }
+        
+        if let id = self.memory?.uid {
+            observeMemory(withId: id)
         }
     }
     
@@ -66,10 +70,47 @@ class DetailViewController: UIViewController {
         }
     }
     
+    private func observeMemory(withId id: String) {
+        // Reference to the memories node for the user
+        let memoriesRef = Database.database().reference().child("memories")
+        
+        // Create a query to find the memory with the specified ID
+        let memoryQuery = memoriesRef.queryOrdered(byChild: "id").queryEqual(toValue: id)
+        
+        // Observe for changes in memories
+        
+        self.showProgressHUD()
+        memoryQuery.observeSingleEvent(of: .value) { (snapshot) in
+            self.hideProgressHUD()
+            
+            guard let memoryData = snapshot.value as? [String: Any] else {
+                return
+            }
+            
+            // Extract the memory data
+            guard let memoryDict = memoryData.first?.value as? [String: Any],
+                  let uid = memoryDict["id"] as? String,
+                  let userName = memoryDict["userName"] as? String,
+                  let description = memoryDict["description"] as? String,
+                  let imageUrl = memoryDict["imageUrl"] as? String,
+                  let dateOfDemise = memoryDict["demiseDate"] as? String,
+                  let timestampString = memoryDict["timestamps"] as? TimeInterval else {
+                return
+            }
+            
+            let date = Date(timeIntervalSince1970: timestampString)
+            // Create Memory object for the memory with the specified ID
+            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
+            self.memory = memory
+            self.config()
+            // Handle the retrieved memory, such as updating UI or performing any other action
+            print("User: \(memory.userName), Description: \(memory.description), Image URL: \(memory.imageUrl)")
+        }
+    }
+    
     //MARK: - FUNCTIONS
     
     func presentSharesSheet(link : String) {
-        
         let text = "🌹 In loving memory of \(nameLabel.text ?? ""), let's honor their memory together. Please join me in paying tribute by offering flowers. \n\(link) \n#InMemory #ForeverInOurHearts 🌹"
         
         // set up activity view controller
@@ -82,7 +123,6 @@ class DetailViewController: UIViewController {
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
-
     }
     
     func config() {
