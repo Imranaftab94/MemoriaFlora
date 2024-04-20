@@ -32,9 +32,13 @@ class HomeViewController: BaseViewController, Refreshable {
     
     @IBAction func onClickProfileButton(_ sender: UIButton) {
         DispatchQueue.main.async {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-            self.navigationController?.pushViewController(profileVC, animated: true)
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+//            self.navigationController?.pushViewController(profileVC, animated: true)
+            
+            let vc = FlowersVC.instantiate(fromAppStoryboard: .Flowers)
+            let navigationVC = UINavigationController.init(rootViewController: vc)
+            self.present(navigationVC, animated: true, completion: nil)
         }
     }
     
@@ -57,15 +61,18 @@ class HomeViewController: BaseViewController, Refreshable {
                   let userName = memoryData["userName"] as? String,
                   let description = memoryData["description"] as? String,
                   let imageUrl = memoryData["imageUrl"] as? String,
-                  let dateOfDemise = memoryData["demiseDate"] as? String else {
+                  let dateOfDemise = memoryData["demiseDate"] as? String,
+                  let timestampString = memoryData["timestamps"] as? TimeInterval else {
                 return
             }
-            
+            let date = Date(timeIntervalSince1970: timestampString)
             // Create Memory object for the new memory
-            let memory = Memory(userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise)
+            let memory = Memory(userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
             
             // Append the new memory to the array
             self.memories.append(memory)
+            
+            self.memories.sort { $0.timestamp > $1.timestamp }
             
             self.reloadTableView()
             // Handle the newly added memory, such as updating UI or performing any other action
@@ -92,11 +99,16 @@ class HomeViewController: BaseViewController, Refreshable {
                    let userName = memoryData["userName"] as? String,
                    let description = memoryData["description"] as? String,
                    let imageUrl = memoryData["imageUrl"] as? String,
-                   let dateOfDemise = memoryData["demiseDate"] as? String {
-                    let memory = Memory(userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise)
+                   let dateOfDemise = memoryData["demiseDate"] as? String,
+                   let timestampString = memoryData["timestamps"] as? TimeInterval
+                {
+                    let date = Date(timeIntervalSince1970: timestampString)
+                    let memory = Memory(userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
                     allMemories.append(memory)
                 }
             }
+            
+            allMemories.sort { $0.timestamp > $1.timestamp }
             self.memories = allMemories
             self.reloadTableView()
         }

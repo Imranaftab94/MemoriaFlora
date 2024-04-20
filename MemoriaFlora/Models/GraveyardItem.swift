@@ -12,11 +12,13 @@ struct Memory {
     let description: String
     let imageUrl: String
     let dateOfDemise: String
+    let timestamp: Date
     
-    init(userName: String, description: String, imageUrl: String, dateOfDemise: String) {
+    init(userName: String, description: String, imageUrl: String, dateOfDemise: String, timestamp: Date) {
         self.userName = userName
         self.description = description
         self.imageUrl = imageUrl
         self.dateOfDemise = dateOfDemise
+        self.timestamp = timestamp
     }
 }

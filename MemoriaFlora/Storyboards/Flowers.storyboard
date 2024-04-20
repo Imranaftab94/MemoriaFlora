@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Bold.otf">
+            <string>SFProText-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--FlowersVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="FlowersVC" id="Y6W-OH-hqX" customClass="FlowersVC" customModule="MemoriaFlora" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m1G-J5-mdH">
+                                <rect key="frame" x="10" y="98" width="383" height="150"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Bla-pf-G7T"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JH2-nf-jKq">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Loved Ones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4L-0C-aZl">
+                                <rect key="frame" x="24" y="272" width="133" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uSm-EI-BhD">
+                                <rect key="frame" x="12" y="307" width="381" height="250"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="C9y-KC-99A"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mWy-wj-lkh">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose from these categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tax-Up-iRt">
+                                <rect key="frame" x="24.000000000000014" y="67" width="254.33333333333337" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="m1G-J5-mdH" firstAttribute="top" secondItem="Tax-Up-iRt" secondAttribute="bottom" constant="8" id="13f-X2-2IC"/>
+                            <constraint firstItem="S4L-0C-aZl" firstAttribute="top" secondItem="m1G-J5-mdH" secondAttribute="bottom" constant="24" id="5Gv-we-Fva"/>
+                            <constraint firstItem="Tax-Up-iRt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="A5w-Xw-NVU"/>
+                            <constraint firstItem="Tax-Up-iRt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="AsW-UQ-Tbx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="uSm-EI-BhD" secondAttribute="trailing" id="NCg-Oe-tv9"/>
+                            <constraint firstItem="m1G-J5-mdH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="eWc-fg-F2b"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="m1G-J5-mdH" secondAttribute="trailing" id="g78-04-NMC"/>
+                            <constraint firstItem="uSm-EI-BhD" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="12" id="psS-PU-LfO"/>
+                            <constraint firstItem="uSm-EI-BhD" firstAttribute="top" secondItem="S4L-0C-aZl" secondAttribute="bottom" constant="12" id="q5r-mj-CBk"/>
+                            <constraint firstItem="S4L-0C-aZl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="tcp-vV-R8s"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="flowerItemCollectionView" destination="uSm-EI-BhD" id="Dlm-R9-p78"/>
+                        <outlet property="flowersCategoryCollectionView" destination="m1G-J5-mdH" id="zTQ-xV-vgO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135.1145038167939" y="3.5211267605633805"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="djs-DD-g5U">
+            <objects>
+                <viewController id="JvW-8m-OBw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yvq-eU-evm">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Payment Method" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHI-wv-iND">
+                                <rect key="frame" x="65.333333333333343" y="175" width="262.66666666666663" height="26.333333333333343"/>
+                                <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="22"/>
+                                <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wallet" translatesAutoresizingMaskIntoConstraints="NO" id="mni-aV-zFo">
+                                <rect key="frame" x="169" y="91" width="55" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7wM-sD-v3X"/>
+                                    <constraint firstAttribute="width" constant="55" id="pxB-6x-6mg"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="circle_unfilled" translatesAutoresizingMaskIntoConstraints="NO" id="ydD-lj-nmG">
+                                <rect key="frame" x="55.333333333333343" y="271.33333333333331" width="26" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="KK8-Ti-OAP"/>
+                                    <constraint firstAttribute="height" constant="26" id="vVH-xM-EkI"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fxr-QG-AAd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ydD-lj-nmG" firstAttribute="leading" secondItem="YHI-wv-iND" secondAttribute="leading" constant="-10" id="02T-bx-wCD"/>
+                            <constraint firstItem="mni-aV-zFo" firstAttribute="top" secondItem="fxr-QG-AAd" secondAttribute="top" constant="32" id="Ia5-Ic-rcL"/>
+                            <constraint firstItem="YHI-wv-iND" firstAttribute="top" secondItem="mni-aV-zFo" secondAttribute="bottom" constant="24" id="LA7-sK-wec"/>
+                            <constraint firstItem="YHI-wv-iND" firstAttribute="centerX" secondItem="Yvq-eU-evm" secondAttribute="centerX" id="ZO8-gO-LIl"/>
+                            <constraint firstItem="mni-aV-zFo" firstAttribute="centerX" secondItem="Yvq-eU-evm" secondAttribute="centerX" id="fec-GO-ErF"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3T7-71-eBG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="912" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Wallet" width="54.666667938232422" height="49"/>
+        <image name="circle_unfilled" width="27" height="27"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
