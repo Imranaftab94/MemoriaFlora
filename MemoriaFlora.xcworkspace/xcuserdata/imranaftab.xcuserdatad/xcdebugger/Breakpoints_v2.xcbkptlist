@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "D95CADE7-5DA1-4DC7-A7EF-ED81FD5FDA99"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "81CF55BD-598B-454C-B28A-CD71102FC644"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MemoriaFlora/ViewControllers/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "scene(_:continue:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "81CF55BD-598B-454C-B28A-CD71102FC644 - 61b70fb0c9616eb5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MemoriaFlora.SceneDelegate.scene(_: __C.UIScene, continue: __C.NSUserActivity) -&gt; ()"
+                  moduleName = "MemoriaFlora"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imranaftab/Documents/Imran/MemoriaFlora/MemoriaFlora/ViewControllers/SceneDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "804">
+               </Location>
+               <Location
+                  uuid = "81CF55BD-598B-454C-B28A-CD71102FC644 - 61b70fb0c9616eb5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MemoriaFlora.SceneDelegate.scene(_: __C.UIScene, continue: __C.NSUserActivity) -&gt; ()"
+                  moduleName = "MemoriaFlora"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imranaftab/Documents/Imran/MemoriaFlora/MemoriaFlora/ViewControllers/SceneDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "496">
+               </Location>
+               <Location
+                  uuid = "81CF55BD-598B-454C-B28A-CD71102FC644 - 61b70fb0c9616eb5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MemoriaFlora.SceneDelegate.scene(_: __C.UIScene, continue: __C.NSUserActivity) -&gt; ()"
+                  moduleName = "MemoriaFlora"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imranaftab/Documents/Imran/MemoriaFlora/MemoriaFlora/ViewControllers/SceneDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "756">
+               </Location>
+               <Location
+                  uuid = "81CF55BD-598B-454C-B28A-CD71102FC644 - 61b70fb0c9616eb5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MemoriaFlora.SceneDelegate.scene(_: __C.UIScene, continue: __C.NSUserActivity) -&gt; ()"
+                  moduleName = "MemoriaFlora"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imranaftab/Documents/Imran/MemoriaFlora/MemoriaFlora/ViewControllers/SceneDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "320">
+               </Location>
+               <Location
+                  uuid = "81CF55BD-598B-454C-B28A-CD71102FC644 - 61b70fb0c9616eb5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MemoriaFlora.SceneDelegate.scene(_: __C.UIScene, continue: __C.NSUserActivity) -&gt; ()"
+                  moduleName = "MemoriaFlora"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imranaftab/Documents/Imran/MemoriaFlora/MemoriaFlora/ViewControllers/SceneDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "564">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC6208A9-1ED8-4D91-A99E-D5006227FFA0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MemoriaFlora/ViewControllers/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "handleDynamicLink(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FC6208A9-1ED8-4D91-A99E-D5006227FFA0 - 61b70fb0c9616d1a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MemoriaFlora.SceneDelegate.scene(_: __C.UIScene, continue: __C.NSUserActivity) -&gt; ()"
+                  moduleName = "MemoriaFlora"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imranaftab/Documents/Imran/MemoriaFlora/MemoriaFlora/ViewControllers/SceneDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "1516">
+               </Location>
+               <Location
+                  uuid = "FC6208A9-1ED8-4D91-A99E-D5006227FFA0 - 568b3e7c007fefcf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MemoriaFlora.SceneDelegate.handleDynamicLink(__C.FIRDynamicLink) -&gt; ()"
+                  moduleName = "MemoriaFlora"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imranaftab/Documents/Imran/MemoriaFlora/MemoriaFlora/ViewControllers/SceneDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "300">
+               </Location>
+               <Location
+                  uuid = "FC6208A9-1ED8-4D91-A99E-D5006227FFA0 - 568b3e7c007fefcf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MemoriaFlora.SceneDelegate.handleDynamicLink(__C.FIRDynamicLink) -&gt; ()"
+                  moduleName = "MemoriaFlora"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imranaftab/Documents/Imran/MemoriaFlora/MemoriaFlora/ViewControllers/SceneDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "544">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9B4CE15-EF2F-4F5A-95A3-9FD5BC3E3E76"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MemoriaFlora/ViewControllers/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "scene(_:continue:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F5409CB0-63AA-48E4-9F12-80583184E365"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MemoriaFlora/ViewControllers/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "scene(_:continue:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E4980AEF-626E-4C17-B725-3139284CFA0D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MemoriaFlora/ViewControllers/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "scene(_:continue:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E4980AEF-626E-4C17-B725-3139284CFA0D - 61b70fb0c9616e12"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MemoriaFlora.SceneDelegate.scene(_: __C.UIScene, continue: __C.NSUserActivity) -&gt; ()"
+                  moduleName = "MemoriaFlora"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imranaftab/Documents/Imran/MemoriaFlora/MemoriaFlora/ViewControllers/SceneDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "628">
+               </Location>
+               <Location
+                  uuid = "E4980AEF-626E-4C17-B725-3139284CFA0D - 61b70fb0c9616e12"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MemoriaFlora.SceneDelegate.scene(_: __C.UIScene, continue: __C.NSUserActivity) -&gt; ()"
+                  moduleName = "MemoriaFlora"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imranaftab/Documents/Imran/MemoriaFlora/MemoriaFlora/ViewControllers/SceneDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "776">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
