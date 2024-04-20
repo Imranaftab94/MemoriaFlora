@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4HJ-W7-Bl7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4HJ-W7-Bl7">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -122,13 +122,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_______________" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z30-5X-0Hp">
-                                <rect key="frame" x="40" y="493.66666666666669" width="151.66666666666666" height="20.333333333333314"/>
+                                <rect key="frame" x="40" y="501.66666666666669" width="151.66666666666666" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0P8-rI-iYz" customClass="DesignableButton" customModule="Spring">
-                                <rect key="frame" x="40" y="533.66666666666663" width="348" height="50"/>
+                                <rect key="frame" x="40" y="541.66666666666663" width="348" height="50"/>
                                 <color key="backgroundColor" red="0.47450980392156861" green="0.24313725490196078" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="T3u-4o-7aL"/>
@@ -160,7 +160,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVI-KY-xgv">
-                                <rect key="frame" x="40" y="484.33333333333331" width="151.66666666666666" height="34.333333333333314"/>
+                                <rect key="frame" x="40" y="484.33333333333331" width="151.66666666666666" height="42.333333333333314"/>
                                 <color key="tintColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Forgot Password"/>
@@ -169,13 +169,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="________________" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyR-FW-sd3">
-                                <rect key="frame" x="176.33333333333337" y="601" width="175" height="20.333333333333371"/>
+                                <rect key="frame" x="176.33333333333337" y="609" width="175" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPL-io-PNg">
-                                <rect key="frame" x="176.33333333333337" y="591.66666666666663" width="175" height="34.333333333333371"/>
+                                <rect key="frame" x="176.33333333333337" y="599.66666666666663" width="175" height="34.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="c2J-qD-mTT"/>
                                 </constraints>
@@ -189,7 +189,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New user?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxg-P6-U83">
-                                <rect key="frame" x="103.66666666666666" y="598.66666666666663" width="80.666666666666657" height="20.333333333333371"/>
+                                <rect key="frame" x="103.66666666666666" y="606.66666666666663" width="80.666666666666657" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -727,10 +727,10 @@
                                 <rect key="frame" x="0.0" y="47" width="428" height="845"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFK-LU-oti">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="730"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="712"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfa-5D-nrX">
-                                                <rect key="frame" x="24" y="50" width="380" height="620"/>
+                                                <rect key="frame" x="24" y="32" width="380" height="620"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Loving Memory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PE6-OV-zbq">
                                                         <rect key="frame" x="24" y="24.000000000000004" width="332" height="60.333333333333343"/>
@@ -881,7 +881,7 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstItem="bfa-5D-nrX" firstAttribute="top" secondItem="uFK-LU-oti" secondAttribute="top" constant="50" id="pAC-n5-J1h"/>
+                                            <constraint firstItem="bfa-5D-nrX" firstAttribute="top" secondItem="uFK-LU-oti" secondAttribute="top" constant="32" id="pAC-n5-J1h"/>
                                             <constraint firstAttribute="trailing" secondItem="bfa-5D-nrX" secondAttribute="trailing" constant="24" id="tiu-pK-VPQ"/>
                                             <constraint firstAttribute="bottom" secondItem="bfa-5D-nrX" secondAttribute="bottom" constant="60" id="unu-OQ-M2O"/>
                                             <constraint firstItem="bfa-5D-nrX" firstAttribute="leading" secondItem="uFK-LU-oti" secondAttribute="leading" constant="24" id="xtk-0F-gmW"/>
@@ -998,34 +998,34 @@
             <size key="intrinsicContentSize" width="62.666666666666664" height="31"/>
         </designable>
         <designable name="1ML-bR-zWx">
-            <size key="intrinsicContentSize" width="69.666666666666671" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="39.333333333333336" height="18.666666666666668"/>
         </designable>
         <designable name="53K-6w-u2E">
             <size key="intrinsicContentSize" width="126.33333333333333" height="31"/>
         </designable>
         <designable name="7Iq-n7-kgO">
-            <size key="intrinsicContentSize" width="69.666666666666671" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="39.333333333333336" height="18.666666666666668"/>
         </designable>
         <designable name="Ex3-c9-UZt">
             <size key="intrinsicContentSize" width="142.33333333333334" height="31"/>
         </designable>
         <designable name="G13-0r-Imo">
-            <size key="intrinsicContentSize" width="154" height="17"/>
+            <size key="intrinsicContentSize" width="124" height="17"/>
         </designable>
         <designable name="Mwy-1R-oOI">
-            <size key="intrinsicContentSize" width="97.333333333333329" height="17"/>
+            <size key="intrinsicContentSize" width="67.333333333333329" height="17"/>
         </designable>
         <designable name="S9z-cU-kgg">
-            <size key="intrinsicContentSize" width="72.666666666666671" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="42.333333333333336" height="18.666666666666668"/>
         </designable>
         <designable name="VW9-dF-nZa">
             <size key="intrinsicContentSize" width="133.33333333333334" height="31"/>
         </designable>
         <designable name="gId-xP-f5B">
-            <size key="intrinsicContentSize" width="97.333333333333329" height="17"/>
+            <size key="intrinsicContentSize" width="67.333333333333329" height="17"/>
         </designable>
         <designable name="xIz-3y-SMq">
-            <size key="intrinsicContentSize" width="69.666666666666671" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="39.333333333333336" height="18.666666666666668"/>
         </designable>
         <designable name="zPS-Bu-6Cq">
             <size key="intrinsicContentSize" width="90.666666666666671" height="37"/>
