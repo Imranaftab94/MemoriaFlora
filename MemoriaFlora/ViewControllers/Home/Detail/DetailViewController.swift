@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var demiseLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var containerView: UIView!
     
     var memory: Memory?
 
@@ -22,6 +23,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBackButtonColor()
         config()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
+            self.animate()
+        }
     }
     
     @IBAction func chooseFlowerButtonTap(_ sender: UIButton) {
@@ -95,4 +99,27 @@ class DetailViewController: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.init(hexString: "#865EE2")
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#865EE2")]
     }
+
+    func animate() {
+        // Add multiple flower images to the view and animate them
+        let numberOfFlowers = 10 // Adjust as needed
+        let flowerImageNames = ["rose3", "rose3", "rose3"] // Names of your flower images
+        
+        for _ in 0..<numberOfFlowers {
+            let randomIndex = Int.random(in: 0..<flowerImageNames.count)
+            let imageName = flowerImageNames[randomIndex]
+            let imageView = UIImageView(image: UIImage(named: imageName))
+            imageView.frame = CGRect(x: CGFloat.random(in: 0..<containerView.bounds.width),
+                                     y: containerView.bounds.height,
+                                     width: 50, height: 50) // Adjust size as needed
+            containerView.addSubview(imageView)
+            
+            UIView.animate(withDuration: 3.0, delay: 0, options: .curveLinear, animations: {
+                imageView.frame.origin.y = -imageView.frame.height
+            }, completion: { _ in
+                imageView.removeFromSuperview() // Remove the flower image after animation completes
+            })
+        }
+    }
+    
 }
