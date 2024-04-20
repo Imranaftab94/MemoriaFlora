@@ -203,6 +203,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="1Yl-me-jWq" id="wdL-wz-QmS"/>
                         <outlet property="demiseLabel" destination="ygh-vo-5kZ" id="UXF-wc-vCw"/>
                         <outlet property="detailLabel" destination="eg1-Yg-7GG" id="Mk1-RK-Uyj"/>
                         <outlet property="imgView" destination="Efz-o5-Bnv" id="yHo-YD-L9V"/>
