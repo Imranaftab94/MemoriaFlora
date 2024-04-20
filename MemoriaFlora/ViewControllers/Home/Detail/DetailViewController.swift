@@ -35,6 +35,10 @@ class DetailViewController: BaseViewController {
     @IBAction func chooseFlowerButtonTap(_ sender: UIButton) {
         DispatchQueue.main.async {
             let vc = FlowersVC.instantiate(fromAppStoryboard: .Flowers)
+            vc.onSelectPayment = { [weak self] (category, flower) in
+                guard let self = self else { return }
+                print(category, flower)
+            }
             let navigationVC = UINavigationController.init(rootViewController: vc)
             self.present(navigationVC, animated: true, completion: nil)
         }

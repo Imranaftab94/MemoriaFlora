@@ -15,6 +15,11 @@ class SelectPaymentVC: BaseViewController {
     let activeBorderColor: UIColor = UIColor.init(hexString: "#793EE5")
     let inactiveBorderColor: UIColor = UIColor.init(hexString: "#0B0B0B")
     
+    var selectedFlowerCategory: FlowerCategoryModel?
+    var selectedFlower: FlowerModel?
+    
+    var onPayCondolences: (() -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,8 +47,16 @@ class SelectPaymentVC: BaseViewController {
         containerView1.layer.masksToBounds = true
     }
     
+    class func instantiate(selectedCategory: FlowerCategoryModel, selectedFlower: FlowerModel) -> Self {
+        let vc = self.instantiate(fromAppStoryboard: .Flowers)
+        vc.selectedFlower = selectedFlower
+        vc.selectedFlowerCategory = selectedCategory
+        return vc
+    }
+    
     @IBAction func onClickPayButton(_ sender: UIButton) {
         self.showAlert(message: "Payment Made Successfully", title: "Success", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
+            self.onPayCondolences?()
             self.dismiss(animated: true)
         }))
     }
