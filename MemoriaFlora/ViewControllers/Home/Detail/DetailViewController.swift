@@ -101,25 +101,35 @@ class DetailViewController: UIViewController {
     }
 
     func animate() {
-        // Add multiple flower images to the view and animate them
-        let numberOfFlowers = 10 // Adjust as needed
-        let flowerImageNames = ["rose3", "rose3", "rose3"] // Names of your flower images
         
-        for _ in 0..<numberOfFlowers {
+        let numberOfFlowers = 30 // Adjust as needed
+        let flowerImageNames = ["rose"] // Names of your flower images
+        
+        for index in 0..<numberOfFlowers {
             let randomIndex = Int.random(in: 0..<flowerImageNames.count)
             let imageName = flowerImageNames[randomIndex]
             let imageView = UIImageView(image: UIImage(named: imageName))
-            imageView.frame = CGRect(x: CGFloat.random(in: 0..<containerView.bounds.width),
-                                     y: containerView.bounds.height,
-                                     width: 50, height: 50) // Adjust size as needed
-            containerView.addSubview(imageView)
-            
-            UIView.animate(withDuration: 3.0, delay: 0, options: .curveLinear, animations: {
-                imageView.frame.origin.y = -imageView.frame.height
-            }, completion: { _ in
-                imageView.removeFromSuperview() // Remove the flower image after animation completes
-            })
+            let delay = TimeInterval(index) * 0.2 // Adjust the delay as needed (e.g., 0.2 seconds between each flower)
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                imageView.frame = CGRect(x: CGFloat.random(in: 0..<self.containerView.bounds.width),
+                                         y: self.containerView.bounds.height,
+                                         width: 50, height: 50) // Adjust size as needed
+                self.containerView.addSubview(imageView)
+                
+                // Add rotation animation
+                let rotationAngle = CGFloat.random(in: -CGFloat.pi...CGFloat.pi)
+                imageView.transform = CGAffineTransform(rotationAngle: rotationAngle)
+                
+                UIView.animate(withDuration: 3.0, delay: 0, options: .curveEaseInOut, animations: {
+                    imageView.frame.origin.y = -imageView.frame.height
+                    imageView.transform = .identity // Reset rotation
+                    imageView.alpha = 0.0 // Fade out
+                }, completion: { _ in
+                    imageView.removeFromSuperview() // Remove the flower image after animation completes
+                })
+            }
         }
+
     }
     
 }
