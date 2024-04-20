@@ -14,9 +14,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `applica  else { return }
+        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        // Handle deep link when the app is opened with a URL
+        if let url = connectionOptions.urlContexts.first?.url {
+            handleDeepLink(url)
+        }
+        
+        // Handle deep link when the app is opened with a user activity (Universal Links)
+        if let userActivity = connectionOptions.userActivities.first {
+            if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
+                handleDeepLink(url)
+            }
+        }
+    }
+
+    func handleDeepLink(_ url: URL) {
+        // Process the URL as needed
+        print("Opened with URL: \(url)")
+        showAlertMsg()
+        // Your logic to handle the deep link
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -50,21 +67,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
         // 1
         if let url = userActivity.webpageURL {
-
-            let dynamicLinks = DynamicLinks.dynamicLinks()
-            if let dynamicLink = dynamicLinks.dynamicLink(fromCustomSchemeURL: url) {
-                // Handle the dynamic link
-                handleDynamicLink(dynamicLink)
+            
+            DynamicLinks.dynamicLinks().handleUniversalLink(url) { (dynamicLink, error) in
+                guard error == nil else {
+                    print("Error handling dynamic link: \(error!.localizedDescription)")
+                    return
+                }
+                
+                if let dynamicLink = dynamicLink {
+                    // Dynamic link found, handle it
+                    self.handleDynamicLink(dynamicLink)
+                } else {
+                    // Not a dynamic link
+                    print("Not a dynamic link")
+                }
             }
+            
         }
     }
 
     private func handleDynamicLink(_ dynamicLink: DynamicLink) {
         if let url = dynamicLink.url {
-            // Extract any parameters from the dynamic link if needed
-            // Then navigate to the appropriate screen
-            print("Dynamic link URL: \(url)")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
+                
+                // Extract any parameters from the dynamic link if needed
+                // Then navigate to the appropriate screen
+                print("Dynamic link URL: \(url)")
+                self.showAlertMsg()
+            }
             // Navigate to the appropriate screen based on the dynamic link URL
         }
     }
+    
+    func showAlertMsg() {
+            
+            let alertController = UIAlertController(title: "Alert", message: "Your mexczcxzssage here", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            
+            if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
+                rootViewController.present(alertController, animated: true)
+            }
+        }
 }

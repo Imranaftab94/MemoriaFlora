@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "400C65191A2F084EEBD84DD8D05C4529"
-               BuildableName = "Pods_MemoriaFlora.framework"
-               BlueprintName = "Pods-MemoriaFlora"
+               BlueprintIdentifier = "FE1DE31D91C32501251AE9687CDC2E0F"
+               BuildableName = "FirebaseCoreExtension.framework"
+               BlueprintName = "FirebaseCoreExtension"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

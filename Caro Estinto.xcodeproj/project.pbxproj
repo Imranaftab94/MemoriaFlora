@@ -1,0 +1,963 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B18DC452BD40F5800483B4A /* SelectPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */; };
+		0BAFC1822BD226E60079C7BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1812BD226E60079C7BD /* HomeViewController.swift */; };
+		0BAFC1862BD227A10079C7BD /* GraveyardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */; };
+		0BAFC18B2BD22A200079C7BD /* GraveyardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */; };
+		0BAFC18C2BD22A200079C7BD /* GraveyardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BAFC18A2BD22A200079C7BD /* GraveyardTableViewCell.xib */; };
+		0BAFC18E2BD22E890079C7BD /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC18D2BD22E890079C7BD /* SplashVC.swift */; };
+		0BAFC1912BD22EFA0079C7BD /* MyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1902BD22EFA0079C7BD /* MyUserDefaults.swift */; };
+		0BAFC1932BD22F460079C7BD /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1922BD22F460079C7BD /* UserModel.swift */; };
+		0BAFC1962BD23C6B0079C7BD /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1952BD23C6B0079C7BD /* ProgressHUD.swift */; };
+		0BAFC1992BD23CCA0079C7BD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1982BD23CCA0079C7BD /* UIColor+Extension.swift */; };
+		0BAFC19B2BD23D120079C7BD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC19A2BD23D120079C7BD /* BaseViewController.swift */; };
+		0BAFC19D2BD242280079C7BD /* CreatePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC19C2BD242280079C7BD /* CreatePostVC.swift */; };
+		0BD4AC152BD256090058D204 /* ImageSelectionAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC142BD256090058D204 /* ImageSelectionAlertViewController.swift */; };
+		0BD4AC172BD256370058D204 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC162BD256370058D204 /* UIImage+Extension.swift */; };
+		0BD4AC192BD261E90058D204 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC182BD261E90058D204 /* ProfileViewController.swift */; };
+		0BD4AC1C2BD2D6E80058D204 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */; };
+		4B55453E1A01057E856704DA /* Pods_Caro_Estinto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */; };
+		0BDC27B72BD3D343001BA3BE /* FlowersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27B62BD3D343001BA3BE /* FlowersVC.swift */; };
+		0BDC27BA2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BDC27B92BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib */; };
+		0BDC27BB2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27B82BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift */; };
+		0BDC27BE2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BDC27BD2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib */; };
+		0BDC27BF2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27BC2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift */; };
+		0BDC27C12BD3D441001BA3BE /* Flowers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BDC27C02BD3D441001BA3BE /* Flowers.storyboard */; };
+		0BDC27C32BD3E2C7001BA3BE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C22BD3E2C7001BA3BE /* UIViewController+Extension.swift */; };
+		0BDC27C52BD3E2E7001BA3BE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C42BD3E2E7001BA3BE /* Enums.swift */; };
+		0BDC27C72BD3F449001BA3BE /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */; };
+		154707B89A2FA903796E7FA8 /* Pods_MemoriaFlora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D52F71F7EFF9FBF5BB447F1 /* Pods_MemoriaFlora.framework */; };
+		E405EAD02BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC32BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf */; };
+		E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC42BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf */; };
+		E405EAD22BD1BFCD005C8673 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC52BD1BFCD005C8673 /* SF-Pro-Text-Light.otf */; };
+		E405EAD32BD1BFCD005C8673 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC62BD1BFCD005C8673 /* SF-Pro-Text-Regular.otf */; };
+		E405EAD42BD1BFCD005C8673 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC72BD1BFCD005C8673 /* SF-Pro-Text-Bold.otf */; };
+		E405EAD52BD1BFCD005C8673 /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC82BD1BFCD005C8673 /* SF-Pro-Text-BoldItalic.otf */; };
+		E405EAD62BD1BFCD005C8673 /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC92BD1BFCD005C8673 /* SF-Pro-Text-RegularItalic.otf */; };
+		E405EAD72BD1BFCD005C8673 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EACA2BD1BFCD005C8673 /* SF-Pro-Text-Semibold.otf */; };
+		E405EAD82BD1BFCD005C8673 /* SF-Pro-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EACB2BD1BFCD005C8673 /* SF-Pro-Text-HeavyItalic.otf */; };
+		E405EAD92BD1BFCD005C8673 /* SF-Pro-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EACC2BD1BFCD005C8673 /* SF-Pro-Text-LightItalic.otf */; };
+		E405EADA2BD1BFCD005C8673 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EACD2BD1BFCD005C8673 /* SF-Pro-Text-Medium.otf */; };
+		E405EADB2BD1BFCD005C8673 /* SF-Pro-Text-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E405EACE2BD1BFCD005C8673 /* SF-Pro-Text-Regular.ttf */; };
+		E405EADC2BD1BFCD005C8673 /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EACF2BD1BFCD005C8673 /* SF-Pro-Text-SemiboldItalic.otf */; };
+		E405EADE2BD1C2D2005C8673 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E405EADD2BD1C2D2005C8673 /* LoginViewController.swift */; };
+		E405EAE02BD1C2DA005C8673 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E405EADF2BD1C2DA005C8673 /* SignupViewController.swift */; };
+		E405EAE22BD1C2E5005C8673 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E405EAE12BD1C2E5005C8673 /* ForgotPasswordViewController.swift */; };
+		E44686A62BCDCDCC001DF89B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686A52BCDCDCC001DF89B /* AppDelegate.swift */; };
+		E44686A82BCDCDCC001DF89B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686A72BCDCDCC001DF89B /* SceneDelegate.swift */; };
+		E44686AA2BCDCDCC001DF89B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686A92BCDCDCC001DF89B /* ViewController.swift */; };
+		E44686AD2BCDCDCC001DF89B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44686AB2BCDCDCC001DF89B /* Main.storyboard */; };
+		E44686AF2BCDCDCF001DF89B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E44686AE2BCDCDCF001DF89B /* Assets.xcassets */; };
+		E44686B22BCDCDCF001DF89B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44686B02BCDCDCF001DF89B /* LaunchScreen.storyboard */; };
+		E44686BD2BCDCDD0001DF89B /* MemoriaFloraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686BC2BCDCDD0001DF89B /* MemoriaFloraTests.swift */; };
+		E44686C72BCDCDD0001DF89B /* MemoriaFloraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686C62BCDCDD0001DF89B /* MemoriaFloraUITests.swift */; };
+		E44686C92BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686C82BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift */; };
+		E45842072BD33A5D00B5937D /* DetailViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E45842062BD33A5D00B5937D /* DetailViews.storyboard */; };
+		E458420A2BD3EC3C00B5937D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45842092BD3EC3C00B5937D /* DetailViewController.swift */; };
+		E4D8177C2BD278BC00F2C50D /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8177B2BD278BC00F2C50D /* Functions.swift */; };
+		E4D8177E2BD2822D00F2C50D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4D8177D2BD2822D00F2C50D /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E44686B92BCDCDD0001DF89B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E446869A2BCDCDCC001DF89B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E44686A12BCDCDCC001DF89B;
+			remoteInfo = MemoriaFlora;
+		};
+		E44686C32BCDCDD0001DF89B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E446869A2BCDCDCC001DF89B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E44686A12BCDCDCC001DF89B;
+			remoteInfo = MemoriaFlora;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentVC.swift; sourceTree = "<group>"; };
+		0BAFC1812BD226E60079C7BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraveyardItem.swift; sourceTree = "<group>"; };
+		0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraveyardTableViewCell.swift; sourceTree = "<group>"; };
+		0BAFC18A2BD22A200079C7BD /* GraveyardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraveyardTableViewCell.xib; sourceTree = "<group>"; };
+		0BAFC18D2BD22E890079C7BD /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		0BAFC1902BD22EFA0079C7BD /* MyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUserDefaults.swift; sourceTree = "<group>"; };
+		0BAFC1922BD22F460079C7BD /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		0BAFC1952BD23C6B0079C7BD /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		0BAFC1982BD23CCA0079C7BD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		0BAFC19A2BD23D120079C7BD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0BAFC19C2BD242280079C7BD /* CreatePostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostVC.swift; sourceTree = "<group>"; };
+		0BD4AC142BD256090058D204 /* ImageSelectionAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionAlertViewController.swift; sourceTree = "<group>"; };
+		0BD4AC162BD256370058D204 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		0BD4AC182BD261E90058D204 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
+		0BDC27B62BD3D343001BA3BE /* FlowersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowersVC.swift; sourceTree = "<group>"; };
+		0BDC27B82BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowersCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		0BDC27B92BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlowersCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		0BDC27BC2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		0BDC27BD2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlowerItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		0BDC27C02BD3D441001BA3BE /* Flowers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Flowers.storyboard; sourceTree = "<group>"; };
+		0BDC27C22BD3E2C7001BA3BE /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		0BDC27C42BD3E2E7001BA3BE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
+		169007E1CD9FFA86208F5AC9 /* Pods-MemoriaFlora.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora.debug.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora.debug.xcconfig"; sourceTree = "<group>"; };
+		66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Caro_Estinto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7551554E435EA7949109ED3B /* Pods-Caro Estinto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caro Estinto.debug.xcconfig"; path = "Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto.debug.xcconfig"; sourceTree = "<group>"; };
+		8F316B30844F3BAF676ADE20 /* Pods-MemoriaFlora.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora.release.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora.release.xcconfig"; sourceTree = "<group>"; };
+		B202CB0089C346057AD5BF6C /* Pods-Caro Estinto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caro Estinto.release.xcconfig"; path = "Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto.release.xcconfig"; sourceTree = "<group>"; };
+		E405EAC32BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
+		E405EAC42BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-MediumItalic.otf"; sourceTree = "<group>"; };
+		E405EAC52BD1BFCD005C8673 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
+		E405EAC62BD1BFCD005C8673 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		E405EAC72BD1BFCD005C8673 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		E405EAC82BD1BFCD005C8673 /* SF-Pro-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-BoldItalic.otf"; sourceTree = "<group>"; };
+		E405EAC92BD1BFCD005C8673 /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		E405EACA2BD1BFCD005C8673 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		E405EACB2BD1BFCD005C8673 /* SF-Pro-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
+		E405EACC2BD1BFCD005C8673 /* SF-Pro-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-LightItalic.otf"; sourceTree = "<group>"; };
+		E405EACD2BD1BFCD005C8673 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		E405EACE2BD1BFCD005C8673 /* SF-Pro-Text-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.ttf"; sourceTree = "<group>"; };
+		E405EACF2BD1BFCD005C8673 /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		E405EADD2BD1C2D2005C8673 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E405EADF2BD1C2DA005C8673 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		E405EAE12BD1C2E5005C8673 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		E44686A22BCDCDCC001DF89B /* Caro Estinto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Caro Estinto.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E44686A52BCDCDCC001DF89B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E44686A72BCDCDCC001DF89B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E44686A92BCDCDCC001DF89B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E44686AC2BCDCDCC001DF89B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E44686AE2BCDCDCF001DF89B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E44686B12BCDCDCF001DF89B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E44686B32BCDCDCF001DF89B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E44686B82BCDCDD0001DF89B /* Caro EstintoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Caro EstintoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E44686BC2BCDCDD0001DF89B /* MemoriaFloraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraTests.swift; sourceTree = "<group>"; };
+		E44686C22BCDCDD0001DF89B /* Caro EstintoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Caro EstintoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E44686C62BCDCDD0001DF89B /* MemoriaFloraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraUITests.swift; sourceTree = "<group>"; };
+		E44686C82BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E45842062BD33A5D00B5937D /* DetailViews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViews.storyboard; sourceTree = "<group>"; };
+		E45842092BD3EC3C00B5937D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E4D8177B2BD278BC00F2C50D /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		E4D8177D2BD2822D00F2C50D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E4D8177F2BD289E900F2C50D /* MemoriaFlora.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MemoriaFlora.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E446869F2BCDCDCC001DF89B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B55453E1A01057E856704DA /* Pods_Caro_Estinto.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E44686B52BCDCDD0001DF89B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E44686BF2BCDCDD0001DF89B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0BAFC1832BD227900079C7BD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0BDC27B32BD3D328001BA3BE /* Flowers */,
+				0BAFC18F2BD22EEC0079C7BD /* Utils */,
+				0BAFC1882BD229FD0079C7BD /* Home */,
+				E44686A52BCDCDCC001DF89B /* AppDelegate.swift */,
+				E44686A72BCDCDCC001DF89B /* SceneDelegate.swift */,
+				E44686A92BCDCDCC001DF89B /* ViewController.swift */,
+				E405EADD2BD1C2D2005C8673 /* LoginViewController.swift */,
+				E405EADF2BD1C2DA005C8673 /* SignupViewController.swift */,
+				E405EAE12BD1C2E5005C8673 /* ForgotPasswordViewController.swift */,
+				0BAFC18D2BD22E890079C7BD /* SplashVC.swift */,
+				0BAFC19A2BD23D120079C7BD /* BaseViewController.swift */,
+				0BAFC19C2BD242280079C7BD /* CreatePostVC.swift */,
+				0BD4AC182BD261E90058D204 /* ProfileViewController.swift */,
+				0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0BAFC1842BD227980079C7BD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */,
+				0BAFC1922BD22F460079C7BD /* UserModel.swift */,
+				0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0BAFC1872BD229D30079C7BD /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E44686AB2BCDCDCC001DF89B /* Main.storyboard */,
+				E44686B02BCDCDCF001DF89B /* LaunchScreen.storyboard */,
+				E45842062BD33A5D00B5937D /* DetailViews.storyboard */,
+				0BDC27C02BD3D441001BA3BE /* Flowers.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0BAFC1882BD229FD0079C7BD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E45842082BD3EC2A00B5937D /* Detail */,
+				0BAFC1812BD226E60079C7BD /* HomeViewController.swift */,
+				0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */,
+				0BAFC18A2BD22A200079C7BD /* GraveyardTableViewCell.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0BAFC18F2BD22EEC0079C7BD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0BAFC1972BD23CBF0079C7BD /* Extensions */,
+				0BAFC1942BD23C5E0079C7BD /* ThirdParty */,
+				0BAFC1902BD22EFA0079C7BD /* MyUserDefaults.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0BAFC1942BD23C5E0079C7BD /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				0BAFC1952BD23C6B0079C7BD /* ProgressHUD.swift */,
+				0BD4AC142BD256090058D204 /* ImageSelectionAlertViewController.swift */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		0BAFC1972BD23CBF0079C7BD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0BAFC1982BD23CCA0079C7BD /* UIColor+Extension.swift */,
+				0BD4AC162BD256370058D204 /* UIImage+Extension.swift */,
+				0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */,
+				0BDC27C22BD3E2C7001BA3BE /* UIViewController+Extension.swift */,
+				0BDC27C42BD3E2E7001BA3BE /* Enums.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0BDC27B32BD3D328001BA3BE /* Flowers */ = {
+			isa = PBXGroup;
+			children = (
+				0BDC27B62BD3D343001BA3BE /* FlowersVC.swift */,
+				0BDC27B82BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift */,
+				0BDC27B92BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib */,
+				0BDC27BC2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift */,
+				0BDC27BD2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib */,
+			);
+			path = Flowers;
+			sourceTree = "<group>";
+		};
+		132971A7D80C0AB2259F4AB3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				169007E1CD9FFA86208F5AC9 /* Pods-MemoriaFlora.debug.xcconfig */,
+				8F316B30844F3BAF676ADE20 /* Pods-MemoriaFlora.release.xcconfig */,
+				7551554E435EA7949109ED3B /* Pods-Caro Estinto.debug.xcconfig */,
+				B202CB0089C346057AD5BF6C /* Pods-Caro Estinto.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BA94137A7A99AA1D53B85E5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E405EAC22BD1BFCD005C8673 /* SF-Text */ = {
+			isa = PBXGroup;
+			children = (
+				E405EAC32BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf */,
+				E405EAC42BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf */,
+				E405EAC52BD1BFCD005C8673 /* SF-Pro-Text-Light.otf */,
+				E405EAC62BD1BFCD005C8673 /* SF-Pro-Text-Regular.otf */,
+				E405EAC72BD1BFCD005C8673 /* SF-Pro-Text-Bold.otf */,
+				E405EAC82BD1BFCD005C8673 /* SF-Pro-Text-BoldItalic.otf */,
+				E405EAC92BD1BFCD005C8673 /* SF-Pro-Text-RegularItalic.otf */,
+				E405EACA2BD1BFCD005C8673 /* SF-Pro-Text-Semibold.otf */,
+				E405EACB2BD1BFCD005C8673 /* SF-Pro-Text-HeavyItalic.otf */,
+				E405EACC2BD1BFCD005C8673 /* SF-Pro-Text-LightItalic.otf */,
+				E405EACD2BD1BFCD005C8673 /* SF-Pro-Text-Medium.otf */,
+				E405EACE2BD1BFCD005C8673 /* SF-Pro-Text-Regular.ttf */,
+				E405EACF2BD1BFCD005C8673 /* SF-Pro-Text-SemiboldItalic.otf */,
+			);
+			path = "SF-Text";
+			sourceTree = "<group>";
+		};
+		E44686992BCDCDCC001DF89B = {
+			isa = PBXGroup;
+			children = (
+				E44686A42BCDCDCC001DF89B /* MemoriaFlora */,
+				E44686BB2BCDCDD0001DF89B /* MemoriaFloraTests */,
+				E44686C52BCDCDD0001DF89B /* MemoriaFloraUITests */,
+				E44686A32BCDCDCC001DF89B /* Products */,
+				132971A7D80C0AB2259F4AB3 /* Pods */,
+				BA94137A7A99AA1D53B85E5F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E44686A32BCDCDCC001DF89B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E44686A22BCDCDCC001DF89B /* Caro Estinto.app */,
+				E44686B82BCDCDD0001DF89B /* Caro EstintoTests.xctest */,
+				E44686C22BCDCDD0001DF89B /* Caro EstintoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E44686A42BCDCDCC001DF89B /* MemoriaFlora */ = {
+			isa = PBXGroup;
+			children = (
+				E4D8177F2BD289E900F2C50D /* MemoriaFlora.entitlements */,
+				0BAFC1872BD229D30079C7BD /* Storyboards */,
+				0BAFC1842BD227980079C7BD /* Models */,
+				0BAFC1832BD227900079C7BD /* ViewControllers */,
+				E4D8177A2BD2789300F2C50D /* Utilities */,
+				E44686AE2BCDCDCF001DF89B /* Assets.xcassets */,
+				E4D8177D2BD2822D00F2C50D /* GoogleService-Info.plist */,
+				E44686B32BCDCDCF001DF89B /* Info.plist */,
+			);
+			path = MemoriaFlora;
+			sourceTree = "<group>";
+		};
+		E44686BB2BCDCDD0001DF89B /* MemoriaFloraTests */ = {
+			isa = PBXGroup;
+			children = (
+				E44686BC2BCDCDD0001DF89B /* MemoriaFloraTests.swift */,
+			);
+			path = MemoriaFloraTests;
+			sourceTree = "<group>";
+		};
+		E44686C52BCDCDD0001DF89B /* MemoriaFloraUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E44686C62BCDCDD0001DF89B /* MemoriaFloraUITests.swift */,
+				E44686C82BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift */,
+			);
+			path = MemoriaFloraUITests;
+			sourceTree = "<group>";
+		};
+		E45842082BD3EC2A00B5937D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				E45842092BD3EC3C00B5937D /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		E4D8177A2BD2789300F2C50D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E405EAC22BD1BFCD005C8673 /* SF-Text */,
+				E4D8177B2BD278BC00F2C50D /* Functions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E44686A12BCDCDCC001DF89B /* Caro Estinto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E44686CC2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro Estinto" */;
+			buildPhases = (
+				9A289328C0CA0B8F45B943CE /* [CP] Check Pods Manifest.lock */,
+				E446869E2BCDCDCC001DF89B /* Sources */,
+				E446869F2BCDCDCC001DF89B /* Frameworks */,
+				E44686A02BCDCDCC001DF89B /* Resources */,
+				6545DC253E26D5CBEE0DBAC8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Caro Estinto";
+			productName = MemoriaFlora;
+			productReference = E44686A22BCDCDCC001DF89B /* Caro Estinto.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E44686B72BCDCDD0001DF89B /* Caro EstintoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E44686CF2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro EstintoTests" */;
+			buildPhases = (
+				E44686B42BCDCDD0001DF89B /* Sources */,
+				E44686B52BCDCDD0001DF89B /* Frameworks */,
+				E44686B62BCDCDD0001DF89B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E44686BA2BCDCDD0001DF89B /* PBXTargetDependency */,
+			);
+			name = "Caro EstintoTests";
+			productName = MemoriaFloraTests;
+			productReference = E44686B82BCDCDD0001DF89B /* Caro EstintoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E44686C12BCDCDD0001DF89B /* Caro EstintoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E44686D22BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro EstintoUITests" */;
+			buildPhases = (
+				E44686BE2BCDCDD0001DF89B /* Sources */,
+				E44686BF2BCDCDD0001DF89B /* Frameworks */,
+				E44686C02BCDCDD0001DF89B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E44686C42BCDCDD0001DF89B /* PBXTargetDependency */,
+			);
+			name = "Caro EstintoUITests";
+			productName = MemoriaFloraUITests;
+			productReference = E44686C22BCDCDD0001DF89B /* Caro EstintoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E446869A2BCDCDCC001DF89B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					E44686A12BCDCDCC001DF89B = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					E44686B72BCDCDD0001DF89B = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = E44686A12BCDCDCC001DF89B;
+					};
+					E44686C12BCDCDD0001DF89B = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = E44686A12BCDCDCC001DF89B;
+					};
+				};
+			};
+			buildConfigurationList = E446869D2BCDCDCC001DF89B /* Build configuration list for PBXProject "Caro Estinto" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E44686992BCDCDCC001DF89B;
+			productRefGroup = E44686A32BCDCDCC001DF89B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E44686A12BCDCDCC001DF89B /* Caro Estinto */,
+				E44686B72BCDCDD0001DF89B /* Caro EstintoTests */,
+				E44686C12BCDCDD0001DF89B /* Caro EstintoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E44686A02BCDCDCC001DF89B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E405EADC2BD1BFCD005C8673 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
+				E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */,
+				E44686B22BCDCDCF001DF89B /* LaunchScreen.storyboard in Resources */,
+				E405EAD62BD1BFCD005C8673 /* SF-Pro-Text-RegularItalic.otf in Resources */,
+				E45842072BD33A5D00B5937D /* DetailViews.storyboard in Resources */,
+				0BDC27C12BD3D441001BA3BE /* Flowers.storyboard in Resources */,
+				E405EAD42BD1BFCD005C8673 /* SF-Pro-Text-Bold.otf in Resources */,
+				E405EAD22BD1BFCD005C8673 /* SF-Pro-Text-Light.otf in Resources */,
+				0BAFC18C2BD22A200079C7BD /* GraveyardTableViewCell.xib in Resources */,
+				E44686AF2BCDCDCF001DF89B /* Assets.xcassets in Resources */,
+				0BDC27BE2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib in Resources */,
+				E405EADB2BD1BFCD005C8673 /* SF-Pro-Text-Regular.ttf in Resources */,
+				0BDC27BA2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib in Resources */,
+				E44686AD2BCDCDCC001DF89B /* Main.storyboard in Resources */,
+				E4D8177E2BD2822D00F2C50D /* GoogleService-Info.plist in Resources */,
+				E405EAD02BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf in Resources */,
+				E405EAD72BD1BFCD005C8673 /* SF-Pro-Text-Semibold.otf in Resources */,
+				E405EAD92BD1BFCD005C8673 /* SF-Pro-Text-LightItalic.otf in Resources */,
+				E405EAD52BD1BFCD005C8673 /* SF-Pro-Text-BoldItalic.otf in Resources */,
+				E405EAD32BD1BFCD005C8673 /* SF-Pro-Text-Regular.otf in Resources */,
+				E405EADA2BD1BFCD005C8673 /* SF-Pro-Text-Medium.otf in Resources */,
+				E405EAD82BD1BFCD005C8673 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E44686B62BCDCDD0001DF89B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E44686C02BCDCDD0001DF89B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6545DC253E26D5CBEE0DBAC8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A289328C0CA0B8F45B943CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Caro Estinto-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E446869E2BCDCDCC001DF89B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BAFC19D2BD242280079C7BD /* CreatePostVC.swift in Sources */,
+				E405EADE2BD1C2D2005C8673 /* LoginViewController.swift in Sources */,
+				0BDC27BF2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift in Sources */,
+				0BAFC18E2BD22E890079C7BD /* SplashVC.swift in Sources */,
+				0BD4AC172BD256370058D204 /* UIImage+Extension.swift in Sources */,
+				0BAFC1962BD23C6B0079C7BD /* ProgressHUD.swift in Sources */,
+				E44686AA2BCDCDCC001DF89B /* ViewController.swift in Sources */,
+				0BD4AC1C2BD2D6E80058D204 /* Refreshable.swift in Sources */,
+				0BAFC18B2BD22A200079C7BD /* GraveyardTableViewCell.swift in Sources */,
+				0BAFC19B2BD23D120079C7BD /* BaseViewController.swift in Sources */,
+				0BDC27B72BD3D343001BA3BE /* FlowersVC.swift in Sources */,
+				0BD4AC152BD256090058D204 /* ImageSelectionAlertViewController.swift in Sources */,
+				0BD4AC192BD261E90058D204 /* ProfileViewController.swift in Sources */,
+				E458420A2BD3EC3C00B5937D /* DetailViewController.swift in Sources */,
+				0BDC27C72BD3F449001BA3BE /* FlowerModel.swift in Sources */,
+				0BDC27C32BD3E2C7001BA3BE /* UIViewController+Extension.swift in Sources */,
+				0BAFC1862BD227A10079C7BD /* GraveyardItem.swift in Sources */,
+				E405EAE22BD1C2E5005C8673 /* ForgotPasswordViewController.swift in Sources */,
+				E4D8177C2BD278BC00F2C50D /* Functions.swift in Sources */,
+				0BAFC1992BD23CCA0079C7BD /* UIColor+Extension.swift in Sources */,
+				0BAFC1912BD22EFA0079C7BD /* MyUserDefaults.swift in Sources */,
+				E405EAE02BD1C2DA005C8673 /* SignupViewController.swift in Sources */,
+				0BDC27C52BD3E2E7001BA3BE /* Enums.swift in Sources */,
+				E44686A62BCDCDCC001DF89B /* AppDelegate.swift in Sources */,
+				0B18DC452BD40F5800483B4A /* SelectPaymentVC.swift in Sources */,
+				0BAFC1822BD226E60079C7BD /* HomeViewController.swift in Sources */,
+				0BDC27BB2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift in Sources */,
+				0BAFC1932BD22F460079C7BD /* UserModel.swift in Sources */,
+				E44686A82BCDCDCC001DF89B /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E44686B42BCDCDD0001DF89B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E44686BD2BCDCDD0001DF89B /* MemoriaFloraTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E44686BE2BCDCDD0001DF89B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E44686C92BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift in Sources */,
+				E44686C72BCDCDD0001DF89B /* MemoriaFloraUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E44686BA2BCDCDD0001DF89B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E44686A12BCDCDCC001DF89B /* Caro Estinto */;
+			targetProxy = E44686B92BCDCDD0001DF89B /* PBXContainerItemProxy */;
+		};
+		E44686C42BCDCDD0001DF89B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E44686A12BCDCDCC001DF89B /* Caro Estinto */;
+			targetProxy = E44686C32BCDCDD0001DF89B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E44686AB2BCDCDCC001DF89B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E44686AC2BCDCDCC001DF89B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E44686B02BCDCDCF001DF89B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E44686B12BCDCDCF001DF89B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E44686CA2BCDCDD0001DF89B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E44686CB2BCDCDD0001DF89B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E44686CD2BCDCDD0001DF89B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7551554E435EA7949109ED3B /* Pods-Caro Estinto.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MemoriaFlora/MemoriaFlora.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2TWXW6YH6K;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MemoriaFlora/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Caro Estinto";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MemoriaFlora.App;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E44686CE2BCDCDD0001DF89B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B202CB0089C346057AD5BF6C /* Pods-Caro Estinto.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MemoriaFlora/MemoriaFlora.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2TWXW6YH6K;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MemoriaFlora/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Caro Estinto";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MemoriaFlora.App;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E44686D02BCDCDD0001DF89B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MemoriaFlora.App.MemoriaFloraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Caro Estinto.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Caro Estinto";
+			};
+			name = Debug;
+		};
+		E44686D12BCDCDD0001DF89B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MemoriaFlora.App.MemoriaFloraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Caro Estinto.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Caro Estinto";
+			};
+			name = Release;
+		};
+		E44686D32BCDCDD0001DF89B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MemoriaFlora.App.MemoriaFloraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MemoriaFlora;
+			};
+			name = Debug;
+		};
+		E44686D42BCDCDD0001DF89B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MemoriaFlora.App.MemoriaFloraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MemoriaFlora;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E446869D2BCDCDCC001DF89B /* Build configuration list for PBXProject "Caro Estinto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E44686CA2BCDCDD0001DF89B /* Debug */,
+				E44686CB2BCDCDD0001DF89B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E44686CC2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro Estinto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E44686CD2BCDCDD0001DF89B /* Debug */,
+				E44686CE2BCDCDD0001DF89B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E44686CF2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro EstintoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E44686D02BCDCDD0001DF89B /* Debug */,
+				E44686D12BCDCDD0001DF89B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E44686D22BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro EstintoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E44686D32BCDCDD0001DF89B /* Debug */,
+				E44686D42BCDCDD0001DF89B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E446869A2BCDCDCC001DF89B /* Project object */;
+}
