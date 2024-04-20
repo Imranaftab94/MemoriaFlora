@@ -95,5 +95,4 @@ class DetailViewController: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.init(hexString: "#865EE2")
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#865EE2")]
     }
-
 }
