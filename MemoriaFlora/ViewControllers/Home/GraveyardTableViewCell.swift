@@ -12,6 +12,7 @@ class GraveyardTableViewCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var dateOfDemiseLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

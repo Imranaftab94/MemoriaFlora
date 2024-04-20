@@ -47,12 +47,6 @@ class HomeViewController: BaseViewController, Refreshable {
     }
     
     private func observeMemories() {
-        // Assuming userID is the ID of the user whose memories you want to fetch
-        guard let userID = Auth.auth().currentUser?.uid else {
-            showAlert(message: "User not logged in")
-            return
-        }
-        
         // Reference to the memories node for the user
         let memoriesRef = Database.database().reference().child("memories")
         
@@ -62,12 +56,13 @@ class HomeViewController: BaseViewController, Refreshable {
             guard let memoryData = snapshot.value as? [String: Any],
                   let userName = memoryData["userName"] as? String,
                   let description = memoryData["description"] as? String,
-                  let imageUrl = memoryData["imageUrl"] as? String else {
+                  let imageUrl = memoryData["imageUrl"] as? String,
+                  let dateOfDemise = memoryData["demiseDate"] as? String else {
                 return
             }
             
             // Create Memory object for the new memory
-            let memory = Memory(userName: userName, description: description, imageUrl: imageUrl)
+            let memory = Memory(userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise)
             
             // Append the new memory to the array
             self.memories.append(memory)
@@ -80,11 +75,6 @@ class HomeViewController: BaseViewController, Refreshable {
     }
     
     private func fetchAllMemories(isShowProgress: Bool = false) {
-        guard let userID = Auth.auth().currentUser?.uid else {
-            showAlert(message: "User not logged in")
-            return
-        }
-        
         let memoriesRef = Database.database().reference().child("memories")
         
         if isShowProgress {
@@ -94,17 +84,20 @@ class HomeViewController: BaseViewController, Refreshable {
             self.hideProgressHUD()
             self.memories.removeAll() // Clear existing memories
             
+            var allMemories: [Memory] = []
+            
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let memoryData = snapshot.value as? [String: Any],
                    let userName = memoryData["userName"] as? String,
                    let description = memoryData["description"] as? String,
-                   let imageUrl = memoryData["imageUrl"] as? String {
-                    let memory = Memory(userName: userName, description: description, imageUrl: imageUrl)
-                    self.memories.append(memory)
+                   let imageUrl = memoryData["imageUrl"] as? String,
+                   let dateOfDemise = memoryData["demiseDate"] as? String {
+                    let memory = Memory(userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise)
+                    allMemories.append(memory)
                 }
             }
-            
+            self.memories = allMemories
             self.reloadTableView()
         }
     }
@@ -146,6 +139,7 @@ extension HomeViewController: UITableViewDataSource {
         let item = memories[indexPath.row]
         
         cell.titleLabel.text = item.userName
+        cell.dateOfDemiseLabel.text = "Date of Demise: \(item.dateOfDemise)"
         if let url = URL(string: item.imageUrl) {
             cell.userImageView.kf.setImage(with: url)
         }
