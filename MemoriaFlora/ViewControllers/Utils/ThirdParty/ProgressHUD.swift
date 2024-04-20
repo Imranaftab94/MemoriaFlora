@@ -64,7 +64,7 @@ class ProgressHUD: UIVisualEffectView {
             label.text = text
             label.textAlignment = NSTextAlignment.center
             label.frame = CGRect(x: activityIndicatorSize + 5, y: 0, width: width - activityIndicatorSize - 15, height: height)
-            label.textColor = UIColor.gray
+            label.textColor = UIColor.white
             label.font = UIFont.boldSystemFont(ofSize: 16)
         }
     }

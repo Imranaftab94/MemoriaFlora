@@ -38,6 +38,7 @@ class LoginViewController: BaseViewController {
             self.hideProgressHUD()
             if let error = error {
                 print("Error signing in: \(error.localizedDescription)")
+                self.showAlert(message: error.localizedDescription)
             } else {
                 print("User successfully signed in")
                 
@@ -59,7 +60,7 @@ class LoginViewController: BaseViewController {
     }
 
     private func showAlert(message: String) {
-        let alert = UIAlertController(title: "Validation Error", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)

@@ -12,6 +12,7 @@ import FirebaseStorage
 import Kingfisher
 
 class HomeViewController: BaseViewController, Refreshable {
+    @IBOutlet weak var emptyListImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userProfileImageView: UIImageView!
     
@@ -25,15 +26,19 @@ class HomeViewController: BaseViewController, Refreshable {
         userProfileImageView.layer.cornerRadius = 16
         userProfileImageView.layer.masksToBounds = true
         observeMemories()
-        
-        self.instantiateRefreshControl()
+        fetchAllMemories(isShowProgress: true)
+        instantiateRefreshControl()
     }
     
     @IBAction func onClickProfileButton(_ sender: UIButton) {
         DispatchQueue.main.async {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-            self.navigationController?.pushViewController(profileVC, animated: true)
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+//            self.navigationController?.pushViewController(profileVC, animated: true)
+            
+            let vc = FlowersVC.instantiate(fromAppStoryboard: .Flowers)
+            let navigationVC = UINavigationController.init(rootViewController: vc)
+            self.present(navigationVC, animated: true, completion: nil)
         }
     }
     
@@ -46,32 +51,28 @@ class HomeViewController: BaseViewController, Refreshable {
     }
     
     private func observeMemories() {
-        // Assuming userID is the ID of the user whose memories you want to fetch
-        guard let userID = Auth.auth().currentUser?.uid else {
-            showAlert(message: "User not logged in")
-            return
-        }
-        
         // Reference to the memories node for the user
-        let memoriesRef = Database.database().reference().child("users").child(userID).child("memories")
+        let memoriesRef = Database.database().reference().child("memories")
         
         // Observe for new changes in memories
         
-        self.showProgressHUD()
         memoriesRef.observe(.childAdded) { (snapshot) in
-            self.hideProgressHUD()
             guard let memoryData = snapshot.value as? [String: Any],
                   let userName = memoryData["userName"] as? String,
                   let description = memoryData["description"] as? String,
-                  let imageUrl = memoryData["imageUrl"] as? String else {
+                  let imageUrl = memoryData["imageUrl"] as? String,
+                  let dateOfDemise = memoryData["demiseDate"] as? String,
+                  let timestampString = memoryData["timestamps"] as? TimeInterval else {
                 return
             }
-            
+            let date = Date(timeIntervalSince1970: timestampString)
             // Create Memory object for the new memory
-            let memory = Memory(userName: userName, description: description, imageUrl: imageUrl)
+            let memory = Memory(userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
             
             // Append the new memory to the array
             self.memories.append(memory)
+            
+            self.memories.sort { $0.timestamp > $1.timestamp }
             
             self.reloadTableView()
             // Handle the newly added memory, such as updating UI or performing any other action
@@ -80,28 +81,35 @@ class HomeViewController: BaseViewController, Refreshable {
         }
     }
     
-    private func fetchAllMemories() {
-        guard let userID = Auth.auth().currentUser?.uid else {
-            showAlert(message: "User not logged in")
-            return
+    private func fetchAllMemories(isShowProgress: Bool = false) {
+        let memoriesRef = Database.database().reference().child("memories")
+        
+        if isShowProgress {
+            self.showProgressHUD()
         }
-        
-        let memoriesRef = Database.database().reference().child("users").child(userID).child("memories")
-        
         memoriesRef.observeSingleEvent(of: .value) { (snapshot) in
+            self.hideProgressHUD()
             self.memories.removeAll() // Clear existing memories
+            
+            var allMemories: [Memory] = []
             
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let memoryData = snapshot.value as? [String: Any],
                    let userName = memoryData["userName"] as? String,
                    let description = memoryData["description"] as? String,
-                   let imageUrl = memoryData["imageUrl"] as? String {
-                    let memory = Memory(userName: userName, description: description, imageUrl: imageUrl)
-                    self.memories.append(memory)
+                   let imageUrl = memoryData["imageUrl"] as? String,
+                   let dateOfDemise = memoryData["demiseDate"] as? String,
+                   let timestampString = memoryData["timestamps"] as? TimeInterval
+                {
+                    let date = Date(timeIntervalSince1970: timestampString)
+                    let memory = Memory(userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
+                    allMemories.append(memory)
                 }
             }
             
+            allMemories.sort { $0.timestamp > $1.timestamp }
+            self.memories = allMemories
             self.reloadTableView()
         }
     }
@@ -116,6 +124,11 @@ extension HomeViewController: UITableViewDataSource {
     
     private func reloadTableView() {
         DispatchQueue.main.async {
+            if self.memories.count <= 0 {
+                self.emptyListImageView.isHidden = false
+            } else {
+                self.emptyListImageView.isHidden = true
+            }
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
         }
@@ -138,6 +151,7 @@ extension HomeViewController: UITableViewDataSource {
         let item = memories[indexPath.row]
         
         cell.titleLabel.text = item.userName
+        cell.dateOfDemiseLabel.text = "Date of Demise: \(item.dateOfDemise)"
         if let url = URL(string: item.imageUrl) {
             cell.userImageView.kf.setImage(with: url)
         }

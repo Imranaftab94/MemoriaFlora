@@ -26,9 +26,10 @@ class ProfileViewController: UIViewController {
     
     @IBAction func onClickLogoutButton(_ sender: UIButton) {
         MyUserDefaults.removeUser()
-        let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashVC") as! SplashVC
+        let splashVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashVC") as! SplashVC
+        let navigationVC = UINavigationController.init(rootViewController: splashVC)
         UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
-            UIApplication.shared.windows.first?.rootViewController = homeVC
+            UIApplication.shared.windows.first?.rootViewController = navigationVC
         }, completion: nil)
     }
 }

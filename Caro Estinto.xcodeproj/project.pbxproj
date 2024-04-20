@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B18DC452BD40F5800483B4A /* SelectPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */; };
 		0BAFC1822BD226E60079C7BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1812BD226E60079C7BD /* HomeViewController.swift */; };
 		0BAFC1862BD227A10079C7BD /* GraveyardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */; };
 		0BAFC18B2BD22A200079C7BD /* GraveyardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */; };
@@ -23,6 +24,16 @@
 		0BD4AC192BD261E90058D204 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC182BD261E90058D204 /* ProfileViewController.swift */; };
 		0BD4AC1C2BD2D6E80058D204 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */; };
 		4B55453E1A01057E856704DA /* Pods_Caro_Estinto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */; };
+		0BDC27B72BD3D343001BA3BE /* FlowersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27B62BD3D343001BA3BE /* FlowersVC.swift */; };
+		0BDC27BA2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BDC27B92BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib */; };
+		0BDC27BB2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27B82BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift */; };
+		0BDC27BE2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BDC27BD2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib */; };
+		0BDC27BF2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27BC2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift */; };
+		0BDC27C12BD3D441001BA3BE /* Flowers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BDC27C02BD3D441001BA3BE /* Flowers.storyboard */; };
+		0BDC27C32BD3E2C7001BA3BE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C22BD3E2C7001BA3BE /* UIViewController+Extension.swift */; };
+		0BDC27C52BD3E2E7001BA3BE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C42BD3E2E7001BA3BE /* Enums.swift */; };
+		0BDC27C72BD3F449001BA3BE /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */; };
+		154707B89A2FA903796E7FA8 /* Pods_MemoriaFlora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D52F71F7EFF9FBF5BB447F1 /* Pods_MemoriaFlora.framework */; };
 		E405EAD02BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC32BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf */; };
 		E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC42BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf */; };
 		E405EAD22BD1BFCD005C8673 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC52BD1BFCD005C8673 /* SF-Pro-Text-Light.otf */; };
@@ -72,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentVC.swift; sourceTree = "<group>"; };
 		0BAFC1812BD226E60079C7BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraveyardItem.swift; sourceTree = "<group>"; };
 		0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraveyardTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,6 +99,15 @@
 		0BD4AC162BD256370058D204 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		0BD4AC182BD261E90058D204 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
+		0BDC27B62BD3D343001BA3BE /* FlowersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowersVC.swift; sourceTree = "<group>"; };
+		0BDC27B82BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowersCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		0BDC27B92BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlowersCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		0BDC27BC2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		0BDC27BD2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlowerItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		0BDC27C02BD3D441001BA3BE /* Flowers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Flowers.storyboard; sourceTree = "<group>"; };
+		0BDC27C22BD3E2C7001BA3BE /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		0BDC27C42BD3E2E7001BA3BE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
 		169007E1CD9FFA86208F5AC9 /* Pods-MemoriaFlora.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora.debug.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora.debug.xcconfig"; sourceTree = "<group>"; };
 		66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Caro_Estinto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7551554E435EA7949109ED3B /* Pods-Caro Estinto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caro Estinto.debug.xcconfig"; path = "Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +178,7 @@
 		0BAFC1832BD227900079C7BD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0BDC27B32BD3D328001BA3BE /* Flowers */,
 				0BAFC18F2BD22EEC0079C7BD /* Utils */,
 				0BAFC1882BD229FD0079C7BD /* Home */,
 				E44686A52BCDCDCC001DF89B /* AppDelegate.swift */,
@@ -169,6 +191,7 @@
 				0BAFC19A2BD23D120079C7BD /* BaseViewController.swift */,
 				0BAFC19C2BD242280079C7BD /* CreatePostVC.swift */,
 				0BD4AC182BD261E90058D204 /* ProfileViewController.swift */,
+				0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -178,6 +201,7 @@
 			children = (
 				0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */,
 				0BAFC1922BD22F460079C7BD /* UserModel.swift */,
+				0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +212,7 @@
 				E44686AB2BCDCDCC001DF89B /* Main.storyboard */,
 				E44686B02BCDCDCF001DF89B /* LaunchScreen.storyboard */,
 				E45842062BD33A5D00B5937D /* DetailViews.storyboard */,
+				0BDC27C02BD3D441001BA3BE /* Flowers.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -228,8 +253,22 @@
 				0BAFC1982BD23CCA0079C7BD /* UIColor+Extension.swift */,
 				0BD4AC162BD256370058D204 /* UIImage+Extension.swift */,
 				0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */,
+				0BDC27C22BD3E2C7001BA3BE /* UIViewController+Extension.swift */,
+				0BDC27C42BD3E2E7001BA3BE /* Enums.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0BDC27B32BD3D328001BA3BE /* Flowers */ = {
+			isa = PBXGroup;
+			children = (
+				0BDC27B62BD3D343001BA3BE /* FlowersVC.swift */,
+				0BDC27B82BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift */,
+				0BDC27B92BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib */,
+				0BDC27BC2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift */,
+				0BDC27BD2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib */,
+			);
+			path = Flowers;
 			sourceTree = "<group>";
 		};
 		132971A7D80C0AB2259F4AB3 /* Pods */ = {
@@ -453,11 +492,14 @@
 				E44686B22BCDCDCF001DF89B /* LaunchScreen.storyboard in Resources */,
 				E405EAD62BD1BFCD005C8673 /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				E45842072BD33A5D00B5937D /* DetailViews.storyboard in Resources */,
+				0BDC27C12BD3D441001BA3BE /* Flowers.storyboard in Resources */,
 				E405EAD42BD1BFCD005C8673 /* SF-Pro-Text-Bold.otf in Resources */,
 				E405EAD22BD1BFCD005C8673 /* SF-Pro-Text-Light.otf in Resources */,
 				0BAFC18C2BD22A200079C7BD /* GraveyardTableViewCell.xib in Resources */,
 				E44686AF2BCDCDCF001DF89B /* Assets.xcassets in Resources */,
+				0BDC27BE2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib in Resources */,
 				E405EADB2BD1BFCD005C8673 /* SF-Pro-Text-Regular.ttf in Resources */,
+				0BDC27BA2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib in Resources */,
 				E44686AD2BCDCDCC001DF89B /* Main.storyboard in Resources */,
 				E4D8177E2BD2822D00F2C50D /* GoogleService-Info.plist in Resources */,
 				E405EAD02BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf in Resources */,
@@ -535,6 +577,7 @@
 			files = (
 				0BAFC19D2BD242280079C7BD /* CreatePostVC.swift in Sources */,
 				E405EADE2BD1C2D2005C8673 /* LoginViewController.swift in Sources */,
+				0BDC27BF2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift in Sources */,
 				0BAFC18E2BD22E890079C7BD /* SplashVC.swift in Sources */,
 				0BD4AC172BD256370058D204 /* UIImage+Extension.swift in Sources */,
 				0BAFC1962BD23C6B0079C7BD /* ProgressHUD.swift in Sources */,
@@ -542,17 +585,23 @@
 				0BD4AC1C2BD2D6E80058D204 /* Refreshable.swift in Sources */,
 				0BAFC18B2BD22A200079C7BD /* GraveyardTableViewCell.swift in Sources */,
 				0BAFC19B2BD23D120079C7BD /* BaseViewController.swift in Sources */,
+				0BDC27B72BD3D343001BA3BE /* FlowersVC.swift in Sources */,
 				0BD4AC152BD256090058D204 /* ImageSelectionAlertViewController.swift in Sources */,
 				0BD4AC192BD261E90058D204 /* ProfileViewController.swift in Sources */,
 				E458420A2BD3EC3C00B5937D /* DetailViewController.swift in Sources */,
+				0BDC27C72BD3F449001BA3BE /* FlowerModel.swift in Sources */,
+				0BDC27C32BD3E2C7001BA3BE /* UIViewController+Extension.swift in Sources */,
 				0BAFC1862BD227A10079C7BD /* GraveyardItem.swift in Sources */,
 				E405EAE22BD1C2E5005C8673 /* ForgotPasswordViewController.swift in Sources */,
 				E4D8177C2BD278BC00F2C50D /* Functions.swift in Sources */,
 				0BAFC1992BD23CCA0079C7BD /* UIColor+Extension.swift in Sources */,
 				0BAFC1912BD22EFA0079C7BD /* MyUserDefaults.swift in Sources */,
 				E405EAE02BD1C2DA005C8673 /* SignupViewController.swift in Sources */,
+				0BDC27C52BD3E2E7001BA3BE /* Enums.swift in Sources */,
 				E44686A62BCDCDCC001DF89B /* AppDelegate.swift in Sources */,
+				0B18DC452BD40F5800483B4A /* SelectPaymentVC.swift in Sources */,
 				0BAFC1822BD226E60079C7BD /* HomeViewController.swift in Sources */,
+				0BDC27BB2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift in Sources */,
 				0BAFC1932BD22F460079C7BD /* UserModel.swift in Sources */,
 				E44686A82BCDCDCC001DF89B /* SceneDelegate.swift in Sources */,
 			);
