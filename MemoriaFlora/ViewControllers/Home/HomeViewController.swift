@@ -32,13 +32,9 @@ class HomeViewController: BaseViewController, Refreshable {
     
     @IBAction func onClickProfileButton(_ sender: UIButton) {
         DispatchQueue.main.async {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-//            self.navigationController?.pushViewController(profileVC, animated: true)
-            
-            let vc = FlowersVC.instantiate(fromAppStoryboard: .Flowers)
-            let navigationVC = UINavigationController.init(rootViewController: vc)
-            self.present(navigationVC, animated: true, completion: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+            self.navigationController?.pushViewController(profileVC, animated: true)            
         }
     }
     
@@ -167,6 +163,8 @@ extension HomeViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let vc = DetailViewController.instantiate(fromAppStoryboard: .Details)
+        vc.memory = memories[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 enum AppStoryboard : String {
     case Main
     case Flowers
+    case Details
     
     var instance : UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: Bundle.main)

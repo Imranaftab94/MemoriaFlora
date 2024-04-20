@@ -7,20 +7,28 @@
 
 import UIKit
 import FirebaseDynamicLinks
+import Kingfisher
 
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var demiseLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     
+    var memory: Memory?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        config()
     }
     
     @IBAction func chooseFlowerButtonTap(_ sender: UIButton) {
+        DispatchQueue.main.async {
+            let vc = FlowersVC.instantiate(fromAppStoryboard: .Flowers)
+            let navigationVC = UINavigationController.init(rootViewController: vc)
+            self.present(navigationVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func shareButtonTap(_ sender: UIButton) {
@@ -45,6 +53,14 @@ class DetailViewController: UIViewController {
         }
     }
     
+    @IBAction func goToProfileTap(_ sender: UIButton) {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+            self.navigationController?.pushViewController(profileVC, animated: true)
+        }
+    }
+    
     //MARK: - FUNCTIONS
     
     func presentSharesSheet(link : String) {
@@ -61,6 +77,16 @@ class DetailViewController: UIViewController {
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
+
+    }
+    
+    func config() {
+        nameLabel.text = memory?.userName ?? ""
+        detailLabel.text = memory?.description ?? ""
+        demiseLabel.text = "Date of Demise: \(memory?.dateOfDemise ?? "")"
+        if let url = URL(string: memory?.imageUrl ?? "") {
+            imgView.kf.setImage(with: url)
+        }
 
     }
 }
