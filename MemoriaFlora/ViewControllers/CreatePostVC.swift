@@ -172,7 +172,6 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                 
                 let timestamp = Date().timeIntervalSince1970
                 
-                // Once the image is uploaded, save memory data in the Realtime Database
                 let id = UUID().uuidString
                 
                 let memoryData: [String: Any] = [
@@ -181,7 +180,8 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                     "description": description,
                     "imageUrl": downloadURL.absoluteString,
                     "demiseDate": demiseTF,
-                    "timestamps": timestamp
+                    "timestamps": timestamp,
+                    "condolences": 0
                 ]
                 
                 // Save memory data in the Realtime Database

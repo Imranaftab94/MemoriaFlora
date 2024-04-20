@@ -12,6 +12,11 @@ class FlowersVC: BaseViewController {
     @IBOutlet weak var flowersCategoryCollectionView: UICollectionView!
     @IBOutlet weak var flowerItemCollectionView: UICollectionView!
     
+    var selectedFlowerCategory: FlowerCategoryModel?
+    var selectedFlower: FlowerModel?
+    
+    var onSelectPayment: ((_ selectedCategory: FlowerCategoryModel, _ selectedFlower: FlowerModel) -> ())?
+    
     var flowerCategories: [FlowerCategoryModel] = [
         FlowerCategoryModel(flowerType: "Lilies", image: UIImage(named: "lily")!),
         FlowerCategoryModel(flowerType: "Roses", image: UIImage(named: "rose")!),
@@ -74,16 +79,11 @@ class FlowersVC: BaseViewController {
         super.viewDidLoad()
         self.configureCollectionView()
         self.setNavigationBackButtonColor()
-        
-        self.selectedCategoryIndex = 0
-        self.selectedItemIndex = 0
-        
         self.flowers = lilies
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -103,10 +103,25 @@ class FlowersVC: BaseViewController {
     }
     
     @IBAction func onClickPurchaseFlowerButton(_ sender: UIButton) {
-        let vc = SelectPaymentVC.instantiate(fromAppStoryboard: .Flowers)
+        guard let category = self.selectedFlowerCategory else {
+            self.showAlert(message: "Please select a flower category")
+            return
+        }
+        
+        guard let flower = self.selectedFlower else {
+            self.showAlert(message: "Please select a flower for condolences")
+            return
+        }
+        
+        let vc = SelectPaymentVC.instantiate(selectedCategory: category, selectedFlower: flower)
+        vc.onPayCondolences = { [weak self] in
+            guard let self = self else { return }
+            guard let selectedCategory = self.selectedFlowerCategory else { return }
+            guard let selectedFlower = self.selectedFlower else { return }
+            self.onSelectPayment?(selectedCategory, selectedFlower)
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
 
@@ -166,6 +181,9 @@ extension FlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == flowersCategoryCollectionView {
+            let flowerCategory = flowerCategories[indexPath.row]
+            self.selectedFlowerCategory = flowerCategory
+            
             selectedCategoryIndex = indexPath.item
             if indexPath.row == 0 {
                 self.flowers = lilies
@@ -181,6 +199,8 @@ extension FlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
             flowersCategoryCollectionView.reloadData()
             flowerItemCollectionView.reloadData()
         } else {
+            let flower = flowers[indexPath.row]
+            self.selectedFlower = flower
             selectedItemIndex = indexPath.item
             flowerItemCollectionView.reloadData()
         }

@@ -59,12 +59,13 @@ class HomeViewController: BaseViewController, Refreshable {
                   let description = memoryData["description"] as? String,
                   let imageUrl = memoryData["imageUrl"] as? String,
                   let dateOfDemise = memoryData["demiseDate"] as? String,
+                  let condolences = memoryData["condolences"] as? Int,
                   let timestampString = memoryData["timestamps"] as? TimeInterval else {
                 return
             }
             let date = Date(timeIntervalSince1970: timestampString)
             // Create Memory object for the new memory
-            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
+            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences)
             
             // Append the new memory to the array
             self.memories.append(memory)
@@ -98,10 +99,11 @@ class HomeViewController: BaseViewController, Refreshable {
                    let description = memoryData["description"] as? String,
                    let imageUrl = memoryData["imageUrl"] as? String,
                    let dateOfDemise = memoryData["demiseDate"] as? String,
+                   let condolences = memoryData["condolences"] as? Int,
                    let timestampString = memoryData["timestamps"] as? TimeInterval
                 {
                     let date = Date(timeIntervalSince1970: timestampString)
-                    let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date)
+                    let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences)
                     allMemories.append(memory)
                 }
             }
