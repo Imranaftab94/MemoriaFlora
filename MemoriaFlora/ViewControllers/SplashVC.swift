@@ -11,11 +11,17 @@ class SplashVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
         self.performOperation()
     }
     
     private func performOperation() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             if let _ = MyUserDefaults.getUser() {
                 // User exists, navigate to HomeViewController with animation
                 let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
@@ -28,5 +34,4 @@ class SplashVC: UIViewController {
             }
         }
     }
-
 }

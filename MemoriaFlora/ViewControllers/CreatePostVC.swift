@@ -12,6 +12,8 @@ import FirebaseStorage
 
 class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var demiseContainerView: UIView!
+    @IBOutlet weak var demiseTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var userNameTextField: UITextField!
     
@@ -28,12 +30,63 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     let activeBorderColor: UIColor = UIColor.init(hexString: "#793EE5")
     let inactiveBorderColor: UIColor = UIColor.init(hexString: "#0B0B0B")
     
+    let datePicker = UIDatePicker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViews()
         self.setNavigationBackButtonColor()
         self.title = "Create Post"
         self.configureTextFields()
+        self.configureDatePicker()
+    }
+    
+    private func configureDatePicker() {
+        // Set the delegate of the text field to self
+        demiseTextField.delegate = self
+        
+        // Configure the date picker mode
+        datePicker.datePickerMode = .date
+        
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+            
+        }
+        
+        // Assign the date picker as the input view of the text field
+        demiseTextField.inputView = datePicker
+        
+        // Add a toolbar with a done button above the date picker
+        addDoneButtonToDatePicker()
+        
+        // Add a target to detect changes in the date picker's value
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+    }
+    
+    // Function to add a toolbar with a done button above the date picker
+    func addDoneButtonToDatePicker() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        toolbar.setItems([doneButton], animated: false)
+        
+        demiseTextField.inputAccessoryView = toolbar
+    }
+    
+    // Function called when the done button is tapped
+    @objc func doneButtonTapped() {
+        demiseTextField.resignFirstResponder()
+    }
+    
+    // Function called when the date picker's value changes
+    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        
+        demiseTextField.text = dateFormatter.string(from: sender.date)
     }
     
     @IBAction func onClickPickImageButton(_ sender: UIButton) {
@@ -70,6 +123,11 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             return
         }
         
+        guard let demiseTF = demiseTextField.text, !demiseTF.isEmpty, description != "" else {
+            showAlert(message: "Please enter Date of Demise")
+            return
+        }
+        
         guard let description = descriptionTextView.text, !description.isEmpty, description != "" else {
             showAlert(message: "Please enter description")
             return
@@ -87,7 +145,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         }
         
         // Create a unique key for the memory
-        let memoryKey = Database.database().reference().child("users").child(userID).child("memories").childByAutoId().key ?? ""
+        let memoryKey = Database.database().reference().child("memories").childByAutoId().key ?? ""
         
         // Reference to the storage
         let storageRef = Storage.storage().reference().child("memories").child(memoryKey)
@@ -112,15 +170,19 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                     return
                 }
                 
+                let timestamp = Date().timeIntervalSince1970
+                
                 // Once the image is uploaded, save memory data in the Realtime Database
                 let memoryData: [String: Any] = [
                     "userName": userName,
                     "description": description,
-                    "imageUrl": downloadURL.absoluteString // Store the download URL
+                    "imageUrl": downloadURL.absoluteString,
+                    "demiseDate": demiseTF,
+                    "timestamps": timestamp
                 ]
                 
                 // Save memory data in the Realtime Database
-                Database.database().reference().child("users").child(userID).child("memories").child(memoryKey).setValue(memoryData) { (error, ref) in
+                Database.database().reference().child("memories").child(memoryKey).setValue(memoryData) { (error, ref) in
                     if let error = error {
                         print("Error saving memory data: \(error.localizedDescription)")
                     } else {
@@ -149,12 +211,16 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     
     private func configureTextFields() {
         userNameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
+        
+        demiseTextField.attributedPlaceholder = NSAttributedString(string: "Date Of Demise", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
+        
         userNameTextField.delegate = self
         descriptionTextView.delegate = self
         
         // Set delegates
         userNameTextField.delegate = self
         descriptionTextView.delegate = self
+        demiseTextField.delegate = self
         
         // Set initial border colors
         userNameContainer.layer.borderColor = UIColor.black.cgColor
@@ -162,6 +228,9 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         
         descriptionContainer.layer.borderColor = UIColor.black.cgColor
         descriptionContainer.layer.borderWidth = 1.0
+        
+        self.demiseContainerView.layer.borderColor = UIColor.black.cgColor
+        self.demiseContainerView.layer.borderWidth = 1.0
     }
     
     private func configureViews() {
@@ -179,11 +248,19 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         
         self.userProfileImage.layer.cornerRadius = 16
         self.userProfileImage.layer.masksToBounds = true
+        
+        self.demiseContainerView.layer.cornerRadius = 16
+        self.demiseContainerView.layer.masksToBounds = true
     }
     
     private func setNavigationBackButtonColor() {
         navigationController?.navigationBar.tintColor = UIColor.init(hexString: "#865EE2")
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#865EE2")]
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -195,6 +272,20 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             // Reset border color of description container
             descriptionContainer.layer.borderColor = inactiveBorderColor.cgColor
             descriptionContainer.layer.borderWidth = 1.0
+            
+            demiseContainerView.layer.borderColor = inactiveBorderColor.cgColor
+            demiseContainerView.layer.borderWidth = 1.0
+        } else if textField == demiseTextField {
+            // Change border color of username container
+            userNameContainer.layer.borderColor = inactiveBorderColor.cgColor
+            userNameContainer.layer.borderWidth = 1.0
+            
+            // Reset border color of description container
+            descriptionContainer.layer.borderColor = inactiveBorderColor.cgColor
+            descriptionContainer.layer.borderWidth = 1.0
+            
+            demiseContainerView.layer.borderColor = activeBorderColor.cgColor
+            demiseContainerView.layer.borderWidth = 2.0
         }
     }
     
@@ -207,6 +298,9 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             // Reset border color of username container
             userNameContainer.layer.borderColor = inactiveBorderColor.cgColor
             userNameContainer.layer.borderWidth = 1.0
+            
+            demiseContainerView.layer.borderColor = inactiveBorderColor.cgColor
+            demiseContainerView.layer.borderWidth = 1.0
         }
     }
 }

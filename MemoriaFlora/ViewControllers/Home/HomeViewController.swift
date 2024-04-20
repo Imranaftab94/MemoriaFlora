@@ -12,6 +12,7 @@ import FirebaseStorage
 import Kingfisher
 
 class HomeViewController: BaseViewController, Refreshable {
+    @IBOutlet weak var emptyListImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userProfileImageView: UIImageView!
     
@@ -25,6 +26,7 @@ class HomeViewController: BaseViewController, Refreshable {
         userProfileImageView.layer.cornerRadius = 16
         userProfileImageView.layer.masksToBounds = true
         observeMemories()
+        fetchAllMemories(isShowProgress: true)
         instantiateRefreshControl()
     }
     
@@ -52,13 +54,11 @@ class HomeViewController: BaseViewController, Refreshable {
         }
         
         // Reference to the memories node for the user
-        let memoriesRef = Database.database().reference().child("users").child(userID).child("memories")
+        let memoriesRef = Database.database().reference().child("memories")
         
         // Observe for new changes in memories
         
-        self.showProgressHUD()
         memoriesRef.observe(.childAdded) { (snapshot) in
-            self.hideProgressHUD()
             guard let memoryData = snapshot.value as? [String: Any],
                   let userName = memoryData["userName"] as? String,
                   let description = memoryData["description"] as? String,
@@ -79,15 +79,19 @@ class HomeViewController: BaseViewController, Refreshable {
         }
     }
     
-    private func fetchAllMemories() {
+    private func fetchAllMemories(isShowProgress: Bool = false) {
         guard let userID = Auth.auth().currentUser?.uid else {
             showAlert(message: "User not logged in")
             return
         }
         
-        let memoriesRef = Database.database().reference().child("users").child(userID).child("memories")
+        let memoriesRef = Database.database().reference().child("memories")
         
+        if isShowProgress {
+            self.showProgressHUD()
+        }
         memoriesRef.observeSingleEvent(of: .value) { (snapshot) in
+            self.hideProgressHUD()
             self.memories.removeAll() // Clear existing memories
             
             for child in snapshot.children {
@@ -115,6 +119,11 @@ extension HomeViewController: UITableViewDataSource {
     
     private func reloadTableView() {
         DispatchQueue.main.async {
+            if self.memories.count <= 0 {
+                self.emptyListImageView.isHidden = false
+            } else {
+                self.emptyListImageView.isHidden = true
+            }
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
         }
