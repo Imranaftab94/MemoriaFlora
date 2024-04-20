@@ -53,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Zeg-ge-ebP">
-                                <rect key="frame" x="-37" y="67" width="502" height="200"/>
+                                <rect key="frame" x="8" y="67" width="412" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Ifb-n3-Kno"/>
                                 </constraints>
@@ -266,7 +266,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ntI-ar-0px">
-                                <rect key="frame" x="-37" y="32" width="502" height="200"/>
+                                <rect key="frame" x="8" y="32" width="412" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="sYv-28-PiT"/>
                                 </constraints>
@@ -489,7 +489,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="98m-3Z-aq6">
-                                <rect key="frame" x="-37" y="32" width="502" height="200"/>
+                                <rect key="frame" x="8" y="32" width="412" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="egy-iI-eXG"/>
                                 </constraints>
@@ -886,7 +886,7 @@
     <resources>
         <image name="Profile" width="79" height="79"/>
         <image name="ic_create" width="57" height="57"/>
-        <image name="logo" width="502" height="325"/>
+        <image name="logo" width="412" height="325"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

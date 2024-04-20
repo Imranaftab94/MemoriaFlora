@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_MemoriaFloraVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_MemoriaFloraVersionString[];
+FOUNDATION_EXPORT double Pods_Caro_EstintoVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Caro_EstintoVersionString[];
 

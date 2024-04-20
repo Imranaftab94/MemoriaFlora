@@ -22,7 +22,7 @@
 		0BD4AC172BD256370058D204 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC162BD256370058D204 /* UIImage+Extension.swift */; };
 		0BD4AC192BD261E90058D204 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC182BD261E90058D204 /* ProfileViewController.swift */; };
 		0BD4AC1C2BD2D6E80058D204 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */; };
-		154707B89A2FA903796E7FA8 /* Pods_MemoriaFlora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D52F71F7EFF9FBF5BB447F1 /* Pods_MemoriaFlora.framework */; };
+		4B55453E1A01057E856704DA /* Pods_Caro_Estinto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */; };
 		E405EAD02BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC32BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf */; };
 		E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC42BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf */; };
 		E405EAD22BD1BFCD005C8673 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC52BD1BFCD005C8673 /* SF-Pro-Text-Light.otf */; };
@@ -48,6 +48,8 @@
 		E44686BD2BCDCDD0001DF89B /* MemoriaFloraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686BC2BCDCDD0001DF89B /* MemoriaFloraTests.swift */; };
 		E44686C72BCDCDD0001DF89B /* MemoriaFloraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686C62BCDCDD0001DF89B /* MemoriaFloraUITests.swift */; };
 		E44686C92BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686C82BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift */; };
+		E45842072BD33A5D00B5937D /* DetailViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E45842062BD33A5D00B5937D /* DetailViews.storyboard */; };
+		E458420A2BD3EC3C00B5937D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45842092BD3EC3C00B5937D /* DetailViewController.swift */; };
 		E4D8177C2BD278BC00F2C50D /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8177B2BD278BC00F2C50D /* Functions.swift */; };
 		E4D8177E2BD2822D00F2C50D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4D8177D2BD2822D00F2C50D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -86,8 +88,10 @@
 		0BD4AC182BD261E90058D204 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0BD4AC1B2BD2D6E80058D204 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		169007E1CD9FFA86208F5AC9 /* Pods-MemoriaFlora.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora.debug.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora.debug.xcconfig"; sourceTree = "<group>"; };
-		6D52F71F7EFF9FBF5BB447F1 /* Pods_MemoriaFlora.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoriaFlora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Caro_Estinto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7551554E435EA7949109ED3B /* Pods-Caro Estinto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caro Estinto.debug.xcconfig"; path = "Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto.debug.xcconfig"; sourceTree = "<group>"; };
 		8F316B30844F3BAF676ADE20 /* Pods-MemoriaFlora.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora.release.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora.release.xcconfig"; sourceTree = "<group>"; };
+		B202CB0089C346057AD5BF6C /* Pods-Caro Estinto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caro Estinto.release.xcconfig"; path = "Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto.release.xcconfig"; sourceTree = "<group>"; };
 		E405EAC32BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
 		E405EAC42BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-MediumItalic.otf"; sourceTree = "<group>"; };
 		E405EAC52BD1BFCD005C8673 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
@@ -104,7 +108,7 @@
 		E405EADD2BD1C2D2005C8673 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E405EADF2BD1C2DA005C8673 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E405EAE12BD1C2E5005C8673 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		E44686A22BCDCDCC001DF89B /* MemoriaFlora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoriaFlora.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E44686A22BCDCDCC001DF89B /* Caro Estinto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Caro Estinto.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44686A52BCDCDCC001DF89B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44686A72BCDCDCC001DF89B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E44686A92BCDCDCC001DF89B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,11 +116,13 @@
 		E44686AE2BCDCDCF001DF89B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E44686B12BCDCDCF001DF89B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E44686B32BCDCDCF001DF89B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E44686B82BCDCDD0001DF89B /* MemoriaFloraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemoriaFloraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E44686B82BCDCDD0001DF89B /* Caro EstintoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Caro EstintoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44686BC2BCDCDD0001DF89B /* MemoriaFloraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraTests.swift; sourceTree = "<group>"; };
-		E44686C22BCDCDD0001DF89B /* MemoriaFloraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemoriaFloraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E44686C22BCDCDD0001DF89B /* Caro EstintoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Caro EstintoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44686C62BCDCDD0001DF89B /* MemoriaFloraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraUITests.swift; sourceTree = "<group>"; };
 		E44686C82BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E45842062BD33A5D00B5937D /* DetailViews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViews.storyboard; sourceTree = "<group>"; };
+		E45842092BD3EC3C00B5937D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E4D8177B2BD278BC00F2C50D /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		E4D8177D2BD2822D00F2C50D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E4D8177F2BD289E900F2C50D /* MemoriaFlora.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MemoriaFlora.entitlements; sourceTree = "<group>"; };
@@ -127,7 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				154707B89A2FA903796E7FA8 /* Pods_MemoriaFlora.framework in Frameworks */,
+				4B55453E1A01057E856704DA /* Pods_Caro_Estinto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +187,7 @@
 			children = (
 				E44686AB2BCDCDCC001DF89B /* Main.storyboard */,
 				E44686B02BCDCDCF001DF89B /* LaunchScreen.storyboard */,
+				E45842062BD33A5D00B5937D /* DetailViews.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -188,6 +195,7 @@
 		0BAFC1882BD229FD0079C7BD /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E45842082BD3EC2A00B5937D /* Detail */,
 				0BAFC1812BD226E60079C7BD /* HomeViewController.swift */,
 				0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */,
 				0BAFC18A2BD22A200079C7BD /* GraveyardTableViewCell.xib */,
@@ -229,6 +237,8 @@
 			children = (
 				169007E1CD9FFA86208F5AC9 /* Pods-MemoriaFlora.debug.xcconfig */,
 				8F316B30844F3BAF676ADE20 /* Pods-MemoriaFlora.release.xcconfig */,
+				7551554E435EA7949109ED3B /* Pods-Caro Estinto.debug.xcconfig */,
+				B202CB0089C346057AD5BF6C /* Pods-Caro Estinto.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -236,7 +246,7 @@
 		BA94137A7A99AA1D53B85E5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6D52F71F7EFF9FBF5BB447F1 /* Pods_MemoriaFlora.framework */,
+				66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -276,9 +286,9 @@
 		E44686A32BCDCDCC001DF89B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E44686A22BCDCDCC001DF89B /* MemoriaFlora.app */,
-				E44686B82BCDCDD0001DF89B /* MemoriaFloraTests.xctest */,
-				E44686C22BCDCDD0001DF89B /* MemoriaFloraUITests.xctest */,
+				E44686A22BCDCDCC001DF89B /* Caro Estinto.app */,
+				E44686B82BCDCDD0001DF89B /* Caro EstintoTests.xctest */,
+				E44686C22BCDCDD0001DF89B /* Caro EstintoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -315,6 +325,14 @@
 			path = MemoriaFloraUITests;
 			sourceTree = "<group>";
 		};
+		E45842082BD3EC2A00B5937D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				E45842092BD3EC3C00B5937D /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		E4D8177A2BD2789300F2C50D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,9 +345,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E44686A12BCDCDCC001DF89B /* MemoriaFlora */ = {
+		E44686A12BCDCDCC001DF89B /* Caro Estinto */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E44686CC2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "MemoriaFlora" */;
+			buildConfigurationList = E44686CC2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro Estinto" */;
 			buildPhases = (
 				9A289328C0CA0B8F45B943CE /* [CP] Check Pods Manifest.lock */,
 				E446869E2BCDCDCC001DF89B /* Sources */,
@@ -341,14 +359,14 @@
 			);
 			dependencies = (
 			);
-			name = MemoriaFlora;
+			name = "Caro Estinto";
 			productName = MemoriaFlora;
-			productReference = E44686A22BCDCDCC001DF89B /* MemoriaFlora.app */;
+			productReference = E44686A22BCDCDCC001DF89B /* Caro Estinto.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E44686B72BCDCDD0001DF89B /* MemoriaFloraTests */ = {
+		E44686B72BCDCDD0001DF89B /* Caro EstintoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E44686CF2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "MemoriaFloraTests" */;
+			buildConfigurationList = E44686CF2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro EstintoTests" */;
 			buildPhases = (
 				E44686B42BCDCDD0001DF89B /* Sources */,
 				E44686B52BCDCDD0001DF89B /* Frameworks */,
@@ -359,14 +377,14 @@
 			dependencies = (
 				E44686BA2BCDCDD0001DF89B /* PBXTargetDependency */,
 			);
-			name = MemoriaFloraTests;
+			name = "Caro EstintoTests";
 			productName = MemoriaFloraTests;
-			productReference = E44686B82BCDCDD0001DF89B /* MemoriaFloraTests.xctest */;
+			productReference = E44686B82BCDCDD0001DF89B /* Caro EstintoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		E44686C12BCDCDD0001DF89B /* MemoriaFloraUITests */ = {
+		E44686C12BCDCDD0001DF89B /* Caro EstintoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E44686D22BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "MemoriaFloraUITests" */;
+			buildConfigurationList = E44686D22BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro EstintoUITests" */;
 			buildPhases = (
 				E44686BE2BCDCDD0001DF89B /* Sources */,
 				E44686BF2BCDCDD0001DF89B /* Frameworks */,
@@ -377,9 +395,9 @@
 			dependencies = (
 				E44686C42BCDCDD0001DF89B /* PBXTargetDependency */,
 			);
-			name = MemoriaFloraUITests;
+			name = "Caro EstintoUITests";
 			productName = MemoriaFloraUITests;
-			productReference = E44686C22BCDCDD0001DF89B /* MemoriaFloraUITests.xctest */;
+			productReference = E44686C22BCDCDD0001DF89B /* Caro EstintoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -405,7 +423,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E446869D2BCDCDCC001DF89B /* Build configuration list for PBXProject "MemoriaFlora" */;
+			buildConfigurationList = E446869D2BCDCDCC001DF89B /* Build configuration list for PBXProject "Caro Estinto" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -418,9 +436,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E44686A12BCDCDCC001DF89B /* MemoriaFlora */,
-				E44686B72BCDCDD0001DF89B /* MemoriaFloraTests */,
-				E44686C12BCDCDD0001DF89B /* MemoriaFloraUITests */,
+				E44686A12BCDCDCC001DF89B /* Caro Estinto */,
+				E44686B72BCDCDD0001DF89B /* Caro EstintoTests */,
+				E44686C12BCDCDD0001DF89B /* Caro EstintoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -434,6 +452,7 @@
 				E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				E44686B22BCDCDCF001DF89B /* LaunchScreen.storyboard in Resources */,
 				E405EAD62BD1BFCD005C8673 /* SF-Pro-Text-RegularItalic.otf in Resources */,
+				E45842072BD33A5D00B5937D /* DetailViews.storyboard in Resources */,
 				E405EAD42BD1BFCD005C8673 /* SF-Pro-Text-Bold.otf in Resources */,
 				E405EAD22BD1BFCD005C8673 /* SF-Pro-Text-Light.otf in Resources */,
 				0BAFC18C2BD22A200079C7BD /* GraveyardTableViewCell.xib in Resources */,
@@ -474,15 +493,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9A289328C0CA0B8F45B943CE /* [CP] Check Pods Manifest.lock */ = {
@@ -500,7 +519,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MemoriaFlora-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Caro Estinto-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -525,6 +544,7 @@
 				0BAFC19B2BD23D120079C7BD /* BaseViewController.swift in Sources */,
 				0BD4AC152BD256090058D204 /* ImageSelectionAlertViewController.swift in Sources */,
 				0BD4AC192BD261E90058D204 /* ProfileViewController.swift in Sources */,
+				E458420A2BD3EC3C00B5937D /* DetailViewController.swift in Sources */,
 				0BAFC1862BD227A10079C7BD /* GraveyardItem.swift in Sources */,
 				E405EAE22BD1C2E5005C8673 /* ForgotPasswordViewController.swift in Sources */,
 				E4D8177C2BD278BC00F2C50D /* Functions.swift in Sources */,
@@ -560,12 +580,12 @@
 /* Begin PBXTargetDependency section */
 		E44686BA2BCDCDD0001DF89B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E44686A12BCDCDCC001DF89B /* MemoriaFlora */;
+			target = E44686A12BCDCDCC001DF89B /* Caro Estinto */;
 			targetProxy = E44686B92BCDCDD0001DF89B /* PBXContainerItemProxy */;
 		};
 		E44686C42BCDCDD0001DF89B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E44686A12BCDCDCC001DF89B /* MemoriaFlora */;
+			target = E44686A12BCDCDCC001DF89B /* Caro Estinto */;
 			targetProxy = E44686C32BCDCDD0001DF89B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -711,7 +731,7 @@
 		};
 		E44686CD2BCDCDD0001DF89B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 169007E1CD9FFA86208F5AC9 /* Pods-MemoriaFlora.debug.xcconfig */;
+			baseConfigurationReference = 7551554E435EA7949109ED3B /* Pods-Caro Estinto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -722,6 +742,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MemoriaFlora/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Caro Estinto";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -744,7 +765,7 @@
 		};
 		E44686CE2BCDCDD0001DF89B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F316B30844F3BAF676ADE20 /* Pods-MemoriaFlora.release.xcconfig */;
+			baseConfigurationReference = B202CB0089C346057AD5BF6C /* Pods-Caro Estinto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -755,6 +776,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MemoriaFlora/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Caro Estinto";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -790,7 +812,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MemoriaFlora.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MemoriaFlora";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Caro Estinto.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Caro Estinto";
 			};
 			name = Debug;
 		};
@@ -809,7 +831,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MemoriaFlora.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MemoriaFlora";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Caro Estinto.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Caro Estinto";
 			};
 			name = Release;
 		};
@@ -850,7 +872,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E446869D2BCDCDCC001DF89B /* Build configuration list for PBXProject "MemoriaFlora" */ = {
+		E446869D2BCDCDCC001DF89B /* Build configuration list for PBXProject "Caro Estinto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E44686CA2BCDCDD0001DF89B /* Debug */,
@@ -859,7 +881,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E44686CC2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "MemoriaFlora" */ = {
+		E44686CC2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro Estinto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E44686CD2BCDCDD0001DF89B /* Debug */,
@@ -868,7 +890,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E44686CF2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "MemoriaFloraTests" */ = {
+		E44686CF2BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro EstintoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E44686D02BCDCDD0001DF89B /* Debug */,
@@ -877,7 +899,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E44686D22BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "MemoriaFloraUITests" */ = {
+		E44686D22BCDCDD0001DF89B /* Build configuration list for PBXNativeTarget "Caro EstintoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E44686D32BCDCDD0001DF89B /* Debug */,

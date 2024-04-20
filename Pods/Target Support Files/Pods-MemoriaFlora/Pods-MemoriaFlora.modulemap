@@ -1,6 +1,0 @@
-framework module Pods_MemoriaFlora {
-  umbrella header "Pods-MemoriaFlora-umbrella.h"
-
-  export *
-  module * { export * }
-}

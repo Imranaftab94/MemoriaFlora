@@ -10,7 +10,6 @@ import Firebase
 import FirebaseAuth
 import FirebaseCore
 import FirebaseDatabase
-import FirebaseDynamicLinks
 
 class SignupViewController: BaseViewController {
     
@@ -130,25 +129,6 @@ class SignupViewController: BaseViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-
-//        guard let link = URL(string: "https://memoriaflora.page.link?id=2") else { return }
-//        let dynamicLinksDomain = "https://memoriaflora.page.link"
-//        
-//        let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: dynamicLinksDomain)//DynamicLinkComponents(link: link, domain: dynamicLinksDomain)
-//        linkBuilder?.iOSParameters = DynamicLinkIOSParameters(bundleID: "com.MemoriaFlora.App")
-//        linkBuilder?.iOSParameters?.appStoreID = "6499025659"
-//
-//        linkBuilder?.shorten { (shortURL, _, error) in
-//            if let error = error {
-//                print("Error creating dynamic link: \(error.localizedDescription)")
-//                return
-//            }
-//            if let shortURL = shortURL {
-//                print("Short URL: \(shortURL)")
-//                // Share or use the short URL as needed
-//            }
-//        }
-
         self.navigationController?.popViewController(animated: true)
     }
 }
