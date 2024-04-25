@@ -9,13 +9,19 @@ import UIKit
 import FirebaseAuth
 
 class LoginViewController: BaseViewController {
+    @IBOutlet weak var rememberMeSwitchButton: UISwitch!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    @IBAction func onClickSwitchButton(_ sender: UISwitch) {
+        
+    }
+    
     
     @IBAction func loginTapped(_ sender: UIButton) {
         guard let email = emailTextField.text, !email.isEmpty else {
@@ -43,11 +49,15 @@ class LoginViewController: BaseViewController {
                 print("User successfully signed in")
                 
                 if let user = authResult?.user {
-                    let user = User(name: user.displayName ?? "", email: self.emailTextField.text!, userDescription: user.description)
-                    MyUserDefaults.setUser(user)
-                    let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                    let navigationVC = UINavigationController(rootViewController: homeVC)
-                    animateTransition(to: navigationVC, view: self.view)
+                    if self.rememberMeSwitchButton.isOn {
+                        let user = User(name: user.displayName ?? "", email: self.emailTextField.text!, userDescription: user.description)
+                        MyUserDefaults.setUser(user)
+                    }
+                    DispatchQueue.main.async {
+                        let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                        let navigationVC = UINavigationController(rootViewController: homeVC)
+                        animateTransition(to: navigationVC, view: self.view)
+                    }
                 }
             }
         }

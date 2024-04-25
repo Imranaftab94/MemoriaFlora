@@ -66,6 +66,7 @@ class SignupViewController: BaseViewController {
             self.hideProgressHUD()
             if let error = error {
                 print("An error occurred during sign-up", error.localizedDescription)
+                self.showAlert(message: error.localizedDescription)
             } else {
                 print(" User successfully signed up")
                 
