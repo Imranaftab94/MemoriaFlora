@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 
 func animateTransition(to viewController: UIViewController, view: UIView) {
-    UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
+    UIView.transition(with: view,
+                      duration: 0.8,
+                      options: .transitionFlipFromRight,
+                      animations: {
         UIApplication.shared.windows.first?.rootViewController = viewController
-    }, completion: nil)
+    },
+                      completion: nil)
 }

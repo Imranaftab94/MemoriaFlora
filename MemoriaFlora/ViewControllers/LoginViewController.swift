@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: BaseViewController {
     @IBOutlet weak var rememberMeSwitchButton: UISwitch!
@@ -46,20 +47,53 @@ class LoginViewController: BaseViewController {
                 print("Error signing in: \(error.localizedDescription)")
                 self.showAlert(message: error.localizedDescription)
             } else {
-                print("User successfully signed in")
-                
                 if let user = authResult?.user {
                     if self.rememberMeSwitchButton.isOn {
-                        let user = User(name: user.displayName ?? "", email: self.emailTextField.text!, userDescription: user.description)
-                        MyUserDefaults.setUser(user)
+                        MyUserDefaults.setRememberMe(true)
                     }
-                    DispatchQueue.main.async {
-                        let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                        let navigationVC = UINavigationController(rootViewController: homeVC)
-                        animateTransition(to: navigationVC, view: self.view)
-                    }
+                    let user = User(name: user.displayName ?? "", email: self.emailTextField.text!, userDescription: user.description)
+                    AppController.shared.user = user
+                    self.getUserFromDB(email: self.emailTextField.text!)
                 }
             }
+        }
+    }
+    
+    private func getUserFromDB(email: String) {
+        let databaseRef = Database.database().reference()
+
+        databaseRef.child("users").queryOrdered(byChild: "email").queryEqual(toValue: email).observeSingleEvent(of: .value) { (snapshot) in
+            guard snapshot.exists() else {
+                print("User not found")
+                self.navigateToHome()
+                return
+            }
+
+            for case let child as DataSnapshot in snapshot.children {
+                guard let userData = child.value as? [String: Any] else {
+                    print("Error: Could not parse user data")
+                    return
+                }
+
+                print("User data: \(userData)")
+                
+                if let isAdmin = userData["admin"] as? Bool {
+                    var user = AppController.shared.user
+                    user?.admin = isAdmin
+                    AppController.shared.user = user
+                }
+            }
+            self.navigateToHome()
+        } withCancel: { (error) in
+            print("Error fetching user data: \(error.localizedDescription)")
+        }
+    }
+    
+    private func navigateToHome() {
+        DispatchQueue.main.async {
+            let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            let navigationVC = UINavigationController(rootViewController: homeVC)
+            animateTransition(to: navigationVC, view: self.view)
         }
     }
     

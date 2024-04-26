@@ -83,7 +83,8 @@ class SignupViewController: BaseViewController {
                     let userData: [String: Any] = [
                         "name": self.nameTextField.text!,
                         "email": self.emailTextField.text!,
-                        "userDescription": ""
+                        "userDescription": "",
+                        "admin": false
                     ]
                     
                     guard let uid = authResult?.user.uid else {

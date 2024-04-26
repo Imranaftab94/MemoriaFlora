@@ -114,6 +114,31 @@ class HomeViewController: BaseViewController, Refreshable {
         }
     }
     
+    private func deleteMemory(withUID uid: String, completion: (() -> Void)? = nil) {
+        let memoriesRef = Database.database().reference().child("memories")
+        
+        // Query to find the memory node with the given UID
+        memoriesRef.queryOrdered(byChild: "id").queryEqual(toValue: uid).observeSingleEvent(of: .value) { snapshot in
+            guard let snapshotValue = snapshot.value as? [String: [String: Any]],
+                  let memoryKey = snapshotValue.keys.first else {
+                print("Memory with UID \(uid) not found.")
+                completion?()
+                return
+            }
+            
+            // Now that we have the memoryKey, we can delete the memory
+            let memoryRef = memoriesRef.child(memoryKey)
+            memoryRef.removeValue { error, _ in
+                if let error = error {
+                    print("Error deleting memory with UID \(uid): \(error.localizedDescription)")
+                } else {
+                    print("Memory with UID \(uid) deleted successfully!")
+                }
+                completion?()
+            }
+        }
+    }
+    
     func handleRefresh(_ sender: Any) {
         self.fetchAllMemories()
     }
@@ -139,6 +164,61 @@ extension HomeViewController: UITableViewDataSource {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "GraveyardTableViewCell", bundle: nil), forCellReuseIdentifier: "GraveyardTableViewCell")
         tableView.separatorStyle = .none
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let item = memories[indexPath.row]
+
+        var actions = [UIContextualAction]()
+
+        // Add delete action
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            let alert = UIAlertController(title: "Confirm Deletion", message: "Are you sure you want to delete this memory?", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+                completionHandler(false)
+            }
+            alert.addAction(cancelAction)
+            
+            let deleteConfirmAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                self.showProgressHUD()
+                self.deleteMemory(withUID: item.uid) {
+                    self.hideProgressHUD()
+                    self.memories.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.reloadData()
+                    completionHandler(true)
+                }
+            }
+            alert.addAction(deleteConfirmAction)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        deleteAction.backgroundColor = .red // Customize delete button color if needed
+        actions.append(deleteAction)
+        
+        // Add edit action if the item meets certain conditions
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completionHandler) in
+            // Handle edit action here
+            // For example, you can show an edit screen for the selected item
+            print("Edit button tapped for item at index \(indexPath.row)")
+            completionHandler(true)
+        }
+        editAction.backgroundColor = .blue // Customize edit button color if needed
+        actions.append(editAction)
+        
+
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: actions)
+        return swipeConfiguration
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard let isAdmin = AppController.shared.user?.admin else { return false }
+        if isAdmin {
+            return true
+        } else {
+            return false
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
