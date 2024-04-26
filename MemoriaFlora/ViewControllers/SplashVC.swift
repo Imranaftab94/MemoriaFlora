@@ -22,7 +22,7 @@ class SplashVC: UIViewController {
     
     private func performOperation() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            if let _ = MyUserDefaults.getUser() {
+            if let _ = MyUserDefaults.getUser(), MyUserDefaults.getRememberMe() {
                 // User exists, navigate to HomeViewController with animation
                 let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                 let navigationVC = UINavigationController(rootViewController: homeVC)

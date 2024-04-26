@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B18DC452BD40F5800483B4A /* SelectPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */; };
+		0B6A205B2BDB2FC2005A83D3 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A205A2BDB2FC2005A83D3 /* AppController.swift */; };
 		0BAFC1822BD226E60079C7BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1812BD226E60079C7BD /* HomeViewController.swift */; };
 		0BAFC1862BD227A10079C7BD /* GraveyardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */; };
 		0BAFC18B2BD22A200079C7BD /* GraveyardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */; };
@@ -83,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentVC.swift; sourceTree = "<group>"; };
+		0B6A205A2BDB2FC2005A83D3 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		0BAFC1812BD226E60079C7BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraveyardItem.swift; sourceTree = "<group>"; };
 		0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraveyardTableViewCell.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 			children = (
 				E405EAC22BD1BFCD005C8673 /* SF-Text */,
 				E4D8177B2BD278BC00F2C50D /* Functions.swift */,
+				0B6A205A2BDB2FC2005A83D3 /* AppController.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				0BAFC18B2BD22A200079C7BD /* GraveyardTableViewCell.swift in Sources */,
 				0BAFC19B2BD23D120079C7BD /* BaseViewController.swift in Sources */,
 				0BDC27B72BD3D343001BA3BE /* FlowersVC.swift in Sources */,
+				0B6A205B2BDB2FC2005A83D3 /* AppController.swift in Sources */,
 				0BD4AC152BD256090058D204 /* ImageSelectionAlertViewController.swift in Sources */,
 				0BD4AC192BD261E90058D204 /* ProfileViewController.swift in Sources */,
 				E458420A2BD3EC3C00B5937D /* DetailViewController.swift in Sources */,

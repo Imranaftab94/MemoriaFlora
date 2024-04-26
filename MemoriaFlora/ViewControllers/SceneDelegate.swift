@@ -126,7 +126,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                         return
                                     }
                 
-                                    let memory = Memory(uid: id, userName: "", description: "", imageUrl: "", dateOfDemise: "", timestamp: Date(), condolences: 0)
+                                    let memory = Memory(uid: id, userName: "", description: "", imageUrl: "", dateOfDemise: "", timestamp: Date(), condolences: 0, memoryKey: "")
                                     let vc = DetailViewController.instantiate(fromAppStoryboard: .Details)
                                     vc.memory = memory
                                     navigationController.pushViewController(vc, animated: true)

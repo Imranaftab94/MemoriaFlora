@@ -181,7 +181,8 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                     "imageUrl": downloadURL.absoluteString,
                     "demiseDate": demiseTF,
                     "timestamps": timestamp,
-                    "condolences": 0
+                    "condolences": 0,
+                    "memoryId": memoryKey
                 ]
                 
                 // Save memory data in the Realtime Database
