@@ -99,13 +99,14 @@ class DetailViewController: BaseViewController {
                   let imageUrl = memoryDict["imageUrl"] as? String,
                   let dateOfDemise = memoryDict["demiseDate"] as? String,
                   let condolences = memoryDict["condolences"] as? Int,
-                  let timestampString = memoryDict["timestamps"] as? TimeInterval else {
+                  let timestampString = memoryDict["timestamps"] as? TimeInterval,
+                  let memoryKey = memoryDict["memoryId"] as? String else {
                 return
             }
             
             let date = Date(timeIntervalSince1970: timestampString)
             // Create Memory object for the memory with the specified ID
-            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences)
+            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey)
             self.memory = memory
             self.config()
             
@@ -136,13 +137,14 @@ class DetailViewController: BaseViewController {
                   let imageUrl = memoryData["imageUrl"] as? String,
                   let dateOfDemise = memoryData["demiseDate"] as? String,
                   let condolences = memoryData["condolences"] as? Int,
-                  let timestampString = memoryData["timestamps"] as? TimeInterval else {
+                  let timestampString = memoryData["timestamps"] as? TimeInterval,
+                  let memoryKey = memoryData["memoryId"] as? String else {
                 return
             }
             
             let date = Date(timeIntervalSince1970: timestampString)
             // Create Memory object for the memory with the specified ID
-            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences)
+            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey)
             
             self.memory = memory
             

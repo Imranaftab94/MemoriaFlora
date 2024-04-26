@@ -60,12 +60,13 @@ class HomeViewController: BaseViewController, Refreshable {
                   let imageUrl = memoryData["imageUrl"] as? String,
                   let dateOfDemise = memoryData["demiseDate"] as? String,
                   let condolences = memoryData["condolences"] as? Int,
-                  let timestampString = memoryData["timestamps"] as? TimeInterval else {
+                  let timestampString = memoryData["timestamps"] as? TimeInterval,
+                  let memoryKey = memoryData["memoryId"] as? String else {
                 return
             }
             let date = Date(timeIntervalSince1970: timestampString)
             // Create Memory object for the new memory
-            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences)
+            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey)
             
             // Append the new memory to the array
             self.memories.append(memory)
@@ -100,10 +101,11 @@ class HomeViewController: BaseViewController, Refreshable {
                    let imageUrl = memoryData["imageUrl"] as? String,
                    let dateOfDemise = memoryData["demiseDate"] as? String,
                    let condolences = memoryData["condolences"] as? Int,
-                   let timestampString = memoryData["timestamps"] as? TimeInterval
+                   let timestampString = memoryData["timestamps"] as? TimeInterval,
+                   let memoryKey = memoryData["memoryId"] as? String
                 {
                     let date = Date(timeIntervalSince1970: timestampString)
-                    let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences)
+                    let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey)
                     allMemories.append(memory)
                 }
             }
@@ -116,26 +118,14 @@ class HomeViewController: BaseViewController, Refreshable {
     
     private func deleteMemory(withUID uid: String, completion: (() -> Void)? = nil) {
         let memoriesRef = Database.database().reference().child("memories")
-        
-        // Query to find the memory node with the given UID
-        memoriesRef.queryOrdered(byChild: "id").queryEqual(toValue: uid).observeSingleEvent(of: .value) { snapshot in
-            guard let snapshotValue = snapshot.value as? [String: [String: Any]],
-                  let memoryKey = snapshotValue.keys.first else {
-                print("Memory with UID \(uid) not found.")
-                completion?()
-                return
+        let memoryRef = memoriesRef.child(uid)
+        memoryRef.removeValue { error, _ in
+            if let error = error {
+                print("Error deleting memory with UID \(uid): \(error.localizedDescription)")
+            } else {
+                print("Memory with UID \(uid) deleted successfully!")
             }
-            
-            // Now that we have the memoryKey, we can delete the memory
-            let memoryRef = memoriesRef.child(memoryKey)
-            memoryRef.removeValue { error, _ in
-                if let error = error {
-                    print("Error deleting memory with UID \(uid): \(error.localizedDescription)")
-                } else {
-                    print("Memory with UID \(uid) deleted successfully!")
-                }
-                completion?()
-            }
+            completion?()
         }
     }
     
