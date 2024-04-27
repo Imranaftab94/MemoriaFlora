@@ -51,7 +51,7 @@ class LoginViewController: BaseViewController {
                     if self.rememberMeSwitchButton.isOn {
                         MyUserDefaults.setRememberMe(true)
                     }
-                    let user = User(name: user.displayName ?? "", email: self.emailTextField.text!, userDescription: user.description)
+                    let user = User(name: user.displayName ?? "", email: self.emailTextField.text!, userDescription: user.description, userId: user.uid)
                     AppController.shared.user = user
                     self.getUserFromDB(email: self.emailTextField.text!)
                 }

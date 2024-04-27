@@ -173,6 +173,8 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                 let timestamp = Date().timeIntervalSince1970
                 
                 let id = UUID().uuidString
+                guard let email = AppController.shared.user?.email else { return }
+                guard let id = AppController.shared.user?.userId else { return }
                 
                 let memoryData: [String: Any] = [
                     "id": id,
@@ -182,7 +184,9 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                     "demiseDate": demiseTF,
                     "timestamps": timestamp,
                     "condolences": 0,
-                    "memoryId": memoryKey
+                    "memoryId": memoryKey,
+                    "createdByEmail": email,
+                    "cretedById": id
                 ]
                 
                 // Save memory data in the Realtime Database

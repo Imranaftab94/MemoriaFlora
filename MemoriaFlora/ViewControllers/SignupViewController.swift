@@ -73,9 +73,7 @@ class SignupViewController: BaseViewController {
                 if let user = authResult?.user {
                     let changeRequest = user.createProfileChangeRequest()
                     changeRequest.displayName = self.nameTextField.text!
-                    let user = User(name: self.nameTextField.text!, email: self.emailTextField.text!, userDescription: "")
-                    MyUserDefaults.setUser(user)
-                    
+                   
                     // Create a reference to the Firebase Realtime Database
                     let databaseRef = Database.database().reference()
                     
@@ -84,7 +82,8 @@ class SignupViewController: BaseViewController {
                         "name": self.nameTextField.text!,
                         "email": self.emailTextField.text!,
                         "userDescription": "",
-                        "admin": false
+                        "admin": false,
+                        "userId": user.uid
                     ]
                     
                     guard let uid = authResult?.user.uid else {
@@ -104,9 +103,7 @@ class SignupViewController: BaseViewController {
                             print("An error occurred during naming-up", error.localizedDescription)
                         } else {
                             self.showAlert(message: "User signed up successfully!") {
-                                let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                                let navigationVC = UINavigationController(rootViewController: homeVC)
-                                animateTransition(to: navigationVC, view: self.view)
+                                self.navigationController?.popViewController(animated: true)
                             }
                         }
                     })
