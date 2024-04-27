@@ -61,12 +61,16 @@ class HomeViewController: BaseViewController, Refreshable {
                   let dateOfDemise = memoryData["demiseDate"] as? String,
                   let condolences = memoryData["condolences"] as? Int,
                   let timestampString = memoryData["timestamps"] as? TimeInterval,
-                  let memoryKey = memoryData["memoryId"] as? String else {
+                  let memoryKey = memoryData["memoryId"] as? String,
+                  let createdByEmail = memoryData["createdByEmail"] as? String,
+                  let createdById = memoryData["createdById"] as? String
+                    
+            else {
                 return
             }
             let date = Date(timeIntervalSince1970: timestampString)
             // Create Memory object for the new memory
-            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey)
+            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey, createdByEmail: createdByEmail, createdById: createdById)
             
             // Append the new memory to the array
             self.memories.append(memory)
@@ -102,10 +106,12 @@ class HomeViewController: BaseViewController, Refreshable {
                    let dateOfDemise = memoryData["demiseDate"] as? String,
                    let condolences = memoryData["condolences"] as? Int,
                    let timestampString = memoryData["timestamps"] as? TimeInterval,
-                   let memoryKey = memoryData["memoryId"] as? String
+                   let memoryKey = memoryData["memoryId"] as? String,
+                   let createdByEmail = memoryData["createdByEmail"] as? String,
+                   let createdById = memoryData["createdById"] as? String
                 {
                     let date = Date(timeIntervalSince1970: timestampString)
-                    let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey)
+                    let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey, createdByEmail: createdByEmail, createdById: createdById)
                     allMemories.append(memory)
                 }
             }
