@@ -17,7 +17,8 @@ class SelectPaymentVC: BaseViewController {
     
     var selectedFlowerCategory: FlowerCategoryModel?
     var selectedFlower: FlowerModel?
-    
+    var memory: Memory?
+
     var onPayCondolences: (() -> ())?
     
     override func viewDidLoad() {
@@ -51,6 +52,8 @@ class SelectPaymentVC: BaseViewController {
     
     func sendEmail() {
         
+        let user = AppController.shared.user
+        
         let smtpSession = MCOSMTPSession()
         smtpSession.hostname = "smtp.gmail.com"
         smtpSession.username =  "iaftab94uw@gmail.com"     // 送信元のSMTPサーバーのusername（Gmailアドレス）
@@ -69,9 +72,9 @@ class SelectPaymentVC: BaseViewController {
         let builder = MCOMessageBuilder()
         builder.header.to = [MCOAddress(displayName: "Imran.", mailbox: "imranaftab1994@gmail.com")]
         builder.header.from = MCOAddress(displayName: "Caro Estinto.", mailbox: "iaftab94uw@gmail.com")
-        builder.header.subject = "testing sub"
-        //        builder.htmlBody = "Yo Rool, this is a test message!"
-        builder.textBody = "\("Hellow Bhaiyo")\n\nContact: \("03054691900")"
+        builder.header.subject = "Condolences Flower Purchase Notification"
+//                builder.htmlBody = "Yo Rool, this is a test message!"
+        builder.textBody = createCondolencesEmail(recipientName: "", purchaserName: user?.name ?? "N/a", flowerName: "")
         let rfc822Data = builder.data()
         let sendOperation = smtpSession.sendOperation(with: rfc822Data)
         sendOperation?.start { (error) -> Void in
@@ -83,10 +86,11 @@ class SelectPaymentVC: BaseViewController {
         }
     }
     
-    class func instantiate(selectedCategory: FlowerCategoryModel, selectedFlower: FlowerModel) -> Self {
+    class func instantiate(selectedCategory: FlowerCategoryModel, selectedFlower: FlowerModel, memory: Memory) -> Self {
         let vc = self.instantiate(fromAppStoryboard: .Flowers)
         vc.selectedFlower = selectedFlower
         vc.selectedFlowerCategory = selectedCategory
+        vc.memory = memory
         return vc
     }
     

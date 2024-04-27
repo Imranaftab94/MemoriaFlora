@@ -14,7 +14,8 @@ class FlowersVC: BaseViewController {
     
     var selectedFlowerCategory: FlowerCategoryModel?
     var selectedFlower: FlowerModel?
-    
+    var memory: Memory?
+
     var onSelectPayment: ((_ selectedCategory: FlowerCategoryModel, _ selectedFlower: FlowerModel) -> ())?
     
     var flowerCategories: [FlowerCategoryModel] = [
@@ -104,6 +105,12 @@ class FlowersVC: BaseViewController {
         flowerItemCollectionView.register(UINib(nibName: "FlowerItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FlowerItemCell")
     }
     
+    class func instantiate(memory: Memory) -> Self {
+        let vc = self.instantiate(fromAppStoryboard: .Flowers)
+        vc.memory = memory
+        return vc
+    }
+    
     @IBAction func onClickPurchaseFlowerButton(_ sender: UIButton) {
         guard let category = self.selectedFlowerCategory else {
             self.showAlert(message: "Please select a flower category")
@@ -115,7 +122,7 @@ class FlowersVC: BaseViewController {
             return
         }
         
-        let vc = SelectPaymentVC.instantiate(selectedCategory: category, selectedFlower: flower)
+        let vc = SelectPaymentVC.instantiate(selectedCategory: category, selectedFlower: flower, memory: memory!)
         vc.onPayCondolences = { [weak self] in
             guard let self = self else { return }
             guard let selectedCategory = self.selectedFlowerCategory else { return }

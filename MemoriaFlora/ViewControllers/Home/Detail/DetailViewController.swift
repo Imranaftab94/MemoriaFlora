@@ -31,7 +31,7 @@ class DetailViewController: BaseViewController {
     
     @IBAction func chooseFlowerButtonTap(_ sender: UIButton) {
         DispatchQueue.main.async {
-            let vc = FlowersVC.instantiate(fromAppStoryboard: .Flowers)
+            let vc = FlowersVC.instantiate(memory: self.memory!)
             vc.onSelectPayment = { [weak self] (category, flower) in
                 guard let self = self else { return }
                 self.addCondolences()
