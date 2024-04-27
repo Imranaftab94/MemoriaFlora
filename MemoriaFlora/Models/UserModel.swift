@@ -13,4 +13,5 @@ struct User: Codable {
     var email: String?
     var userDescription: String?
     var admin: Bool?
+    var userId: String?
 }
