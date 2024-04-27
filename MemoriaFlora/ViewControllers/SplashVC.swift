@@ -20,6 +20,8 @@ class SplashVC: UIViewController {
         self.performOperation()
     }
     
+    
+    
     private func performOperation() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             if let _ = MyUserDefaults.getUser(), MyUserDefaults.getRememberMe() {
