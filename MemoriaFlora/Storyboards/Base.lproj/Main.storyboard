@@ -266,6 +266,9 @@
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="login_facebook" title=" "/>
+                                                        <connections>
+                                                            <action selector="onClickFacebookButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tKr-tr-bIe"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGo-Ij-4Ne">
                                                         <rect key="frame" x="80" y="0.0" width="70" height="70"/>
@@ -275,6 +278,9 @@
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="login_google" title=" "/>
+                                                        <connections>
+                                                            <action selector="onClickLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IZp-hS-hWK"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
