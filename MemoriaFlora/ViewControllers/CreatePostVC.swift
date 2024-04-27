@@ -9,6 +9,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 import FirebaseStorage
+import MachO
 
 class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate {
     
@@ -112,6 +113,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         imageSelectionAlertViewController?.openMediaLibrary(openForImageAndVideo: true)
     }
     
+
     @IBAction func onClickShareMemoryButton(_ sender: UIButton) {
         guard let userID = Auth.auth().currentUser?.uid else {
             showAlert(message: "User not logged in")

@@ -16,14 +16,20 @@ target 'Caro Estinto' do
   pod 'FirebaseMessaging'
   pod 'Firebase/Storage'
   pod 'Kingfisher'
+  pod 'mailcore2-ios'
+  
 
   post_install do |installer|
       installer.generated_projects.each do |project|
           project.targets.each do |target|
               target.build_configurations.each do |config|
                   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+                  config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+                  config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+
               end
           end
       end
   end
 end
+
