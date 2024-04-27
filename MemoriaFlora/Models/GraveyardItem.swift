@@ -16,8 +16,10 @@ struct Memory {
     let timestamp: Date
     let condolences: Int
     let memoryKey: String?
+    let createdByEmail: String?
+    let createdById: String?
     
-    init(uid: String, userName: String, description: String, imageUrl: String, dateOfDemise: String, timestamp: Date, condolences: Int, memoryKey: String?) {
+    init(uid: String, userName: String, description: String, imageUrl: String, dateOfDemise: String, timestamp: Date, condolences: Int, memoryKey: String?, createdByEmail: String, createdById: String) {
         self.uid = uid
         self.userName = userName
         self.description = description
@@ -26,5 +28,7 @@ struct Memory {
         self.timestamp = timestamp
         self.condolences = condolences
         self.memoryKey = memoryKey
+        self.createdById = createdById
+        self.createdByEmail = createdByEmail
     }
 }

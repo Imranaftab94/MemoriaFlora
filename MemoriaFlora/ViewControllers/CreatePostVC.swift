@@ -186,7 +186,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                     "condolences": 0,
                     "memoryId": memoryKey,
                     "createdByEmail": email,
-                    "cretedById": id
+                    "createdById": id
                 ]
                 
                 // Save memory data in the Realtime Database
