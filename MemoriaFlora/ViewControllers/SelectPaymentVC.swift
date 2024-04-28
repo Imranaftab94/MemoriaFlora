@@ -74,7 +74,7 @@ class SelectPaymentVC: BaseViewController {
         builder.header.from = MCOAddress(displayName: "Caro Estinto.", mailbox: "iaftab94uw@gmail.com")
         builder.header.subject = "Condolences Flower Purchase Notification"
 //                builder.htmlBody = "Yo Rool, this is a test message!"
-        builder.textBody = createCondolencesEmail(recipientName: memory?. ?? "user", purchaserName: user?.name ?? "a user", flowerName: selectedFlower?.name ?? "flower")
+        builder.textBody = createCondolencesEmail(recipientName: memory?.createdByName ?? "user", purchaserName: user?.name ?? "a user", flowerName: selectedFlower?.name ?? "flower")
         let rfc822Data = builder.data()
         let sendOperation = smtpSession.sendOperation(with: rfc822Data)
         sendOperation?.start { (error) -> Void in
