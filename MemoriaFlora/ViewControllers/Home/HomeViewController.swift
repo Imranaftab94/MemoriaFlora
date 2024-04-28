@@ -53,34 +53,17 @@ class HomeViewController: BaseViewController, Refreshable {
         // Observe for new changes in memories
         
         memoriesRef.observe(.childAdded) { (snapshot) in
-            guard let memoryData = snapshot.value as? [String: Any],
-                  let uid = memoryData["id"] as? String,
-                  let userName = memoryData["userName"] as? String,
-                  let description = memoryData["description"] as? String,
-                  let imageUrl = memoryData["imageUrl"] as? String,
-                  let dateOfDemise = memoryData["demiseDate"] as? String,
-                  let condolences = memoryData["condolences"] as? Int,
-                  let timestampString = memoryData["timestamps"] as? TimeInterval,
-                  let memoryKey = memoryData["memoryId"] as? String,
-                  let createdByEmail = memoryData["createdByEmail"] as? String,
-                  let createdById = memoryData["createdById"] as? String
-                    
-            else {
+            guard let memoryData = snapshot.value as? [String: Any] else {
                 return
             }
-            let date = Date(timeIntervalSince1970: timestampString)
-            // Create Memory object for the new memory
-            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey, createdByEmail: createdByEmail, createdById: createdById)
             
-            // Append the new memory to the array
-            self.memories.append(memory)
+            if let memory = Memory.createMemory(from: memoryData) {
+                self.memories.append(memory)
+            }
             
             self.memories.sort { $0.timestamp > $1.timestamp }
             
             self.reloadTableView()
-            // Handle the newly added memory, such as updating UI or performing any other action
-            print("New memory added:")
-            print("User: \(memory.userName), Description: \(memory.description), Image URL: \(memory.imageUrl)")
         }
     }
     
@@ -98,21 +81,10 @@ class HomeViewController: BaseViewController, Refreshable {
             
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
-                   let memoryData = snapshot.value as? [String: Any],
-                   let uid = memoryData["id"] as? String,
-                   let userName = memoryData["userName"] as? String,
-                   let description = memoryData["description"] as? String,
-                   let imageUrl = memoryData["imageUrl"] as? String,
-                   let dateOfDemise = memoryData["demiseDate"] as? String,
-                   let condolences = memoryData["condolences"] as? Int,
-                   let timestampString = memoryData["timestamps"] as? TimeInterval,
-                   let memoryKey = memoryData["memoryId"] as? String,
-                   let createdByEmail = memoryData["createdByEmail"] as? String,
-                   let createdById = memoryData["createdById"] as? String
-                {
-                    let date = Date(timeIntervalSince1970: timestampString)
-                    let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey, createdByEmail: createdByEmail, createdById: createdById)
-                    allMemories.append(memory)
+                   let memoryData = snapshot.value as? [String: Any] {
+                    if let memory = Memory.createMemory(from: memoryData) {
+                        allMemories.append(memory)
+                    }
                 }
             }
             

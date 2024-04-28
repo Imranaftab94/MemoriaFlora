@@ -91,30 +91,13 @@ class DetailViewController: BaseViewController {
                 return
             }
             
-            // Extract the memory data
-            guard let memoryDict = memoryData.first?.value as? [String: Any],
-                  let uid = memoryDict["id"] as? String,
-                  let userName = memoryDict["userName"] as? String,
-                  let description = memoryDict["description"] as? String,
-                  let imageUrl = memoryDict["imageUrl"] as? String,
-                  let dateOfDemise = memoryDict["demiseDate"] as? String,
-                  let condolences = memoryDict["condolences"] as? Int,
-                  let timestampString = memoryDict["timestamps"] as? TimeInterval,
-                  let memoryKey = memoryDict["memoryId"] as? String,
-                  let createdByEmail = memoryDict["createdByEmail"] as? String,
-                  let createdById = memoryDict["createdById"] as? String else {
-                return
-            }
+            guard let value = memoryData.first?.value as? [String: Any] else { return }
             
-            let date = Date(timeIntervalSince1970: timestampString)
-            // Create Memory object for the memory with the specified ID
-            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey, createdByEmail: createdByEmail, createdById: createdById)
+            let memory = Memory.createMemory(from: value)
             self.memory = memory
             self.config()
             
             self.observeMemoryChanges(withId: id)
-            // Handle the retrieved memory, such as updating UI or performing any other action
-            print("User: \(memory.userName), Description: \(memory.description), Image URL: \(memory.imageUrl)")
         }
     }
     
@@ -132,31 +115,11 @@ class DetailViewController: BaseViewController {
                 return
             }
             
-            // Extract the memory data
-            guard let uid = memoryData["id"] as? String,
-                  let userName = memoryData["userName"] as? String,
-                  let description = memoryData["description"] as? String,
-                  let imageUrl = memoryData["imageUrl"] as? String,
-                  let dateOfDemise = memoryData["demiseDate"] as? String,
-                  let condolences = memoryData["condolences"] as? Int,
-                  let timestampString = memoryData["timestamps"] as? TimeInterval,
-                  let memoryKey = memoryData["memoryId"] as? String,
-                  let createdByEmail = memoryData["createdByEmail"] as? String,
-                  let createdById = memoryData["createdById"] as? String else {
-                
-                return
-            }
-            
-            let date = Date(timeIntervalSince1970: timestampString)
-            // Create Memory object for the memory with the specified ID
-            let memory = Memory(uid: uid, userName: userName, description: description, imageUrl: imageUrl, dateOfDemise: dateOfDemise, timestamp: date, condolences: condolences, memoryKey: memoryKey, createdByEmail: createdByEmail, createdById: createdById)
+            let memory = Memory.createMemory(from: memoryData)
             
             self.memory = memory
             
             self.config()
-            
-            // Handle the changed memory data, such as updating UI or performing any other action
-            print("User: \(memory.userName), Description: \(memory.description), Image URL: \(memory.imageUrl)")
         }
     }
     

@@ -177,6 +177,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                 let id = UUID().uuidString
                 guard let email = AppController.shared.user?.email else { return }
                 guard let id = AppController.shared.user?.userId else { return }
+                guard let name = AppController.shared.user?.name else { return }
                 
                 let memoryData: [String: Any] = [
                     "id": id,
@@ -188,7 +189,8 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                     "condolences": 0,
                     "memoryId": memoryKey,
                     "createdByEmail": email,
-                    "createdById": id
+                    "createdById": id,
+                    "createdByName": name
                 ]
                 
                 // Save memory data in the Realtime Database

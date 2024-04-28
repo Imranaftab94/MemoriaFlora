@@ -18,8 +18,9 @@ struct Memory {
     let memoryKey: String?
     let createdByEmail: String?
     let createdById: String?
+    let createdByName: String?
     
-    init(uid: String, userName: String, description: String, imageUrl: String, dateOfDemise: String, timestamp: Date, condolences: Int, memoryKey: String?, createdByEmail: String, createdById: String) {
+    init(uid: String, userName: String, description: String, imageUrl: String, dateOfDemise: String, timestamp: Date, condolences: Int, memoryKey: String?, createdByEmail: String, createdById: String, createdByName: String) {
         self.uid = uid
         self.userName = userName
         self.description = description
@@ -30,5 +31,33 @@ struct Memory {
         self.memoryKey = memoryKey
         self.createdById = createdById
         self.createdByEmail = createdByEmail
+        self.createdByName = createdByName
+    }
+    
+    static func createMemory(from memoryData: [String: Any]) -> Memory? {
+        guard let uid = memoryData["id"] as? String,
+              let userName = memoryData["userName"] as? String,
+              let description = memoryData["description"] as? String,
+              let imageUrl = memoryData["imageUrl"] as? String,
+              let dateOfDemise = memoryData["demiseDate"] as? String,
+              let condolences = memoryData["condolences"] as? Int,
+              let timestampString = memoryData["timestamps"] as? TimeInterval,
+              let memoryKey = memoryData["memoryId"] as? String,
+              let createdByEmail = memoryData["createdByEmail"] as? String,
+              let createdById = memoryData["createdById"] as? String,
+              let createdByName = memoryData["createdByName"] as? String else {
+            return nil
+        }
+        let date = Date(timeIntervalSince1970: timestampString)
+        return Memory(uid: uid,
+                      userName: userName,
+                      description: description,
+                      imageUrl: imageUrl,
+                      dateOfDemise: dateOfDemise,
+                      timestamp: date,
+                      condolences: condolences,
+                      memoryKey: memoryKey,
+                      createdByEmail: createdByEmail,
+                      createdById: createdById, createdByName: createdByName)
     }
 }
