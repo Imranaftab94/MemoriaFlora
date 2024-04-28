@@ -70,11 +70,11 @@ class SelectPaymentVC: BaseViewController {
         }
         
         let builder = MCOMessageBuilder()
-        builder.header.to = [MCOAddress(displayName: "Imran.", mailbox: "imranaftab1994@gmail.com")]
+        builder.header.to = [MCOAddress(displayName: "\(user?.name ?? "user").", mailbox: "\(memory?.createdByEmail ?? "")")]
         builder.header.from = MCOAddress(displayName: "Caro Estinto.", mailbox: "iaftab94uw@gmail.com")
         builder.header.subject = "Condolences Flower Purchase Notification"
 //                builder.htmlBody = "Yo Rool, this is a test message!"
-        builder.textBody = createCondolencesEmail(recipientName: "", purchaserName: user?.name ?? "N/a", flowerName: "")
+        builder.textBody = createCondolencesEmail(recipientName: memory?. ?? "user", purchaserName: user?.name ?? "a user", flowerName: selectedFlower?.name ?? "flower")
         let rfc822Data = builder.data()
         let sendOperation = smtpSession.sendOperation(with: rfc822Data)
         sendOperation?.start { (error) -> Void in
@@ -95,6 +95,7 @@ class SelectPaymentVC: BaseViewController {
     }
     
     @IBAction func onClickPayButton(_ sender: UIButton) {
+        self.sendEmail()
         self.onPayCondolences?()
         self.showAlert(message: "Payment Made Successfully", title: "Success", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
             self.dismiss(animated: true)
