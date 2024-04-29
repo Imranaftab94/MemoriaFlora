@@ -159,12 +159,13 @@ extension HomeViewController: UITableViewDataSource {
             alert.addAction(cancelAction)
             
             let deleteConfirmAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                guard let key = item.memoryKey else { return }
                 self.showProgressHUD()
-                self.deleteMemory(withUID: item.uid) {
+                self.deleteMemory(withUID: key) {
                     self.hideProgressHUD()
                     self.memories.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
-                    tableView.reloadData()
+                    self.reloadTableView()
                     completionHandler(true)
                 }
             }
