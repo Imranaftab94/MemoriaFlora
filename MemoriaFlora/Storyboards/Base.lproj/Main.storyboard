@@ -43,6 +43,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Nk-av-ovC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-708" y="-12"/>
+        </scene>
+        <!--Main Tabbar Controller-->
+        <scene sceneID="JWk-hc-hjy">
+            <objects>
+                <tabBarController id="mJJ-2Y-yem" customClass="MainTabbarController" customModule="Caro_Estinto" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yj7-Es-816">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hpY-I1-oM5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="60" y="-12"/>
         </scene>
         <!--HOME-->
@@ -365,7 +379,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQG-wd-W3c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-693" y="-12"/>
+            <point key="canvasLocation" x="-1483" y="-12"/>
         </scene>
         <!--HOME-->
         <scene sceneID="721-dI-W2r">
