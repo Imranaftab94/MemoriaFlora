@@ -163,9 +163,13 @@ extension HomeViewController: UITableViewDataSource {
                 self.showProgressHUD()
                 self.deleteMemory(withUID: key) {
                     self.hideProgressHUD()
+                    tableView.beginUpdates()
                     self.memories.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
-                    self.reloadTableView()
+                    tableView.endUpdates()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.reloadTableView()
+                    }
                     completionHandler(true)
                 }
             }
