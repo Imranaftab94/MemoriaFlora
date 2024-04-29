@@ -10,6 +10,7 @@
 		0B18DC452BD40F5800483B4A /* SelectPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */; };
 		0B6A205B2BDB2FC2005A83D3 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A205A2BDB2FC2005A83D3 /* AppController.swift */; };
 		0B79CAB92BDDD34000EEBC6A /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79CAB82BDDD34000EEBC6A /* InAppPurchaseManager.swift */; };
+		0B79CABB2BDF2D0B00EEBC6A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79CABA2BDF2D0B00EEBC6A /* MainTabBarController.swift */; };
 		0BAFC1822BD226E60079C7BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1812BD226E60079C7BD /* HomeViewController.swift */; };
 		0BAFC1862BD227A10079C7BD /* GraveyardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */; };
 		0BAFC18B2BD22A200079C7BD /* GraveyardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */; };
@@ -87,6 +88,7 @@
 		0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentVC.swift; sourceTree = "<group>"; };
 		0B6A205A2BDB2FC2005A83D3 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		0B79CAB82BDDD34000EEBC6A /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
+		0B79CABA2BDF2D0B00EEBC6A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		0BAFC1812BD226E60079C7BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraveyardItem.swift; sourceTree = "<group>"; };
 		0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraveyardTableViewCell.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				0BAFC19C2BD242280079C7BD /* CreatePostVC.swift */,
 				0BD4AC182BD261E90058D204 /* ProfileViewController.swift */,
 				0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */,
+				0B79CABA2BDF2D0B00EEBC6A /* MainTabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				E44686AA2BCDCDCC001DF89B /* ViewController.swift in Sources */,
 				0BD4AC1C2BD2D6E80058D204 /* Refreshable.swift in Sources */,
 				0BAFC18B2BD22A200079C7BD /* GraveyardTableViewCell.swift in Sources */,
+				0B79CABB2BDF2D0B00EEBC6A /* MainTabBarController.swift in Sources */,
 				0BAFC19B2BD23D120079C7BD /* BaseViewController.swift in Sources */,
 				0BDC27B72BD3D343001BA3BE /* FlowersVC.swift in Sources */,
 				0B6A205B2BDB2FC2005A83D3 /* AppController.swift in Sources */,
