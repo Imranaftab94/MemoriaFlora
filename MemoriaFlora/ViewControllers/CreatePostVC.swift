@@ -27,6 +27,10 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     private var imageSelectionAlertViewController: ImageSelectionAlertViewController?
     private var selectedImage: UIImage?
     
+    var isEditingEnabled: Bool = false
+    var memory: Memory?
+    var isNewImageSelected: Bool = false
+    
     let activeBorderColor: UIColor = UIColor.init(hexString: "#793EE5")
     let inactiveBorderColor: UIColor = UIColor.init(hexString: "#0B0B0B")
     
@@ -39,6 +43,10 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         self.title = "Create Post"
         self.configureTextFields()
         self.configureDatePicker()
+        
+        if isEditingEnabled {
+            self.configurePrefilledData()
+        }
     }
     
     private func configureDatePicker() {
@@ -93,6 +101,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         imageSelectionAlertViewController = ImageSelectionAlertViewController(sender: sender, viewController: self)
         imageSelectionAlertViewController?.onImageSelected = { (image) in
             if let image = image {
+                self.isNewImageSelected = true
                 self.userProfileImage.image = image
                 self.selectedImage = image
             }
@@ -113,11 +122,137 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     }
     
     @IBAction func onClickShareMemoryButton(_ sender: UIButton) {
-        guard let userID = Auth.auth().currentUser?.uid else {
-            showAlert(message: "User not logged in")
+        if isEditingEnabled {
+            updatePost()
+        } else {
+            createPost()
+        }
+    }
+    
+    private func configurePrefilledData() {
+        guard let memory = memory else { return }
+        if let url = URL(string: memory.imageUrl) {
+            userProfileImage.kf.setImage(with: url) { result in
+                switch result {
+                case .success(let value):
+                    self.selectedImage = value.image
+                case .failure(let error):
+                    // Handle error
+                    print("Error loading image: \(error)")
+                }
+            }
+        }
+        self.userNameTextField.text = memory.userName
+        self.descriptionTextView.text = memory.description
+        self.demiseTextField.text = memory.dateOfDemise
+    }
+    
+    private func updatePost() {
+        guard let userName = userNameTextField.text, !userName.isEmpty else {
+            showAlert(message: "Please enter name")
             return
         }
         
+        guard let demiseTF = demiseTextField.text, !demiseTF.isEmpty, description != "" else {
+            showAlert(message: "Please enter Date of Demise")
+            return
+        }
+        
+        guard let description = descriptionTextView.text, !description.isEmpty, description != "" else {
+            showAlert(message: "Please enter description")
+            return
+        }
+        
+        guard let image = selectedImage else {
+            showAlert(message: "Please select a picture")
+            return
+        }
+        
+        // Convert image to Data
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+            showAlert(message: "Failed to convert image to data")
+            return
+        }
+        
+        guard let memoryKey = memory?.memoryKey else { return }
+        
+        if isNewImageSelected == false {
+            self.updateFields(userName: userName, description: description, demiseDate: demiseTF, imageUrl: nil, memoryKey: memoryKey)
+            return
+        }
+        
+        let storageRef = Storage.storage().reference().child("memories").child(memoryKey)
+        
+        self.showProgressHUD()
+        let uploadTask = storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+            self.hideProgressHUD()
+            guard let _ = metadata else {
+                // Handle error
+                print("Error uploading image: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            storageRef.downloadURL { (url, error) in
+                if let error = error {
+                    print("Error getting download URL: \(error.localizedDescription)")
+                    return
+                }
+                
+                guard let downloadURL = url else {
+                    print("Download URL is nil")
+                    return
+                }
+                
+                self.updateFields(userName: userName, description: description, demiseDate: demiseTF, imageUrl: downloadURL.absoluteString, memoryKey: memoryKey)
+            }
+        }
+        
+        uploadTask.observe(.progress) { snapshot in
+            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
+            print(percentComplete)
+        }
+        
+        uploadTask.observe(.failure) { snapshot in
+            if let error = snapshot.error {
+                print("Upload failed: \(error.localizedDescription)")
+                // Notify user about the failure
+                self.showAlert(message: "Upload failed. Please try again.")
+            }
+        }
+    }
+    
+    private func updateFields(userName: String?, description: String?, demiseDate: String?, imageUrl: String?, memoryKey: String) {
+        var updatedFields: [String: Any] = [:]
+        
+        if let userName = userName {
+            updatedFields["userName"] = userName
+        }
+        
+        if let description = description {
+            updatedFields["description"] = description
+        }
+        
+        if let demiseDate = demiseDate {
+            updatedFields["demiseDate"] = demiseDate
+        }
+        
+        if let imageUrl = imageUrl {
+            updatedFields["imageUrl"] = imageUrl
+        }
+        
+        // Save memory data in the Realtime Database
+        Database.database().reference().child("memories").child(memoryKey).updateChildValues(updatedFields) { (error, ref) in
+            if let error = error {
+                print("Error saving memory data: \(error.localizedDescription)")
+            } else {
+                print("Memory data updated successfully!")
+                self.showAlert(message: "Post updated successfully", title: "Alert", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+            }
+        }
+    }
+    
+    private func createPost() {
         guard let userName = userNameTextField.text, !userName.isEmpty else {
             showAlert(message: "Please enter name")
             return
@@ -172,13 +307,13 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                 
                 let timestamp = Date().timeIntervalSince1970
                 
-                let id = UUID().uuidString
+                let postId = UUID().uuidString
                 guard let email = AppController.shared.user?.email else { return }
-                guard let id = AppController.shared.user?.userId else { return }
+                guard let myUserId = AppController.shared.user?.userId else { return }
                 guard let name = AppController.shared.user?.name else { return }
                 
                 let memoryData: [String: Any] = [
-                    "id": id,
+                    "id": postId,
                     "userName": userName,
                     "description": description,
                     "imageUrl": downloadURL.absoluteString,
@@ -187,7 +322,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                     "condolences": 0,
                     "memoryId": memoryKey,
                     "createdByEmail": email,
-                    "createdById": id,
+                    "createdById": myUserId,
                     "createdByName": name
                 ]
                 

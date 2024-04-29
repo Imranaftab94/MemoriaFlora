@@ -47,11 +47,8 @@ class HomeViewController: BaseViewController, Refreshable {
     }
     
     private func observeMemories() {
-        // Reference to the memories node for the user
         let memoriesRef = Database.database().reference().child("memories")
-        
-        // Observe for new changes in memories
-        
+                
         memoriesRef.observe(.childAdded) { (snapshot) in
             guard let memoryData = snapshot.value as? [String: Any] else {
                 return
@@ -64,6 +61,19 @@ class HomeViewController: BaseViewController, Refreshable {
             self.memories.sort { $0.timestamp > $1.timestamp }
             
             self.reloadTableView()
+        }
+        
+        memoriesRef.observe(.childChanged) { (snapshot) in
+            guard let memoryData = snapshot.value as? [String: Any] else {
+                return
+            }
+            
+            if let index = self.memories.firstIndex(where: { $0.memoryKey == snapshot.key }) {
+                if let updatedMemory = Memory.createMemory(from: memoryData) {
+                    self.memories[index] = updatedMemory
+                    self.reloadTableView()
+                }
+            }
         }
     }
     
@@ -162,17 +172,18 @@ extension HomeViewController: UITableViewDataSource {
             
             self.present(alert, animated: true, completion: nil)
         }
-        deleteAction.backgroundColor = .red // Customize delete button color if needed
+        deleteAction.backgroundColor = .red
         actions.append(deleteAction)
         
         // Add edit action if the item meets certain conditions
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completionHandler) in
-            // Handle edit action here
-            // For example, you can show an edit screen for the selected item
-            print("Edit button tapped for item at index \(indexPath.row)")
+            let vc = CreatePostVC.instantiate(fromAppStoryboard: .Main)
+            vc.memory = item
+            vc.isEditingEnabled = true
+            self.navigationController?.pushViewController(vc, animated: true)
             completionHandler(true)
         }
-        editAction.backgroundColor = .blue // Customize edit button color if needed
+        editAction.backgroundColor = .blue
         actions.append(editAction)
         
 

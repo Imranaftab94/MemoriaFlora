@@ -82,7 +82,6 @@ class DetailViewController: BaseViewController {
         let memoryQuery = memoriesRef.queryOrdered(byChild: "id").queryEqual(toValue: id)
         
         // Observe for changes in memories
-        
         self.showProgressHUD()
         memoryQuery.observeSingleEvent(of: .value) { (snapshot) in
             self.hideProgressHUD()
