@@ -827,15 +827,15 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Z0-hn-ydH">
-                                <rect key="frame" x="32" y="146" width="364" height="40"/>
+                                <rect key="frame" x="24" y="146" width="380" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6i4-Jw-c3a">
-                                        <rect key="frame" x="16" y="0.0" width="294" height="40"/>
+                                        <rect key="frame" x="16" y="0.0" width="310" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vyg-D8-Gbr">
-                                        <rect key="frame" x="318" y="5" width="30" height="30"/>
+                                        <rect key="frame" x="334" y="5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="odG-cb-gOx"/>
                                             <constraint firstAttribute="width" constant="30" id="owg-Df-npK"/>
@@ -859,7 +859,7 @@
                         <viewLayoutGuide key="safeArea" id="R9f-eU-AoL"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="0Z0-hn-ydH" firstAttribute="leading" secondItem="R9f-eU-AoL" secondAttribute="leading" constant="32" id="6cW-XI-x6S"/>
+                            <constraint firstItem="0Z0-hn-ydH" firstAttribute="leading" secondItem="R9f-eU-AoL" secondAttribute="leading" constant="24" id="6cW-XI-x6S"/>
                             <constraint firstItem="R9f-eU-AoL" firstAttribute="bottom" secondItem="rCM-c0-vD2" secondAttribute="bottom" id="87K-kQ-fzT"/>
                             <constraint firstItem="rCM-c0-vD2" firstAttribute="top" secondItem="0Z0-hn-ydH" secondAttribute="bottom" constant="8" id="ANC-Ns-kv3"/>
                             <constraint firstItem="R9f-eU-AoL" firstAttribute="trailing" secondItem="5Hj-j1-bGt" secondAttribute="trailing" id="KTe-KF-DIx"/>
@@ -871,7 +871,7 @@
                             <constraint firstItem="0Z0-hn-ydH" firstAttribute="top" secondItem="5Hj-j1-bGt" secondAttribute="bottom" constant="16" id="dag-Yt-hpu"/>
                             <constraint firstItem="R9f-eU-AoL" firstAttribute="trailing" secondItem="rCM-c0-vD2" secondAttribute="trailing" id="fMg-BC-5sK"/>
                             <constraint firstItem="R9f-eU-AoL" firstAttribute="trailing" secondItem="QU2-qL-dib" secondAttribute="trailing" constant="30" id="qkD-sI-jq2"/>
-                            <constraint firstItem="R9f-eU-AoL" firstAttribute="trailing" secondItem="0Z0-hn-ydH" secondAttribute="trailing" constant="32" id="tNx-pi-D4d"/>
+                            <constraint firstItem="R9f-eU-AoL" firstAttribute="trailing" secondItem="0Z0-hn-ydH" secondAttribute="trailing" constant="24" id="tNx-pi-D4d"/>
                             <constraint firstItem="5Hj-j1-bGt" firstAttribute="top" secondItem="5TJ-lA-hej" secondAttribute="top" id="u7k-v9-Xhr"/>
                         </constraints>
                     </view>
