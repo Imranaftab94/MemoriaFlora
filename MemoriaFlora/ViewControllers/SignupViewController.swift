@@ -83,7 +83,8 @@ class SignupViewController: BaseViewController {
                         "email": self.emailTextField.text!,
                         "userDescription": "",
                         "admin": false,
-                        "userId": user.uid
+                        "userId": user.uid,
+                        "fcmToken": ""
                     ]
                     
                     guard let uid = authResult?.user.uid else {

@@ -34,7 +34,7 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         fetchAllMemories(isShowProgress: true)
         instantiateRefreshControl()
         configureSearchView()
-        
+        updateUserFcmToken()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         tapGesture.delegate = self
         self.view.addGestureRecognizer(tapGesture)
@@ -49,6 +49,22 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
     
     @objc func handleTap() {
         searchTextField.resignFirstResponder()
+    }
+    
+    private func updateUserFcmToken() {
+        let updatedData: [String: Any] = [
+            "fcmToken": AppController.shared.fcmToken
+        ]
+        
+        guard let uid = AppController.shared.user?.userId else { return }
+        let databaseRef = Database.database().reference()
+        databaseRef.child("users").child(uid).updateChildValues(updatedData) { (error, ref) in
+            if let error = error {
+                print("An error occurred while updating FCM token: \(error.localizedDescription)")
+            } else {
+                print("FCM token updated successfully!")
+            }
+        }
     }
     
     private func configureSearchView() {

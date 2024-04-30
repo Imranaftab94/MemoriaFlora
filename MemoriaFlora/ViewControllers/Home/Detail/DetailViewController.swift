@@ -9,6 +9,7 @@ import UIKit
 import FirebaseDynamicLinks
 import Kingfisher
 import FirebaseDatabase
+import FirebaseStorage
 
 class DetailViewController: BaseViewController {
     @IBOutlet weak var condolencesLabel: UILabel!
@@ -34,8 +35,7 @@ class DetailViewController: BaseViewController {
             let vc = FlowersVC.instantiate(fromAppStoryboard: .Flowers)
             vc.onSelectPayment = { [weak self] (category, flower) in
                 guard let self = self else { return }
-                self.addCondolences()
-                print(category, flower)
+                self.createCondolence(category: category, flower: flower)
                 animate(category.flowerType)
             }
             let navigationVC = UINavigationController.init(rootViewController: vc)
@@ -166,7 +166,9 @@ class DetailViewController: BaseViewController {
         let memoryQuery = memoriesRef.queryOrdered(byChild: "id").queryEqual(toValue: id)
         
         // Fetch the memory with the specified ID
-        memoryQuery.observeSingleEvent(of: .value) { (snapshot) in
+        memoryQuery.observeSingleEvent(of: .value) { [weak self] (snapshot) in
+            guard let self = self else { return }
+            
             guard snapshot.exists(), let memorySnapshot = snapshot.children.allObjects.first as? DataSnapshot,
                   var memoryData = memorySnapshot.value as? [String: Any] else {
                 print("Memory with ID \(id) not found.")
@@ -185,13 +187,89 @@ class DetailViewController: BaseViewController {
             memoryData["condolences"] = updatedCondolences
             
             // Update only the "condolences" variable in the memory node
-            memorySnapshot.ref.updateChildValues(["condolences": updatedCondolences]) { (error, ref) in
+            memorySnapshot.ref.updateChildValues(["condolences": updatedCondolences]) { [weak self] (error, ref) in
+                guard let self = self else { return }
                 if let error = error {
                     print("Error updating condolences: \(error.localizedDescription)")
                 } else {
                     print("Condolences updated successfully!")
-                    // Show alert or perform other actions if needed
                 }
+            }
+        }
+    }
+    
+    private func createCondolence(category: FlowerCategoryModel, flower: FlowerModel) {
+        guard let memoryId = self.memory?.memoryKey else { return }
+        
+        let condolenceId = Database.database().reference().child("condolences").child(memoryId).childByAutoId().key ?? ""
+        
+        guard let imageData = flower.image.jpegData(compressionQuality: 0.8) else {
+            showAlert(message: "Failed to convert image to data")
+            return
+        }
+        
+        let storageRef = Storage.storage().reference().child("condolences").child(memoryId).child(condolenceId)
+        
+        self.showProgressHUD()
+        let uploadTask = storageRef.putData(imageData, metadata: nil) { [weak self] (metadata, error) in
+            self?.hideProgressHUD()
+            
+            guard let self = self else { return }
+            
+            guard let _ = metadata else {
+                print("Error uploading image: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            
+            storageRef.downloadURL { [weak self] (url, error) in
+                guard let self = self else { return }
+                
+                if let error = error {
+                    print("Error getting download URL: \(error.localizedDescription)")
+                    return
+                }
+                
+                guard let downloadURL = url else {
+                    print("Download URL is nil")
+                    return
+                }
+                
+                guard let userId = AppController.shared.user?.userId else { return }
+                
+                let timestamp = Date().timeIntervalSince1970
+                
+                let condolenceData: [String: Any] = [
+                    "userId": userId,
+                    "memoryId": memoryId,
+                    "timestamp": timestamp,
+                    "flowerPrice": flower.price,
+                    "flowerType": category.flowerType,
+                    "flowerName": flower.name,
+                    "flowerImageUrl": downloadURL.absoluteString
+                ]
+                
+                // Save condolence data in the Realtime Database
+                Database.database().reference().child("condolences").child(memoryId).child(condolenceId).setValue(condolenceData) { [weak self] (error, ref) in
+                    if let error = error {
+                        print("Error saving condolence data: \(error.localizedDescription)")
+                    } else {
+                        print("Condolence data saved successfully!")
+                        self?.addCondolences()
+                    }
+                }
+            }
+        }
+        
+        uploadTask.observe(.progress) { snapshot in
+            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
+            print(percentComplete)
+        }
+        
+        uploadTask.observe(.failure) { snapshot in
+            if let error = snapshot.error {
+                print("Upload failed: \(error.localizedDescription)")
+                // Notify user about the failure
+                self.showAlert(message: "Upload failed. Please try again.")
             }
         }
     }
@@ -231,7 +309,5 @@ class DetailViewController: BaseViewController {
                 })
             }
         }
-
     }
-    
 }
