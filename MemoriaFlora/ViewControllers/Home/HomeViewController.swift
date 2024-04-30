@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseStorage
 import Kingfisher
 
-class HomeViewController: BaseViewController, Refreshable {
+class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var emptyListImageView: UIImageView!
@@ -36,7 +36,15 @@ class HomeViewController: BaseViewController, Refreshable {
         configureSearchView()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tapGesture.delegate = self
         self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let view = touch.view, view.isDescendant(of: tableView) {
+            return false
+        }
+        return true
     }
     
     @objc func handleTap() {

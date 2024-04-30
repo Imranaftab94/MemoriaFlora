@@ -74,6 +74,7 @@ class DetailViewController: BaseViewController {
         }
     }
     
+    // API CALL TO FETCH DETAILS
     private func observeMemory(withId id: String) {
         // Reference to the memories node for the user
         let memoriesRef = Database.database().reference().child("memories")
@@ -100,6 +101,7 @@ class DetailViewController: BaseViewController {
         }
     }
     
+    // API CALL TO OBSERVE CHILD UPDATES OR CHANGES
     private func observeMemoryChanges(withId id: String) {
         // Reference to the memories node for the user
         let memoriesRef = Database.database().reference().child("memories")
