@@ -12,9 +12,14 @@ import FirebaseStorage
 import Kingfisher
 
 class HomeViewController: BaseViewController, Refreshable {
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var emptyListImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userProfileImageView: UIImageView!
+    
+    let activeBorderColor: UIColor = UIColor.init(hexString: "#793EE5")
+    let inactiveBorderColor: UIColor = UIColor.init(hexString: "#0B0B0B")
     
     var refreshControl: UIRefreshControl?
         
@@ -28,6 +33,23 @@ class HomeViewController: BaseViewController, Refreshable {
         observeMemories()
         fetchAllMemories(isShowProgress: true)
         instantiateRefreshControl()
+        configureSearchView()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap() {
+        searchTextField.resignFirstResponder()
+    }
+    
+    private func configureSearchView() {
+        self.searchTextField.delegate = self
+        self.searchView.layer.cornerRadius = 16
+        self.searchView.layer.masksToBounds = true
+        
+        searchView.layer.borderColor = .none
+        searchView.layer.borderWidth = 0.4
     }
     
     @IBAction func onClickProfileButton(_ sender: UIButton) {
@@ -234,5 +256,31 @@ extension HomeViewController: UITableViewDelegate {
         let vc = DetailViewController.instantiate(fromAppStoryboard: .Details)
         vc.memory = memories[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+extension HomeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == searchTextField {
+            // Change border color of username container
+            searchView.layer.borderColor = activeBorderColor.cgColor
+            searchView.layer.borderWidth = 2.0
+        } else {
+            searchView.layer.borderColor = .none
+            searchView.layer.borderWidth = 0.4
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == searchTextField {
+            searchView.layer.borderColor = .none
+            searchView.layer.borderWidth = 0.4
+        }
     }
 }
