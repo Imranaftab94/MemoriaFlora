@@ -12,6 +12,10 @@
 		0B79CAB92BDDD34000EEBC6A /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79CAB82BDDD34000EEBC6A /* InAppPurchaseManager.swift */; };
 		0B79CABB2BDF2D0B00EEBC6A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79CABA2BDF2D0B00EEBC6A /* MainTabBarController.swift */; };
 		0B7F2F002BE179E1009D3ED0 /* FcmAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F2EFF2BE179E1009D3ED0 /* FcmAppDelegate.swift */; };
+		0B7F2F032BE1CD36009D3ED0 /* CondolenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F2F022BE1CD36009D3ED0 /* CondolenceModel.swift */; };
+		0B7F2F052BE1D04F009D3ED0 /* CondolenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F2F042BE1D04F009D3ED0 /* CondolenceVC.swift */; };
+		0B7F2F092BE1D127009D3ED0 /* CondolenceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7F2F082BE1D127009D3ED0 /* CondolenceTableViewCell.xib */; };
+		0B7F2F0A2BE1D127009D3ED0 /* CondolenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F2F072BE1D127009D3ED0 /* CondolenceTableViewCell.swift */; };
 		0BAFC1822BD226E60079C7BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1812BD226E60079C7BD /* HomeViewController.swift */; };
 		0BAFC1862BD227A10079C7BD /* GraveyardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */; };
 		0BAFC18B2BD22A200079C7BD /* GraveyardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */; };
@@ -91,6 +95,10 @@
 		0B79CAB82BDDD34000EEBC6A /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
 		0B79CABA2BDF2D0B00EEBC6A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		0B7F2EFF2BE179E1009D3ED0 /* FcmAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmAppDelegate.swift; sourceTree = "<group>"; };
+		0B7F2F022BE1CD36009D3ED0 /* CondolenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CondolenceModel.swift; sourceTree = "<group>"; };
+		0B7F2F042BE1D04F009D3ED0 /* CondolenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CondolenceVC.swift; sourceTree = "<group>"; };
+		0B7F2F072BE1D127009D3ED0 /* CondolenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CondolenceTableViewCell.swift; sourceTree = "<group>"; };
+		0B7F2F082BE1D127009D3ED0 /* CondolenceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CondolenceTableViewCell.xib; sourceTree = "<group>"; };
 		0BAFC1812BD226E60079C7BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraveyardItem.swift; sourceTree = "<group>"; };
 		0BAFC1892BD22A200079C7BD /* GraveyardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraveyardTableViewCell.swift; sourceTree = "<group>"; };
@@ -182,18 +190,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B7F2F012BE1BE3C009D3ED0 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				E405EADD2BD1C2D2005C8673 /* LoginViewController.swift */,
+				E405EADF2BD1C2DA005C8673 /* SignupViewController.swift */,
+				E405EAE12BD1C2E5005C8673 /* ForgotPasswordViewController.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		0B7F2F062BE1D10F009D3ED0 /* Condolence */ = {
+			isa = PBXGroup;
+			children = (
+				0B7F2F042BE1D04F009D3ED0 /* CondolenceVC.swift */,
+				0B7F2F072BE1D127009D3ED0 /* CondolenceTableViewCell.swift */,
+				0B7F2F082BE1D127009D3ED0 /* CondolenceTableViewCell.xib */,
+			);
+			path = Condolence;
+			sourceTree = "<group>";
+		};
 		0BAFC1832BD227900079C7BD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0B7F2F062BE1D10F009D3ED0 /* Condolence */,
+				0B7F2F012BE1BE3C009D3ED0 /* OnBoarding */,
 				0BDC27B32BD3D328001BA3BE /* Flowers */,
 				0BAFC18F2BD22EEC0079C7BD /* Utils */,
 				0BAFC1882BD229FD0079C7BD /* Home */,
 				E44686A52BCDCDCC001DF89B /* AppDelegate.swift */,
 				E44686A72BCDCDCC001DF89B /* SceneDelegate.swift */,
 				E44686A92BCDCDCC001DF89B /* ViewController.swift */,
-				E405EADD2BD1C2D2005C8673 /* LoginViewController.swift */,
-				E405EADF2BD1C2DA005C8673 /* SignupViewController.swift */,
-				E405EAE12BD1C2E5005C8673 /* ForgotPasswordViewController.swift */,
 				0BAFC18D2BD22E890079C7BD /* SplashVC.swift */,
 				0BAFC19A2BD23D120079C7BD /* BaseViewController.swift */,
 				0BAFC19C2BD242280079C7BD /* CreatePostVC.swift */,
@@ -211,6 +238,7 @@
 				0BAFC1852BD227A10079C7BD /* GraveyardItem.swift */,
 				0BAFC1922BD22F460079C7BD /* UserModel.swift */,
 				0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */,
+				0B7F2F022BE1CD36009D3ED0 /* CondolenceModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -513,6 +541,7 @@
 				0BDC27BA2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib in Resources */,
 				E44686AD2BCDCDCC001DF89B /* Main.storyboard in Resources */,
 				E4D8177E2BD2822D00F2C50D /* GoogleService-Info.plist in Resources */,
+				0B7F2F092BE1D127009D3ED0 /* CondolenceTableViewCell.xib in Resources */,
 				E405EAD02BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf in Resources */,
 				E405EAD72BD1BFCD005C8673 /* SF-Pro-Text-Semibold.otf in Resources */,
 				E405EAD92BD1BFCD005C8673 /* SF-Pro-Text-LightItalic.otf in Resources */,
@@ -601,10 +630,12 @@
 				0BDC27B72BD3D343001BA3BE /* FlowersVC.swift in Sources */,
 				0B6A205B2BDB2FC2005A83D3 /* AppController.swift in Sources */,
 				0B7F2F002BE179E1009D3ED0 /* FcmAppDelegate.swift in Sources */,
+				0B7F2F052BE1D04F009D3ED0 /* CondolenceVC.swift in Sources */,
 				0BD4AC152BD256090058D204 /* ImageSelectionAlertViewController.swift in Sources */,
 				0BD4AC192BD261E90058D204 /* ProfileViewController.swift in Sources */,
 				E458420A2BD3EC3C00B5937D /* DetailViewController.swift in Sources */,
 				0BDC27C72BD3F449001BA3BE /* FlowerModel.swift in Sources */,
+				0B7F2F032BE1CD36009D3ED0 /* CondolenceModel.swift in Sources */,
 				0BDC27C32BD3E2C7001BA3BE /* UIViewController+Extension.swift in Sources */,
 				0BAFC1862BD227A10079C7BD /* GraveyardItem.swift in Sources */,
 				E405EAE22BD1C2E5005C8673 /* ForgotPasswordViewController.swift in Sources */,
@@ -617,6 +648,7 @@
 				0B18DC452BD40F5800483B4A /* SelectPaymentVC.swift in Sources */,
 				0BAFC1822BD226E60079C7BD /* HomeViewController.swift in Sources */,
 				0BDC27BB2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift in Sources */,
+				0B7F2F0A2BE1D127009D3ED0 /* CondolenceTableViewCell.swift in Sources */,
 				0BAFC1932BD22F460079C7BD /* UserModel.swift in Sources */,
 				E44686A82BCDCDCC001DF89B /* SceneDelegate.swift in Sources */,
 			);
