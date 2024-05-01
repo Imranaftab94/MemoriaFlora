@@ -9,6 +9,7 @@ import UIKit
 import IQKeyboardManager
 import FirebaseCore
 import FirebaseDynamicLinks
+import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
         
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+      return GIDSignIn.sharedInstance.handle(url)
+    }
 //    // In your AppDelegate.swift file
 //    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
 //        // Handle the URL (e.g., deep link)

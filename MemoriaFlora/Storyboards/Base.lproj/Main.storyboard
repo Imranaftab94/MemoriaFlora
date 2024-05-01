@@ -156,7 +156,7 @@
                                                                 </connections>
                                                             </switch>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivf-5A-6xj">
-                                                                <rect key="frame" x="68" y="16.333333333333371" width="94" height="17"/>
+                                                                <rect key="frame" x="61" y="16.333333333333371" width="94" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" name="ViewHeaderTextColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -176,7 +176,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="pGQ-N9-VAC" firstAttribute="centerY" secondItem="fhd-oO-Zgt" secondAttribute="centerY" id="1JJ-6h-KZb"/>
-                                                            <constraint firstItem="Ivf-5A-6xj" firstAttribute="leading" secondItem="pGQ-N9-VAC" secondAttribute="trailing" constant="12" id="G2w-tI-xH1"/>
+                                                            <constraint firstItem="Ivf-5A-6xj" firstAttribute="leading" secondItem="pGQ-N9-VAC" secondAttribute="trailing" constant="5" id="G2w-tI-xH1"/>
                                                             <constraint firstAttribute="trailing" secondItem="oVI-KY-xgv" secondAttribute="trailing" id="Hzz-HQ-A19"/>
                                                             <constraint firstItem="pGQ-N9-VAC" firstAttribute="leading" secondItem="fhd-oO-Zgt" secondAttribute="leading" constant="4" id="Wpy-Rh-9qE"/>
                                                             <constraint firstItem="Ivf-5A-6xj" firstAttribute="centerY" secondItem="pGQ-N9-VAC" secondAttribute="centerY" id="ask-T6-egv"/>
@@ -410,13 +410,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uz9-o3-oca">
-                                <rect key="frame" x="157.66666666666666" y="252.00000000000003" width="112.66666666666666" height="38.333333333333343"/>
+                                <rect key="frame" x="163.66666666666666" y="252.00000000000003" width="100.99999999999997" height="37.333333333333343"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="32"/>
                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="gKN-vk-e1o">
-                                <rect key="frame" x="40" y="306.33333333333331" width="348" height="301.99999999999994"/>
+                                <rect key="frame" x="40" y="305.33333333333331" width="348" height="301.99999999999994"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S9z-cU-kgg" customClass="DesignableTextField" customModule="Spring">
                                         <rect key="frame" x="0.0" y="0.0" width="348" height="45"/>
@@ -561,13 +561,13 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_____" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlE-ix-ggH">
-                                <rect key="frame" x="279.66666666666669" y="626.66666666666663" width="80" height="20.333333333333371"/>
+                                <rect key="frame" x="279.66666666666669" y="625.66666666666663" width="80" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="625-fQ-foD">
-                                <rect key="frame" x="279.66666666666669" y="617.33333333333337" width="80" height="34.333333333333371"/>
+                                <rect key="frame" x="279.66666666666669" y="616.66666666666663" width="80" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="GhU-qg-KnY"/>
                                 </constraints>
@@ -581,7 +581,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myE-jY-LNC">
-                                <rect key="frame" x="92.666666666666686" y="624.33333333333337" width="195" height="20.333333333333371"/>
+                                <rect key="frame" x="92.666666666666686" y="623.33333333333337" width="195" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -633,13 +633,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sln-Ij-WJ1">
-                                <rect key="frame" x="79" y="272" width="270.33333333333331" height="38.333333333333314"/>
+                                <rect key="frame" x="92" y="272" width="244" height="37.333333333333314"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="32"/>
                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Fgz-gM-oP5">
-                                <rect key="frame" x="40" y="330.33333333333331" width="348" height="45"/>
+                                <rect key="frame" x="40" y="329.33333333333331" width="348" height="45"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ML-bR-zWx" customClass="DesignableTextField" customModule="Spring">
                                         <rect key="frame" x="0.0" y="0.0" width="348" height="45"/>
@@ -670,7 +670,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ex3-c9-UZt" customClass="DesignableButton" customModule="Spring">
-                                <rect key="frame" x="40" y="405.33333333333331" width="348" height="50"/>
+                                <rect key="frame" x="40" y="404.33333333333331" width="348" height="50"/>
                                 <color key="backgroundColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Xil-pm-glv"/>
@@ -702,13 +702,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_____" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AP5-QV-YTJ">
-                                <rect key="frame" x="266.66666666666669" y="472.66666666666669" width="70" height="20.333333333333314"/>
+                                <rect key="frame" x="266.66666666666669" y="471.66666666666669" width="70" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBm-3w-9Vb">
-                                <rect key="frame" x="266.66666666666669" y="463.33333333333331" width="70" height="34.333333333333314"/>
+                                <rect key="frame" x="266.66666666666669" y="462.66666666666669" width="70" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="0Tz-dD-bof"/>
                                 </constraints>
@@ -722,7 +722,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBx-c0-0qr">
-                                <rect key="frame" x="105.66666666666669" y="470.33333333333331" width="169" height="20.333333333333314"/>
+                                <rect key="frame" x="105.66666666666669" y="469.33333333333331" width="169" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1167,40 +1167,40 @@
     </scenes>
     <designables>
         <designable name="0P8-rI-iYz">
-            <size key="intrinsicContentSize" width="62.666666666666664" height="31"/>
+            <size key="intrinsicContentSize" width="59" height="30.333333333333332"/>
         </designable>
         <designable name="1ML-bR-zWx">
-            <size key="intrinsicContentSize" width="69.666666666666671" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="68.666666666666671" height="18"/>
         </designable>
         <designable name="53K-6w-u2E">
-            <size key="intrinsicContentSize" width="126.33333333333333" height="31"/>
+            <size key="intrinsicContentSize" width="115.66666666666667" height="30.333333333333332"/>
         </designable>
         <designable name="7Iq-n7-kgO">
-            <size key="intrinsicContentSize" width="69.666666666666671" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="68.666666666666671" height="18"/>
         </designable>
         <designable name="Ex3-c9-UZt">
-            <size key="intrinsicContentSize" width="142.33333333333334" height="31"/>
+            <size key="intrinsicContentSize" width="130.66666666666666" height="30.333333333333332"/>
         </designable>
         <designable name="G13-0r-Imo">
-            <size key="intrinsicContentSize" width="154" height="17"/>
+            <size key="intrinsicContentSize" width="150" height="17"/>
         </designable>
         <designable name="Mwy-1R-oOI">
-            <size key="intrinsicContentSize" width="97.333333333333329" height="17"/>
+            <size key="intrinsicContentSize" width="96" height="17"/>
         </designable>
         <designable name="S9z-cU-kgg">
-            <size key="intrinsicContentSize" width="72.666666666666671" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="71" height="18"/>
         </designable>
         <designable name="VW9-dF-nZa">
-            <size key="intrinsicContentSize" width="133.33333333333334" height="31"/>
+            <size key="intrinsicContentSize" width="121.66666666666667" height="30.333333333333332"/>
         </designable>
         <designable name="gId-xP-f5B">
-            <size key="intrinsicContentSize" width="97.333333333333329" height="17"/>
+            <size key="intrinsicContentSize" width="96" height="17"/>
         </designable>
         <designable name="xIz-3y-SMq">
-            <size key="intrinsicContentSize" width="69.666666666666671" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="68.666666666666671" height="18"/>
         </designable>
         <designable name="zPS-Bu-6Cq">
-            <size key="intrinsicContentSize" width="90.666666666666671" height="37"/>
+            <size key="intrinsicContentSize" width="84" height="36.333333333333336"/>
         </designable>
     </designables>
     <resources>

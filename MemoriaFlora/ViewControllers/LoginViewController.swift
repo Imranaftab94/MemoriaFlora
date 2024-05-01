@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import GoogleSignIn
 
 class LoginViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var rememberMeSwitchButton: UISwitch!
@@ -18,6 +20,7 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViews()
+        
     }
     
     private func configureViews() {
@@ -62,7 +65,6 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     }
     
     @IBAction func onClickLoginButton(_ sender: UIButton) {
-        
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
@@ -149,5 +151,36 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK: - Google Signin
+    
+}
+
+extension LoginViewController: GIDSignInDelegate {
+
+ func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+
+    if let error = error {
+
+        print(error)
+
+        return
+    }
+
+    guard let email = user.profile.email else { return }
+
+    guard let authentication = user.authentication else { return }
+
+      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                accessToken: authentication.accessToken)
+  Auth.auth().signIn(with: credential) { (authResult, error) in
+    if let error = error {
+     print(error)
+      return
+    }
+
+      print(authResult)
+        }
     }
 }

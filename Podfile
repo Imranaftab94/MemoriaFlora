@@ -17,7 +17,8 @@ target 'Caro Estinto' do
   pod 'Firebase/Storage'
   pod 'Kingfisher'
   pod 'mailcore2-ios'
-  
+  pod 'GoogleSignIn'
+
 
   post_install do |installer|
       installer.generated_projects.each do |project|
