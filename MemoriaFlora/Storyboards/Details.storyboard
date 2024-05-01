@@ -29,10 +29,10 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcL-yC-acN">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="655.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="666.33333333333337"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJc-Tj-SGp" customClass="DesignableView" customModule="Spring">
-                                                <rect key="frame" x="20" y="19.999999999999972" width="353" height="501.33333333333326"/>
+                                                <rect key="frame" x="20" y="20" width="353" height="512.33333333333337"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCa-q8-TO9">
                                                         <rect key="frame" x="24" y="24.000000000000004" width="264" height="38.333333333333343"/>
@@ -43,8 +43,32 @@
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2D-7u-DPB">
+                                                        <rect key="frame" x="294" y="25.666666666666671" width="49" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="49" id="FeD-YF-qT5"/>
+                                                            <constraint firstAttribute="height" constant="35" id="yj0-eM-zsR"/>
+                                                        </constraints>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system" title=""/>
+                                                        <connections>
+                                                            <action selector="shareButtonTap:" destination="pEW-0B-lJi" eventType="touchUpInside" id="0IH-HT-yur"/>
+                                                        </connections>
+                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PxZ-yV-cnx">
+                                                        <rect key="frame" x="24" y="72.333333333333343" width="305" height="17"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of demise: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygh-vo-5kZ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="17"/>
+                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                                <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Yl-me-jWq" customClass="DesignableView" customModule="Spring">
-                                                        <rect key="frame" x="24" y="136.33333333333337" width="305" height="300"/>
+                                                        <rect key="frame" x="24" y="109.33333333333337" width="305" height="300"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_grave" translatesAutoresizingMaskIntoConstraints="NO" id="Efz-o5-Bnv" customClass="DesignableImageView" customModule="Spring">
                                                                 <rect key="frame" x="0.0" y="0.0" width="305" height="300"/>
@@ -72,41 +96,27 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jp7-mB-Vv4">
+                                                        <rect key="frame" x="24" y="425.33333333333331" width="200" height="30"/>
+                                                        <color key="backgroundColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="Dwr-vU-dSA"/>
+                                                            <constraint firstAttribute="width" constant="200" id="wEc-Hs-Z6M"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Condolences 2">
+                                                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="onClickCondolencesButton:" destination="pEW-0B-lJi" eventType="touchUpInside" id="vjj-gX-a8w"/>
+                                                        </connections>
+                                                    </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m1r-3t-Nmw">
-                                                        <rect key="frame" x="24" y="460.33333333333337" width="305" height="17"/>
+                                                        <rect key="frame" x="24" y="471.33333333333337" width="305" height="17"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg1-Yg-7GG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="305" height="17"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
-                                                                <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2D-7u-DPB">
-                                                        <rect key="frame" x="294" y="25.666666666666671" width="49" height="35"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="49" id="FeD-YF-qT5"/>
-                                                            <constraint firstAttribute="height" constant="35" id="yj0-eM-zsR"/>
-                                                        </constraints>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system" title=""/>
-                                                        <connections>
-                                                            <action selector="shareButtonTap:" destination="pEW-0B-lJi" eventType="touchUpInside" id="0IH-HT-yur"/>
-                                                        </connections>
-                                                    </button>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PxZ-yV-cnx">
-                                                        <rect key="frame" x="24" y="72.333333333333343" width="305" height="44"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of demise: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygh-vo-5kZ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="17"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
-                                                                <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condolences" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSI-Ie-KnA">
-                                                                <rect key="frame" x="0.0" y="27" width="305" height="17"/>
                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -122,6 +132,7 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="449" id="FNT-Ix-iJd"/>
                                                     <constraint firstAttribute="trailing" secondItem="QCa-q8-TO9" secondAttribute="trailing" constant="65" id="Im0-cx-Vtg"/>
                                                     <constraint firstItem="V2D-7u-DPB" firstAttribute="centerY" secondItem="QCa-q8-TO9" secondAttribute="centerY" id="Oft-mD-p6Z"/>
+                                                    <constraint firstItem="m1r-3t-Nmw" firstAttribute="top" secondItem="Jp7-mB-Vv4" secondAttribute="bottom" constant="16" id="RAZ-ZH-Wfm"/>
                                                     <constraint firstAttribute="trailing" secondItem="PxZ-yV-cnx" secondAttribute="trailing" constant="24" id="Rbu-5Z-XLO"/>
                                                     <constraint firstItem="PxZ-yV-cnx" firstAttribute="top" secondItem="QCa-q8-TO9" secondAttribute="bottom" constant="10" id="SOO-ef-wSi"/>
                                                     <constraint firstItem="m1r-3t-Nmw" firstAttribute="leading" secondItem="PJc-Tj-SGp" secondAttribute="leading" constant="24" id="Vtj-Fe-dmQ"/>
@@ -129,10 +140,11 @@
                                                     <constraint firstItem="QCa-q8-TO9" firstAttribute="top" secondItem="PJc-Tj-SGp" secondAttribute="top" constant="24" id="XQb-8n-PGe"/>
                                                     <constraint firstItem="1Yl-me-jWq" firstAttribute="top" secondItem="PxZ-yV-cnx" secondAttribute="bottom" constant="20" id="hDD-Au-2jW"/>
                                                     <constraint firstAttribute="trailing" secondItem="1Yl-me-jWq" secondAttribute="trailing" constant="24" id="hwR-CV-134"/>
-                                                    <constraint firstItem="m1r-3t-Nmw" firstAttribute="top" secondItem="1Yl-me-jWq" secondAttribute="bottom" constant="24" id="jd5-5Z-bJW"/>
                                                     <constraint firstAttribute="trailing" secondItem="1Yl-me-jWq" secondAttribute="trailing" constant="24" id="k1a-i1-EuT"/>
                                                     <constraint firstItem="QCa-q8-TO9" firstAttribute="leading" secondItem="PJc-Tj-SGp" secondAttribute="leading" constant="24" id="mCh-US-mRV"/>
+                                                    <constraint firstItem="Jp7-mB-Vv4" firstAttribute="top" secondItem="Efz-o5-Bnv" secondAttribute="bottom" constant="16" id="oGV-jA-x1P"/>
                                                     <constraint firstItem="PxZ-yV-cnx" firstAttribute="leading" secondItem="PJc-Tj-SGp" secondAttribute="leading" constant="24" id="sGe-2Y-yFM"/>
+                                                    <constraint firstItem="Jp7-mB-Vv4" firstAttribute="leading" secondItem="Efz-o5-Bnv" secondAttribute="leading" id="sss-iy-XpV"/>
                                                     <constraint firstAttribute="bottom" secondItem="m1r-3t-Nmw" secondAttribute="bottom" constant="24" id="vLd-DX-8qN"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -142,7 +154,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AL8-NF-OLg" customClass="DesignableButton" customModule="Spring">
-                                                <rect key="frame" x="44" y="545.33333333333337" width="305" height="50"/>
+                                                <rect key="frame" x="44" y="556.33333333333337" width="305" height="50"/>
                                                 <color key="backgroundColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="ayg-c7-gie"/>
@@ -209,7 +221,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="condolencesLabel" destination="rSI-Ie-KnA" id="2iD-yN-hiI"/>
+                        <outlet property="condolencesButton" destination="Jp7-mB-Vv4" id="CIU-yD-Jng"/>
                         <outlet property="containerView" destination="1Yl-me-jWq" id="wdL-wz-QmS"/>
                         <outlet property="demiseLabel" destination="ygh-vo-5kZ" id="UXF-wc-vCw"/>
                         <outlet property="detailLabel" destination="eg1-Yg-7GG" id="Mk1-RK-Uyj"/>
@@ -220,6 +232,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QJi-L4-bFK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4144.2748091603053" y="-12.67605633802817"/>
+        </scene>
+        <!--CondolenceVC-->
+        <scene sceneID="P0V-hr-jRS">
+            <objects>
+                <viewController storyboardIdentifier="CondolenceVC" id="KvX-4b-5sp" customClass="CondolenceVC" customModule="Caro_Estinto" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GYQ-uF-YNw">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="upL-67-g5K">
+                                <rect key="frame" x="0.0" y="67" width="393" height="751"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pcg-Qp-bsU"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="upL-67-g5K" firstAttribute="leading" secondItem="pcg-Qp-bsU" secondAttribute="leading" id="N5d-ig-zFa"/>
+                            <constraint firstItem="pcg-Qp-bsU" firstAttribute="trailing" secondItem="upL-67-g5K" secondAttribute="trailing" id="ejN-Ev-Rv0"/>
+                            <constraint firstItem="pcg-Qp-bsU" firstAttribute="bottom" secondItem="upL-67-g5K" secondAttribute="bottom" id="gTn-SM-9VP"/>
+                            <constraint firstItem="upL-67-g5K" firstAttribute="top" secondItem="pcg-Qp-bsU" secondAttribute="top" constant="8" id="yiN-U8-pET"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="upL-67-g5K" id="bdt-QD-jZS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d6l-BK-Qhd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4920" y="-13"/>
         </scene>
     </scenes>
     <designables>

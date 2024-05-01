@@ -12,9 +12,9 @@ import FirebaseDatabase
 import FirebaseStorage
 
 class DetailViewController: BaseViewController {
-    @IBOutlet weak var condolencesLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var condolencesButton: UIButton!
     @IBOutlet weak var demiseLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var containerView: UIView!
@@ -28,6 +28,12 @@ class DetailViewController: BaseViewController {
         if let id = self.memory?.uid {
             observeMemory(withId: id)
         }
+        getCondolencesCount()
+    }
+    
+    @IBAction func onClickCondolencesButton(_ sender: UIButton) {
+        guard let memory = memory else { return }
+        self.navigationController?.pushViewController(CondolenceVC.instantiate(memory: memory), animated: true)
     }
     
     @IBAction func chooseFlowerButtonTap(_ sender: UIButton) {
@@ -149,52 +155,19 @@ class DetailViewController: BaseViewController {
             if let url = URL(string: self.memory?.imageUrl ?? "") {
                 self.imgView.kf.setImage(with: url)
             }
-            if self.memory?.condolences == 0 {
-                self.condolencesLabel.isHidden = true
-            } else {
-                self.condolencesLabel.isHidden = false
-                self.condolencesLabel.text = "Condolences: \(self.memory?.condolences ?? 0)"
-            }
+            self.condolencesButton.layer.cornerRadius = 14
+            self.condolencesButton.layer.masksToBounds = true
         }
     }
     
-    private func addCondolences() {
-        let memoriesRef = Database.database().reference().child("memories")
+    private func getCondolencesCount() {
+        let databaseRef = Database.database().reference()
         
-        guard let id = self.memory?.uid else { return }
-        // Create a query to find the memory with the specified ID
-        let memoryQuery = memoriesRef.queryOrdered(byChild: "id").queryEqual(toValue: id)
-        
-        // Fetch the memory with the specified ID
-        memoryQuery.observeSingleEvent(of: .value) { [weak self] (snapshot) in
-            guard let self = self else { return }
-            
-            guard snapshot.exists(), let memorySnapshot = snapshot.children.allObjects.first as? DataSnapshot,
-                  var memoryData = memorySnapshot.value as? [String: Any] else {
-                print("Memory with ID \(id) not found.")
-                return
-            }
-            
-            guard let currentCondolences = memoryData["condolences"] as? Int else {
-                print("Failed to fetch condolences value.")
-                return
-            }
-            
-            // Increment condolences by 1
-            let updatedCondolences = currentCondolences + 1
-            
-            // Update condolences value in memory data
-            memoryData["condolences"] = updatedCondolences
-            
-            // Update only the "condolences" variable in the memory node
-            memorySnapshot.ref.updateChildValues(["condolences": updatedCondolences]) { [weak self] (error, ref) in
-                guard let self = self else { return }
-                if let error = error {
-                    print("Error updating condolences: \(error.localizedDescription)")
-                } else {
-                    print("Condolences updated successfully!")
-                }
-            }
+        guard let memoryId = self.memory?.memoryKey else { return }
+
+        databaseRef.child("condolences").child(memoryId).observe(.value) { (snapshot) in
+            let count = snapshot.childrenCount
+            self.condolencesButton.setTitle("Condolences \(count)", for: .normal)
         }
     }
     
@@ -250,11 +223,11 @@ class DetailViewController: BaseViewController {
                 
                 // Save condolence data in the Realtime Database
                 Database.database().reference().child("condolences").child(memoryId).child(condolenceId).setValue(condolenceData) { [weak self] (error, ref) in
+                    guard let self = self else { return }
                     if let error = error {
                         print("Error saving condolence data: \(error.localizedDescription)")
                     } else {
                         print("Condolence data saved successfully!")
-                        self?.addCondolences()
                     }
                 }
             }
