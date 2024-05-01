@@ -12,10 +12,15 @@ import FirebaseStorage
 import Kingfisher
 import UserNotifications
 
-class HomeViewController: BaseViewController, Refreshable {
+class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDelegate {
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var emptyListImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userProfileImageView: UIImageView!
+    
+    let activeBorderColor: UIColor = UIColor.init(hexString: "#793EE5")
+    let inactiveBorderColor: UIColor = UIColor.init(hexString: "#0B0B0B")
     
     var refreshControl: UIRefreshControl?
         
@@ -37,6 +42,47 @@ class HomeViewController: BaseViewController, Refreshable {
         observeMemories()
         fetchAllMemories(isShowProgress: true)
         instantiateRefreshControl()
+        configureSearchView()
+        updateUserFcmToken()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tapGesture.delegate = self
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let view = touch.view, view.isDescendant(of: tableView) {
+            return false
+        }
+        return true
+    }
+    
+    @objc func handleTap() {
+        searchTextField.resignFirstResponder()
+    }
+    
+    private func updateUserFcmToken() {
+        let updatedData: [String: Any] = [
+            "fcmToken": AppController.shared.fcmToken
+        ]
+        
+        guard let uid = AppController.shared.user?.userId else { return }
+        let databaseRef = Database.database().reference()
+        databaseRef.child("users").child(uid).updateChildValues(updatedData) { (error, ref) in
+            if let error = error {
+                print("An error occurred while updating FCM token: \(error.localizedDescription)")
+            } else {
+                print("FCM token updated successfully!")
+            }
+        }
+    }
+    
+    private func configureSearchView() {
+        self.searchTextField.delegate = self
+        self.searchView.layer.cornerRadius = 16
+        self.searchView.layer.masksToBounds = true
+        
+        searchView.layer.borderColor = .none
+        searchView.layer.borderWidth = 0.4
     }
     
     func setNotification() {
@@ -113,11 +159,8 @@ class HomeViewController: BaseViewController, Refreshable {
     }
     
     private func observeMemories() {
-        // Reference to the memories node for the user
         let memoriesRef = Database.database().reference().child("memories")
-        
-        // Observe for new changes in memories
-        
+                
         memoriesRef.observe(.childAdded) { (snapshot) in
             guard let memoryData = snapshot.value as? [String: Any] else {
                 return
@@ -130,6 +173,19 @@ class HomeViewController: BaseViewController, Refreshable {
             self.memories.sort { $0.timestamp > $1.timestamp }
             
             self.reloadTableView()
+        }
+        
+        memoriesRef.observe(.childChanged) { (snapshot) in
+            guard let memoryData = snapshot.value as? [String: Any] else {
+                return
+            }
+            
+            if let index = self.memories.firstIndex(where: { $0.memoryKey == snapshot.key }) {
+                if let updatedMemory = Memory.createMemory(from: memoryData) {
+                    self.memories[index] = updatedMemory
+                    self.reloadTableView()
+                }
+            }
         }
     }
     
@@ -216,12 +272,17 @@ extension HomeViewController: UITableViewDataSource {
             alert.addAction(cancelAction)
             
             let deleteConfirmAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                guard let key = item.memoryKey else { return }
                 self.showProgressHUD()
-                self.deleteMemory(withUID: item.uid) {
+                self.deleteMemory(withUID: key) {
                     self.hideProgressHUD()
+                    tableView.beginUpdates()
                     self.memories.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
-                    tableView.reloadData()
+                    tableView.endUpdates()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.reloadTableView()
+                    }
                     completionHandler(true)
                 }
             }
@@ -229,17 +290,18 @@ extension HomeViewController: UITableViewDataSource {
             
             self.present(alert, animated: true, completion: nil)
         }
-        deleteAction.backgroundColor = .red // Customize delete button color if needed
+        deleteAction.backgroundColor = .red
         actions.append(deleteAction)
         
         // Add edit action if the item meets certain conditions
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completionHandler) in
-            // Handle edit action here
-            // For example, you can show an edit screen for the selected item
-            print("Edit button tapped for item at index \(indexPath.row)")
+            let vc = CreatePostVC.instantiate(fromAppStoryboard: .Main)
+            vc.memory = item
+            vc.isEditingEnabled = true
+            self.navigationController?.pushViewController(vc, animated: true)
             completionHandler(true)
         }
-        editAction.backgroundColor = .blue // Customize edit button color if needed
+        editAction.backgroundColor = .blue
         actions.append(editAction)
         
 
@@ -285,5 +347,31 @@ extension HomeViewController: UITableViewDelegate {
         let vc = DetailViewController.instantiate(fromAppStoryboard: .Details)
         vc.memory = memories[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+extension HomeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == searchTextField {
+            // Change border color of username container
+            searchView.layer.borderColor = activeBorderColor.cgColor
+            searchView.layer.borderWidth = 2.0
+        } else {
+            searchView.layer.borderColor = .none
+            searchView.layer.borderWidth = 0.4
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == searchTextField {
+            searchView.layer.borderColor = .none
+            searchView.layer.borderWidth = 0.4
+        }
     }
 }

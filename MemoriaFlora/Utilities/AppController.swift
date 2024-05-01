@@ -27,4 +27,6 @@ class AppController {
             MyUserDefaults.setUser(user)
         }
     }
+    
+    var fcmToken: String = ""
 }

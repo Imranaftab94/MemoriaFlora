@@ -9,14 +9,48 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class LoginViewController: BaseViewController {
+class LoginViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var rememberMeSwitchButton: UISwitch!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var linkTextView: UITextView!
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.configureViews()
+    }
+    
+    private func configureViews() {
+        let text = "Caro Estinto uses cookies for analytics, personalized contents and ads, using Caro Estinto's service you agree with Policy and Rules."
+        
+        let attributedString = NSMutableAttributedString(string: text)
+        
+        let policyRange = (text as NSString).range(of: "Policy")
+        let rulesRange = (text as NSString).range(of: "Rules")
+        
+        attributedString.addAttribute(.link, value: "http://caroestinto.com/privatepolicy/", range: policyRange)
+        attributedString.addAttribute(.link, value: "http://caroestinto.com/rules/", range: rulesRange)
+        
+        attributedString.addAttribute(.foregroundColor, value: UIColor.blue, range: policyRange)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.blue, range: rulesRange)
+        
+        // Set font size
+        let fontSize: CGFloat = 13.0
+        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: fontSize), range: NSRange(location: 0, length: attributedString.length))
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
+        
+        linkTextView.attributedText = attributedString
+        linkTextView.isUserInteractionEnabled = true
+        linkTextView.isEditable = false
+        linkTextView.delegate = self
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        UIApplication.shared.open(URL)
+        return true
     }
     
     @IBAction func onClickSwitchButton(_ sender: UISwitch) {
@@ -24,9 +58,11 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func onClickFacebookButton(_ sender: UIButton) {
+        
     }
     
     @IBAction func onClickLoginButton(_ sender: UIButton) {
+        
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {

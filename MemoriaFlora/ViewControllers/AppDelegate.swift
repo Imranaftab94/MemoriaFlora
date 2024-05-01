@@ -12,6 +12,8 @@ import FirebaseDynamicLinks
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    let gcmMessageIDKey = "gcm.message_id"
 
     var window: UIWindow?
 
@@ -20,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared().isEnabled = true
         FirebaseApp.configure()
         window?.overrideUserInterfaceStyle = .light
-
+        self.registerForPushNotifications()
         return true
     }
         
