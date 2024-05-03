@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView!
@@ -26,6 +27,14 @@ class ProfileViewController: UIViewController {
     
     @IBAction func onClickLogoutButton(_ sender: UIButton) {
         MyUserDefaults.removeUser()
+        
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print("Error signing out: %@", signOutError)
+        }
+
         let splashVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashVC") as! SplashVC
         let navigationVC = UINavigationController.init(rootViewController: splashVC)
         UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {

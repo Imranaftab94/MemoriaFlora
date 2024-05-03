@@ -10,6 +10,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import GoogleSignIn
+import FirebaseCore
 
 class LoginViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var rememberMeSwitchButton: UISwitch!
@@ -65,6 +66,78 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     }
     
     @IBAction func onClickLoginButton(_ sender: UIButton) {
+        self.showProgressHUD()
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            self.hideProgressHUD()
+            return
+        }
+
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { [unowned self] result, error in
+          guard error == nil else {
+            self.hideProgressHUD()
+            return
+          }
+
+          guard let user = result?.user,
+            let idToken = user.idToken?.tokenString
+          else {
+            self.hideProgressHUD()
+            return
+          }
+
+            print("Auth Google id Token : ",idToken)
+          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                         accessToken: user.accessToken.tokenString)
+
+          print(credential)
+            Auth.auth().signIn(with: credential) { authResult, error in
+                self.hideProgressHUD()
+                print("Auth Result google signin : ", authResult)
+                if let error = error {
+                    print("Error signing in: \(error.localizedDescription)")
+                    self.showAlert(message: error.localizedDescription)
+                } else {
+                    if let user = authResult?.user {
+                        if self.rememberMeSwitchButton.isOn {
+                            MyUserDefaults.setRememberMe(true)
+                        }
+                        
+                        // Save user data under the user ID
+                        let userData: [String: Any] = [
+                            "name": user.displayName ?? "",
+                            "email": user.email ?? "",
+                            "userDescription": "",
+                            "admin": true,
+                            "userId": user.uid,
+                        ]
+                        
+                        let databaseRef = Database.database().reference()
+                        let user = User(name: user.displayName ?? "", email: authResult?.user.email ?? "", userDescription: user.description, userId: user.uid)
+
+                        guard let uid = authResult?.user.uid else {
+                            return
+                        }
+                        
+                        databaseRef.child("users").child(uid).updateChildValues(userData) { (error, ref) in
+                            if let error = error {
+                                print("An error occurred while saving user data: \(error.localizedDescription)")
+                            } else {
+                                print("User data saved successfully!")
+                            }
+                        }
+
+                        
+                        AppController.shared.user = user
+                        self.getUserFromDB(email: authResult?.user.email ?? "")
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
@@ -157,30 +230,3 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     
 }
 
-//extension LoginViewController: GIDSignInDelegate {
-//
-// func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-//
-//    if let error = error {
-//
-//        print(error)
-//
-//        return
-//    }
-//
-//    guard let email = user.profile.email else { return }
-//
-//    guard let authentication = user.authentication else { return }
-//
-//      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-//                                                accessToken: authentication.accessToken)
-//  Auth.auth().signIn(with: credential) { (authResult, error) in
-//    if let error = error {
-//     print(error)
-//      return
-//    }
-//
-//      print(authResult)
-//        }
-//    }
-//}

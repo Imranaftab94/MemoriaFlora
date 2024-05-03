@@ -25,7 +25,8 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
     var refreshControl: UIRefreshControl?
         
     var memories: [Memory] = []
-    
+    var allMemoryUsers: [Memory] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,6 +41,7 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         tapGesture.delegate = self
         self.view.addGestureRecognizer(tapGesture)
+        searchTextField.delegate = self
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -80,59 +82,17 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
     
     func setNotification() {
         // Remove previous notifications
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        
-        // Schedule notifications for each memory
-        if let userID = AppController.shared.user?.userId {
-            for memory in memories {
-                scheduleNotification(for: memory, userID: userID)
-            }
-        }
+//        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+//        
+//        // Schedule notifications for each memory
+//        if let userID = AppController.shared.user?.userId {
+//            for memory in memories {
+//                scheduleNotification(for: memory, userID: userID)
+//            }
+//        }
     }
     
     func scheduleNotification(for memory: Memory, userID: String) {
-        // Calculate the expiration date (6 months from the timestamp)
-//        guard let expirationDate = Calendar.current.date(byAdding: .month, value: 6, to: memory.timestamp) else {
-//            return
-//        }
-//        
-//        // Check if the current date is within 6 months from the memory's timestamp
-//        guard Date() < expirationDate else {
-//            print("Memory has already expired.")
-//            return
-//        }
-//        
-//        // Calculate the notification date (one week before the expiration date)
-//        let notificationDate = Calendar.current.date(byAdding: .day, value: -7, to: expirationDate)
-//        
-//        // Check if the notification date is in the future
-//        guard let notificationDate = notificationDate, notificationDate > Date() else {
-//            print("Notification date is in the past.")
-//            return
-//        }
-//        
-//        // Create notification content
-//        let content = UNMutableNotificationContent()
-//        content.title = "Don't forget!"
-//        content.body = "It's almost time to buy flowers for \(memory.userName)."
-//        content.sound = .default
-//        
-//        // Configure the notification trigger
-//        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificationDate)
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-////        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 30, repeats: false)
-//
-//        // Create notification request
-//        let request = UNNotificationRequest(identifier: memory.uid, content: content, trigger: trigger)
-//        
-//        // Add the notification request
-//        UNUserNotificationCenter.current().add(request) { error in
-//            if let error = error {
-//                print("Error scheduling test notification: \(error)")
-//            } else {
-//                print("Test notification scheduled successfully.")
-//            }
-//        }
     }
     
     @IBAction func onClickProfileButton(_ sender: UIButton) {
@@ -204,9 +164,30 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
             }
             
             allMemories.sort { $0.timestamp > $1.timestamp }
+                    
             self.memories = allMemories
+            self.allMemoryUsers = allMemories
+            self.checkAndDeleteOldMemories()
             self.setNotification()
             self.reloadTableView()
+        }
+    }
+    
+    private func checkAndDeleteOldMemories() {
+        
+        if AppController.shared.user?.admin == true {
+            
+            let sixMonthsAgo = Calendar.current.date(byAdding: .month, value: -6, to: Date())!
+
+            for memory in allMemoryUsers {
+                if memory.timestamp < sixMonthsAgo {
+                    print("The memory is older than six months.")
+                    guard let memoryKey = memory.memoryKey else { return }
+                    self.deleteMemory(withUID: memoryKey)
+                } else {
+                    print("The memory is not older than six months.")
+                }
+            }
         }
     }
     
@@ -350,6 +331,8 @@ extension HomeViewController: UITextFieldDelegate {
         return true
     }
     
+    
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == searchTextField {
             // Change border color of username container
@@ -367,4 +350,19 @@ extension HomeViewController: UITextFieldDelegate {
             searchView.layer.borderWidth = 0.4
         }
     }
+    
+    // UITextFieldDelegate method to filter users when text changes
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let searchText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else {
+            return true
+        }
+        if searchText.isEmpty {
+            memories = allMemoryUsers
+        } else {
+            memories = allMemoryUsers.filter { $0.userName.lowercased().contains(searchText.lowercased()) }
+        }
+        tableView.reloadData()
+        return true
+    }
+
 }

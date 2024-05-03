@@ -69,7 +69,7 @@
 		E45842072BD33A5D00B5937D /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E45842062BD33A5D00B5937D /* Details.storyboard */; };
 		E458420A2BD3EC3C00B5937D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45842092BD3EC3C00B5937D /* DetailViewController.swift */; };
 		E4D8177C2BD278BC00F2C50D /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8177B2BD278BC00F2C50D /* Functions.swift */; };
-		E4D8177E2BD2822D00F2C50D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4D8177D2BD2822D00F2C50D /* GoogleService-Info.plist */; };
+		E4FFDFC52BE4CDE500DA7930 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4FFDFC42BE4CDE500DA7930 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,8 +161,8 @@
 		E45842062BD33A5D00B5937D /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		E45842092BD3EC3C00B5937D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E4D8177B2BD278BC00F2C50D /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		E4D8177D2BD2822D00F2C50D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E4D8177F2BD289E900F2C50D /* MemoriaFlora.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MemoriaFlora.entitlements; sourceTree = "<group>"; };
+		E4FFDFC42BE4CDE500DA7930 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,7 +381,7 @@
 				0BAFC1832BD227900079C7BD /* ViewControllers */,
 				E4D8177A2BD2789300F2C50D /* Utilities */,
 				E44686AE2BCDCDCF001DF89B /* Assets.xcassets */,
-				E4D8177D2BD2822D00F2C50D /* GoogleService-Info.plist */,
+				E4FFDFC42BE4CDE500DA7930 /* GoogleService-Info.plist */,
 				E44686B32BCDCDCF001DF89B /* Info.plist */,
 			);
 			path = MemoriaFlora;
@@ -531,6 +531,7 @@
 			files = (
 				E405EADC2BD1BFCD005C8673 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */,
+				E4FFDFC52BE4CDE500DA7930 /* GoogleService-Info.plist in Resources */,
 				E44686B22BCDCDCF001DF89B /* LaunchScreen.storyboard in Resources */,
 				E405EAD62BD1BFCD005C8673 /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				E45842072BD33A5D00B5937D /* Details.storyboard in Resources */,
@@ -543,7 +544,6 @@
 				E405EADB2BD1BFCD005C8673 /* SF-Pro-Text-Regular.ttf in Resources */,
 				0BDC27BA2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib in Resources */,
 				E44686AD2BCDCDCC001DF89B /* Main.storyboard in Resources */,
-				E4D8177E2BD2822D00F2C50D /* GoogleService-Info.plist in Resources */,
 				0B7F2F092BE1D127009D3ED0 /* CondolenceTableViewCell.xib in Resources */,
 				E405EAD02BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf in Resources */,
 				E405EAD72BD1BFCD005C8673 /* SF-Pro-Text-Semibold.otf in Resources */,
