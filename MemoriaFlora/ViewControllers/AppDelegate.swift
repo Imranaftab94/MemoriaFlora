@@ -10,6 +10,9 @@ import IQKeyboardManager
 import FirebaseCore
 import FirebaseDynamicLinks
 import GoogleSignIn
+import UserNotifications
+import Messages
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared().isEnabled = true
         FirebaseApp.configure()
         window?.overrideUserInterfaceStyle = .light
+        UNUserNotificationCenter.current().delegate = self
+        Messaging.messaging().delegate = self
         self.registerForPushNotifications()
         return true
     }

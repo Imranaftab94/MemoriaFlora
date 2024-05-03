@@ -28,13 +28,6 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-            if granted {
-                // Authorization granted
-            } else {
-                // Authorization denied
-            }
-        }
 
         self.configureTableView()
         userProfileImageView.layer.cornerRadius = 16
@@ -99,47 +92,47 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
     
     func scheduleNotification(for memory: Memory, userID: String) {
         // Calculate the expiration date (6 months from the timestamp)
-        guard let expirationDate = Calendar.current.date(byAdding: .month, value: 6, to: memory.timestamp) else {
-            return
-        }
-        
-        // Check if the current date is within 6 months from the memory's timestamp
-        guard Date() < expirationDate else {
-            print("Memory has already expired.")
-            return
-        }
-        
-        // Calculate the notification date (one week before the expiration date)
-        let notificationDate = Calendar.current.date(byAdding: .day, value: -7, to: expirationDate)
-        
-        // Check if the notification date is in the future
-        guard let notificationDate = notificationDate, notificationDate > Date() else {
-            print("Notification date is in the past.")
-            return
-        }
-        
-        // Create notification content
-        let content = UNMutableNotificationContent()
-        content.title = "Don't forget!"
-        content.body = "It's almost time to buy flowers for \(memory.userName)."
-        content.sound = .default
-        
-        // Configure the notification trigger
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificationDate)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 30, repeats: false)
-
-        // Create notification request
-        let request = UNNotificationRequest(identifier: memory.uid, content: content, trigger: trigger)
-        
-        // Add the notification request
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Error scheduling test notification: \(error)")
-            } else {
-                print("Test notification scheduled successfully.")
-            }
-        }
+//        guard let expirationDate = Calendar.current.date(byAdding: .month, value: 6, to: memory.timestamp) else {
+//            return
+//        }
+//        
+//        // Check if the current date is within 6 months from the memory's timestamp
+//        guard Date() < expirationDate else {
+//            print("Memory has already expired.")
+//            return
+//        }
+//        
+//        // Calculate the notification date (one week before the expiration date)
+//        let notificationDate = Calendar.current.date(byAdding: .day, value: -7, to: expirationDate)
+//        
+//        // Check if the notification date is in the future
+//        guard let notificationDate = notificationDate, notificationDate > Date() else {
+//            print("Notification date is in the past.")
+//            return
+//        }
+//        
+//        // Create notification content
+//        let content = UNMutableNotificationContent()
+//        content.title = "Don't forget!"
+//        content.body = "It's almost time to buy flowers for \(memory.userName)."
+//        content.sound = .default
+//        
+//        // Configure the notification trigger
+//        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificationDate)
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+////        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 30, repeats: false)
+//
+//        // Create notification request
+//        let request = UNNotificationRequest(identifier: memory.uid, content: content, trigger: trigger)
+//        
+//        // Add the notification request
+//        UNUserNotificationCenter.current().add(request) { error in
+//            if let error = error {
+//                print("Error scheduling test notification: \(error)")
+//            } else {
+//                print("Test notification scheduled successfully.")
+//            }
+//        }
     }
     
     @IBAction func onClickProfileButton(_ sender: UIButton) {

@@ -35,7 +35,7 @@ extension AppDelegate {
     }
 }
 // Message Delegate
-extension AppDelegate: MessagingDelegate{
+extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("Firebase registration token: \(String(describing: fcmToken))")
         AppController.shared.fcmToken = fcmToken ?? ""
@@ -46,8 +46,8 @@ extension AppDelegate: MessagingDelegate{
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
+        Messaging.messaging().apnsToken = deviceToken
         print("Device Token: \(token)")
-        AppController.shared.fcmToken  = token
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -85,7 +85,6 @@ extension AppDelegate: MessagingDelegate{
     }
 }
 
-@available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
     
     // Receive displayed notifications for iOS 10 devices.
