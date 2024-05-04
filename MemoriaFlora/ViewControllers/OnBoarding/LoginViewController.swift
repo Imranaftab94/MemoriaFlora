@@ -74,33 +74,30 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
             self.hideProgressHUD()
             return
         }
-
+        
         // Create Google Sign In configuration object.
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.configuration = config
-
+        
         // Start the sign in flow!
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { [unowned self] result, error in
-          guard error == nil else {
-            self.hideProgressHUD()
-            return
-          }
-
-          guard let user = result?.user,
-            let idToken = user.idToken?.tokenString
-          else {
-            self.hideProgressHUD()
-            return
-          }
-
-            print("Auth Google id Token : ",idToken)
-          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                         accessToken: user.accessToken.tokenString)
-
-          print(credential)
+            guard error == nil else {
+                self.hideProgressHUD()
+                return
+            }
+            
+            guard let user = result?.user,
+                  let idToken = user.idToken?.tokenString
+            else {
+                self.hideProgressHUD()
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: user.accessToken.tokenString)
+            
             Auth.auth().signIn(with: credential) { authResult, error in
                 self.hideProgressHUD()
-                print("Auth Result google signin : ", authResult)
                 if let error = error {
                     print("Error signing in: \(error.localizedDescription)")
                     self.showAlert(message: error.localizedDescription)
@@ -121,7 +118,7 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
                         
                         let databaseRef = Database.database().reference()
                         let user = User(name: user.displayName ?? "", email: authResult?.user.email ?? "", userDescription: user.description, userId: user.uid)
-
+                        
                         guard let uid = authResult?.user.uid else {
                             return
                         }
@@ -133,7 +130,6 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
                                 print("User data saved successfully!")
                             }
                         }
-
                         
                         AppController.shared.user = user
                         self.getUserFromDB(email: authResult?.user.email ?? "")
@@ -180,23 +176,22 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     
     private func getUserFromDB(email: String) {
         let databaseRef = Database.database().reference()
-
-        databaseRef.child("users").queryOrdered(byChild: "email").queryEqual(toValue: email).observeSingleEvent(of: .value) { (snapshot) in
+        
+        let query = databaseRef.child("users").queryOrdered(byChild: "email").queryEqual(toValue: email).queryLimited(toFirst: 1)
+        self.showProgressHUD()
+        query.observeSingleEvent(of: .value) { (snapshot) in
+            self.hideProgressHUD()
             guard snapshot.exists() else {
                 print("User not found")
                 self.navigateToHome()
                 return
             }
-
-            for case let child as DataSnapshot in snapshot.children {
-                guard let userData = child.value as? [String: Any] else {
-                    print("Error: Could not parse user data")
-                    return
-                }
-
-                print("User data: \(userData)")
+            
+            if let userData = snapshot.children.allObjects.first as? DataSnapshot,
+               let userDataDict = userData.value as? [String: Any] {
+                print("User data: \(userDataDict)")
                 
-                if let isAdmin = userData["admin"] as? Bool {
+                if let isAdmin = userDataDict["admin"] as? Bool {
                     var user = AppController.shared.user
                     user?.admin = isAdmin
                     AppController.shared.user = user
@@ -221,7 +216,7 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         return emailPredicate.evaluate(with: email)
     }
-
+    
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
