@@ -13,6 +13,7 @@ import GoogleSignIn
 import UserNotifications
 import Messages
 import Firebase
+//import FacebookCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,7 +37,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
       return GIDSignIn.sharedInstance.handle(url)
+        
     }
+//    func application(
+//        _ app: UIApplication,
+//        open url: URL,
+//        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+//    ) -> Bool {
+//        ApplicationDelegate.shared.application(
+//            app,
+//            open: url,
+//            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+//        )
+//    }
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+//        if let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//           let annotation = options[UIApplication.OpenURLOptionsKey.annotation] {
+//            // Handle the URL for Facebook login
+//            return ApplicationDelegate.shared.application(
+//                app,
+//                open: url,
+//                sourceApplication: sourceApplication,
+//                annotation: annotation
+//            )
+//        } else {
+//            // Handle the URL for Google Sign-In
+//            return GIDSignIn.sharedInstance.handle(url)
+//        }
+//    }
+
 //    // In your AppDelegate.swift file
 //    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
 //        // Handle the URL (e.g., deep link)

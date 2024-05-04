@@ -11,13 +11,16 @@ import FirebaseAuth
 import FirebaseDatabase
 import GoogleSignIn
 import FirebaseCore
+import CryptoKit
+import AuthenticationServices
 
 class LoginViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var rememberMeSwitchButton: UISwitch!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var linkTextView: UITextView!
-        
+    var currentNonce: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViews()
@@ -62,7 +65,7 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     }
     
     @IBAction func onClickFacebookButton(_ sender: UIButton) {
-        
+        startSignInWithAppleFlow()
     }
     
     @IBAction func onClickLoginButton(_ sender: UIButton) {
@@ -230,3 +233,140 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     
 }
 
+    //MARK: - APPLE SIGNIN
+
+extension LoginViewController : ASAuthorizationControllerDelegate {
+    
+    private func randomNonceString(length: Int = 32) -> String {
+      precondition(length > 0)
+      let charset: [Character] =
+        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+      var result = ""
+      var remainingLength = length
+
+      while remainingLength > 0 {
+        let randoms: [UInt8] = (0 ..< 16).map { _ in
+          var random: UInt8 = 0
+          let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+          if errorCode != errSecSuccess {
+            fatalError(
+              "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
+            )
+          }
+          return random
+        }
+
+        randoms.forEach { random in
+          if remainingLength == 0 {
+            return
+          }
+
+          if random < charset.count {
+            result.append(charset[Int(random)])
+            remainingLength -= 1
+          }
+        }
+      }
+
+      return result
+    }
+
+    @available(iOS 13, *)
+    private func sha256(_ input: String) -> String {
+      let inputData = Data(input.utf8)
+      let hashedData = SHA256.hash(data: inputData)
+      let hashString = hashedData.compactMap {
+        String(format: "%02x", $0)
+      }.joined()
+
+      return hashString
+    }
+    
+    // Single-sign-on with Apple
+    @available(iOS 13, *)
+    func startSignInWithAppleFlow() {
+       
+        let nonce = randomNonceString()
+        currentNonce = nonce
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        request.nonce = sha256(nonce)
+
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.performRequests()
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            guard let nonce = currentNonce else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+            }
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Unable to fetch identity token")
+                return
+            }
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
+            // Initialize a Firebase credential.
+            let credential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                      idToken: idTokenString,
+                                                      rawNonce: nonce)
+            
+            print(credential)
+            self.showProgressHUD()
+            Auth.auth().signIn(with: credential) { authResult, error in
+                  self.hideProgressHUD()
+                  print("Auth Result google signin : ", authResult)
+                  if let error = error {
+                      print("Error signing in: \(error.localizedDescription)")
+                      self.showAlert(message: error.localizedDescription)
+                  } else {
+                      if let user = authResult?.user {
+                          if self.rememberMeSwitchButton.isOn {
+                              MyUserDefaults.setRememberMe(true)
+                          }
+                          
+                          // Save user data under the user ID
+                          let userData: [String: Any] = [
+                              "name": user.displayName ?? "",
+                              "email": user.email ?? "",
+                              "userDescription": "",
+                              "admin": false,
+                              "userId": user.uid,
+                          ]
+                          
+                          let databaseRef = Database.database().reference()
+                          let user = User(name: user.displayName ?? "", email: authResult?.user.email ?? "", userDescription: user.description, userId: user.uid)
+
+                          guard let uid = authResult?.user.uid else {
+                              return
+                          }
+                          
+                          databaseRef.child("users").child(uid).updateChildValues(userData) { (error, ref) in
+                              if let error = error {
+                                  print("An error occurred while saving user data: \(error.localizedDescription)")
+                              } else {
+                                  print("User data saved successfully!")
+                              }
+                          }
+
+                          
+                          AppController.shared.user = user
+                          self.getUserFromDB(email: authResult?.user.email ?? "")
+                      }
+                  }
+              }
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+        print("Sign in with Apple errored: \(error)")
+    }
+
+    
+}

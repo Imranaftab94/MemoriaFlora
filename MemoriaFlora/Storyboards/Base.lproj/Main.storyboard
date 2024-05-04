@@ -269,8 +269,8 @@
                                                 <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="l3H-3w-rV9">
-                                                <rect key="frame" x="139" y="611.33333333333337" width="150" height="70"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="l3H-3w-rV9">
+                                                <rect key="frame" x="134" y="611.33333333333337" width="160" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIm-8b-7p6">
                                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -279,13 +279,13 @@
                                                             <constraint firstAttribute="width" constant="70" id="fOS-CX-obG"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="login_facebook" title=" "/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="icons8-apple-logo-70" title=" "/>
                                                         <connections>
                                                             <action selector="onClickFacebookButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tKr-tr-bIe"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGo-Ij-4Ne">
-                                                        <rect key="frame" x="80" y="0.0" width="70" height="70"/>
+                                                        <rect key="frame" x="90" y="0.0" width="70" height="70"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="70" id="CBw-2V-k6I"/>
                                                             <constraint firstAttribute="width" constant="70" id="bOP-wE-1dQ"/>
@@ -1114,9 +1114,41 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPS-Bu-6Cq" customClass="DesignableButton" customModule="Spring">
                                 <rect key="frame" x="32" y="702" width="364" height="50"/>
-                                <color key="backgroundColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.88828486204147339" green="0.23529414734427812" blue="0.21958279323642765" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ISN-D3-WaM"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete Account">
+                                    <fontDescription key="titleFontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="19"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.88828486204147339" green="0.23529414734427812" blue="0.21958279323642765" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteButtonTap:" destination="dqk-en-z9f" eventType="touchUpInside" id="hKq-Ul-3t7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyi-r5-L5R" customClass="DesignableButton" customModule="Spring">
+                                <rect key="frame" x="32" y="642" width="364" height="50"/>
+                                <color key="backgroundColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Vip-hb-gRR"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -1141,10 +1173,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="ForgotPasswordTapped:" destination="Vqb-vr-vRs" eventType="touchUpInside" id="wsm-ZP-vRV"/>
-                                    <action selector="onClickLogoutButton:" destination="dqk-en-z9f" eventType="touchUpInside" id="1yY-bR-rQk"/>
+                                    <action selector="onClickLogoutButton:" destination="dqk-en-z9f" eventType="touchUpInside" id="qR0-9o-INS"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="       " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKC-2l-J0K">
+                                <rect key="frame" x="198.66666666666666" y="297" width="31" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IGq-pQ-w07"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1152,11 +1189,17 @@
                             <constraint firstItem="ZDu-bl-9dO" firstAttribute="top" secondItem="IGq-pQ-w07" secondAttribute="top" constant="40" id="5sl-nL-CoZ"/>
                             <constraint firstItem="IGq-pQ-w07" firstAttribute="trailing" secondItem="zPS-Bu-6Cq" secondAttribute="trailing" constant="32" id="Dd6-Ne-yWo"/>
                             <constraint firstItem="ZDu-bl-9dO" firstAttribute="centerX" secondItem="7GY-GT-Jg4" secondAttribute="centerX" id="Emj-uR-I70"/>
+                            <constraint firstItem="hyi-r5-L5R" firstAttribute="leading" secondItem="zPS-Bu-6Cq" secondAttribute="leading" id="HlX-0s-lky"/>
                             <constraint firstItem="IGq-pQ-w07" firstAttribute="bottom" secondItem="zPS-Bu-6Cq" secondAttribute="bottom" constant="140" id="Mfe-bc-R7k"/>
+                            <constraint firstItem="BKC-2l-J0K" firstAttribute="top" secondItem="ZDu-bl-9dO" secondAttribute="bottom" constant="10" id="c4W-Vu-TJh"/>
+                            <constraint firstItem="BKC-2l-J0K" firstAttribute="centerX" secondItem="ZDu-bl-9dO" secondAttribute="centerX" id="d4R-Ie-zhB"/>
                             <constraint firstItem="zPS-Bu-6Cq" firstAttribute="leading" secondItem="IGq-pQ-w07" secondAttribute="leading" constant="32" id="eLb-EY-o9b"/>
+                            <constraint firstItem="zPS-Bu-6Cq" firstAttribute="top" secondItem="hyi-r5-L5R" secondAttribute="bottom" constant="10" id="zDu-Ez-8C9"/>
+                            <constraint firstItem="hyi-r5-L5R" firstAttribute="trailing" secondItem="zPS-Bu-6Cq" secondAttribute="trailing" id="zPN-Rl-O8E"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="nameLabel" destination="BKC-2l-J0K" id="cTA-eR-hBo"/>
                         <outlet property="userImageView" destination="ZDu-bl-9dO" id="Fdl-fX-HWa"/>
                     </connections>
                 </viewController>
@@ -1170,37 +1213,40 @@
             <size key="intrinsicContentSize" width="62.666666666666664" height="31"/>
         </designable>
         <designable name="1ML-bR-zWx">
-            <size key="intrinsicContentSize" width="39.333333333333336" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="69.666666666666671" height="18.666666666666668"/>
         </designable>
         <designable name="53K-6w-u2E">
             <size key="intrinsicContentSize" width="126.33333333333333" height="31"/>
         </designable>
         <designable name="7Iq-n7-kgO">
-            <size key="intrinsicContentSize" width="39.333333333333336" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="69.666666666666671" height="18.666666666666668"/>
         </designable>
         <designable name="Ex3-c9-UZt">
             <size key="intrinsicContentSize" width="142.33333333333334" height="31"/>
         </designable>
         <designable name="G13-0r-Imo">
-            <size key="intrinsicContentSize" width="124" height="17"/>
+            <size key="intrinsicContentSize" width="154" height="17"/>
         </designable>
         <designable name="Mwy-1R-oOI">
-            <size key="intrinsicContentSize" width="67.333333333333329" height="17"/>
+            <size key="intrinsicContentSize" width="97.333333333333329" height="17"/>
         </designable>
         <designable name="S9z-cU-kgg">
-            <size key="intrinsicContentSize" width="42.333333333333336" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="72.666666666666671" height="18.666666666666668"/>
         </designable>
         <designable name="VW9-dF-nZa">
             <size key="intrinsicContentSize" width="133.33333333333334" height="31"/>
         </designable>
         <designable name="gId-xP-f5B">
-            <size key="intrinsicContentSize" width="67.333333333333329" height="17"/>
+            <size key="intrinsicContentSize" width="97.333333333333329" height="17"/>
+        </designable>
+        <designable name="hyi-r5-L5R">
+            <size key="intrinsicContentSize" width="90.666666666666671" height="37"/>
         </designable>
         <designable name="xIz-3y-SMq">
-            <size key="intrinsicContentSize" width="39.333333333333336" height="18.666666666666668"/>
+            <size key="intrinsicContentSize" width="69.666666666666671" height="18.666666666666668"/>
         </designable>
         <designable name="zPS-Bu-6Cq">
-            <size key="intrinsicContentSize" width="90.666666666666671" height="37"/>
+            <size key="intrinsicContentSize" width="170" height="37"/>
         </designable>
     </designables>
     <resources>
@@ -1208,7 +1254,7 @@
         <image name="ic_grave" width="368" height="559"/>
         <image name="ic_profile" width="96" height="96"/>
         <image name="ic_search" width="30" height="30"/>
-        <image name="login_facebook" width="70" height="70"/>
+        <image name="icons8-apple-logo-70" width="70" height="70"/>
         <image name="login_google" width="70" height="70"/>
         <image name="logo" width="412" height="325"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>

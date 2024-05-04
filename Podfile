@@ -8,16 +8,17 @@ target 'Caro Estinto' do
   # Pods for MemoriaFlora
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift5'
   pod 'IQKeyboardManager'
-  pod 'Firebase'
-  pod 'FirebaseCore'
-  pod 'Firebase/Auth'
-  pod 'Firebase/DynamicLinks'
-  pod 'FirebaseDatabase'
-  pod 'FirebaseMessaging'
-  pod 'Firebase/Storage'
+#  pod 'Firebase'
+#  pod 'FirebaseCore'
+#  pod 'Firebase/Auth'
+#  pod 'Firebase/DynamicLinks'
+#  pod 'FirebaseDatabase'
+#  pod 'FirebaseMessaging'
+#  pod 'Firebase/Storage'
   pod 'Kingfisher'
   pod 'mailcore2-ios'
   pod 'GoogleSignIn'
+#  pod 'FBSDKLoginKit'
 
 
   post_install do |installer|
