@@ -13,6 +13,12 @@ class EditFlowersVC: BaseViewController {
     
     var flowers: [FlowerModel] = []
     
+    var selectedFlowerCategory: FlowerCategoryModel?
+    var selectedFlower: FlowerModel?
+    
+    var selectedCategoryIndex = -1
+    var selectedItemIndex = -1
+    
     var flowerCategories: [FlowerCategoryModel] = [
         FlowerCategoryModel(flowerType: "Lilies", image: UIImage(named: "Lilies")!),
         FlowerCategoryModel(flowerType: "Roses", image: UIImage(named: "Roses")!),
@@ -61,6 +67,52 @@ class EditFlowersVC: BaseViewController {
 
     }
 }
+
+extension EditFlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return flowerCategories.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FlowersCategoryCell", for: indexPath) as! FlowersCategoryCollectionViewCell
+        cell.containerView.layer.cornerRadius = 16
+        cell.containerView.layer.masksToBounds = true
+        
+        cell.containerView.layer.cornerRadius = 16
+        cell.containerView.layer.masksToBounds = true
+        
+        if selectedCategoryIndex == indexPath.item {
+            cell.containerView.layer.borderWidth = 2.0
+            cell.containerView.layer.borderColor = UIColor(hexString: "#865EE2").cgColor
+        } else {
+            cell.containerView.layer.borderWidth = 0.0
+        }
+        
+        let category = flowerCategories[indexPath.row]
+        cell.categoryNameLabel.text = category.flowerType
+        cell.categoryImageView.image = category.image
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let flowerCategory = flowerCategories[indexPath.row]
+        self.selectedFlowerCategory = flowerCategory
+        selectedCategoryIndex = indexPath.item
+        if indexPath.row == 0 {
+            self.flowers = lilies
+        } else if indexPath.row == 1 {
+            self.flowers = roses
+        } else if indexPath.row == 2 {
+            self.flowers = carnations
+        } else if indexPath.row == 4 {
+            self.flowers = orchids
+        }
+        flowerCategoryCollectionView.reloadData()
+        tableView.reloadData()
+    }
+}
+
 
 
 extension EditFlowersVC: UITableViewDataSource, UITableViewDelegate {
@@ -116,10 +168,7 @@ extension EditFlowersVC: UITableViewDataSource, UITableViewDelegate {
         
         cell.titleLabel.text = item.name
         cell.dateOfDemiseLabel.text = item.price
-                if let url = URL(string: item.image) {
-            cell.userImageView.kf.setImage(with: url)
-        }
-        cell.descriptionLabel.text = item.description
+        cell.userImageView.image = item.image
         cell.containerView.layer.cornerRadius = 16
         cell.containerView.layer.masksToBounds = true
         cell.userImageView.layer.cornerRadius = 20
