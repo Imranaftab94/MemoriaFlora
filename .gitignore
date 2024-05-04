@@ -1,0 +1,48 @@
+# Xcode
+.DS_Store
+*/.DS_Store
+*.xcuserstate
+*.xccheckout
+*.xcworkspace
+xcuserdata/
+
+# Swift Package Manager
+/.build/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# Compiled source
+*.o
+*.pyc
+*.swp
+*.class
+
+# Generated files
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Mac OS X
+.DS_Store
+
+# iOS
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcworkspace
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+*.moved-aside
+
+# CocoaPods
+Pods/

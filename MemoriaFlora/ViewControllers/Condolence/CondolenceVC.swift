@@ -30,27 +30,47 @@ class CondolenceVC: BaseViewController {
     }
     
     private func getCondolences() {
-        let databaseRef = Database.database().reference()
-        
         guard let memoryId = self.memory?.memoryKey else { return }
 
-        databaseRef.child("condolences").child(memoryId).observe(.value) { (snapshot) in
+        self.showProgressHUD()
+        
+        let databaseRef = Database.database().reference()
+        
+        databaseRef.child("condolences").child(memoryId).observeSingleEvent(of: .value) { (snapshot) in
             guard snapshot.exists() else {
                 print("No condolences found for memory ID: \(memoryId)")
+                self.hideProgressHUD()
                 return
             }
             
             var condolences: [Condolence] = []
-
+            let dispatchGroup = DispatchGroup()
+            
             for child in snapshot.children {
                 if let childSnapshot = child as? DataSnapshot,
                    let condolenceData = childSnapshot.value as? [String: Any] {
-                    let condolence = Condolence.makeCondolence(condolenceData: condolenceData)
-                    condolences.append(condolence)
+                    var condolence = Condolence.makeCondolence(condolenceData: condolenceData)
+                    
+                    dispatchGroup.enter()
+                    databaseRef.child("users").child(condolence.userId).observeSingleEvent(of: .value) { (userSnapshot) in
+                        defer { dispatchGroup.leave() }
+                        guard let userData = userSnapshot.value as? [String: Any] else { return }
+                        
+                        if let email = userData["email"] as? String,
+                           let name = userData["name"] as? String {
+                            condolence.userName = name
+                            condolence.email = email
+                        }
+                        condolences.append(condolence)
+                    }
                 }
             }
-            self.condolences = condolences
-            self.reloadTableView()
+            
+            dispatchGroup.notify(queue: .main) {
+                self.hideProgressHUD()
+                self.condolences = condolences
+                self.reloadTableView()
+            }
         }
     }
 }
@@ -82,7 +102,7 @@ extension CondolenceVC: UITableViewDataSource, UITableViewDelegate {
         if let url = URL(string: item.flowerImageUrl) {
             cell.flowerImageView.kf.setImage(with: url)
         }
-        cell.nameLabel.text = item.flowerName
+        cell.nameLabel.text = item.userName ?? "N/A"
         cell.containerView.layer.cornerRadius = 16
         cell.containerView.layer.masksToBounds = true
         cell.flowerImageView.layer.cornerRadius = 10

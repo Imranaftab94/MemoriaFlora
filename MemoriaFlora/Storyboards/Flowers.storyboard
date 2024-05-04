@@ -131,7 +131,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Payment Method" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHI-wv-iND">
-                                <rect key="frame" x="78.333333333333329" y="175" width="236.66666666666669" height="25.666666666666657"/>
+                                <rect key="frame" x="65.333333333333343" y="175" width="262.66666666666663" height="26.333333333333343"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="22"/>
                                 <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -305,13 +305,77 @@
             </objects>
             <point key="canvasLocation" x="910.68702290076328" y="3.5211267605633805"/>
         </scene>
+        <!--Edit FlowersVC-->
+        <scene sceneID="i6b-0g-Ux9">
+            <objects>
+                <viewController storyboardIdentifier="EditFlowersVC" id="Vb8-wV-4A8" customClass="EditFlowersVC" customModule="Caro_Estinto" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b4d-VS-ln7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose from these categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH2-yL-ZQn">
+                                <rect key="frame" x="16.000000000000014" y="83" width="254.33333333333337" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Dl-Xt-rNU">
+                                <rect key="frame" x="0.0" y="114" width="393" height="150"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="n9d-hJ-17y"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tdf-kr-GcV">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a8i-e5-1Ea">
+                                <rect key="frame" x="0.0" y="335" width="393" height="483"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose from these categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqa-wq-qks">
+                                <rect key="frame" x="16.000000000000014" y="288" width="254.33333333333337" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lu1-fD-qKB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aH2-yL-ZQn" firstAttribute="leading" secondItem="Lu1-fD-qKB" secondAttribute="leading" constant="16" id="2Dg-xI-l1k"/>
+                            <constraint firstItem="8Dl-Xt-rNU" firstAttribute="leading" secondItem="Lu1-fD-qKB" secondAttribute="leading" id="7Yw-3d-qlO"/>
+                            <constraint firstItem="aH2-yL-ZQn" firstAttribute="top" secondItem="Lu1-fD-qKB" secondAttribute="top" constant="24" id="8JH-Vk-bXe"/>
+                            <constraint firstItem="8Dl-Xt-rNU" firstAttribute="top" secondItem="aH2-yL-ZQn" secondAttribute="bottom" constant="8" id="AaY-Lp-dC0"/>
+                            <constraint firstItem="lqa-wq-qks" firstAttribute="leading" secondItem="Lu1-fD-qKB" secondAttribute="leading" constant="16" id="QYY-fX-5RM"/>
+                            <constraint firstItem="Lu1-fD-qKB" firstAttribute="bottom" secondItem="a8i-e5-1Ea" secondAttribute="bottom" id="VbU-b4-hOF"/>
+                            <constraint firstItem="Lu1-fD-qKB" firstAttribute="trailing" secondItem="8Dl-Xt-rNU" secondAttribute="trailing" id="eEN-vv-lvQ"/>
+                            <constraint firstItem="Lu1-fD-qKB" firstAttribute="trailing" secondItem="a8i-e5-1Ea" secondAttribute="trailing" id="lcg-dM-Etm"/>
+                            <constraint firstItem="a8i-e5-1Ea" firstAttribute="top" secondItem="lqa-wq-qks" secondAttribute="bottom" constant="24" id="o6Z-Ks-9aJ"/>
+                            <constraint firstItem="lqa-wq-qks" firstAttribute="top" secondItem="8Dl-Xt-rNU" secondAttribute="bottom" constant="24" id="s15-2w-ap6"/>
+                            <constraint firstItem="a8i-e5-1Ea" firstAttribute="leading" secondItem="Lu1-fD-qKB" secondAttribute="leading" id="u9v-Hi-TCb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="flowerCategoryCollectionView" destination="8Dl-Xt-rNU" id="ySl-Yv-V5f"/>
+                        <outlet property="tableView" destination="a8i-e5-1Ea" id="6EK-9K-m7a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lgX-9h-2ZB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1706" y="4"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="7rv-q2-1md">
-            <size key="intrinsicContentSize" width="151" height="34"/>
+            <size key="intrinsicContentSize" width="165.66666666666666" height="34.333333333333336"/>
         </designable>
         <designable name="or1-CZ-Eje">
-            <size key="intrinsicContentSize" width="61.333333333333336" height="39.666666666666664"/>
+            <size key="intrinsicContentSize" width="64.333333333333329" height="40.333333333333336"/>
         </designable>
     </designables>
     <resources>
