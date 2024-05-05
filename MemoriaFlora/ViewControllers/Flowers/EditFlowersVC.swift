@@ -36,7 +36,7 @@ class EditFlowersVC: BaseViewController {
         self.fetchFlowerCategories()
         self.fetchFlowers()
         self.setNavigationBackButtonColor()
-        
+        self.observeFlowerChanges()
         self.title = "Edit Flowers"
     }
     
@@ -134,6 +134,55 @@ class EditFlowersVC: BaseViewController {
         
         dispatchGroup.notify(queue: .main) {
             self.hideProgressHUD()
+        }
+    }
+    
+    private func observeFlowerChanges() {
+        let ref = Database.database().reference().child("flowers")
+        
+        ref.observe(.value) { snapshot in
+            guard let flowersData = snapshot.value as? [String: [String: Any]] else {
+                return
+            }
+            
+            var updatedFlowers: [FlowerModel] = []
+            
+            for (_, categoryValue) in flowersData {
+                for (_, flowerData) in categoryValue {
+                    guard let flowerIdData = flowerData as? [String: Any],
+                          let category = flowerIdData["category"] as? String,
+                          let flowerId = flowerIdData["flowerId"] as? String,
+                          let flowerName = flowerIdData["flowerName"] as? String,
+                          let flowerPrice = flowerIdData["flowerPrice"] as? String,
+                          let imageUrl = flowerIdData["imageUrl"] as? String,
+                          let timestamp = flowerIdData["timestamp"] as? TimeInterval,
+                          let categoryId = flowerIdData["categoryId"] as? String else {
+                        continue
+                    }
+                    
+                    let flower = FlowerModel(category: category, flowerName: flowerName, flowerPrice: flowerPrice, flowerId: flowerId, imageUrl: imageUrl, timestamp: timestamp, categoryId: categoryId)
+                    
+                    updatedFlowers.append(flower)
+                }
+            }
+            
+            self.roses = updatedFlowers.filter { $0.category == "Roses" }
+            self.orchids = updatedFlowers.filter { $0.category == "Orchids" }
+            self.carnations = updatedFlowers.filter { $0.category == "Carnations" }
+            self.lilies = updatedFlowers.filter { $0.category == "Lilies" }
+            
+            if self.selectedFlowerCategory?.categoryName == "Lilies" {
+                self.flowers = self.lilies
+            } else if self.selectedFlowerCategory?.categoryName == "Roses" {
+                self.flowers = self.roses
+            } else if self.selectedFlowerCategory?.categoryName == "Carnations" {
+                self.flowers = self.carnations
+            } else if self.selectedFlowerCategory?.categoryName == "Orchids" {
+                self.flowers = self.orchids
+            } else {
+                self.flowers = updatedFlowers
+            }
+            self.reloadTableView()
         }
     }
 }
