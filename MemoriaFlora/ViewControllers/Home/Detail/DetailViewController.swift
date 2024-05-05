@@ -48,7 +48,7 @@ class DetailViewController: BaseViewController {
             vc.onSelectPayment = { [weak self] (category, flower) in
                 guard let self = self else { return }
                 self.createCondolence(category: category, flower: flower)
-                animate(category.flowerType)
+                animate(category.categoryName ?? "")
             }
             let navigationVC = UINavigationController.init(rootViewController: vc)
             self.present(navigationVC, animated: true, completion: nil)
@@ -182,73 +182,29 @@ class DetailViewController: BaseViewController {
         
         let condolenceId = Database.database().reference().child("condolences").child(memoryId).childByAutoId().key ?? ""
         
-        guard let imageData = flower.image.jpegData(compressionQuality: 0.8) else {
-            showAlert(message: "Failed to convert image to data")
-            return
-        }
+        guard let userId = AppController.shared.user?.userId else { return }
         
-        let storageRef = Storage.storage().reference().child("condolences").child(memoryId).child(condolenceId)
+        let timestamp = Date().timeIntervalSince1970
         
-        self.showProgressHUD()
-        let uploadTask = storageRef.putData(imageData, metadata: nil) { [weak self] (metadata, error) in
-            self?.hideProgressHUD()
-            
+        guard let flowerImageUrl = flower.imageUrl else { return }
+        
+        let condolenceData: [String: Any] = [
+            "userId": userId,
+            "memoryId": memoryId,
+            "timestamp": timestamp,
+            "flowerPrice": flower.flowerPrice ?? "",
+            "flowerType": category.categoryName ?? "",
+            "flowerName": flower.flowerName ?? "",
+            "flowerImageUrl": flowerImageUrl
+        ]
+        
+        // Save condolence data in the Realtime Database
+        Database.database().reference().child("condolences").child(memoryId).child(condolenceId).setValue(condolenceData) { [weak self] (error, ref) in
             guard let self = self else { return }
-            
-            guard let _ = metadata else {
-                print("Error uploading image: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
-            
-            storageRef.downloadURL { [weak self] (url, error) in
-                guard let self = self else { return }
-                
-                if let error = error {
-                    print("Error getting download URL: \(error.localizedDescription)")
-                    return
-                }
-                
-                guard let downloadURL = url else {
-                    print("Download URL is nil")
-                    return
-                }
-                
-                guard let userId = AppController.shared.user?.userId else { return }
-                
-                let timestamp = Date().timeIntervalSince1970
-                
-                let condolenceData: [String: Any] = [
-                    "userId": userId,
-                    "memoryId": memoryId,
-                    "timestamp": timestamp,
-                    "flowerPrice": flower.price,
-                    "flowerType": category.flowerType,
-                    "flowerName": flower.name,
-                    "flowerImageUrl": downloadURL.absoluteString
-                ]
-                
-                // Save condolence data in the Realtime Database
-                Database.database().reference().child("condolences").child(memoryId).child(condolenceId).setValue(condolenceData) { [weak self] (error, ref) in
-                    guard let self = self else { return }
-                    if let error = error {
-                        print("Error saving condolence data: \(error.localizedDescription)")
-                    } else {
-                        print("Condolence data saved successfully!")
-                    }
-                }
-            }
-        }
-        
-        uploadTask.observe(.progress) { snapshot in
-            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
-            print(percentComplete)
-        }
-        
-        uploadTask.observe(.failure) { snapshot in
-            if let error = snapshot.error {
-                print("Upload failed: \(error.localizedDescription)")
-                // Notify user about the failure
-                self.showAlert(message: "Upload failed. Please try again.")
+            if let error = error {
+                print("Error saving condolence data: \(error.localizedDescription)")
+            } else {
+                print("Condolence data saved successfully!")
             }
         }
     }

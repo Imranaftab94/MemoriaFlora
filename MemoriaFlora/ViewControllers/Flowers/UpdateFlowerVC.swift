@@ -12,7 +12,6 @@ import FirebaseStorage
 class UpdateFlowerVC: BaseViewController {
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var priceContainerView: UIView!
-    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var flowerImageView: UIImageView!
     
     let activeBorderColor: UIColor = UIColor.init(hexString: "#793EE5")
@@ -20,6 +19,8 @@ class UpdateFlowerVC: BaseViewController {
     
     private var imageSelectionAlertViewController: ImageSelectionAlertViewController?
     private var selectedImage: UIImage?
+    
+    var flowerToupdate: FlowerModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +37,9 @@ class UpdateFlowerVC: BaseViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    class func instantiate() -> Self {
+    class func instantiate(flowerToUpdate: FlowerModel) -> Self {
         let vc = self.instantiate(fromAppStoryboard: .Flowers)
+        vc.flowerToupdate = flowerToUpdate
         return vc
     }
     
@@ -54,33 +56,21 @@ class UpdateFlowerVC: BaseViewController {
                 self.selectedImage = image
             }
         }
-        
-        imageSelectionAlertViewController?.onVideoSelected = { (video) in
-            if let video = video {
-                do {
-                    let videoData = try Data(contentsOf: video)
-                    
-                } catch {
-                    print("Unable to load data: \(error)")
-                }
-            }
-        }
         imageSelectionAlertViewController?.openMediaLibrary(openForImageAndVideo: true)
     }
     
     @IBAction func onClickUpdateButton(_ sender: UIButton) {
+        guard let category = self.flowerToupdate?.category else { return }
+        guard let flowerId = self.flowerToupdate?.flowerId else { return }
+        guard let imageUrl = self.flowerToupdate?.imageUrl else { return }
+        
         guard let price = priceTextField.text, !price.isEmpty else {
             showAlert(message: "Please enter price to update")
             return
         }
         
-        guard let name = nameTextField.text, !name.isEmpty else {
-            showAlert(message: "Please enter name to update")
-            return
-        }
-        
         guard let image = selectedImage else {
-            showAlert(message: "Please select a picture to update")
+            updateValues(price: price, imageUrl: imageUrl, category: category, flowerId: flowerId)
             return
         }
         
@@ -89,9 +79,8 @@ class UpdateFlowerVC: BaseViewController {
             return
         }
         
-        let storageRef = Storage.storage().reference().child("flowers")
+        let storageRef = Storage.storage().reference().child("flowers").child(flowerId)
         
-        // Upload image data to the storage
         self.showProgressHUD()
         let uploadTask = storageRef.putData(imageData, metadata: nil) { (metadata, error) in
             self.hideProgressHUD()
@@ -111,31 +100,30 @@ class UpdateFlowerVC: BaseViewController {
                     return
                 }
                 
-                let memoryData: [String: Any] = [
-                    "flowerName": name,
-                    "flowerPrice": price,
-                    "imageUrl": downloadURL.absoluteString,
-                    "category": "Lilies",
-                    "timestamp": ""
-                ]
-                
-                // Save memory data in the Realtime Database
-                Database.database().reference().child("flowers").child("Lilies").setValue(memoryData) { (error, ref) in
-                    if let error = error {
-                        print("Error saving memory data: \(error.localizedDescription)")
-                    } else {
-                        print("Memory data saved successfully!")
-                        self.showAlert(message: "Posted successfully", title: "Alert", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
-                            self.navigationController?.popViewController(animated: true)
-                        }))
-                    }
-                }
+                self.updateValues(price: price, imageUrl: downloadURL.absoluteString, category: category, flowerId: flowerId)
             }
         }
     }
     
-    private func createFlower() {
+    private func updateValues(price: String, imageUrl: String, category: String, flowerId: String) {
+        let timestamp = Date().timeIntervalSince1970
         
+        let memoryData: [String: Any] = [
+            "flowerPrice": price,
+            "imageUrl": imageUrl,
+            "timestamp": timestamp
+        ]
+        
+        // Save memory data in the Realtime Database
+        Database.database().reference().child("flowers").child(category).child(flowerId).updateChildValues(memoryData) { (error, ref) in
+            if let error = error {
+                print("Error saving memory data: \(error.localizedDescription)")
+            } else {
+                self.showAlert(message: "Flowers data updated successfully!, Remember to adjust the item price on the app store to ensure accurate reflection within the app", title: "Alert", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+            }
+        }
     }
 }
 
@@ -151,6 +139,13 @@ extension UpdateFlowerVC: UITextFieldDelegate {
     private func configureViews() {
         self.priceContainerView.layer.cornerRadius = 16
         self.priceContainerView.layer.masksToBounds = true
+        
+        if let flower = flowerToupdate {
+            self.priceTextField.text = flower.flowerPrice ?? ""
+            if let url = URL(string: flower.imageUrl ?? "") {
+                self.flowerImageView.kf.setImage(with: url)
+            }
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
