@@ -141,8 +141,7 @@ static id<GTMUserAgentProvider> SharedStandardUserAgentProvider(void) {
             unusedSessionTimeout = _unusedSessionTimeout,
             userAgentProvider = _userAgentProvider,
             decoratorsPointerArray = _decoratorsPointerArray,
-            testBlock = _testBlock,
-            stopFetchingTriggersCompletionHandler = _stopFetchingTriggersCompletionHandler;
+            testBlock = _testBlock;
 // clang-format on
 
 #if GTM_BACKGROUND_TASK_FETCHING
@@ -222,7 +221,6 @@ static id<GTMUserAgentProvider> SharedStandardUserAgentProvider(void) {
   if (@available(iOS 10.0, *)) {
     fetcher.metricsCollectionBlock = self.metricsCollectionBlock;
   }
-  fetcher.stopFetchingTriggersCompletionHandler = self.stopFetchingTriggersCompletionHandler;
   fetcher.properties = self.properties;
   fetcher.service = self;
 
