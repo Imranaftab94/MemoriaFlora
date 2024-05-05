@@ -64,11 +64,31 @@ class EditFlowersVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.configureTableView()
+        self.configureCollectionView()
+    }
+    
+    class func instantiate() -> Self {
+        let vc = self.instantiate(fromAppStoryboard: .Flowers)
+        return vc
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
     }
 }
 
 extension EditFlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    private func configureCollectionView() {
+        flowerCategoryCollectionView.dataSource = self
+        flowerCategoryCollectionView.delegate = self
+        
+        flowerCategoryCollectionView.register(UINib(nibName: "FlowersCategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FlowersCategoryCell")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return flowerCategories.count
     }
@@ -128,6 +148,7 @@ extension EditFlowersVC: UITableViewDataSource, UITableViewDelegate {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "GraveyardTableViewCell", bundle: nil), forCellReuseIdentifier: "GraveyardTableViewCell")
         tableView.separatorStyle = .none
+        self.reloadTableView()
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -137,7 +158,7 @@ extension EditFlowersVC: UITableViewDataSource, UITableViewDelegate {
         
         // Add edit action if the item meets certain conditions
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completionHandler) in
-            
+            self.navigationController?.pushViewController(UpdateFlowerVC.instantiate(), animated: true)
             completionHandler(true)
         }
         editAction.backgroundColor = .blue

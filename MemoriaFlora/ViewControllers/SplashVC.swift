@@ -16,12 +16,16 @@ class SplashVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let userId = AppController.shared.user?.userId {
+            self.getUserFromDB(userId: userId)
+        } else {
+            self.performOperation()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        self.performOperation()
     }
     
     private func performOperation() {
@@ -39,16 +43,13 @@ class SplashVC: BaseViewController {
         }
     }
     
-    private func getUserFromDB(email: String) {
+    private func getUserFromDB(userId: String) {
         let databaseRef = Database.database().reference()
         
-        let query = databaseRef.child("users").queryOrdered(byChild: "email").queryEqual(toValue: email).queryLimited(toFirst: 1)
-        self.showProgressHUD()
+        let query = databaseRef.child("users").queryOrdered(byChild: "userId").queryEqual(toValue: userId).queryLimited(toFirst: 1)
         query.observeSingleEvent(of: .value) { (snapshot) in
-            self.hideProgressHUD()
             guard snapshot.exists() else {
                 print("User not found")
-                self.navigateToHome()
                 return
             }
             
@@ -62,17 +63,10 @@ class SplashVC: BaseViewController {
                     AppController.shared.user = user
                 }
             }
-            self.navigateToHome()
+            self.performOperation()
         } withCancel: { (error) in
             print("Error fetching user data: \(error.localizedDescription)")
-        }
-    }
-    
-    private func navigateToHome() {
-        DispatchQueue.main.async {
-            let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            let navigationVC = UINavigationController(rootViewController: homeVC)
-            animateTransition(to: navigationVC, view: self.view)
+            self.showAlert(message: "User not found")
         }
     }
 }

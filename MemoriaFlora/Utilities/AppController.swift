@@ -13,7 +13,6 @@ class AppController {
     
     private init() {}
 
-    
     private var _user: User?
     var user: User? {
         get {

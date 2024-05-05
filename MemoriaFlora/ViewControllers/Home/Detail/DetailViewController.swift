@@ -31,6 +31,12 @@ class DetailViewController: BaseViewController {
         getCondolencesCount()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     @IBAction func onClickCondolencesButton(_ sender: UIButton) {
         guard let memory = memory else { return }
         self.navigationController?.pushViewController(CondolenceVC.instantiate(memory: memory), animated: true)

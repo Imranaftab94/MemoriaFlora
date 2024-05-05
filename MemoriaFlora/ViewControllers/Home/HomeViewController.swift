@@ -13,6 +13,8 @@ import Kingfisher
 import UserNotifications
 
 class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDelegate {
+    @IBOutlet weak var editFlowerButton: UIButton!
+    @IBOutlet weak var editFlowerImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var emptyListImageView: UIImageView!
@@ -42,6 +44,19 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         tapGesture.delegate = self
         self.view.addGestureRecognizer(tapGesture)
         searchTextField.delegate = self
+        
+        if AppController.shared.user?.admin ?? false {
+            self.showAlert(message: "This is an admin account, You can swipe left to delete or edit memories, You can also edit flower names images and prices")
+            
+            self.editFlowerButton.isHidden = false
+            self.editFlowerImageView.isHidden = false
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -102,6 +117,11 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
             self.navigationController?.pushViewController(profileVC, animated: true)            
         }
     }
+    
+    @IBAction func onClickEditFlowersButton(_ sender: UIButton) {
+        self.navigationController?.pushViewController(EditFlowersVC.instantiate(), animated: true)
+    }
+    
     
     @IBAction func onClickCreatePostButton(_ sender: UIButton) {
         DispatchQueue.main.async {
@@ -330,8 +350,6 @@ extension HomeViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
-    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == searchTextField {

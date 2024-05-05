@@ -12,6 +12,8 @@ import FirebaseAuth
 class ProfileViewController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,16 @@ class ProfileViewController: UIViewController {
         self.nameLabel.text = AppController.shared.user?.name ?? "User"
         self.userImageView.layer.cornerRadius = 16
         self.userImageView.layer.masksToBounds = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
+        
+        if AppController.shared.user?.admin ?? false {
+            self.deleteButton.isHidden = true
+        }
     }
     
     private func setNavigationBackButtonColor() {

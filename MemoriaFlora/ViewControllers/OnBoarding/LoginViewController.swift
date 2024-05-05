@@ -132,7 +132,7 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
                         }
                         
                         AppController.shared.user = user
-                        self.getUserFromDB(email: authResult?.user.email ?? "")
+                        self.getUserFromDB(userId: authResult?.user.uid ?? "")
                     }
                 }
             }
@@ -168,16 +168,16 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
                     }
                     let user = User(name: user.displayName ?? "", email: self.emailTextField.text!, userDescription: user.description, userId: user.uid)
                     AppController.shared.user = user
-                    self.getUserFromDB(email: self.emailTextField.text!)
+                    self.getUserFromDB(userId: user.userId ?? "")
                 }
             }
         }
     }
     
-    private func getUserFromDB(email: String) {
+    private func getUserFromDB(userId: String) {
         let databaseRef = Database.database().reference()
         
-        let query = databaseRef.child("users").queryOrdered(byChild: "email").queryEqual(toValue: email).queryLimited(toFirst: 1)
+        let query = databaseRef.child("users").queryOrdered(byChild: "userId").queryEqual(toValue: userId).queryLimited(toFirst: 1)
         self.showProgressHUD()
         query.observeSingleEvent(of: .value) { (snapshot) in
             self.hideProgressHUD()
@@ -315,7 +315,6 @@ extension LoginViewController : ASAuthorizationControllerDelegate {
             self.showProgressHUD()
             Auth.auth().signIn(with: credential) { authResult, error in
                   self.hideProgressHUD()
-                  print("Auth Result google signin : ", authResult)
                   if let error = error {
                       print("Error signing in: \(error.localizedDescription)")
                       self.showAlert(message: error.localizedDescription)
@@ -351,7 +350,7 @@ extension LoginViewController : ASAuthorizationControllerDelegate {
 
                           
                           AppController.shared.user = user
-                          self.getUserFromDB(email: authResult?.user.email ?? "")
+                          self.getUserFromDB(userId: authResult?.user.uid ?? "")
                       }
                   }
               }

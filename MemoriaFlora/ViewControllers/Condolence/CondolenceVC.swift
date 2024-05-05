@@ -29,6 +29,12 @@ class CondolenceVC: BaseViewController {
         return vc
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     private func getCondolences() {
         guard let memoryId = self.memory?.memoryKey else { return }
 
@@ -68,6 +74,7 @@ class CondolenceVC: BaseViewController {
             
             dispatchGroup.notify(queue: .main) {
                 self.hideProgressHUD()
+                condolences.sort { $0.timestamp > $1.timestamp }
                 self.condolences = condolences
                 self.reloadTableView()
             }
