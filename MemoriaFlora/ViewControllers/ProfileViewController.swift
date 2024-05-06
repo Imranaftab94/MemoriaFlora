@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
         
         if AppController.shared.user?.admin ?? false {
             self.deleteButton.isHidden = true
