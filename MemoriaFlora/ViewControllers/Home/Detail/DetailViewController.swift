@@ -35,6 +35,7 @@ class DetailViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     @IBAction func onClickCondolencesButton(_ sender: UIButton) {

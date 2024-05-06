@@ -19,6 +19,14 @@ class MainTabbarController: UITabBarController {
         self.configureTabBar()
         self.tabBar.inActiveTintColor()
         self.tabBarController?.tabBar.isHidden = false
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleCreatePostNotification), name: Notification.Name("CreatePostNotification"), object: nil)
+    }
+    
+    @objc func handleCreatePostNotification() {
+        if let createPostVC = self.viewControllers?[1] as? UINavigationController {
+            createPostVC.tabBarController?.selectedIndex = 1
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,22 +100,17 @@ extension MainTabbarController: UITabBarControllerDelegate {
             self.navigationController?.pushViewController(HomeViewController.instantiate(fromAppStoryboard: .Main), animated: true)
         } else if viewController == tabBarController.viewControllers?[1] {
             self.navigationController?.pushViewController(CreatePostVC.instantiate(fromAppStoryboard: .Main), animated: true)
-            return true
         } else if viewController == tabBarController.viewControllers?[2] {
-            // MOVE TO HYPERLINK HERE ON FUNERAL AGENCY
             if let url = URL(string: "http://caroestinto.com/agenziefunebri") {
                 UIApplication.shared.open(url)
             }
             return false
         } else if viewController == tabBarController.viewControllers?[3] {
-            // OPEN SEARCH HERE
-//            self.navigationController?.pushViewController(HomeViewController.instantiate(), animated: true)
-            if let funeralAgencyVC = viewController as? UINavigationController,
-               let funeralAgencyRootVC = funeralAgencyVC.viewControllers.first as? HomeViewController {
-                funeralAgencyRootVC.activateTextField() // Implement this method in YourFuneralAgencyViewController
+            if let homeVC = self.viewControllers?[0] as? UINavigationController {
+                homeVC.tabBarController?.selectedIndex = 0
             }
-
-            return true
+            NotificationCenter.default.post(name: Notification.Name("ActiveSearchNotification"), object: nil)
+            return false
         }
         return true
     }

@@ -40,6 +40,7 @@ class FlowersVC: BaseViewController {
         self.setNavigationBackButtonColor()
         self.fetchFlowers()
         self.fetchFlowerCategories()
+        self.observeFlowerChanges()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -184,6 +185,55 @@ class FlowersVC: BaseViewController {
             self.hideProgressHUD()
         }
     }
+    
+    private func observeFlowerChanges() {
+        let ref = Database.database().reference().child("flowers")
+        
+        ref.observe(.value) { snapshot in
+            guard let flowersData = snapshot.value as? [String: [String: Any]] else {
+                return
+            }
+            
+            var updatedFlowers: [FlowerModel] = []
+            
+            for (_, categoryValue) in flowersData {
+                for (_, flowerData) in categoryValue {
+                    guard let flowerIdData = flowerData as? [String: Any],
+                          let category = flowerIdData["category"] as? String,
+                          let flowerId = flowerIdData["flowerId"] as? String,
+                          let flowerName = flowerIdData["flowerName"] as? String,
+                          let flowerPrice = flowerIdData["flowerPrice"] as? String,
+                          let imageUrl = flowerIdData["imageUrl"] as? String,
+                          let timestamp = flowerIdData["timestamp"] as? TimeInterval,
+                          let categoryId = flowerIdData["categoryId"] as? String else {
+                        continue
+                    }
+                    
+                    let flower = FlowerModel(category: category, flowerName: flowerName, flowerPrice: flowerPrice, flowerId: flowerId, imageUrl: imageUrl, timestamp: timestamp, categoryId: categoryId)
+                    
+                    updatedFlowers.append(flower)
+                }
+            }
+            
+            self.roses = updatedFlowers.filter { $0.category == "Roses" }
+            self.orchids = updatedFlowers.filter { $0.category == "Orchids" }
+            self.carnations = updatedFlowers.filter { $0.category == "Carnations" }
+            self.lilies = updatedFlowers.filter { $0.category == "Lilies" }
+            
+            if self.selectedFlowerCategory?.categoryName == "Lilies" {
+                self.flowers = self.lilies
+            } else if self.selectedFlowerCategory?.categoryName == "Roses" {
+                self.flowers = self.roses
+            } else if self.selectedFlowerCategory?.categoryName == "Carnations" {
+                self.flowers = self.carnations
+            } else if self.selectedFlowerCategory?.categoryName == "Orchids" {
+                self.flowers = self.orchids
+            } else {
+                self.flowers = updatedFlowers
+            }
+            self.reloadCollectionViews()
+        }
+    }
 }
 
 
@@ -252,6 +302,15 @@ extension FlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
             cell.flowerPriceLabel.text = "$\(flower.flowerPrice ?? "")"
             if let url = URL(string: flower.imageUrl ?? "") {
                 cell.flowerImageView.kf.setImage(with: url)
+            }
+            if AppController.shared.user?.admin ?? false {
+                cell.editButtonView.isHidden = false
+                cell.editButtonView.layer.cornerRadius = 12.5
+                cell.editButtonView.layer.masksToBounds = true
+            }
+            
+            cell.onClickEditButton = {
+                self.navigationController?.pushViewController(UpdateFlowerVC.instantiate(flowerToUpdate: flower), animated: true)
             }
             return cell
         }

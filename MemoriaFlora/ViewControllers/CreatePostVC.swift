@@ -56,6 +56,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     private func configureDatePicker() {

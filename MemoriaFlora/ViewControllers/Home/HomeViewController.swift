@@ -47,14 +47,21 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         
         if AppController.shared.user?.admin ?? false {
             self.showAlert(message: "This is an admin account, You can swipe left to delete or edit memories, You can also edit flower names images and prices")
-            self.editFlowerButton.isHidden = false // Its view
+            self.editFlowerButton.isHidden = false
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(activeSearch), name: Notification.Name("ActiveSearchNotification"), object: nil)
+    }
+    
+    @objc func activeSearch() {
+        searchTextField.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -92,11 +99,6 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         searchView.layer.borderColor = .none
         searchView.layer.borderWidth = 0.4
     }
-    
-     func activateTextField() {
-        self.searchTextField.becomeFirstResponder()
-    }
-    
 
     @IBAction func onClickProfileButton(_ sender: UIButton) {
         DispatchQueue.main.async {
@@ -117,11 +119,7 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
     }
     
     @IBAction func onClickCreatePostButton(_ sender: UIButton) {
-        DispatchQueue.main.async {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let createPostVC = storyboard.instantiateViewController(withIdentifier: "CreatePostVC") as! CreatePostVC
-            self.navigationController?.pushViewController(createPostVC, animated: true)
-        }
+        NotificationCenter.default.post(name: Notification.Name("CreatePostNotification"), object: nil)
     }
     
     private func observeMemories() {
