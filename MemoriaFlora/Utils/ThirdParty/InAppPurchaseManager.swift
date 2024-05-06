@@ -14,6 +14,7 @@ enum PKIAPHandlerAlertType {
   case disabled
   case restored
   case purchased
+  case failed
   
   var message: String{
     switch self {
@@ -21,6 +22,7 @@ enum PKIAPHandlerAlertType {
     case .disabled: return "Purchases are disabled in your device!"
     case .restored: return "You've successfully restored your purchase!"
     case .purchased: return "You've successfully bought this purchase!"
+    case .failed:  return "Product purchase cancelled"
     }
   }
 }
@@ -135,8 +137,11 @@ extension PKIAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver{
           break
           
         case .failed:
-          log("Product purchase failed")
-          SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+            log("Product purchase failed")
+            SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+            if let complition = self.purchaseProductComplition {
+                complition(PKIAPHandlerAlertType.failed, nil, trans)
+            }
           break
         case .restored:
           log("Product restored")

@@ -62,13 +62,10 @@ class MainTabbarController: UITabBarController {
         tabBarList.append(createPost)
         tabBarList.append(funeralAgency)
         tabBarList.append(search)
-        
+                
         viewControllers = tabBarList
-        
         viewControllerTabBarItems = tabBarList
-        
         self.tabBar.barTintColor = UIColor.white
-        
         self.delegate = self
     }
     

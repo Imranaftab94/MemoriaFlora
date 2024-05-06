@@ -13,7 +13,7 @@ import Kingfisher
 import UserNotifications
 
 class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDelegate {
-    @IBOutlet weak var editFlowerButton: UIButton!
+    @IBOutlet weak var editFlowerButton: UIView!
     @IBOutlet weak var editFlowerImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchView: UIView!
@@ -47,8 +47,7 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         
         if AppController.shared.user?.admin ?? false {
             self.showAlert(message: "This is an admin account, You can swipe left to delete or edit memories, You can also edit flower names images and prices")
-            self.editFlowerButton.isHidden = false
-            self.editFlowerImageView.isHidden = false
+            self.editFlowerButton.isHidden = false // Its view
         }
     }
     
@@ -106,6 +105,11 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         self.navigationController?.pushViewController(EditFlowersVC.instantiate(), animated: true)
     }
     
+    @IBAction func agencyButtonTapped(_ sender: UIButton) {
+        if let url = URL(string: "http://caroestinto.com/agenziefunebri") {
+            UIApplication.shared.open(url)
+        }
+    }
     
     @IBAction func onClickCreatePostButton(_ sender: UIButton) {
         DispatchQueue.main.async {
