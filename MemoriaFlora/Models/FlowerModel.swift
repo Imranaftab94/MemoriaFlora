@@ -26,8 +26,5 @@ struct FlowerModel {
     var imageUrl: String?
     var timestamp: TimeInterval?
     var categoryId: String?
-    
-    static func makeFlower() {
-        
-    }
+    var identifier: String?
 }

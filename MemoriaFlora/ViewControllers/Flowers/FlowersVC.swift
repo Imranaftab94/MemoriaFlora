@@ -79,14 +79,27 @@ class FlowersVC: BaseViewController {
             return
         }
         
-        let vc = SelectPaymentVC.instantiate(selectedCategory: category, selectedFlower: flower, memory: memory!)
-        vc.onPayCondolences = { [weak self] in
-            guard let self = self else { return }
-            guard let selectedCategory = self.selectedFlowerCategory else { return }
-            guard let selectedFlower = self.selectedFlower else { return }
-            self.onSelectPayment?(selectedCategory, selectedFlower)
+        guard let productId = flower.identifier else { return }
+        
+        PKIAPHandler.shared.setProductIds(ids: [productId])
+        self.showProgressHUD()
+        PKIAPHandler.shared.fetchAvailableProducts { products in
+            self.hideProgressHUD()
+            guard let product = products.first else {
+                self.showAlert(message: "No products found, Something went wrong")
+                return
+            }
+            
+            PKIAPHandler.shared.purchase(product: product) { handlerAlert, product, transaction in
+                if let productID = product?.productIdentifier {
+                    guard let selectedCategory = self.selectedFlowerCategory else { return }
+                    guard let selectedFlower = self.selectedFlower else { return }
+                    self.onSelectPayment?(selectedCategory, selectedFlower)
+                } else {
+                    self.showAlert(message: "Something went wrong, Try again")
+                }
+            }
         }
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func fetchFlowerCategories() {
@@ -146,10 +159,11 @@ class FlowersVC: BaseViewController {
                           let flowerPrice = flowerIdData["flowerPrice"] as? String,
                           let imageUrl = flowerIdData["imageUrl"] as? String,
                           let timestamp = flowerIdData["timestamp"] as? TimeInterval,
-                          let categoryId = flowerIdData["categoryId"] as? String else {
+                          let categoryId = flowerIdData["categoryId"] as? String,
+                          let identifier = flowerIdData["identifier"] as? String else {
                         continue
                     }
-                    let flower = FlowerModel(category: category, flowerName: flowerName, flowerPrice: flowerPrice, flowerId: flowerId, imageUrl: imageUrl, timestamp: timestamp, categoryId: categoryId)
+                    let flower = FlowerModel(category: category, flowerName: flowerName, flowerPrice: flowerPrice, flowerId: flowerId, imageUrl: imageUrl, timestamp: timestamp, categoryId: categoryId, identifier: identifier)
                     
                     flowers.append(flower)
                 }
@@ -255,6 +269,7 @@ extension FlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
             } else if flowerCategory.categoryName == "Orchids" {
                 self.flowers = orchids
             }
+            self.selectedFlower = nil
             self.reloadCollectionViews()
         } else {
             let flower = flowers[indexPath.row]
