@@ -84,19 +84,22 @@ class FlowersVC: BaseViewController {
         PKIAPHandler.shared.setProductIds(ids: [productId])
         self.showProgressHUD()
         PKIAPHandler.shared.fetchAvailableProducts { products in
-            self.hideProgressHUD()
             guard let product = products.first else {
                 self.showAlert(message: "No products found, Something went wrong")
+                self.hideProgressHUD()
                 return
             }
             
+            
             PKIAPHandler.shared.purchase(product: product) { handlerAlert, product, transaction in
+                self.hideProgressHUD()
                 if let productID = product?.productIdentifier {
                     guard let selectedCategory = self.selectedFlowerCategory else { return }
                     guard let selectedFlower = self.selectedFlower else { return }
                     self.onSelectPayment?(selectedCategory, selectedFlower)
+                    self.dismiss(animated: true)
                 } else {
-                    self.showAlert(message: "Something went wrong, Try again")
+                    
                 }
             }
         }
@@ -270,6 +273,7 @@ extension FlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
                 self.flowers = orchids
             }
             self.selectedFlower = nil
+            self.selectedItemIndex = -1
             self.reloadCollectionViews()
         } else {
             let flower = flowers[indexPath.row]

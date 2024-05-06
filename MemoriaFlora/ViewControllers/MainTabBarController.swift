@@ -51,24 +51,16 @@ class MainTabbarController: UITabBarController {
         let dashboardVC = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
         dashboardVC.tabBarItem = UITabBarItem(title: "Dashboard", image: #imageLiteral(resourceName: "ic_dashboard"), tag: 0)
         
-        //        let filesVC = UINavigationController.init(rootViewController: FilesVC.instantiate(fromAppStoryboard: .Main))
-        //        filesVC.tabBarItem = UITabBarItem(title: "Files", image: #imageLiteral(resourceName: "icn_files"), tag: 1)
-        //
-        //        let uploadFileVC = UINavigationController.init(rootViewController: UploadFileVC.instantiate(fromAppStoryboard: .Main))
-        //        uploadFileVC.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 2)
+//                let filesVC = UINavigationController.init(rootViewController: FilesVC.instantiate(fromAppStoryboard: .Main))
+//                filesVC.tabBarItem = UITabBarItem(title: "Files", image: #imageLiteral(resourceName: "icn_files"), tag: 1)
+//        
+//                let filesVC = UINavigationController.init(rootViewController: FilesVC.instantiate(fromAppStoryboard: .Main))
+        //                filesVC.tabBarItem = UITabBarItem(title: "Files", image: #imageLiteral(resourceName: "icn_files"), tag: 2)
         
-        //        let conversationVC = UINavigationController.init(rootViewController: ConversationThreadsViewController.instantiate(fromAppStoryboard: .Conversation))
-        //        let tabBarItem = UITabBarItem(title: "Conversations", image: image, tag: 3)
-        //        conversationVC.tabBarItem = tabBarItem
-        
-        //        let moreVC = UINavigationController.init(rootViewController: MoreVC.instantiate(fromAppStoryboard: .Main))
-        //        moreVC.tabBarItem = UITabBarItem(title: "More", image: #imageLiteral(resourceName: "icn_more_menu"), tag: 4)
         
         var tabBarList: [UINavigationController] = []
         
         tabBarList.append(dashboardVC)
-//        tabBarList.append(uploadFileVC)
-//        tabBarList.append(moreVC)
         
         viewControllers = tabBarList
         
