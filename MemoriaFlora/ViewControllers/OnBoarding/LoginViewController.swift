@@ -112,7 +112,7 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
                             "name": user.displayName ?? "",
                             "email": user.email ?? "",
                             "userDescription": "",
-                            "admin": true,
+                            "admin": false,
                             "userId": user.uid,
                         ]
                         
