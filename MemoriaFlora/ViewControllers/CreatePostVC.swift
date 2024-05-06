@@ -155,6 +155,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         self.userNameTextField.text = memory.userName
         self.descriptionTextView.text = memory.description
         self.demiseTextField.text = memory.dateOfDemise
+        self.updateCharacterCount()
     }
     
     private func updatePost() {
