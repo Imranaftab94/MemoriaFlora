@@ -24,8 +24,8 @@ class DetailViewController: BaseViewController {
     
     @IBOutlet weak var shareBackground: UIView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var tableView: UITableView!
     var memory: Memory?
     var condolences: [Condolence] = []
 
