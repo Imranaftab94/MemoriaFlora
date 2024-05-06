@@ -9,13 +9,7 @@ import Foundation
 import UIKit
 
 func animateTransition(to viewController: UIViewController, view: UIView) {
-    UIView.transition(with: view,
-                      duration: 0.8,
-                      options: .transitionFlipFromRight,
-                      animations: {
-        UIApplication.shared.windows.first?.rootViewController = viewController
-    },
-                      completion: nil)
+    UIApplication.shared.windows.first?.rootViewController = viewController
 }
 
 func createCondolencesEmail(recipientName: String, purchaserName: String, flowerName: String) -> String {

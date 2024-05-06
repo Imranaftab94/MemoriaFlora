@@ -16,13 +16,9 @@ class MainTabbarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarController?.tabBar.isHidden = false
-        
         self.configureTabBar()
-        
-        self.setupMiddleButton()
-        
         self.tabBar.inActiveTintColor()
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,15 +26,15 @@ class MainTabbarController: UITabBarController {
         self.tabBarController?.tabBar.isHidden = false
         if #available(iOS 15, *) {
             let tabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.backgroundColor = .systemBackground
-            tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.appPurpleColor]
-            tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gray]
+            tabBarAppearance.backgroundColor = UIColor(hexString: "#793EE5")
+            tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.white]
+            tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
             tabBar.standardAppearance = tabBarAppearance
             tabBar.scrollEdgeAppearance = tabBarAppearance
         } else {
-            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.appPurpleColor], for: .selected)
-            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.gray], for: .normal)
-            tabBar.barTintColor = UIColor.white
+            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+            tabBar.barTintColor = UIColor.appPurpleColor
         }
     }
     
@@ -48,27 +44,24 @@ class MainTabbarController: UITabBarController {
     }
     
     private func configureTabBar() {
-        let dashboardVC = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
-        dashboardVC.tabBarItem = UITabBarItem(title: "Dashboard", image: #imageLiteral(resourceName: "ic_dashboard"), tag: 0)
+        let homeVC = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
+        homeVC.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "ic_home"), tag: 0)
         
-        //        let filesVC = UINavigationController.init(rootViewController: FilesVC.instantiate(fromAppStoryboard: .Main))
-        //        filesVC.tabBarItem = UITabBarItem(title: "Files", image: #imageLiteral(resourceName: "icn_files"), tag: 1)
-        //
-        //        let uploadFileVC = UINavigationController.init(rootViewController: UploadFileVC.instantiate(fromAppStoryboard: .Main))
-        //        uploadFileVC.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 2)
+        let createPost = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
+        createPost.tabBarItem = UITabBarItem(title: "Add", image: #imageLiteral(resourceName: "ic_home"), tag: 1)
         
-        //        let conversationVC = UINavigationController.init(rootViewController: ConversationThreadsViewController.instantiate(fromAppStoryboard: .Conversation))
-        //        let tabBarItem = UITabBarItem(title: "Conversations", image: image, tag: 3)
-        //        conversationVC.tabBarItem = tabBarItem
+        let funeralAgency = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
+        funeralAgency.tabBarItem = UITabBarItem(title: "Funeral Agency", image: #imageLiteral(resourceName: "ic_home"), tag: 2)
         
-        //        let moreVC = UINavigationController.init(rootViewController: MoreVC.instantiate(fromAppStoryboard: .Main))
-        //        moreVC.tabBarItem = UITabBarItem(title: "More", image: #imageLiteral(resourceName: "icn_more_menu"), tag: 4)
+        let search = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
+        search.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "ic_home"), tag: 3)
         
         var tabBarList: [UINavigationController] = []
         
-        tabBarList.append(dashboardVC)
-//        tabBarList.append(uploadFileVC)
-//        tabBarList.append(moreVC)
+        tabBarList.append(homeVC)
+        tabBarList.append(createPost)
+        tabBarList.append(funeralAgency)
+        tabBarList.append(search)
         
         viewControllers = tabBarList
         
@@ -101,12 +94,14 @@ extension MainTabbarController: UITabBarControllerDelegate {
         if viewController == tabBarController.viewControllers?[0] {
             
         } else if viewController == tabBarController.viewControllers?[1] {
-            
+            self.navigationController?.pushViewController(CreatePostVC.instantiate(fromAppStoryboard: .Main), animated: true)
+            return false
+        } else if viewController == tabBarController.viewControllers?[2] {
+            // MOVE TO HYPERLINK HERE ON FUNERAL AGENCY
+            return false
         } else if viewController == tabBarController.viewControllers?[3] {
-            
-        } else if viewController == tabBarController.viewControllers?[4] {
-            
-            
+            // OPEN SEARCH HERE
+            return false
         }
         return true
     }
@@ -120,11 +115,9 @@ extension UITabBar {
     func inActiveTintColor() {
         if let items = items{
             for item in items{
-                if item != items[2] {
-                    item.image =  item.image?.withRenderingMode(.alwaysOriginal)
-                    item.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor(red: 166/255, green: 171/255, blue: 189/255, alpha: 1.0)], for: .normal)
-                    item.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor(red: 72/255, green: 128/255, blue: 215/255, alpha: 1.0)], for: .selected)
-                }
+                item.image =  item.image?.withRenderingMode(.alwaysOriginal)
+                item.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .normal)
+                item.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .selected)
             }
         }
     }

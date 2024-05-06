@@ -205,9 +205,8 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     
     private func navigateToHome() {
         DispatchQueue.main.async {
-            let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            let navigationVC = UINavigationController(rootViewController: homeVC)
-            animateTransition(to: navigationVC, view: self.view)
+            let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbarController") as! MainTabbarController
+            animateTransition(to: homeVC, view: self.view)
         }
     }
     

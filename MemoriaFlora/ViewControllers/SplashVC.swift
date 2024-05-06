@@ -32,9 +32,8 @@ class SplashVC: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             if let _ = AppController.shared.user, MyUserDefaults.getRememberMe() {
                 // User exists, navigate to HomeViewController with animation
-                let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                let navigationVC = UINavigationController(rootViewController: homeVC)
-                animateTransition(to: navigationVC, view: self.view)
+                let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbarController") as! MainTabbarController
+                animateTransition(to: homeVC, view: self.view)
             } else {
                 // No user, navigate to LoginViewController with animation
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController

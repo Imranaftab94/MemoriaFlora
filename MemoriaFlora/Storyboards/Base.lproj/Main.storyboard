@@ -48,7 +48,7 @@
         <!--Main Tabbar Controller-->
         <scene sceneID="JWk-hc-hjy">
             <objects>
-                <tabBarController id="mJJ-2Y-yem" customClass="MainTabbarController" customModule="Caro_Estinto" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabbarController" id="mJJ-2Y-yem" customClass="MainTabbarController" customModule="Caro_Estinto" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yj7-Es-816">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
