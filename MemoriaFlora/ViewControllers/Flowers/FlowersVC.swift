@@ -205,11 +205,12 @@ class FlowersVC: BaseViewController {
                           let flowerPrice = flowerIdData["flowerPrice"] as? String,
                           let imageUrl = flowerIdData["imageUrl"] as? String,
                           let timestamp = flowerIdData["timestamp"] as? TimeInterval,
-                          let categoryId = flowerIdData["categoryId"] as? String else {
+                          let categoryId = flowerIdData["categoryId"] as? String,
+                          let identifier = flowerIdData["identifier"] as? String else {
                         continue
                     }
                     
-                    let flower = FlowerModel(category: category, flowerName: flowerName, flowerPrice: flowerPrice, flowerId: flowerId, imageUrl: imageUrl, timestamp: timestamp, categoryId: categoryId)
+                    let flower = FlowerModel(category: category, flowerName: flowerName, flowerPrice: flowerPrice, flowerId: flowerId, imageUrl: imageUrl, timestamp: timestamp, categoryId: categoryId, identifier: identifier)
                     
                     updatedFlowers.append(flower)
                 }
@@ -228,8 +229,6 @@ class FlowersVC: BaseViewController {
                 self.flowers = self.carnations
             } else if self.selectedFlowerCategory?.categoryName == "Orchids" {
                 self.flowers = self.orchids
-            } else {
-                self.flowers = updatedFlowers
             }
             self.reloadCollectionViews()
         }
@@ -305,6 +304,10 @@ extension FlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
             }
             if AppController.shared.user?.admin ?? false {
                 cell.editButtonView.isHidden = false
+                cell.editButtonView.layer.cornerRadius = 12.5
+                cell.editButtonView.layer.masksToBounds = true
+            } else {
+                cell.editButtonView.isHidden = true
                 cell.editButtonView.layer.cornerRadius = 12.5
                 cell.editButtonView.layer.masksToBounds = true
             }
