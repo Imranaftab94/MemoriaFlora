@@ -24,7 +24,8 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     @IBOutlet weak var userProfileImage: UIImageView!
     @IBOutlet weak var descriptionContainer: UIView!
     @IBOutlet weak var userNameContainer: UIView!
-    
+    @IBOutlet weak var postCountLabel: UILabel!
+
     private var imageSelectionAlertViewController: ImageSelectionAlertViewController?
     private var selectedImage: UIImage?
     
@@ -34,7 +35,8 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     
     let activeBorderColor: UIColor = UIColor.init(hexString: "#793EE5")
     let inactiveBorderColor: UIColor = UIColor.init(hexString: "#0B0B0B")
-    
+    let maxCharacterCount = 80
+
     let datePicker = UIDatePicker()
     
     override func viewDidLoad() {
@@ -456,4 +458,21 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             demiseContainerView.layer.borderWidth = 1.0
         }
     }
+}
+
+extension CreatePostVC {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        // Check if the new text combined with the old text is less than or equal to maxCharacterCount
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        return newText.count <= maxCharacterCount
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        updateCharacterCount()
+    }
+    
+    func updateCharacterCount() {
+        let currentCount = descriptionTextView.text.count
+        postCountLabel.text = "\(currentCount) / \(maxCharacterCount)"
+    }
+
 }

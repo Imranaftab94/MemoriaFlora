@@ -93,6 +93,11 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         searchView.layer.borderWidth = 0.4
     }
     
+     func activateTextField() {
+        self.searchTextField.becomeFirstResponder()
+    }
+    
+
     @IBAction func onClickProfileButton(_ sender: UIButton) {
         DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

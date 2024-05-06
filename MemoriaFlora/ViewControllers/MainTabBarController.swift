@@ -45,16 +45,16 @@ class MainTabbarController: UITabBarController {
     
     private func configureTabBar() {
         let homeVC = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
-        homeVC.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "ic_home"), tag: 0)
+        homeVC.tabBarItem = UITabBarItem(title: "Menu", image: #imageLiteral(resourceName: "ic_home"), tag: 0)
         
-        let createPost = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
-        createPost.tabBarItem = UITabBarItem(title: "Add", image: #imageLiteral(resourceName: "ic_home"), tag: 1)
+        let createPost = UINavigationController.init(rootViewController: CreatePostVC.instantiate(fromAppStoryboard: .Main))
+        createPost.tabBarItem = UITabBarItem(title: "Add", image: #imageLiteral(resourceName: "ic_add"), tag: 1)
         
         let funeralAgency = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
-        funeralAgency.tabBarItem = UITabBarItem(title: "Funeral Agency", image: #imageLiteral(resourceName: "ic_home"), tag: 2)
+        funeralAgency.tabBarItem = UITabBarItem(title: "Funeral Agency", image: #imageLiteral(resourceName: "agency"), tag: 2)
         
         let search = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
-        search.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "ic_home"), tag: 3)
+        search.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "search_tab"), tag: 3)
         
         var tabBarList: [UINavigationController] = []
         
@@ -89,16 +89,25 @@ class MainTabbarController: UITabBarController {
 extension MainTabbarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController == tabBarController.viewControllers?[0] {
-            
+            self.navigationController?.pushViewController(HomeViewController.instantiate(fromAppStoryboard: .Main), animated: true)
         } else if viewController == tabBarController.viewControllers?[1] {
             self.navigationController?.pushViewController(CreatePostVC.instantiate(fromAppStoryboard: .Main), animated: true)
-            return false
+            return true
         } else if viewController == tabBarController.viewControllers?[2] {
             // MOVE TO HYPERLINK HERE ON FUNERAL AGENCY
+            if let url = URL(string: "http://caroestinto.com/agenziefunebri") {
+                UIApplication.shared.open(url)
+            }
             return false
         } else if viewController == tabBarController.viewControllers?[3] {
             // OPEN SEARCH HERE
-            return false
+//            self.navigationController?.pushViewController(HomeViewController.instantiate(), animated: true)
+            if let funeralAgencyVC = viewController as? UINavigationController,
+               let funeralAgencyRootVC = funeralAgencyVC.viewControllers.first as? HomeViewController {
+                funeralAgencyRootVC.activateTextField() // Implement this method in YourFuneralAgencyViewController
+            }
+
+            return true
         }
         return true
     }

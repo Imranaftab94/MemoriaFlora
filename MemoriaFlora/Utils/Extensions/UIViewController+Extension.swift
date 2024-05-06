@@ -19,6 +19,7 @@ extension UIViewController {
         return appStoryboard.viewController(viewControllerClass: self)
     }
     
+    
     func present(newRootViewController: UIViewController) {
         DispatchQueue.main.async {
             UIView.transition(from: self.view, to: newRootViewController.view, duration: 0.6, options: [.transitionFlipFromTop], completion: { completed in
