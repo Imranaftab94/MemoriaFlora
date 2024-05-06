@@ -13,6 +13,8 @@ import Kingfisher
 import UserNotifications
 
 class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDelegate {
+    @IBOutlet weak var editFlowerButton: UIButton!
+    @IBOutlet weak var editFlowerImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var emptyListImageView: UIImageView!
@@ -42,6 +44,18 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         tapGesture.delegate = self
         self.view.addGestureRecognizer(tapGesture)
         searchTextField.delegate = self
+        
+        if AppController.shared.user?.admin ?? false {
+            self.showAlert(message: "This is an admin account, You can swipe left to delete or edit memories, You can also edit flower names images and prices")
+            self.editFlowerButton.isHidden = false
+            self.editFlowerImageView.isHidden = false
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -80,21 +94,6 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         searchView.layer.borderWidth = 0.4
     }
     
-    func setNotification() {
-        // Remove previous notifications
-//        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-//        
-//        // Schedule notifications for each memory
-//        if let userID = AppController.shared.user?.userId {
-//            for memory in memories {
-//                scheduleNotification(for: memory, userID: userID)
-//            }
-//        }
-    }
-    
-    func scheduleNotification(for memory: Memory, userID: String) {
-    }
-    
     @IBAction func onClickProfileButton(_ sender: UIButton) {
         DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -102,6 +101,11 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
             self.navigationController?.pushViewController(profileVC, animated: true)            
         }
     }
+    
+    @IBAction func onClickEditFlowersButton(_ sender: UIButton) {
+        self.navigationController?.pushViewController(EditFlowersVC.instantiate(), animated: true)
+    }
+    
     
     @IBAction func onClickCreatePostButton(_ sender: UIButton) {
         DispatchQueue.main.async {
@@ -168,7 +172,6 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
             self.memories = allMemories
             self.allMemoryUsers = allMemories
             self.checkAndDeleteOldMemories()
-            self.setNotification()
             self.reloadTableView()
         }
     }
@@ -237,7 +240,7 @@ extension HomeViewController: UITableViewDataSource {
         var actions = [UIContextualAction]()
 
         // Add delete action
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+        let deleteAction = UIContextualAction(style: .destructive, title: "") { (action, view, completionHandler) in
             let alert = UIAlertController(title: "Confirm Deletion", message: "Are you sure you want to delete this memory?", preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
@@ -245,7 +248,7 @@ extension HomeViewController: UITableViewDataSource {
             }
             alert.addAction(cancelAction)
             
-            let deleteConfirmAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            let deleteConfirmAction = UIAlertAction(title: "Delete Post", style: .destructive) { _ in
                 guard let key = item.memoryKey else { return }
                 self.showProgressHUD()
                 self.deleteMemory(withUID: key) {
@@ -264,18 +267,27 @@ extension HomeViewController: UITableViewDataSource {
             
             self.present(alert, animated: true, completion: nil)
         }
-        deleteAction.backgroundColor = .red
+        if let editIcon = UIImage(named: "ic_delete_trash") {
+            deleteAction.image = editIcon
+        }
+            
+        deleteAction.backgroundColor = UIColor(hexString: "F7F7F7")
         actions.append(deleteAction)
         
         // Add edit action if the item meets certain conditions
-        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completionHandler) in
+        let editAction = UIContextualAction(style: .normal, title: "") { (action, view, completionHandler) in
             let vc = CreatePostVC.instantiate(fromAppStoryboard: .Main)
             vc.memory = item
             vc.isEditingEnabled = true
             self.navigationController?.pushViewController(vc, animated: true)
             completionHandler(true)
         }
-        editAction.backgroundColor = .blue
+        
+        if let editIcon = UIImage(named: "ic_edit_post") {
+            editAction.image = editIcon
+        }
+        
+        editAction.backgroundColor = UIColor(hexString: "F7F7F7")
         actions.append(editAction)
         
 
@@ -331,8 +343,6 @@ extension HomeViewController: UITextFieldDelegate {
         return true
     }
     
-    
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == searchTextField {
             // Change border color of username container
@@ -364,5 +374,4 @@ extension HomeViewController: UITextFieldDelegate {
         tableView.reloadData()
         return true
     }
-
 }

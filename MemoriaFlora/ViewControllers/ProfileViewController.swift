@@ -12,6 +12,8 @@ import FirebaseAuth
 class ProfileViewController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,16 @@ class ProfileViewController: UIViewController {
         self.nameLabel.text = AppController.shared.user?.name ?? "User"
         self.userImageView.layer.cornerRadius = 16
         self.userImageView.layer.masksToBounds = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
+        
+        if AppController.shared.user?.admin ?? false {
+            self.deleteButton.isHidden = true
+        }
     }
     
     private func setNavigationBackButtonColor() {
@@ -63,12 +75,13 @@ class ProfileViewController: UIViewController {
                                 print("Account deleted successfully")
                                 // Navigate to another screen or show a confirmation message
                                 MyUserDefaults.removeUser()
+                                AppController.shared.user = nil
+                                AppController.shared.fcmToken = ""
                                 let splashVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashVC") as! SplashVC
                                 let navigationVC = UINavigationController.init(rootViewController: splashVC)
                                 UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
                                     UIApplication.shared.windows.first?.rootViewController = navigationVC
                                 }, completion: nil)
-
                             }
                         }
                     }
@@ -81,7 +94,7 @@ class ProfileViewController: UIViewController {
 
     @IBAction func onClickLogoutButton(_ sender: UIButton) {
         MyUserDefaults.removeUser()
-        
+        AppController.shared.user = nil
         let firebaseAuth = Auth.auth()
         do {
           try firebaseAuth.signOut()

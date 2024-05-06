@@ -769,46 +769,68 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Hj-j1-bGt">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="130"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sacred Memories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY1-Mi-V83">
-                                        <rect key="frame" x="24" y="86" width="197.33333333333334" height="28"/>
+                                        <rect key="frame" x="24" y="76" width="197.33333333333334" height="28"/>
                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="24"/>
                                         <color key="textColor" red="0.52549019607843139" green="0.36862745098039218" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0tS-f5-idG">
-                                        <rect key="frame" x="380" y="85" width="32" height="30.666666666666671"/>
+                                        <rect key="frame" x="380" y="75" width="32" height="30.666666666666671"/>
                                         <color key="tintColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="68X-E1-TKA"/>
                                             <constraint firstAttribute="width" constant="32" id="XEa-c9-WYq"/>
                                         </constraints>
                                     </imageView>
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_edit_flower 1" translatesAutoresizingMaskIntoConstraints="NO" id="FTC-dJ-JKJ">
+                                        <rect key="frame" x="336" y="74" width="32" height="32"/>
+                                        <color key="tintColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="fTN-vi-P4E"/>
+                                            <constraint firstAttribute="height" constant="32" id="gId-6r-E8K"/>
+                                        </constraints>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQT-Tc-7gM">
-                                        <rect key="frame" x="380" y="84" width="32" height="32"/>
+                                        <rect key="frame" x="380" y="74" width="32" height="32"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
                                         <connections>
                                             <action selector="onClickProfileButton:" destination="REu-Ne-vKa" eventType="touchUpInside" id="FPX-fL-GeX"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgt-98-dad">
+                                        <rect key="frame" x="336" y="74" width="32" height="32"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                        <connections>
+                                            <action selector="onClickEditFlowersButton:" destination="REu-Ne-vKa" eventType="touchUpInside" id="X67-yr-3de"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="Lgt-98-dad" firstAttribute="leading" secondItem="FTC-dJ-JKJ" secondAttribute="leading" id="0mi-41-Kbf"/>
                                     <constraint firstItem="VQT-Tc-7gM" firstAttribute="top" secondItem="0tS-f5-idG" secondAttribute="top" id="2w2-9O-hj3"/>
+                                    <constraint firstItem="Lgt-98-dad" firstAttribute="top" secondItem="FTC-dJ-JKJ" secondAttribute="top" id="9y2-gM-co3"/>
+                                    <constraint firstItem="Lgt-98-dad" firstAttribute="trailing" secondItem="FTC-dJ-JKJ" secondAttribute="trailing" id="EBG-yU-dQA"/>
+                                    <constraint firstItem="Lgt-98-dad" firstAttribute="bottom" secondItem="FTC-dJ-JKJ" secondAttribute="bottom" id="Mjj-Fc-bh8"/>
                                     <constraint firstAttribute="trailing" secondItem="0tS-f5-idG" secondAttribute="trailing" constant="16" id="Phk-y3-q2G"/>
                                     <constraint firstItem="VQT-Tc-7gM" firstAttribute="trailing" secondItem="0tS-f5-idG" secondAttribute="trailing" id="QkK-Bq-uX6"/>
                                     <constraint firstItem="VQT-Tc-7gM" firstAttribute="bottom" secondItem="0tS-f5-idG" secondAttribute="bottom" id="Y2A-tP-9rv"/>
+                                    <constraint firstItem="FTC-dJ-JKJ" firstAttribute="centerY" secondItem="0tS-f5-idG" secondAttribute="centerY" id="emf-me-m8K"/>
                                     <constraint firstAttribute="bottom" secondItem="0tS-f5-idG" secondAttribute="bottom" constant="14" id="iK7-rG-D3m"/>
                                     <constraint firstItem="CY1-Mi-V83" firstAttribute="leading" secondItem="5Hj-j1-bGt" secondAttribute="leading" constant="24" id="jVN-b6-GnO"/>
-                                    <constraint firstAttribute="height" constant="130" id="yJB-qI-Gm2"/>
+                                    <constraint firstItem="0tS-f5-idG" firstAttribute="leading" secondItem="FTC-dJ-JKJ" secondAttribute="trailing" constant="12" id="taT-2P-SKe"/>
+                                    <constraint firstAttribute="height" constant="120" id="yJB-qI-Gm2"/>
                                     <constraint firstItem="VQT-Tc-7gM" firstAttribute="leading" secondItem="0tS-f5-idG" secondAttribute="leading" id="yQy-bP-TrD"/>
                                     <constraint firstAttribute="bottom" secondItem="CY1-Mi-V83" secondAttribute="bottom" constant="16" id="ynf-e6-Whz"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rCM-c0-vD2">
-                                <rect key="frame" x="0.0" y="194" width="428" height="698"/>
+                                <rect key="frame" x="0.0" y="184" width="428" height="708"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QU2-qL-dib">
@@ -827,7 +849,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Z0-hn-ydH">
-                                <rect key="frame" x="24" y="146" width="380" height="40"/>
+                                <rect key="frame" x="24" y="136" width="380" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search by NAME, SURNAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6i4-Jw-c3a">
                                         <rect key="frame" x="16" y="0.0" width="310" height="40"/>
@@ -876,6 +898,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="editFlowerButton" destination="Lgt-98-dad" id="Gj7-Xs-Qh2"/>
+                        <outlet property="editFlowerImageView" destination="FTC-dJ-JKJ" id="gfq-LG-zNL"/>
                         <outlet property="emptyListImageView" destination="Eeq-Ev-lw4" id="Q8w-We-ZIS"/>
                         <outlet property="searchTextField" destination="6i4-Jw-c3a" id="cly-JS-Oqy"/>
                         <outlet property="searchView" destination="0Z0-hn-ydH" id="5ci-3g-wII"/>
@@ -1112,72 +1136,77 @@
                                     <constraint firstAttribute="height" constant="200" id="Ysb-Jd-vzy"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPS-Bu-6Cq" customClass="DesignableButton" customModule="Spring">
-                                <rect key="frame" x="32" y="702" width="364" height="50"/>
-                                <color key="backgroundColor" red="0.88828486204147339" green="0.23529414734427812" blue="0.21958279323642765" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="ISN-D3-WaM"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Delete Account">
-                                    <fontDescription key="titleFontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="19"/>
-                                </buttonConfiguration>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" red="0.88828486204147339" green="0.23529414734427812" blue="0.21958279323642765" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="deleteButtonTap:" destination="dqk-en-z9f" eventType="touchUpInside" id="hKq-Ul-3t7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyi-r5-L5R" customClass="DesignableButton" customModule="Spring">
-                                <rect key="frame" x="32" y="642" width="364" height="50"/>
-                                <color key="backgroundColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Vip-hb-gRR"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Logout">
-                                    <fontDescription key="titleFontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="19"/>
-                                </buttonConfiguration>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onClickLogoutButton:" destination="dqk-en-z9f" eventType="touchUpInside" id="qR0-9o-INS"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8i4-RX-3eU">
+                                <rect key="frame" x="32" y="642" width="364" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyi-r5-L5R" customClass="DesignableButton" customModule="Spring">
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+                                        <color key="backgroundColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Vip-hb-gRR"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Logout">
+                                            <fontDescription key="titleFontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="19"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onClickLogoutButton:" destination="dqk-en-z9f" eventType="touchUpInside" id="qR0-9o-INS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPS-Bu-6Cq" customClass="DesignableButton" customModule="Spring">
+                                        <rect key="frame" x="0.0" y="60" width="364" height="50"/>
+                                        <color key="backgroundColor" red="0.88828486204147339" green="0.23529414734427812" blue="0.21958279323642765" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ISN-D3-WaM"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Delete Account">
+                                            <fontDescription key="titleFontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="19"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" red="0.88828486204147339" green="0.23529414734427812" blue="0.21958279323642765" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="deleteButtonTap:" destination="dqk-en-z9f" eventType="touchUpInside" id="hKq-Ul-3t7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="       " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKC-2l-J0K">
-                                <rect key="frame" x="198.66666666666666" y="297" width="31" height="21"/>
+                                <rect key="frame" x="198.66666666666666" y="297" width="30.666666666666657" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1187,18 +1216,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ZDu-bl-9dO" firstAttribute="top" secondItem="IGq-pQ-w07" secondAttribute="top" constant="40" id="5sl-nL-CoZ"/>
-                            <constraint firstItem="IGq-pQ-w07" firstAttribute="trailing" secondItem="zPS-Bu-6Cq" secondAttribute="trailing" constant="32" id="Dd6-Ne-yWo"/>
+                            <constraint firstItem="IGq-pQ-w07" firstAttribute="bottom" secondItem="8i4-RX-3eU" secondAttribute="bottom" constant="140" id="8dS-Jj-ssK"/>
                             <constraint firstItem="ZDu-bl-9dO" firstAttribute="centerX" secondItem="7GY-GT-Jg4" secondAttribute="centerX" id="Emj-uR-I70"/>
-                            <constraint firstItem="hyi-r5-L5R" firstAttribute="leading" secondItem="zPS-Bu-6Cq" secondAttribute="leading" id="HlX-0s-lky"/>
-                            <constraint firstItem="IGq-pQ-w07" firstAttribute="bottom" secondItem="zPS-Bu-6Cq" secondAttribute="bottom" constant="140" id="Mfe-bc-R7k"/>
+                            <constraint firstItem="IGq-pQ-w07" firstAttribute="trailing" secondItem="8i4-RX-3eU" secondAttribute="trailing" constant="32" id="H4N-Au-vIh"/>
                             <constraint firstItem="BKC-2l-J0K" firstAttribute="top" secondItem="ZDu-bl-9dO" secondAttribute="bottom" constant="10" id="c4W-Vu-TJh"/>
                             <constraint firstItem="BKC-2l-J0K" firstAttribute="centerX" secondItem="ZDu-bl-9dO" secondAttribute="centerX" id="d4R-Ie-zhB"/>
-                            <constraint firstItem="zPS-Bu-6Cq" firstAttribute="leading" secondItem="IGq-pQ-w07" secondAttribute="leading" constant="32" id="eLb-EY-o9b"/>
-                            <constraint firstItem="zPS-Bu-6Cq" firstAttribute="top" secondItem="hyi-r5-L5R" secondAttribute="bottom" constant="10" id="zDu-Ez-8C9"/>
-                            <constraint firstItem="hyi-r5-L5R" firstAttribute="trailing" secondItem="zPS-Bu-6Cq" secondAttribute="trailing" id="zPN-Rl-O8E"/>
+                            <constraint firstItem="8i4-RX-3eU" firstAttribute="leading" secondItem="IGq-pQ-w07" secondAttribute="leading" constant="32" id="rK3-ov-PbX"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="zPS-Bu-6Cq" id="EYR-Ij-Zdj"/>
                         <outlet property="nameLabel" destination="BKC-2l-J0K" id="cTA-eR-hBo"/>
                         <outlet property="userImageView" destination="ZDu-bl-9dO" id="Fdl-fX-HWa"/>
                     </connections>
@@ -1251,6 +1278,7 @@
     </designables>
     <resources>
         <image name="ic_create" width="57" height="57"/>
+        <image name="ic_edit_flower 1" width="16.666666030883789" height="16.666666030883789"/>
         <image name="ic_grave" width="368" height="559"/>
         <image name="ic_profile" width="96" height="96"/>
         <image name="ic_search" width="30" height="30"/>

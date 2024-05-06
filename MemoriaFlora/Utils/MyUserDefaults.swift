@@ -45,6 +45,7 @@ class MyUserDefaults: NSObject {
     
     static func removeUser() {
         UserDefaults.standard.removeObject(forKey: UserDefaults.keys.user)
+        UserDefaults.standard.removeObject(forKey: UserDefaults.keys.rememberMe)
         UserDefaults.standard.synchronize()
     }
 }

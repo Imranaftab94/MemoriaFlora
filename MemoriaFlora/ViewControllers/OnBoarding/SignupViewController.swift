@@ -80,7 +80,7 @@ class SignupViewController: BaseViewController {
                     // Save user data under the user ID
                     let userData: [String: Any] = [
                         "name": self.nameTextField.text!,
-                        "email": self.emailTextField.text!,
+                        "email": self.emailTextField.text!.lowercased(),
                         "userDescription": "",
                         "admin": false,
                         "userId": user.uid,

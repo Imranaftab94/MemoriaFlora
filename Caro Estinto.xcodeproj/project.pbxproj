@@ -41,6 +41,7 @@
 		0BDC27C32BD3E2C7001BA3BE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C22BD3E2C7001BA3BE /* UIViewController+Extension.swift */; };
 		0BDC27C52BD3E2E7001BA3BE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C42BD3E2E7001BA3BE /* Enums.swift */; };
 		0BDC27C72BD3F449001BA3BE /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */; };
+		0BEDFE4B2BE721DD004EF5A2 /* UpdateFlowerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEDFE4A2BE721DD004EF5A2 /* UpdateFlowerVC.swift */; };
 		4B55453E1A01057E856704DA /* Pods_Caro_Estinto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */; };
 		E405EAD02BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC32BD1BFCD005C8673 /* SF-Pro-Text-Heavy.otf */; };
 		E405EAD12BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E405EAC42BD1BFCD005C8673 /* SF-Pro-Text-MediumItalic.otf */; };
@@ -125,6 +126,7 @@
 		0BDC27C22BD3E2C7001BA3BE /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		0BDC27C42BD3E2E7001BA3BE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
+		0BEDFE4A2BE721DD004EF5A2 /* UpdateFlowerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFlowerVC.swift; sourceTree = "<group>"; };
 		169007E1CD9FFA86208F5AC9 /* Pods-MemoriaFlora.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoriaFlora.debug.xcconfig"; path = "Target Support Files/Pods-MemoriaFlora/Pods-MemoriaFlora.debug.xcconfig"; sourceTree = "<group>"; };
 		66CBF9FD732977FB0FEE14BC /* Pods_Caro_Estinto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Caro_Estinto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7551554E435EA7949109ED3B /* Pods-Caro Estinto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caro Estinto.debug.xcconfig"; path = "Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto.debug.xcconfig"; sourceTree = "<group>"; };
@@ -219,7 +221,6 @@
 				0B7F2F062BE1D10F009D3ED0 /* Condolence */,
 				0B7F2F012BE1BE3C009D3ED0 /* OnBoarding */,
 				0BDC27B32BD3D328001BA3BE /* Flowers */,
-				0BAFC18F2BD22EEC0079C7BD /* Utils */,
 				0BAFC1882BD229FD0079C7BD /* Home */,
 				E44686A52BCDCDCC001DF89B /* AppDelegate.swift */,
 				E44686A72BCDCDCC001DF89B /* SceneDelegate.swift */,
@@ -310,6 +311,7 @@
 				0BDC27BC2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift */,
 				0BDC27BD2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib */,
 				0B6E9C2D2BE686D30021EB19 /* EditFlowersVC.swift */,
+				0BEDFE4A2BE721DD004EF5A2 /* UpdateFlowerVC.swift */,
 			);
 			path = Flowers;
 			sourceTree = "<group>";
@@ -381,6 +383,7 @@
 				E4D8177F2BD289E900F2C50D /* MemoriaFlora.entitlements */,
 				0BAFC1872BD229D30079C7BD /* Storyboards */,
 				0BAFC1842BD227980079C7BD /* Models */,
+				0BAFC18F2BD22EEC0079C7BD /* Utils */,
 				0BAFC1832BD227900079C7BD /* ViewControllers */,
 				E4D8177A2BD2789300F2C50D /* Utilities */,
 				E44686AE2BCDCDCF001DF89B /* Assets.xcassets */,
@@ -637,6 +640,7 @@
 				0BDC27B72BD3D343001BA3BE /* FlowersVC.swift in Sources */,
 				0B6A205B2BDB2FC2005A83D3 /* AppController.swift in Sources */,
 				0B7F2F002BE179E1009D3ED0 /* FcmAppDelegate.swift in Sources */,
+				0BEDFE4B2BE721DD004EF5A2 /* UpdateFlowerVC.swift in Sources */,
 				0B7F2F052BE1D04F009D3ED0 /* CondolenceVC.swift in Sources */,
 				0BD4AC152BD256090058D204 /* ImageSelectionAlertViewController.swift in Sources */,
 				0BD4AC192BD261E90058D204 /* ProfileViewController.swift in Sources */,
@@ -841,7 +845,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MemoriaFlora/MemoriaFlora.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2TWXW6YH6K;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -884,7 +888,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MemoriaFlora/MemoriaFlora.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2TWXW6YH6K;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -110,6 +110,8 @@ extension PKIAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver{
       if let complition = self.fetchProductComplition {
         complition(response.products)
       }
+    } else {
+        self.fetchProductComplition?([])
     }
   }
   

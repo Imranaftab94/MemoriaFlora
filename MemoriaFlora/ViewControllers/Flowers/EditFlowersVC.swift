@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
+import FirebaseStorage
 
 class EditFlowersVC: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -19,56 +22,180 @@ class EditFlowersVC: BaseViewController {
     var selectedCategoryIndex = -1
     var selectedItemIndex = -1
     
-    var flowerCategories: [FlowerCategoryModel] = [
-        FlowerCategoryModel(flowerType: "Lilies", image: UIImage(named: "Lilies")!),
-        FlowerCategoryModel(flowerType: "Roses", image: UIImage(named: "Roses")!),
-        FlowerCategoryModel(flowerType: "Carnations", image: UIImage(named: "Carnations")!),
-        FlowerCategoryModel(flowerType: "Orchids", image: UIImage(named: "Orchids")!)
-    ]
+    var flowerCategories: [FlowerCategoryModel] = []
     
-    // Lilies
-    let lilies: [FlowerModel] = [
-        FlowerModel(name: "White Lily", price: "$30", image: UIImage(named: "lilies1")!),
-        FlowerModel(name: "Stargazer Lily", price: "$35", image: UIImage(named: "lilies2")!),
-        FlowerModel(name: "Casa Blanca Lily", price: "$40", image: UIImage(named: "lilies3")!),
-        FlowerModel(name: "Calla Lily", price: "$25", image: UIImage(named: "lilies4")!),
-        FlowerModel(name: "Tiger Lily", price: "$28", image: UIImage(named: "lilies5")!)
-    ]
-    
-    // Roses
-    let roses: [FlowerModel] = [
-        FlowerModel(name: "Red Rose", price: "$20", image: UIImage(named: "rose1")!),
-        FlowerModel(name: "White Rose", price: "$18", image: UIImage(named: "rose2")!),
-        FlowerModel(name: "Pink Rose", price: "$22", image: UIImage(named: "rose3")!),
-        FlowerModel(name: "Yellow Rose", price: "$15", image: UIImage(named: "rose4")!),
-        FlowerModel(name: "Black Rose", price: "$25", image: UIImage(named: "rose5")!)
-    ]
-    
-    // Orchids
-    let orchids: [FlowerModel] = [
-        FlowerModel(name: "Phalaenopsis Orchid", price: "$40", image: UIImage(named: "orchids1")!),
-        FlowerModel(name: "Cattleya Orchid", price: "$45", image: UIImage(named: "orchids2")!),
-        FlowerModel(name: "Dendrobium Orchid", price: "$38", image: UIImage(named: "orchids3")!),
-        FlowerModel(name: "Cymbidium Orchid", price: "$42", image: UIImage(named: "orchids4")!),
-        FlowerModel(name: "Vanda Orchid", price: "$50", image: UIImage(named: "orchids5")!)
-    ]
-
-    // Carnations
-    let carnations: [FlowerModel] = [
-        FlowerModel(name: "White Carnation", price: "$15", image: UIImage(named: "carnations1")!),
-        FlowerModel(name: "Pink Carnation", price: "$12", image: UIImage(named: "carnations2")!),
-        FlowerModel(name: "Red Carnation", price: "$14", image: UIImage(named: "carnations3")!),
-        FlowerModel(name: "Yellow Carnation", price: "$10", image: UIImage(named: "carnations4")!),
-        FlowerModel(name: "Purple Carnation", price: "$16", image: UIImage(named: "carnations5")!)
-    ]
+    var lilies: [FlowerModel] = []
+    var roses: [FlowerModel] = []
+    var orchids: [FlowerModel] = []
+    var carnations: [FlowerModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureTableView()
+        self.configureCollectionView()
+        self.fetchFlowerCategories()
+        self.fetchFlowers()
+        self.setNavigationBackButtonColor()
+        self.observeFlowerChanges()
+        self.title = "Edit Flowers"
+    }
+    
+    class func instantiate() -> Self {
+        let vc = self.instantiate(fromAppStoryboard: .Flowers)
+        return vc
+    }
+    
+    private func setNavigationBackButtonColor() {
+        navigationController?.navigationBar.tintColor = UIColor.init(hexString: "#865EE2")
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#865EE2")]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    private func fetchFlowerCategories() {
+        let ref = Database.database().reference().child("flowerscategory")
+        
+        // Create a dispatch group
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            defer {
+                dispatchGroup.leave()
+            }
+            guard let categoriesData = snapshot.value as? [String: [String: Any]] else {
+                return
+            }
+            var categories: [FlowerCategoryModel] = []
+            
+            for (_, categoryValue) in categoriesData {
+                if let categoryName = categoryValue["categoryName"] as? String,
+                   let categoryId = categoryValue["categoryId"] as? String,
+                   let imageUrl = categoryValue["imageUrl"] as? String {
+                    categories.append(FlowerCategoryModel(categoryName: categoryName, categoryId: categoryId, imageUrl: imageUrl))
+                }
+            }
+            self.flowerCategories = categories
+            self.flowerCategoryCollectionView.reloadData()
+        } withCancel: { (error) in
+            self.showAlert(message: error.localizedDescription)
+        }
+    }
 
+    private func fetchFlowers() {
+        self.showProgressHUD()
+        let ref = Database.database().reference().child("flowers")
+        
+        // Create a dispatch group
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        
+        ref.observeSingleEvent(of: .value) { snapshot in
+            defer {
+                dispatchGroup.leave()
+            }
+            guard let flowersData = snapshot.value as? [String: [String: Any]] else {
+                return
+            }
+            
+            var flowers: [FlowerModel] = []
+            
+            for (_, categoryValue) in flowersData {
+                for (_, flowerData) in categoryValue {
+                    guard let flowerIdData = flowerData as? [String: Any],
+                          let category = flowerIdData["category"] as? String,
+                          let flowerId = flowerIdData["flowerId"] as? String,
+                          let flowerName = flowerIdData["flowerName"] as? String,
+                          let flowerPrice = flowerIdData["flowerPrice"] as? String,
+                          let imageUrl = flowerIdData["imageUrl"] as? String,
+                          let timestamp = flowerIdData["timestamp"] as? TimeInterval,
+                          let categoryId = flowerIdData["categoryId"] as? String else {
+                        continue
+                    }
+                    let flower = FlowerModel(category: category, flowerName: flowerName, flowerPrice: flowerPrice, flowerId: flowerId, imageUrl: imageUrl, timestamp: timestamp, categoryId: categoryId)
+                    
+                    flowers.append(flower)
+                }
+            }
+            
+            self.roses = flowers.filter { $0.category == "Roses" }
+            self.orchids = flowers.filter { $0.category == "Orchids" }
+            self.carnations = flowers.filter { $0.category == "Carnations" }
+            self.lilies = flowers.filter { $0.category == "Lilies" }
+            self.flowers = flowers
+            self.reloadTableView()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.hideProgressHUD()
+        }
+    }
+    
+    private func observeFlowerChanges() {
+        let ref = Database.database().reference().child("flowers")
+        
+        ref.observe(.value) { snapshot in
+            guard let flowersData = snapshot.value as? [String: [String: Any]] else {
+                return
+            }
+            
+            var updatedFlowers: [FlowerModel] = []
+            
+            for (_, categoryValue) in flowersData {
+                for (_, flowerData) in categoryValue {
+                    guard let flowerIdData = flowerData as? [String: Any],
+                          let category = flowerIdData["category"] as? String,
+                          let flowerId = flowerIdData["flowerId"] as? String,
+                          let flowerName = flowerIdData["flowerName"] as? String,
+                          let flowerPrice = flowerIdData["flowerPrice"] as? String,
+                          let imageUrl = flowerIdData["imageUrl"] as? String,
+                          let timestamp = flowerIdData["timestamp"] as? TimeInterval,
+                          let categoryId = flowerIdData["categoryId"] as? String else {
+                        continue
+                    }
+                    
+                    let flower = FlowerModel(category: category, flowerName: flowerName, flowerPrice: flowerPrice, flowerId: flowerId, imageUrl: imageUrl, timestamp: timestamp, categoryId: categoryId)
+                    
+                    updatedFlowers.append(flower)
+                }
+            }
+            
+            self.roses = updatedFlowers.filter { $0.category == "Roses" }
+            self.orchids = updatedFlowers.filter { $0.category == "Orchids" }
+            self.carnations = updatedFlowers.filter { $0.category == "Carnations" }
+            self.lilies = updatedFlowers.filter { $0.category == "Lilies" }
+            
+            if self.selectedFlowerCategory?.categoryName == "Lilies" {
+                self.flowers = self.lilies
+            } else if self.selectedFlowerCategory?.categoryName == "Roses" {
+                self.flowers = self.roses
+            } else if self.selectedFlowerCategory?.categoryName == "Carnations" {
+                self.flowers = self.carnations
+            } else if self.selectedFlowerCategory?.categoryName == "Orchids" {
+                self.flowers = self.orchids
+            } else {
+                self.flowers = updatedFlowers
+            }
+            self.reloadTableView()
+        }
     }
 }
 
 extension EditFlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    private func configureCollectionView() {
+        flowerCategoryCollectionView.dataSource = self
+        flowerCategoryCollectionView.delegate = self
+        
+        flowerCategoryCollectionView.register(UINib(nibName: "FlowersCategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FlowersCategoryCell")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return flowerCategories.count
     }
@@ -89,9 +216,12 @@ extension EditFlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
         }
         
         let category = flowerCategories[indexPath.row]
-        cell.categoryNameLabel.text = category.flowerType
-        cell.categoryImageView.image = category.image
-        
+        cell.categoryNameLabel.text = category.categoryName
+        if let imageUrl = category.imageUrl {
+            if let url = URL(string: imageUrl) {
+                cell.categoryImageView.kf.setImage(with: url)
+            }
+        }
         return cell
     }
     
@@ -99,17 +229,17 @@ extension EditFlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
         let flowerCategory = flowerCategories[indexPath.row]
         self.selectedFlowerCategory = flowerCategory
         selectedCategoryIndex = indexPath.item
-        if indexPath.row == 0 {
+        if flowerCategory.categoryName == "Lilies" {
             self.flowers = lilies
-        } else if indexPath.row == 1 {
+        } else if flowerCategory.categoryName == "Roses" {
             self.flowers = roses
-        } else if indexPath.row == 2 {
+        } else if flowerCategory.categoryName == "Carnations" {
             self.flowers = carnations
-        } else if indexPath.row == 4 {
+        } else if flowerCategory.categoryName == "Orchids" {
             self.flowers = orchids
         }
         flowerCategoryCollectionView.reloadData()
-        tableView.reloadData()
+        self.reloadTableView()
     }
 }
 
@@ -128,6 +258,7 @@ extension EditFlowersVC: UITableViewDataSource, UITableViewDelegate {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "GraveyardTableViewCell", bundle: nil), forCellReuseIdentifier: "GraveyardTableViewCell")
         tableView.separatorStyle = .none
+        self.reloadTableView()
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -136,11 +267,15 @@ extension EditFlowersVC: UITableViewDataSource, UITableViewDelegate {
         var actions = [UIContextualAction]()
         
         // Add edit action if the item meets certain conditions
-        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completionHandler) in
-            
+        let editAction = UIContextualAction(style: .normal, title: "") { (action, view, completionHandler) in
+            self.navigationController?.pushViewController(UpdateFlowerVC.instantiate(flowerToUpdate: item), animated: true)
             completionHandler(true)
         }
-        editAction.backgroundColor = .blue
+        if let editIcon = UIImage(named: "ic_edit_post") {
+            editAction.image = editIcon
+        }
+            
+        editAction.backgroundColor = UIColor(hexString: "F7F7F7")
         actions.append(editAction)
         
 
@@ -166,9 +301,12 @@ extension EditFlowersVC: UITableViewDataSource, UITableViewDelegate {
         
         let item = flowers[indexPath.row]
         
-        cell.titleLabel.text = item.name
-        cell.dateOfDemiseLabel.text = item.price
-        cell.userImageView.image = item.image
+        cell.titleLabel.text = item.flowerName
+        cell.dateOfDemiseLabel.text = "$\(item.flowerPrice ?? "")"
+        cell.descriptionLabel.text = item.category ?? ""
+        if let url = URL(string: item.imageUrl ?? "") {
+            cell.userImageView.kf.setImage(with: url)
+        }
         cell.containerView.layer.cornerRadius = 16
         cell.containerView.layer.masksToBounds = true
         cell.userImageView.layer.cornerRadius = 20

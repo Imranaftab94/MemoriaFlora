@@ -50,6 +50,12 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     private func configureDatePicker() {
         // Set the delegate of the text field to self
         demiseTextField.delegate = self
