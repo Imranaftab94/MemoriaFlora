@@ -69,6 +69,39 @@ class FlowersVC: BaseViewController {
         return vc
     }
     
+    func sendEmail() {
+        let user = AppController.shared.user
+        let smtpSession = MCOSMTPSession()
+        smtpSession.hostname = "smtp.gmail.com"
+        smtpSession.username =  "iaftab94uw@gmail.com"     // 送信元のSMTPサーバーのusername（Gmailアドレス）
+        smtpSession.password = "iuzpanlwvrdgucwu"       // 送信元のSMTPサーバーのpasword（Gmailパスワード）
+        smtpSession.port = 465
+        smtpSession.authType = MCOAuthType.saslPlain
+        smtpSession.connectionType = MCOConnectionType.TLS
+        smtpSession.connectionLogger = {(connectionID, type, data) in
+            if data != nil {
+                if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue){
+                    NSLog("Connectionlogger: \(string)")
+                }
+            }
+        }
+        
+        let builder = MCOMessageBuilder()
+        builder.header.to = [MCOAddress(displayName: "\(user?.name ?? "user").", mailbox: "\(memory?.createdByEmail ?? "")")]
+        builder.header.from = MCOAddress(displayName: "Caro Estinto.", mailbox: "iaftab94uw@gmail.com")
+        builder.header.subject = "Condolences Flower Purchase Notification"
+        builder.textBody = createCondolencesEmail(recipientName: memory?.createdByName ?? "user", purchaserName: user?.name ?? "a user", flowerName: selectedFlower?.flowerName ?? "flower")
+        let rfc822Data = builder.data()
+        let sendOperation = smtpSession.sendOperation(with: rfc822Data)
+        sendOperation?.start { (error) -> Void in
+            if let error = error {
+                print( "Error sending email: \(String(describing: error))")
+            } else {
+                print( "Email has been sent successfully")
+            }
+        }
+    }
+    
     @IBAction func onClickPurchaseFlowerButton(_ sender: UIButton) {
         guard let category = self.selectedFlowerCategory else {
             self.showAlert(message: "Please select a flower category")
@@ -98,6 +131,7 @@ class FlowersVC: BaseViewController {
                     guard let selectedCategory = self.selectedFlowerCategory else { return }
                     guard let selectedFlower = self.selectedFlower else { return }
                     self.onSelectPayment?(selectedCategory, selectedFlower)
+                    self.sendEmail()
                     self.dismiss(animated: true)
                 } else {
                     

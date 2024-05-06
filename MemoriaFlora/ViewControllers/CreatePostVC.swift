@@ -348,7 +348,13 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                     } else {
                         print("Memory data saved successfully!")
                         self.showAlert(message: "Posted successfully", title: "Alert", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
-                            self.navigationController?.popViewController(animated: true)
+                            DispatchQueue.main.async {
+                                self.userNameTextField.text = ""
+                                self.demiseTextField.text = ""
+                                self.descriptionTextView.text = ""
+                                self.selectedImage = nil
+                                self.userProfileImage.image = nil
+                            }
                         }))
                     }
                 }

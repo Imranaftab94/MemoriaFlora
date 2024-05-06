@@ -222,9 +222,6 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
-    
-    //MARK: - Google Signin
-    
 }
 
     //MARK: - APPLE SIGNIN
