@@ -14,12 +14,12 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="86" id="KGk-i7-Jjw" customClass="CondolenceTableViewCell" customModule="Caro_Estinto" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="353" height="86"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="353" height="86"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNa-2P-zmq">
-                        <rect key="frame" x="16" y="8" width="321" height="70"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNa-2P-zmq" customClass="DesignableView" customModule="Spring">
+                        <rect key="frame" x="8" y="8" width="321" height="70"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WhD-k9-2wZ">
                                 <rect key="frame" x="16" y="10" width="50" height="50"/>
@@ -45,13 +45,27 @@
                             <constraint firstAttribute="height" constant="70" id="an7-PW-uOq"/>
                             <constraint firstItem="cYV-nK-lJu" firstAttribute="centerY" secondItem="WhD-k9-2wZ" secondAttribute="centerY" id="mBg-dk-Ci9"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.33000000000000002" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="MNa-2P-zmq" secondAttribute="trailing" constant="16" id="0Dx-S9-Izb"/>
+                    <constraint firstAttribute="trailing" secondItem="MNa-2P-zmq" secondAttribute="trailing" constant="8" id="0Dx-S9-Izb"/>
                     <constraint firstItem="MNa-2P-zmq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="J15-Md-yPI"/>
-                    <constraint firstItem="MNa-2P-zmq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NTV-N9-NWl"/>
+                    <constraint firstItem="MNa-2P-zmq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="NTV-N9-NWl"/>
                     <constraint firstAttribute="bottom" secondItem="MNa-2P-zmq" secondAttribute="bottom" constant="8" id="NXC-uF-cqV"/>
                 </constraints>
             </tableViewCellContentView>
