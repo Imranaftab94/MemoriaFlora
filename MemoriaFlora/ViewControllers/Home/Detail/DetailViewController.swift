@@ -54,6 +54,8 @@ class DetailViewController: BaseViewController {
         
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = true
+        
+        MyUserDefaults.setDynamicLink(nil)
     }
     
     @IBAction func onClickCondolencesButton(_ sender: UIButton) {
@@ -77,7 +79,12 @@ class DetailViewController: BaseViewController {
     @IBAction func shareButtonTap(_ sender: UIButton) {
         
         guard let uid = memory?.uid else { return }
-        guard let link = URL(string: "https://memoriaflora.page.link?id=\(uid)") else { return }
+        guard let memoryKey = memory?.memoryKey else { return }
+        guard let encodedUid = uid.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let encodedMemoryKey = memoryKey.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+        guard let link = URL(string: "https://memoriaflora.page.link?id=\(encodedUid)&memoryKey=\(encodedMemoryKey)") else { return }
         let dynamicLinksDomain = "https://memoriaflora.page.link"
         
         let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: dynamicLinksDomain)//DynamicLinkComponents(link: link, domain: dynamicLinksDomain)
@@ -262,7 +269,9 @@ class DetailViewController: BaseViewController {
     }
     
     private func getCondolences() {
-        guard let memoryId = self.memory?.memoryKey else { return }
+        guard let memoryId = self.memory?.memoryKey, !memoryId.isEmpty else {
+            return
+        }
 
         self.showProgressHUD()
         
@@ -308,7 +317,9 @@ class DetailViewController: BaseViewController {
     }
 
     private func observeCondolences() {
-        guard let memoryId = self.memory?.memoryKey else { return }
+        guard let memoryId = self.memory?.memoryKey, !memoryId.isEmpty else {
+            return
+        }
         
         self.showProgressHUD()
         

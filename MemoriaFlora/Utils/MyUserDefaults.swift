@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseDynamicLinks
 
 class MyUserDefaults: NSObject {
     static func getUser() -> User? {
@@ -48,6 +49,23 @@ class MyUserDefaults: NSObject {
         UserDefaults.standard.removeObject(forKey: UserDefaults.keys.rememberMe)
         UserDefaults.standard.synchronize()
     }
+    
+    static func setDynamicLink(_ link: String?) {
+        if let link = link {
+            UserDefaults.standard.setValue(link, forKey: UserDefaults.keys.dynamicLink)
+        } else {
+            UserDefaults.standard.setValue(nil, forKey: UserDefaults.keys.dynamicLink)
+        }
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func getDynamicLink() -> String? {
+        if let savedLink = UserDefaults.standard.value(forKey: UserDefaults.keys.dynamicLink) as? String {
+            return savedLink
+        } else {
+            return nil
+        }
+    }
 }
 
 
@@ -55,5 +73,6 @@ extension UserDefaults {
     enum keys {
         static let user = "user"
         static let rememberMe = "rememberMe"
+        static let dynamicLink = "dynamicLink"
     }
 }

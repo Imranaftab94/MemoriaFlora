@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseStorage
 import Kingfisher
 import UserNotifications
+import FirebaseDynamicLinks
 
 class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDelegate {
     @IBOutlet weak var editFlowerButton: UIView!
@@ -62,6 +63,15 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let link = MyUserDefaults.getDynamicLink() {
+            MyUserDefaults.setDynamicLink(nil)
+            self.handleDynamicLink(link)
+        }
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -216,6 +226,30 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
     
     func handleRefresh(_ sender: Any) {
         self.fetchAllMemories()
+    }
+    
+    private func handleDynamicLink(_ url: String) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            print("Dynamic link URL: \(url)")
+            if let url = URL(string: url),
+               let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+               let queryItems = components.queryItems {
+                                
+                guard let id = queryItems.first(where: { $0.name == "id" })?.value else {
+                    return
+                }
+                
+                // Extracting memoryKey
+                guard let memoryKey = queryItems.first(where: { $0.name == "memoryKey" })?.value else {
+                    return
+                }
+                
+                let memory = Memory(uid: id, userName: "", description: "", imageUrl: "", dateOfDemise: "", timestamp: Date(), condolences: 0, memoryKey: memoryKey, createdByEmail: "", createdById: "", createdByName: "")
+                let vc = DetailViewController.instantiate(fromAppStoryboard: .Details)
+                vc.memory = memory
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
 }
 

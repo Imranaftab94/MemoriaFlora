@@ -12,6 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    var dynamicLink: DynamicLink?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
@@ -35,7 +36,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        showAlertMsg(msg: "\(url)")
         
         if let url = deepUrl {
-            
             DynamicLinks.dynamicLinks().handleUniversalLink(url) { (dynamicLink, error) in
                 guard error == nil else {
                     print("Error handling dynamic link: \(error!.localizedDescription)")
@@ -87,7 +87,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
         // 1
         if let url = userActivity.webpageURL {
-            
             DynamicLinks.dynamicLinks().handleUniversalLink(url) { (dynamicLink, error) in
                 guard error == nil else {
                     print("Error handling dynamic link: \(error!.localizedDescription)")
@@ -107,32 +106,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private func handleDynamicLink(_ dynamicLink: DynamicLink) {
         if let url = dynamicLink.url {
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-                
-                // Extract any parameters from the dynamic link if needed
-                // Then navigate to the appropriate screen
-//                self.showAlertMsg(msg: "hahahahahah")
-
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 print("Dynamic link URL: \(url)")
-                                if let url = dynamicLink.url,
-                                   let id = URLComponents(url: url, resolvingAgainstBaseURL: false)?
-                                               .queryItems?
-                                               .first(where: { $0.name == "id" })?
-                                               .value {
-                                    print("ID extracted from URL: \(id)")
-
-                                    guard let navigationController = self.window?.rootViewController as? UINavigationController else {
-                                        return
-                                    }
-                
-                                    let memory = Memory(uid: id, userName: "", description: "", imageUrl: "", dateOfDemise: "", timestamp: Date(), condolences: 0, memoryKey: "", createdByEmail: "", createdById: "", createdByName: "")
-                                    let vc = DetailViewController.instantiate(fromAppStoryboard: .Details)
-                                    vc.memory = memory
-                                    navigationController.pushViewController(vc, animated: true)
-
-                                }
-
+                if let url = dynamicLink.url,
+                   let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+                   let queryItems = components.queryItems {
+                    guard let id = queryItems.first(where: { $0.name == "id" })?.value else {
+                        return
+                    }
+                    
+                    // Extracting memoryKey
+                    guard let memoryKey = queryItems.first(where: { $0.name == "memoryKey" })?.value else {
+                        return
+                    }
+                    
+                    guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else {
+                        return
+                    }
+            
+                    MyUserDefaults.setDynamicLink(url.absoluteString)
+                    
+                    let memory = Memory(uid: id, userName: "", description: "", imageUrl: "", dateOfDemise: "", timestamp: Date(), condolences: 0, memoryKey: memoryKey, createdByEmail: "", createdById: "", createdByName: "")
+                    let vc = DetailViewController.instantiate(fromAppStoryboard: .Details)
+                    vc.memory = memory
+                    if let tabBarController = rootViewController as? MainTabbarController,
+                       let navController = tabBarController.selectedViewController as? UINavigationController {
+                        navController.pushViewController(vc, animated: true)
+                    }
+                }
             }
         }
     }
