@@ -127,7 +127,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
                     MyUserDefaults.setDynamicLink(url.absoluteString)
                     
-                    let memory = Memory(uid: id, userName: "", description: "", imageUrl: "", dateOfDemise: "", timestamp: Date(), condolences: 0, memoryKey: memoryKey, createdByEmail: "", createdById: "", createdByName: "")
+                    let memory = Memory(uid: id, userName: "", description: "", imageUrl: "", dateOfDemise: "", timestamp: Date(), condolences: 0, memoryKey: memoryKey, createdByEmail: "", createdById: "", createdByName: "", funeralAgency: "")
                     let vc = DetailViewController.instantiate(fromAppStoryboard: .Details)
                     vc.memory = memory
                     if let tabBarController = rootViewController as? MainTabbarController,

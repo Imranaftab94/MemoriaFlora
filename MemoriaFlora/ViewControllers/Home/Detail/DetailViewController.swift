@@ -14,7 +14,7 @@ import FirebaseStorage
 class DetailViewController: BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var condolencesButton: UIButton!
+    @IBOutlet weak var funeralAgencyLabel: UILabel!
     @IBOutlet weak var demiseLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var containerView: UIView!
@@ -53,14 +53,7 @@ class DetailViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.isHidden = false
-        self.tabBarController?.tabBar.isHidden = true
-        
         MyUserDefaults.setDynamicLink(nil)
-    }
-    
-    @IBAction func onClickCondolencesButton(_ sender: UIButton) {
-        guard let memory = memory else { return }
-        self.navigationController?.pushViewController(CondolenceVC.instantiate(memory: memory), animated: true)
     }
     
     @IBAction func chooseFlowerButtonTap(_ sender: UIButton) {
@@ -186,6 +179,13 @@ class DetailViewController: BaseViewController {
             self.demiseLabel.text = "Date of Demise: \(self.memory?.dateOfDemise ?? "")"
             if let url = URL(string: self.memory?.imageUrl ?? "") {
                 self.imgView.kf.setImage(with: url)
+            }
+            
+            if let funeralAgency = self.memory?.funeralAgency, !funeralAgency.isEmpty {
+                self.funeralAgencyLabel.text = funeralAgency
+                self.funeralAgencyLabel.isHidden = false
+            } else {
+                self.funeralAgencyLabel.isHidden = true
             }
         }
     }
@@ -376,7 +376,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         if let url = URL(string: item.flowerImageUrl) {
             cell.flowerImageView.kf.setImage(with: url)
         }
-        cell.nameLabel.text = item.userName ?? "N/A"
+        cell.nameLabel.text = item.userName?.isEmpty == true ? "Anonymous" : item.userName ?? "N/A"
         cell.containerView.layer.cornerRadius = 16
         cell.containerView.layer.masksToBounds = true
         cell.flowerImageView.layer.cornerRadius = 10

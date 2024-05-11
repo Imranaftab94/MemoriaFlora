@@ -15,8 +15,10 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     
     @IBOutlet weak var demiseContainerView: UIView!
     @IBOutlet weak var demiseTextField: UITextField!
+    @IBOutlet weak var funeralAgencyTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var funeralAgencyContainer: UIView!
     
     @IBOutlet weak var userImageView: UIButton!
     @IBOutlet weak var containerView: UIView!
@@ -43,7 +45,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         super.viewDidLoad()
         self.configureViews()
         self.setNavigationBackButtonColor()
-        self.title = "Create Post"
+        self.title = "Create Memories"
         self.configureTextFields()
         self.configureDatePicker()
         
@@ -66,7 +68,6 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     private func configureDatePicker() {
         // Set the delegate of the text field to self
         demiseTextField.delegate = self
-        
         // Configure the date picker mode
         datePicker.datePickerMode = .date
         
@@ -120,19 +121,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                 self.selectedImage = image
             }
         }
-        
-        imageSelectionAlertViewController?.onVideoSelected = { (video) in
-            if let video = video {
-                do {
-                    let videoData = try Data(contentsOf: video)
-                    
-                } catch {
-                    print("Unable to load data: \(error)")
-                }
-                
-            }
-        }
-        imageSelectionAlertViewController?.openMediaLibrary(openForImageAndVideo: true)
+        imageSelectionAlertViewController?.openMediaLibrary(openForImageAndVideo: false)
     }
     
 
@@ -160,6 +149,9 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         self.userNameTextField.text = memory.userName
         self.descriptionTextView.text = memory.description
         self.demiseTextField.text = memory.dateOfDemise
+        if let funeralAgency = memory.funeralAgency {
+            self.funeralAgencyTextField.text = funeralAgency
+        }
         self.updateCharacterCount()
     }
     
@@ -192,8 +184,10 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         
         guard let memoryKey = memory?.memoryKey else { return }
         
+        let funeralAgency = funeralAgencyTextField.text ?? ""
+        
         if isNewImageSelected == false {
-            self.updateFields(userName: userName, description: description, demiseDate: demiseTF, imageUrl: nil, memoryKey: memoryKey)
+            self.updateFields(userName: userName, description: description, demiseDate: demiseTF, imageUrl: nil, funeralAgency: funeralAgency, memoryKey: memoryKey)
             return
         }
         
@@ -203,7 +197,6 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         let uploadTask = storageRef.putData(imageData, metadata: nil) { (metadata, error) in
             self.hideProgressHUD()
             guard let _ = metadata else {
-                // Handle error
                 print("Error uploading image: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
@@ -218,7 +211,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                     return
                 }
                 
-                self.updateFields(userName: userName, description: description, demiseDate: demiseTF, imageUrl: downloadURL.absoluteString, memoryKey: memoryKey)
+                self.updateFields(userName: userName, description: description, demiseDate: demiseTF, imageUrl: downloadURL.absoluteString, funeralAgency: funeralAgency, memoryKey: memoryKey)
             }
         }
         
@@ -236,7 +229,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         }
     }
     
-    private func updateFields(userName: String?, description: String?, demiseDate: String?, imageUrl: String?, memoryKey: String) {
+    private func updateFields(userName: String?, description: String?, demiseDate: String?, imageUrl: String?, funeralAgency: String?, memoryKey: String) {
         var updatedFields: [String: Any] = [:]
         
         if let userName = userName {
@@ -253,6 +246,10 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         
         if let imageUrl = imageUrl {
             updatedFields["imageUrl"] = imageUrl
+        }
+        
+        if let funeralAgency = funeralAgency {
+            updatedFields["funeralAgency"] = funeralAgency
         }
         
         // Save memory data in the Realtime Database
@@ -294,6 +291,8 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             showAlert(message: "Failed to convert image to data")
             return
         }
+        
+        let funeralAgency = funeralAgencyTextField.text ?? ""
         
         // Create a unique key for the memory
         let memoryKey = Database.database().reference().child("memories").childByAutoId().key ?? ""
@@ -339,7 +338,8 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                     "memoryId": memoryKey,
                     "createdByEmail": email,
                     "createdById": myUserId,
-                    "createdByName": name
+                    "createdByName": name,
+                    "funeralAgency": funeralAgency
                 ]
                 
                 // Save memory data in the Realtime Database
@@ -355,6 +355,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                                 self.descriptionTextView.text = ""
                                 self.selectedImage = nil
                                 self.userProfileImage.image = nil
+                                NotificationCenter.default.post(name: Notification.Name("onCreatePostNotify"), object: nil)
                             }
                         }))
                     }
@@ -381,6 +382,8 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         
         demiseTextField.attributedPlaceholder = NSAttributedString(string: "Date Of Demise", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
         
+        funeralAgencyTextField.attributedPlaceholder = NSAttributedString(string: "Funeral Agency (Optional)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
+        
         userNameTextField.delegate = self
         descriptionTextView.delegate = self
         
@@ -388,6 +391,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         userNameTextField.delegate = self
         descriptionTextView.delegate = self
         demiseTextField.delegate = self
+        funeralAgencyTextField.delegate = self
         
         // Set initial border colors
         userNameContainer.layer.borderColor = UIColor.black.cgColor
@@ -396,8 +400,11 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         descriptionContainer.layer.borderColor = UIColor.black.cgColor
         descriptionContainer.layer.borderWidth = 1.0
         
-        self.demiseContainerView.layer.borderColor = UIColor.black.cgColor
-        self.demiseContainerView.layer.borderWidth = 1.0
+        demiseContainerView.layer.borderColor = UIColor.black.cgColor
+        demiseContainerView.layer.borderWidth = 1.0
+        
+        funeralAgencyContainer.layer.borderColor = UIColor.black.cgColor
+        funeralAgencyContainer.layer.borderWidth = 1.0
     }
     
     private func configureViews() {
@@ -418,6 +425,9 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         
         self.demiseContainerView.layer.cornerRadius = 16
         self.demiseContainerView.layer.masksToBounds = true
+        
+        self.funeralAgencyContainer.layer.cornerRadius = 16
+        self.funeralAgencyContainer.layer.masksToBounds = true
     }
     
     private func setNavigationBackButtonColor() {
@@ -442,6 +452,10 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             
             demiseContainerView.layer.borderColor = inactiveBorderColor.cgColor
             demiseContainerView.layer.borderWidth = 1.0
+            
+            funeralAgencyContainer.layer.borderColor = inactiveBorderColor.cgColor
+            funeralAgencyContainer.layer.borderWidth = 1.0
+            
         } else if textField == demiseTextField {
             // Change border color of username container
             userNameContainer.layer.borderColor = inactiveBorderColor.cgColor
@@ -451,8 +465,25 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             descriptionContainer.layer.borderColor = inactiveBorderColor.cgColor
             descriptionContainer.layer.borderWidth = 1.0
             
+            funeralAgencyContainer.layer.borderColor = inactiveBorderColor.cgColor
+            funeralAgencyContainer.layer.borderWidth = 1.0
+            
             demiseContainerView.layer.borderColor = activeBorderColor.cgColor
             demiseContainerView.layer.borderWidth = 2.0
+        } else if textField == funeralAgencyTextField {
+            funeralAgencyContainer.layer.borderColor = activeBorderColor.cgColor
+            funeralAgencyContainer.layer.borderWidth = 2.0
+            
+            // Change border color of username container
+            userNameContainer.layer.borderColor = inactiveBorderColor.cgColor
+            userNameContainer.layer.borderWidth = 1.0
+            
+            // Reset border color of description container
+            descriptionContainer.layer.borderColor = inactiveBorderColor.cgColor
+            descriptionContainer.layer.borderWidth = 1.0
+            
+            demiseContainerView.layer.borderColor = inactiveBorderColor.cgColor
+            demiseContainerView.layer.borderWidth = 1.0
         }
     }
     
@@ -468,6 +499,9 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             
             demiseContainerView.layer.borderColor = inactiveBorderColor.cgColor
             demiseContainerView.layer.borderWidth = 1.0
+            
+            funeralAgencyContainer.layer.borderColor = inactiveBorderColor.cgColor
+            funeralAgencyContainer.layer.borderWidth = 1.0
         }
     }
 }

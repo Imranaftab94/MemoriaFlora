@@ -21,11 +21,18 @@ class MainTabbarController: UITabBarController {
         self.tabBarController?.tabBar.isHidden = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleCreatePostNotification), name: Notification.Name("CreatePostNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleCreatePostNavigation), name: Notification.Name("onCreatePostNotify"), object: nil)
     }
     
     @objc func handleCreatePostNotification() {
         if let createPostVC = self.viewControllers?[1] as? UINavigationController {
             createPostVC.tabBarController?.selectedIndex = 1
+        }
+    }
+    
+    @objc func handleCreatePostNavigation() {
+        if let createPostVC = self.viewControllers?[0] as? UINavigationController {
+            createPostVC.tabBarController?.selectedIndex = 0
         }
     }
     
