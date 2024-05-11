@@ -19,8 +19,9 @@ struct Memory {
     let createdByEmail: String?
     let createdById: String?
     let createdByName: String?
+    var funeralAgency: String?
     
-    init(uid: String, userName: String, description: String, imageUrl: String, dateOfDemise: String, timestamp: Date, condolences: Int, memoryKey: String?, createdByEmail: String, createdById: String, createdByName: String) {
+    init(uid: String, userName: String, description: String, imageUrl: String, dateOfDemise: String, timestamp: Date, condolences: Int, memoryKey: String?, createdByEmail: String, createdById: String, createdByName: String, funeralAgency: String?) {
         self.uid = uid
         self.userName = userName
         self.description = description
@@ -32,6 +33,7 @@ struct Memory {
         self.createdById = createdById
         self.createdByEmail = createdByEmail
         self.createdByName = createdByName
+        self.funeralAgency = funeralAgency
     }
     
     static func createMemory(from memoryData: [String: Any]) -> Memory? {
@@ -49,6 +51,7 @@ struct Memory {
             return nil
         }
         let date = Date(timeIntervalSince1970: timestampString)
+        let funeralAgency = memoryData["funeralAgency"] as? String ?? ""
         return Memory(uid: uid,
                       userName: userName,
                       description: description,
@@ -58,6 +61,8 @@ struct Memory {
                       condolences: condolences,
                       memoryKey: memoryKey,
                       createdByEmail: createdByEmail,
-                      createdById: createdById, createdByName: createdByName)
+                      createdById: createdById, 
+                      createdByName: createdByName,
+                      funeralAgency: funeralAgency)
     }
 }

@@ -102,6 +102,11 @@ class FlowersVC: BaseViewController {
         }
     }
     
+    @IBAction func onClickCloseButton(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
+    
     @IBAction func onClickPurchaseFlowerButton(_ sender: UIButton) {
         guard let category = self.selectedFlowerCategory else {
             self.showAlert(message: "Please select a flower category")
