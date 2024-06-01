@@ -112,7 +112,6 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
                             "name": user.displayName ?? "",
                             "email": user.email ?? "",
                             "userDescription": "",
-                            "admin": false,
                             "userId": user.uid,
                         ]
                         
@@ -326,7 +325,6 @@ extension LoginViewController : ASAuthorizationControllerDelegate {
                               "name": user.displayName ?? "",
                               "email": user.email ?? "",
                               "userDescription": "",
-                              "admin": false,
                               "userId": user.uid,
                           ]
                           
