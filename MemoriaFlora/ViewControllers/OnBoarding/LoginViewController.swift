@@ -161,6 +161,7 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
             if let error = error {
                 print("Error signing in: \(error.localizedDescription)")
                 self.showAlert(message: error.localizedDescription)
+                return
             } else {
                 if let user = authResult?.user {
                     if self.rememberMeSwitchButton.isOn {
