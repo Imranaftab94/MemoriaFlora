@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BaseViewController {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
@@ -66,7 +66,10 @@ class ProfileViewController: UIViewController {
             if let password = passwordPromptController.textFields?.first?.text {
                 // Reauthenticate the user with the entered password
                 let credential = EmailAuthProvider.credential(withEmail: user.email!, password: password)
+                
+                self.showProgressHUD()
                 user.reauthenticate(with: credential) { authResult, error in
+                    self.hideProgressHUD()
                     if let error = error {
                         // Handle reauthentication error
                         print("Reauthentication error: \(error.localizedDescription)")
