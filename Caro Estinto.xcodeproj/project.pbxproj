@@ -149,6 +149,16 @@
 		E405EADD2BD1C2D2005C8673 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E405EADF2BD1C2DA005C8673 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E405EAE12BD1C2E5005C8673 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		E40A642F2C0A83380029FD41 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		E40A64302C0A83390029FD41 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E40A64332C0A83D40029FD41 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		E40A64342C0A83D50029FD41 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E40A64352C0A83E80029FD41 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		E40A64362C0A83E80029FD41 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E40A64372C0A83F80029FD41 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
+		E40A64382C0A83F80029FD41 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		E40A643B2C0A8D9A0029FD41 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E40A643C2C0A8D9A0029FD41 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E44686A22BCDCDCC001DF89B /* Caro Estinto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Caro Estinto.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44686A52BCDCDCC001DF89B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44686A72BCDCDCC001DF89B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -515,8 +525,12 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				it,
+				es,
+				fr,
+				"pt-PT",
+				en,
 			);
 			mainGroup = E44686992BCDCDCC001DF89B;
 			productRefGroup = E44686A32BCDCDCC001DF89B /* Products */;
@@ -702,6 +716,11 @@
 			isa = PBXVariantGroup;
 			children = (
 				E44686AC2BCDCDCC001DF89B /* Base */,
+				E40A642F2C0A83380029FD41 /* it */,
+				E40A64332C0A83D40029FD41 /* es */,
+				E40A64352C0A83E80029FD41 /* fr */,
+				E40A64372C0A83F80029FD41 /* pt-PT */,
+				E40A643C2C0A8D9A0029FD41 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -710,6 +729,11 @@
 			isa = PBXVariantGroup;
 			children = (
 				E44686B12BCDCDCF001DF89B /* Base */,
+				E40A64302C0A83390029FD41 /* it */,
+				E40A64342C0A83D50029FD41 /* es */,
+				E40A64362C0A83E80029FD41 /* fr */,
+				E40A64382C0A83F80029FD41 /* pt-PT */,
+				E40A643B2C0A8D9A0029FD41 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -722,6 +746,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -785,6 +810,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -853,6 +879,7 @@
 				INFOPLIST_FILE = MemoriaFlora/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Caro Estinto";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library, This enables you to seamlessly upload photos when creating posts, making sharing moments";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -895,6 +922,7 @@
 				INFOPLIST_FILE = MemoriaFlora/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Caro Estinto";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library, This enables you to seamlessly upload photos when creating posts, making sharing moments";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
