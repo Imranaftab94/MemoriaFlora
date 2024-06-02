@@ -1,0 +1,27 @@
+
+/* Class = "UIButton"; configuration.title = "Pay for a Floral Tribute"; ObjectID = "AL8-NF-OLg"; */
+"AL8-NF-OLg.configuration.title" = "Pay for a Floral Tribute";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "AL8-NF-OLg"; */
+"AL8-NF-OLg.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Date of demise: "; ObjectID = "NtL-Cv-NSc"; */
+"NtL-Cv-NSc.text" = "Date of demise: ";
+
+/* Class = "UILabel"; text = "UserName"; ObjectID = "QCa-q8-TO9"; */
+"QCa-q8-TO9.text" = "UserName";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "V2D-7u-DPB"; */
+"V2D-7u-DPB.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Share"; ObjectID = "acf-BG-RdM"; */
+"acf-BG-RdM.configuration.title" = "Share";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "acf-BG-RdM"; */
+"acf-BG-RdM.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "description"; ObjectID = "eg1-Yg-7GG"; */
+"eg1-Yg-7GG.text" = "description";
+
+/* Class = "UILabel"; text = "Date of demise: "; ObjectID = "ygh-vo-5kZ"; */
+"ygh-vo-5kZ.text" = "Date of demise: ";
