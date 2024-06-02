@@ -44,17 +44,17 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6p-aA-cPa" customClass="DesignableView" customModule="Spring">
-                                                        <rect key="frame" x="248" y="15" width="90" height="75"/>
+                                                        <rect key="frame" x="248" y="15" width="90" height="84"/>
                                                         <subviews>
                                                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="0th-Oc-WJl">
-                                                                <rect key="frame" x="0.0" y="0.0" width="90" height="75"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="90" height="84"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2D-7u-DPB">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="55"/>
                                                                         <color key="backgroundColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="90" id="FeD-YF-qT5"/>
-                                                                            <constraint firstAttribute="height" constant="50" id="yj0-eM-zsR"/>
+                                                                            <constraint firstAttribute="height" constant="55" id="yj0-eM-zsR"/>
                                                                         </constraints>
                                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <state key="normal" title="Button"/>
@@ -65,15 +65,18 @@
                                                                             <action selector="shareButtonTap:" destination="pEW-0B-lJi" eventType="touchUpInside" id="0IH-HT-yur"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acf-BG-RdM">
-                                                                        <rect key="frame" x="0.0" y="51" width="90" height="24"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="acf-BG-RdM">
+                                                                        <rect key="frame" x="0.0" y="56" width="90" height="28"/>
                                                                         <color key="backgroundColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="24" id="hod-3R-s03"/>
+                                                                            <constraint firstAttribute="height" constant="28" id="hod-3R-s03"/>
                                                                         </constraints>
                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <state key="normal" title="Button"/>
-                                                                        <buttonConfiguration key="configuration" style="plain" title="Share"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" title="Share">
+                                                                            <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
+                                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="shareButtonTap:" destination="pEW-0B-lJi" eventType="touchUpInside" id="2DD-Ib-o5B"/>
                                                                         </connections>
@@ -275,6 +278,7 @@
                         <outlet property="funeralAgencyLabel" destination="NtL-Cv-NSc" id="Tm8-4A-mDi"/>
                         <outlet property="imgView" destination="Efz-o5-Bnv" id="yHo-YD-L9V"/>
                         <outlet property="nameLabel" destination="QCa-q8-TO9" id="4ur-y7-NVU"/>
+                        <outlet property="payTributeButton" destination="AL8-NF-OLg" id="4GX-1m-zrF"/>
                         <outlet property="shareBackground" destination="Z6p-aA-cPa" id="oIe-w1-QvV"/>
                         <outlet property="tableView" destination="pG2-ah-eHj" id="43f-g0-XsJ"/>
                         <outlet property="tableViewHeightConstraint" destination="5lG-oo-FeB" id="v6c-z5-a82"/>

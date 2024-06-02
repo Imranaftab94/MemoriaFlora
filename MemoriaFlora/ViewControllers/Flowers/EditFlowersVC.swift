@@ -37,7 +37,7 @@ class EditFlowersVC: BaseViewController {
         self.fetchFlowers()
         self.setNavigationBackButtonColor()
         self.observeFlowerChanges()
-        self.title = "Edit Flowers"
+        self.title = "Edit Flowers".localized()
     }
     
     class func instantiate() -> Self {
@@ -216,7 +216,7 @@ extension EditFlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
         }
         
         let category = flowerCategories[indexPath.row]
-        cell.categoryNameLabel.text = category.categoryName
+        cell.categoryNameLabel.text = category.categoryName?.localized()
         if let imageUrl = category.imageUrl {
             if let url = URL(string: imageUrl) {
                 cell.categoryImageView.kf.setImage(with: url)
@@ -301,7 +301,7 @@ extension EditFlowersVC: UITableViewDataSource, UITableViewDelegate {
         
         let item = flowers[indexPath.row]
         
-        cell.titleLabel.text = item.flowerName
+        cell.titleLabel.text = item.flowerName?.localized()
         cell.dateOfDemiseLabel.text = "$\(item.flowerPrice ?? "")"
         cell.descriptionLabel.text = item.category ?? ""
         if let url = URL(string: item.imageUrl ?? "") {

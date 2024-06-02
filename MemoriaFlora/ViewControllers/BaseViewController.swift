@@ -25,7 +25,7 @@ class BaseViewController: UIViewController {
             }
             
             self.view.isUserInteractionEnabled = false
-            self.progressHUD = ProgressHUD(text: text)
+            self.progressHUD = ProgressHUD(text: text.localized())
             self.view.addSubview(self.progressHUD!)
         }
     }
@@ -44,11 +44,11 @@ class BaseViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             
-            let alertController = UIAlertController(title: title,
-                                                    message: message,
+            let alertController = UIAlertController(title: title?.localized(),
+                                                    message: message.localized(),
                                                     preferredStyle: .alert)
             
-            alertController.addAction(action ?? UIAlertAction(title: "OK", style: .default, handler: nil))
+            alertController.addAction(action ?? UIAlertAction(title: "OK".localized(), style: .default, handler: nil))
             
             if let secondAction = secondAction {
                 alertController.addAction(secondAction)

@@ -21,6 +21,15 @@ class SplashVC: BaseViewController {
         } else {
             self.performOperation()
         }
+        
+        // Example usage:
+        if let currentLanguage = getCurrentLanguage() {
+            print("Current language is set to: \(currentLanguage.rawValue)")
+            DefaultManager.setAppLanguage(ver: currentLanguage.rawValue)
+        } else {
+            print("Language not supported")
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +74,7 @@ class SplashVC: BaseViewController {
             self.performOperation()
         } withCancel: { (error) in
             print("Error fetching user data: \(error.localizedDescription)")
-            self.showAlert(message: "User not found")
+            self.showAlert(message: "User not found".localized())
         }
     }
 }

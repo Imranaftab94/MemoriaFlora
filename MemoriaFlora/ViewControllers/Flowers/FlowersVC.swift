@@ -16,6 +16,8 @@ class FlowersVC: BaseViewController {
     @IBOutlet weak var flowersCategoryCollectionView: UICollectionView!
     @IBOutlet weak var flowerItemCollectionView: UICollectionView!
     
+    @IBOutlet weak var purchaseFlowerButton: UIButton!
+    
     var selectedFlowerCategory: FlowerCategoryModel?
     var selectedFlower: FlowerModel?
     var memory: Memory?
@@ -41,6 +43,7 @@ class FlowersVC: BaseViewController {
         self.fetchFlowers()
         self.fetchFlowerCategories()
         self.observeFlowerChanges()
+        self.purchaseFlowerButton.setTitle("Purchase Flower".localized(), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,12 +112,12 @@ class FlowersVC: BaseViewController {
     
     @IBAction func onClickPurchaseFlowerButton(_ sender: UIButton) {
         guard let category = self.selectedFlowerCategory else {
-            self.showAlert(message: "Please select a flower category")
+            self.showAlert(message: "Please select a flower category".localized())
             return
         }
         
         guard let flower = self.selectedFlower else {
-            self.showAlert(message: "Please select a flower for condolences")
+            self.showAlert(message: "Please select a flower for condolences".localized())
             return
         }
         
@@ -124,7 +127,7 @@ class FlowersVC: BaseViewController {
         self.showProgressHUD()
         PKIAPHandler.shared.fetchAvailableProducts { products in
             guard let product = products.first else {
-                self.showAlert(message: "No products found, Something went wrong")
+                self.showAlert(message: "No products found, Something went wrong".localized())
                 self.hideProgressHUD()
                 return
             }
@@ -314,7 +317,7 @@ extension FlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
             }
             
             let category = flowerCategories[indexPath.row]
-            cell.categoryNameLabel.text = category.categoryName
+            cell.categoryNameLabel.text = category.categoryName?.localized()
             if let url = URL(string: category.imageUrl ?? "") {
                 cell.categoryImageView.kf.setImage(with: url)
             }
@@ -336,7 +339,7 @@ extension FlowersVC: UICollectionViewDataSource, UICollectionViewDelegate {
             
             let flower = flowers[indexPath.row]
             
-            cell.flowerNameLabel.text = flower.flowerName
+            cell.flowerNameLabel.text = flower.flowerName?.localized()
             cell.flowerPriceLabel.text = "$\(flower.flowerPrice ?? "")"
             if let url = URL(string: flower.imageUrl ?? "") {
                 cell.flowerImageView.kf.setImage(with: url)

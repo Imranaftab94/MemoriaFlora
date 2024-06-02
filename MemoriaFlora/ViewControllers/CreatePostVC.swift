@@ -28,6 +28,8 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     @IBOutlet weak var userNameContainer: UIView!
     @IBOutlet weak var postCountLabel: UILabel!
 
+    @IBOutlet weak var shareMemoryButton: UIButton!
+    
     private var imageSelectionAlertViewController: ImageSelectionAlertViewController?
     private var selectedImage: UIImage?
     
@@ -45,9 +47,10 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         super.viewDidLoad()
         self.configureViews()
         self.setNavigationBackButtonColor()
-        self.title = "Create Memories"
+        self.title = "Create Memories".localized()
         self.configureTextFields()
         self.configureDatePicker()
+        self.localized()
         
         if isEditingEnabled {
             self.configurePrefilledData()
@@ -65,6 +68,10 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         }
     }
     
+    func localized() {
+        self.shareMemoryButton.setTitle("Share Memory".localized(), for: .normal)
+    }
+
     private func configureDatePicker() {
         // Set the delegate of the text field to self
         demiseTextField.delegate = self
@@ -157,28 +164,28 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     
     private func updatePost() {
         guard let userName = userNameTextField.text, !userName.isEmpty else {
-            showAlert(message: "Please enter name")
+            showAlert(message: "Please enter name".localized())
             return
         }
         
         guard let demiseTF = demiseTextField.text, !demiseTF.isEmpty, description != "" else {
-            showAlert(message: "Please enter Date of Demise")
+            showAlert(message: "Please enter Date of Demise".localized())
             return
         }
         
         guard let description = descriptionTextView.text, !description.isEmpty, description != "" else {
-            showAlert(message: "Please enter description")
+            showAlert(message: "Please enter description".localized())
             return
         }
         
         guard let image = selectedImage else {
-            showAlert(message: "Please select a picture")
+            showAlert(message: "Please select a picture".localized())
             return
         }
         
         // Convert image to Data
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-            showAlert(message: "Failed to convert image to data")
+            showAlert(message: "Failed to convert image to data".localized())
             return
         }
         
@@ -224,7 +231,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             if let error = snapshot.error {
                 print("Upload failed: \(error.localizedDescription)")
                 // Notify user about the failure
-                self.showAlert(message: "Upload failed. Please try again.")
+                self.showAlert(message: "Upload failed. Please try again.".localized())
             }
         }
     }
@@ -258,7 +265,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                 print("Error saving memory data: \(error.localizedDescription)")
             } else {
                 print("Memory data updated successfully!")
-                self.showAlert(message: "Post updated successfully", title: "Alert", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.showAlert(message: "Post updated successfully".localized(), title: "Alert".localized(), action: UIAlertAction(title: "OK".localized(), style: .default, handler: { _ in
                     self.navigationController?.popViewController(animated: true)
                 }))
             }
@@ -267,28 +274,28 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
     
     private func createPost() {
         guard let userName = userNameTextField.text, !userName.isEmpty else {
-            showAlert(message: "Please enter name")
+            showAlert(message: "Please enter name".localized())
             return
         }
         
         guard let demiseTF = demiseTextField.text, !demiseTF.isEmpty, description != "" else {
-            showAlert(message: "Please enter Date of Demise")
+            showAlert(message: "Please enter Date of Demise".localized())
             return
         }
         
         guard let description = descriptionTextView.text, !description.isEmpty, description != "" else {
-            showAlert(message: "Please enter description")
+            showAlert(message: "Please enter description".localized())
             return
         }
         
         guard let image = selectedImage else {
-            showAlert(message: "Please select a picture")
+            showAlert(message: "Please select a picture".localized())
             return
         }
         
         // Convert image to Data
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-            showAlert(message: "Failed to convert image to data")
+            showAlert(message: "Failed to convert image to data".localized())
             return
         }
         
@@ -348,7 +355,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                         print("Error saving memory data: \(error.localizedDescription)")
                     } else {
                         print("Memory data saved successfully!")
-                        self.showAlert(message: "Posted successfully", title: "Alert", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
+                        self.showAlert(message: "Posted successfully".localized(), title: "Alert".localized(), action: UIAlertAction(title: "OK".localized(), style: .default, handler: { _ in
                             DispatchQueue.main.async {
                                 self.userNameTextField.text = ""
                                 self.demiseTextField.text = ""
@@ -372,17 +379,17 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             if let error = snapshot.error {
                 print("Upload failed: \(error.localizedDescription)")
                 // Notify user about the failure
-                self.showAlert(message: "Upload failed. Please try again.")
+                self.showAlert(message: "Upload failed. Please try again.".localized())
             }
         }
     }
     
     private func configureTextFields() {
-        userNameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
+        userNameTextField.attributedPlaceholder = NSAttributedString(string: "Name".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
         
-        demiseTextField.attributedPlaceholder = NSAttributedString(string: "Date Of Demise", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
+        demiseTextField.attributedPlaceholder = NSAttributedString(string: "Date of Demise".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
         
-        funeralAgencyTextField.attributedPlaceholder = NSAttributedString(string: "Funeral Agency (Optional)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
+        funeralAgencyTextField.attributedPlaceholder = NSAttributedString(string: "Funeral Agency (Optional)".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
         
         userNameTextField.delegate = self
         descriptionTextView.delegate = self

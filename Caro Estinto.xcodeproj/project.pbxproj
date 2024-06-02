@@ -37,7 +37,6 @@
 		0BDC27BB2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27B82BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift */; };
 		0BDC27BE2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BDC27BD2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib */; };
 		0BDC27BF2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27BC2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift */; };
-		0BDC27C12BD3D441001BA3BE /* Flowers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BDC27C02BD3D441001BA3BE /* Flowers.storyboard */; };
 		0BDC27C32BD3E2C7001BA3BE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C22BD3E2C7001BA3BE /* UIViewController+Extension.swift */; };
 		0BDC27C52BD3E2E7001BA3BE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C42BD3E2E7001BA3BE /* Enums.swift */; };
 		0BDC27C72BD3F449001BA3BE /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */; };
@@ -68,9 +67,12 @@
 		E44686BD2BCDCDD0001DF89B /* MemoriaFloraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686BC2BCDCDD0001DF89B /* MemoriaFloraTests.swift */; };
 		E44686C72BCDCDD0001DF89B /* MemoriaFloraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686C62BCDCDD0001DF89B /* MemoriaFloraUITests.swift */; };
 		E44686C92BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686C82BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift */; };
-		E45842072BD33A5D00B5937D /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E45842062BD33A5D00B5937D /* Details.storyboard */; };
 		E458420A2BD3EC3C00B5937D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45842092BD3EC3C00B5937D /* DetailViewController.swift */; };
 		E4D8177C2BD278BC00F2C50D /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8177B2BD278BC00F2C50D /* Functions.swift */; };
+		E4ED8F5C2C0C894300189F41 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4ED8F5B2C0C894300189F41 /* Localizable.strings */; };
+		E4F978CB2C0BC36300330B8E /* Flowers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F978CA2C0BC36300330B8E /* Flowers.storyboard */; };
+		E4F978D92C0BC3CE00330B8E /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F978D82C0BC3CE00330B8E /* Details.storyboard */; };
+		E4F978E62C0BCBC800330B8E /* LocalizationFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F978E52C0BCBC800330B8E /* LocalizationFile.swift */; };
 		E4FFDFC52BE4CDE500DA7930 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4FFDFC42BE4CDE500DA7930 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -122,7 +124,6 @@
 		0BDC27B92BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlowersCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		0BDC27BC2BD3D383001BA3BE /* FlowerItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BDC27BD2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlowerItemCollectionViewCell.xib; sourceTree = "<group>"; };
-		0BDC27C02BD3D441001BA3BE /* Flowers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Flowers.storyboard; sourceTree = "<group>"; };
 		0BDC27C22BD3E2C7001BA3BE /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		0BDC27C42BD3E2E7001BA3BE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0BDC27C62BD3F449001BA3BE /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
@@ -158,7 +159,7 @@
 		E40A64372C0A83F80029FD41 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
 		E40A64382C0A83F80029FD41 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E40A643B2C0A8D9A0029FD41 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		E40A643C2C0A8D9A0029FD41 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E42982602C0C9EAA008659DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Details.strings; sourceTree = "<group>"; };
 		E44686A22BCDCDCC001DF89B /* Caro Estinto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Caro Estinto.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44686A52BCDCDCC001DF89B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44686A72BCDCDCC001DF89B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,10 +173,27 @@
 		E44686C22BCDCDD0001DF89B /* Caro EstintoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Caro EstintoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44686C62BCDCDD0001DF89B /* MemoriaFloraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraUITests.swift; sourceTree = "<group>"; };
 		E44686C82BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E45842062BD33A5D00B5937D /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		E45842092BD3EC3C00B5937D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E4D8177B2BD278BC00F2C50D /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		E4D8177F2BD289E900F2C50D /* MemoriaFlora.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MemoriaFlora.entitlements; sourceTree = "<group>"; };
+		E4ED8F5A2C0C894300189F41 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E4ED8F5D2C0C894800189F41 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E4ED8F5E2C0C894900189F41 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E4ED8F5F2C0C894A00189F41 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E4ED8F602C0C894A00189F41 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E4F978C92C0BC36300330B8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Flowers.storyboard; sourceTree = "<group>"; };
+		E4F978CE2C0BC3B300330B8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Flowers.strings; sourceTree = "<group>"; };
+		E4F978D02C0BC3B400330B8E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Flowers.strings; sourceTree = "<group>"; };
+		E4F978D22C0BC3B400330B8E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Flowers.strings; sourceTree = "<group>"; };
+		E4F978D42C0BC3B500330B8E /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Flowers.strings"; sourceTree = "<group>"; };
+		E4F978D62C0BC3B600330B8E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Flowers.strings; sourceTree = "<group>"; };
+		E4F978DA2C0BC3D200330B8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Details.storyboard; sourceTree = "<group>"; };
+		E4F978DC2C0BC3D300330B8E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Details.strings; sourceTree = "<group>"; };
+		E4F978DE2C0BC3D400330B8E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Details.strings; sourceTree = "<group>"; };
+		E4F978E02C0BC3D500330B8E /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Details.strings"; sourceTree = "<group>"; };
+		E4F978E22C0BC3D600330B8E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Details.strings; sourceTree = "<group>"; };
+		E4F978E42C0BC4AD00330B8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		E4F978E52C0BCBC800330B8E /* LocalizationFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationFile.swift; sourceTree = "<group>"; };
 		E4FFDFC42BE4CDE500DA7930 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -263,8 +281,8 @@
 			children = (
 				E44686AB2BCDCDCC001DF89B /* Main.storyboard */,
 				E44686B02BCDCDCF001DF89B /* LaunchScreen.storyboard */,
-				E45842062BD33A5D00B5937D /* Details.storyboard */,
-				0BDC27C02BD3D441001BA3BE /* Flowers.storyboard */,
+				E4F978D82C0BC3CE00330B8E /* Details.storyboard */,
+				E4F978CA2C0BC36300330B8E /* Flowers.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -286,6 +304,8 @@
 				0BAFC1972BD23CBF0079C7BD /* Extensions */,
 				0BAFC1942BD23C5E0079C7BD /* ThirdParty */,
 				0BAFC1902BD22EFA0079C7BD /* MyUserDefaults.swift */,
+				E4F978E52C0BCBC800330B8E /* LocalizationFile.swift */,
+				E4ED8F5B2C0C894300189F41 /* Localizable.strings */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -554,14 +574,15 @@
 				E4FFDFC52BE4CDE500DA7930 /* GoogleService-Info.plist in Resources */,
 				E44686B22BCDCDCF001DF89B /* LaunchScreen.storyboard in Resources */,
 				E405EAD62BD1BFCD005C8673 /* SF-Pro-Text-RegularItalic.otf in Resources */,
-				E45842072BD33A5D00B5937D /* Details.storyboard in Resources */,
-				0BDC27C12BD3D441001BA3BE /* Flowers.storyboard in Resources */,
+				E4F978D92C0BC3CE00330B8E /* Details.storyboard in Resources */,
+				E4F978CB2C0BC36300330B8E /* Flowers.storyboard in Resources */,
 				E405EAD42BD1BFCD005C8673 /* SF-Pro-Text-Bold.otf in Resources */,
 				E405EAD22BD1BFCD005C8673 /* SF-Pro-Text-Light.otf in Resources */,
 				0BAFC18C2BD22A200079C7BD /* GraveyardTableViewCell.xib in Resources */,
 				E44686AF2BCDCDCF001DF89B /* Assets.xcassets in Resources */,
 				0BDC27BE2BD3D383001BA3BE /* FlowerItemCollectionViewCell.xib in Resources */,
 				E405EADB2BD1BFCD005C8673 /* SF-Pro-Text-Regular.ttf in Resources */,
+				E4ED8F5C2C0C894300189F41 /* Localizable.strings in Resources */,
 				0BDC27BA2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.xib in Resources */,
 				E44686AD2BCDCDCC001DF89B /* Main.storyboard in Resources */,
 				0B7F2F092BE1D127009D3ED0 /* CondolenceTableViewCell.xib in Resources */,
@@ -675,6 +696,7 @@
 				0BDC27BB2BD3D373001BA3BE /* FlowersCategoryCollectionViewCell.swift in Sources */,
 				0B7F2F0A2BE1D127009D3ED0 /* CondolenceTableViewCell.swift in Sources */,
 				0BAFC1932BD22F460079C7BD /* UserModel.swift in Sources */,
+				E4F978E62C0BCBC800330B8E /* LocalizationFile.swift in Sources */,
 				E44686A82BCDCDCC001DF89B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -720,7 +742,7 @@
 				E40A64332C0A83D40029FD41 /* es */,
 				E40A64352C0A83E80029FD41 /* fr */,
 				E40A64372C0A83F80029FD41 /* pt-PT */,
-				E40A643C2C0A8D9A0029FD41 /* en */,
+				E4F978E42C0BC4AD00330B8E /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -736,6 +758,44 @@
 				E40A643B2C0A8D9A0029FD41 /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E4ED8F5B2C0C894300189F41 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4ED8F5A2C0C894300189F41 /* en */,
+				E4ED8F5D2C0C894800189F41 /* fr */,
+				E4ED8F5E2C0C894900189F41 /* it */,
+				E4ED8F5F2C0C894A00189F41 /* pt-PT */,
+				E4ED8F602C0C894A00189F41 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E4F978CA2C0BC36300330B8E /* Flowers.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4F978C92C0BC36300330B8E /* Base */,
+				E4F978CE2C0BC3B300330B8E /* en */,
+				E4F978D02C0BC3B400330B8E /* fr */,
+				E4F978D22C0BC3B400330B8E /* it */,
+				E4F978D42C0BC3B500330B8E /* pt-PT */,
+				E4F978D62C0BC3B600330B8E /* es */,
+			);
+			name = Flowers.storyboard;
+			sourceTree = "<group>";
+		};
+		E4F978D82C0BC3CE00330B8E /* Details.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4F978DA2C0BC3D200330B8E /* Base */,
+				E4F978DC2C0BC3D300330B8E /* fr */,
+				E4F978DE2C0BC3D400330B8E /* it */,
+				E4F978E02C0BC3D500330B8E /* pt-PT */,
+				E4F978E22C0BC3D600330B8E /* es */,
+				E42982602C0C9EAA008659DB /* en */,
+			);
+			name = Details.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -892,7 +952,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MemoriaFlora.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -935,7 +995,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MemoriaFlora.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

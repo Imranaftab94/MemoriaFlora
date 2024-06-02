@@ -8,8 +8,8 @@
 /* Class = "UIButton"; configuration.title = "Purchase Flower"; ObjectID = "7rv-q2-1md"; */
 "7rv-q2-1md.configuration.title" = "Purchase Flower";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7rv-q2-1md"; */
-"7rv-q2-1md.normalTitle" = "Button";
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "7rv-q2-1md"; */
+"7rv-q2-1md.normalTitle" = "";
 
 /* Class = "UIButton"; configuration.subtitle = " "; ObjectID = "Caa-9h-yGC"; */
 "Caa-9h-yGC.configuration.subtitle" = " ";
@@ -17,8 +17,8 @@
 /* Class = "UIButton"; configuration.title = " "; ObjectID = "Caa-9h-yGC"; */
 "Caa-9h-yGC.configuration.title" = " ";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Caa-9h-yGC"; */
-"Caa-9h-yGC.normalTitle" = "Button";
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "Caa-9h-yGC"; */
+"Caa-9h-yGC.normalTitle" = "";
 
 /* Class = "UILabel"; text = "Select any category to see flowers"; ObjectID = "Fpy-w8-y0N"; */
 "Fpy-w8-y0N.text" = "Select any category to see flowers";
@@ -26,8 +26,8 @@
 /* Class = "UIButton"; configuration.title = "Update Flower"; ObjectID = "MNB-6M-zbg"; */
 "MNB-6M-zbg.configuration.title" = "Update Flower";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "MNB-6M-zbg"; */
-"MNB-6M-zbg.normalTitle" = "Button";
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "MNB-6M-zbg"; */
+"MNB-6M-zbg.normalTitle" = "";
 
 /* Class = "UIButton"; configuration.subtitle = " "; ObjectID = "P4g-fJ-idv"; */
 "P4g-fJ-idv.configuration.subtitle" = " ";
@@ -35,8 +35,8 @@
 /* Class = "UIButton"; configuration.title = " "; ObjectID = "P4g-fJ-idv"; */
 "P4g-fJ-idv.configuration.title" = " ";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "P4g-fJ-idv"; */
-"P4g-fJ-idv.normalTitle" = "Button";
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "P4g-fJ-idv"; */
+"P4g-fJ-idv.normalTitle" = "";
 
 /* Class = "UILabel"; text = "For Loved Ones"; ObjectID = "S4L-0C-aZl"; */
 "S4L-0C-aZl.text" = "For Loved Ones";
@@ -59,8 +59,8 @@
 /* Class = "UIButton"; configuration.title = "Pay"; ObjectID = "or1-CZ-Eje"; */
 "or1-CZ-Eje.configuration.title" = "Pay";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "or1-CZ-Eje"; */
-"or1-CZ-Eje.normalTitle" = "Button";
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "or1-CZ-Eje"; */
+"or1-CZ-Eje.normalTitle" = "";
 
 /* Class = "UILabel"; text = "Pay with Stripe"; ObjectID = "qY7-e2-10C"; */
 "qY7-e2-10C.text" = "Pay with Stripe";

@@ -361,8 +361,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="HOME" id="Hmw-Lo-Hn3"/>
                     <connections>
+                        <outlet property="appleButton" destination="VIm-8b-7p6" id="xoA-We-R8h"/>
+                        <outlet property="createAnAccount" destination="SPL-io-PNg" id="8bi-Du-NcD"/>
                         <outlet property="emailTextField" destination="7Iq-n7-kgO" id="TSr-d4-ch4"/>
+                        <outlet property="forgotPassword" destination="oVI-KY-xgv" id="yg9-Dp-LQt"/>
+                        <outlet property="googleButton" destination="xGo-Ij-4Ne" id="2rt-17-Cbb"/>
                         <outlet property="linkTextView" destination="1NQ-nB-15o" id="txS-mB-AeB"/>
+                        <outlet property="loginButton" destination="0P8-rI-iYz" id="AbH-s1-Ws7"/>
                         <outlet property="passwordTextField" destination="gId-xP-f5B" id="gR6-1m-B41"/>
                         <outlet property="rememberMeSwitchButton" destination="pGQ-N9-VAC" id="kiX-no-Ern"/>
                     </connections>
@@ -561,15 +566,15 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_____" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlE-ix-ggH">
-                                <rect key="frame" x="279.66666666666669" y="626.66666666666663" width="80" height="20.333333333333371"/>
+                                <rect key="frame" x="279.66666666666669" y="626.66666666666663" width="100" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="625-fQ-foD">
-                                <rect key="frame" x="279.66666666666669" y="617.33333333333337" width="80" height="34.333333333333371"/>
+                                <rect key="frame" x="279.66666666666669" y="617.33333333333337" width="100" height="34.333333333333371"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="GhU-qg-KnY"/>
+                                    <constraint firstAttribute="width" constant="100" id="GhU-qg-KnY"/>
                                 </constraints>
                                 <color key="tintColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
@@ -609,7 +614,9 @@
                     <navigationItem key="navigationItem" title="HOME" id="bXK-pn-8WV"/>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="G13-0r-Imo" id="Vn7-is-9AA"/>
+                        <outlet property="createAccount" destination="VW9-dF-nZa" id="2uW-vR-FQe"/>
                         <outlet property="emailTextField" destination="xIz-3y-SMq" id="Kpi-M3-ZLU"/>
+                        <outlet property="loginButton" destination="625-fQ-foD" id="uz0-Wp-eyd"/>
                         <outlet property="nameTextField" destination="S9z-cU-kgg" id="GyF-mW-Iyf"/>
                         <outlet property="passwordTextField" destination="Mwy-1R-oOI" id="cTX-jm-TMv"/>
                     </connections>
@@ -702,15 +709,15 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_____" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AP5-QV-YTJ">
-                                <rect key="frame" x="266.66666666666669" y="472.66666666666669" width="70" height="20.333333333333314"/>
+                                <rect key="frame" x="266.66666666666669" y="472.66666666666669" width="100" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBm-3w-9Vb">
-                                <rect key="frame" x="266.66666666666669" y="463.33333333333331" width="70" height="34.333333333333314"/>
+                                <rect key="frame" x="266.66666666666669" y="463.33333333333331" width="100" height="34.333333333333314"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="0Tz-dD-bof"/>
+                                    <constraint firstAttribute="width" constant="100" id="0Tz-dD-bof"/>
                                 </constraints>
                                 <color key="tintColor" red="0.47450980390000003" green="0.24313725489999999" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
@@ -754,6 +761,8 @@
                     <navigationItem key="navigationItem" title="HOME" id="783-wE-GTl"/>
                     <connections>
                         <outlet property="emailTextField" destination="1ML-bR-zWx" id="MS5-Eb-s8j"/>
+                        <outlet property="forgotPasswordButton" destination="Ex3-c9-UZt" id="mbL-HE-EF6"/>
+                        <outlet property="loginButton" destination="IBm-3w-9Vb" id="bwC-Jf-Rbl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6F-5J-zI7" sceneMemberID="firstResponder"/>
@@ -959,7 +968,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfa-5D-nrX">
                                                 <rect key="frame" x="24" y="32" width="380" height="690"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loving Memory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PE6-OV-zbq">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loving Memory" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PE6-OV-zbq">
                                                         <rect key="frame" x="24" y="24.000000000000004" width="332" height="46.333333333333343"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="32"/>
                                                         <color key="textColor" red="0.52549022440000004" green="0.3686274886" blue="0.88627451660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1025,7 +1034,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYP-iQ-1kR">
                                                         <rect key="frame" x="24" y="364" width="332" height="136"/>
                                                         <subviews>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbk-9t-Tf3">
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbk-9t-Tf3" customClass="DesignableTextView" customModule="Spring">
                                                                 <rect key="frame" x="8" y="8" width="316" height="120"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
@@ -1094,7 +1103,6 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="ForgotPasswordTapped:" destination="Vqb-vr-vRs" eventType="touchUpInside" id="yGf-JL-cKJ"/>
                                                             <action selector="onClickShareMemoryButton:" destination="5N9-fa-DTQ" eventType="touchUpInside" id="5zA-pw-lGd"/>
                                                         </connections>
                                                     </button>
@@ -1180,6 +1188,7 @@
                         <outlet property="funeralAgencyContainer" destination="bBz-75-fwR" id="lgS-qx-Oka"/>
                         <outlet property="funeralAgencyTextField" destination="4HR-RL-qCo" id="rh7-m8-D2T"/>
                         <outlet property="postCountLabel" destination="nF0-TB-xQJ" id="ldb-Ki-88Q"/>
+                        <outlet property="shareMemoryButton" destination="53K-6w-u2E" id="NjR-LA-cfx"/>
                         <outlet property="userImageView" destination="4iI-mi-fdd" id="iXP-Nc-iip"/>
                         <outlet property="userNameContainer" destination="eyh-ax-B6M" id="tIz-NR-WWy"/>
                         <outlet property="userNameTextField" destination="pQa-hL-O2p" id="uay-78-9rF"/>
@@ -1295,6 +1304,7 @@
                     </view>
                     <connections>
                         <outlet property="deleteButton" destination="zPS-Bu-6Cq" id="EYR-Ij-Zdj"/>
+                        <outlet property="logoutButton" destination="hyi-r5-L5R" id="GSH-Lu-5zC"/>
                         <outlet property="nameLabel" destination="BKC-2l-J0K" id="cTA-eR-hBo"/>
                         <outlet property="userImageView" destination="ZDu-bl-9dO" id="Fdl-fX-HWa"/>
                     </connections>
@@ -1354,7 +1364,7 @@
         <image name="icons8-apple-logo-70" width="70" height="70"/>
         <image name="login_google" width="70" height="70"/>
         <image name="logo" width="412" height="325"/>
-        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="person.circle.fill" catalog="system" width="32" height="32"/>
         <image name="placeholderprofile" width="100" height="100"/>
         <namedColor name="ViewHeaderTextColor">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>

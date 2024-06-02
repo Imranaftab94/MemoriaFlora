@@ -17,11 +17,12 @@ class SignupViewController: BaseViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    
+    @IBOutlet weak var createAccount: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.localized()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,34 +31,41 @@ class SignupViewController: BaseViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    func localized() {
+        self.loginButton.setTitle("Login".localized(), for: .normal)
+        self.createAccount.setTitle("Create Account", for: .normal)
+    }
+    
+
+    
     @IBAction func signupTapped(_ sender: UIButton) {
         guard let name = nameTextField.text, !name.isEmpty else {
-            showAlert(message: "Please enter your name")
+            showAlert(message: "Please enter your name".localized())
             return
         }
         
         guard let email = emailTextField.text, !email.isEmpty else {
-            showAlert(message: "Please enter your email")
+            showAlert(message: "Please enter your email".localized())
             return
         }
         
         guard isValidEmail(email) else {
-            showAlert(message: "Please enter a valid email")
+            showAlert(message: "Please enter a valid email".localized())
             return
         }
         
         guard let password = passwordTextField.text, !password.isEmpty else {
-            showAlert(message: "Please enter a password")
+            showAlert(message: "Please enter a password".localized())
             return
         }
         
         guard let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty else {
-            showAlert(message: "Please confirm your password")
+            showAlert(message: "Please confirm your password".localized())
             return
         }
         
         guard password == confirmPassword else {
-            showAlert(message: "Passwords do not match")
+            showAlert(message: "Passwords do not match".localized())
             return
         }
         
@@ -104,7 +112,7 @@ class SignupViewController: BaseViewController {
                         if let error = error {
                             print("An error occurred during naming-up", error.localizedDescription)
                         } else {
-                            self.showAlert(message: "User signed up successfully!") {
+                            self.showAlert(message: "User signed up successfully!".localized()) {
                                 self.navigationController?.popViewController(animated: true)
                             }
                         }
@@ -121,8 +129,8 @@ class SignupViewController: BaseViewController {
     }
 
     private func showAlert(message: String, okHandler: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+        let alert = UIAlertController(title: "Alert".localized(), message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK".localized(), style: .default) { _ in
             okHandler?() // Call the handler if provided
         }
         alert.addAction(okAction)

@@ -60,16 +60,16 @@ class MainTabbarController: UITabBarController {
     
     private func configureTabBar() {
         let homeVC = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
-        homeVC.tabBarItem = UITabBarItem(title: "Menu", image: #imageLiteral(resourceName: "ic_home"), tag: 0)
+        homeVC.tabBarItem = UITabBarItem(title: "Menu".localized(), image: #imageLiteral(resourceName: "ic_home"), tag: 0)
         
         let createPost = UINavigationController.init(rootViewController: CreatePostVC.instantiate(fromAppStoryboard: .Main))
-        createPost.tabBarItem = UITabBarItem(title: "Add", image: #imageLiteral(resourceName: "ic_add"), tag: 1)
+        createPost.tabBarItem = UITabBarItem(title: "Add".localized(), image: #imageLiteral(resourceName: "ic_add"), tag: 1)
         
         let funeralAgency = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
-        funeralAgency.tabBarItem = UITabBarItem(title: "Funeral Agency", image: #imageLiteral(resourceName: "agency"), tag: 2)
+        funeralAgency.tabBarItem = UITabBarItem(title: "Funeral Agency".localized(), image: #imageLiteral(resourceName: "agency"), tag: 2)
         
         let search = UINavigationController.init(rootViewController: HomeViewController.instantiate(fromAppStoryboard: .Main))
-        search.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "search_tab"), tag: 3)
+        search.tabBarItem = UITabBarItem(title: "Search".localized(), image: #imageLiteral(resourceName: "search_tab"), tag: 3)
         
         var tabBarList: [UINavigationController] = []
         

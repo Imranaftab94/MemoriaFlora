@@ -14,6 +14,8 @@ class UpdateFlowerVC: BaseViewController {
     @IBOutlet weak var priceContainerView: UIView!
     @IBOutlet weak var flowerImageView: UIImageView!
     
+    @IBOutlet weak var updateFlower: UIButton!
+    
     let activeBorderColor: UIColor = UIColor.init(hexString: "#793EE5")
     let inactiveBorderColor: UIColor = UIColor.init(hexString: "#0B0B0B")
     
@@ -24,11 +26,12 @@ class UpdateFlowerVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Update Flower"
+        self.title = "Update Flower".localized()
         self.setNavigationBackButtonColor()
         
         self.configureViews()
         self.configureTextFields()
+        self.updateFlower.setTitle("Update Flower".localized(), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +68,7 @@ class UpdateFlowerVC: BaseViewController {
         guard let imageUrl = self.flowerToupdate?.imageUrl else { return }
         
         guard let price = priceTextField.text, !price.isEmpty else {
-            showAlert(message: "Please enter price to update")
+            showAlert(message: "Please enter price to update".localized())
             return
         }
         
@@ -75,7 +78,7 @@ class UpdateFlowerVC: BaseViewController {
         }
         
         guard let imageData = image.jpegData(compressionQuality: 0.7) else {
-            showAlert(message: "Failed to convert image to data")
+            showAlert(message: "Failed to convert image to data".localized())
             return
         }
         
@@ -119,7 +122,7 @@ class UpdateFlowerVC: BaseViewController {
             if let error = error {
                 print("Error saving memory data: \(error.localizedDescription)")
             } else {
-                self.showAlert(message: "Flowers data updated successfully!, Remember to adjust the item price on the app store to ensure accurate reflection within the app", title: "Alert", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.showAlert(message: "Flowers data updated successfully!, Remember to adjust the item price on the app store to ensure accurate reflection within the app".localized(), title: "Alert".localized(), action: UIAlertAction(title: "OK".localized(), style: .default, handler: { _ in
                     self.navigationController?.popViewController(animated: true)
                 }))
             }
@@ -129,7 +132,7 @@ class UpdateFlowerVC: BaseViewController {
 
 extension UpdateFlowerVC: UITextFieldDelegate {
     private func configureTextFields() {
-        priceTextField.attributedPlaceholder = NSAttributedString(string: "Enter price here", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
+        priceTextField.attributedPlaceholder = NSAttributedString(string: "Enter price here".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#707070")])
         
         priceTextField.delegate = self
         priceContainerView.layer.borderColor = UIColor.black.cgColor

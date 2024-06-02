@@ -1,15 +1,15 @@
 
-/* Class = "UILabel"; text = "Pay with Debit Card"; ObjectID = "2ta-2f-WKO"; */
-"2ta-2f-WKO.text" = "Pay with Debit Card";
+/* Class = "UILabel"; text = "Paga con carta di debito"; ObjectID = "2ta-2f-WKO"; */
+"2ta-2f-WKO.text" = "Paga con carta di debito";
 
-/* Class = "UILabel"; text = "Update Flower"; ObjectID = "5Ak-uq-Vhg"; */
-"5Ak-uq-Vhg.text" = "Update Flower";
+/* Class = "UILabel"; text = "Aggiorna fiore"; ObjectID = "5Ak-uq-Vhg"; */
+"5Ak-uq-Vhg.text" = "Aggiorna fiore";
 
-/* Class = "UIButton"; configuration.title = "Purchase Flower"; ObjectID = "7rv-q2-1md"; */
-"7rv-q2-1md.configuration.title" = "Purchase Flower";
+/* Class = "UIButton"; configuration.title = "Acquista fiore"; ObjectID = "7rv-q2-1md"; */
+"7rv-q2-1md.configuration.title" = "Acquista fiore";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7rv-q2-1md"; */
-"7rv-q2-1md.normalTitle" = "Button";
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "7rv-q2-1md"; */
+"7rv-q2-1md.normalTitle" = "";
 
 /* Class = "UIButton"; configuration.subtitle = " "; ObjectID = "Caa-9h-yGC"; */
 "Caa-9h-yGC.configuration.subtitle" = " ";
@@ -17,17 +17,17 @@
 /* Class = "UIButton"; configuration.title = " "; ObjectID = "Caa-9h-yGC"; */
 "Caa-9h-yGC.configuration.title" = " ";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Caa-9h-yGC"; */
-"Caa-9h-yGC.normalTitle" = "Button";
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "Caa-9h-yGC"; */
+"Caa-9h-yGC.normalTitle" = "";
 
-/* Class = "UILabel"; text = "Select any category to see flowers"; ObjectID = "Fpy-w8-y0N"; */
-"Fpy-w8-y0N.text" = "Select any category to see flowers";
+/* Class = "UILabel"; text = "Seleziona una categoria per vedere i fiori"; ObjectID = "Fpy-w8-y0N"; */
+"Fpy-w8-y0N.text" = "Seleziona una categoria per vedere i fiori";
 
-/* Class = "UIButton"; configuration.title = "Update Flower"; ObjectID = "MNB-6M-zbg"; */
-"MNB-6M-zbg.configuration.title" = "Update Flower";
+/* Class = "UIButton"; configuration.title = "Aggiorna fiore"; ObjectID = "MNB-6M-zbg"; */
+"MNB-6M-zbg.configuration.title" = "Aggiorna fiore";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "MNB-6M-zbg"; */
-"MNB-6M-zbg.normalTitle" = "Button";
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "MNB-6M-zbg"; */
+"MNB-6M-zbg.normalTitle" = "";
 
 /* Class = "UIButton"; configuration.subtitle = " "; ObjectID = "P4g-fJ-idv"; */
 "P4g-fJ-idv.configuration.subtitle" = " ";
@@ -35,35 +35,36 @@
 /* Class = "UIButton"; configuration.title = " "; ObjectID = "P4g-fJ-idv"; */
 "P4g-fJ-idv.configuration.title" = " ";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "P4g-fJ-idv"; */
-"P4g-fJ-idv.normalTitle" = "Button";
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "P4g-fJ-idv"; */
+"P4g-fJ-idv.normalTitle" = "";
 
-/* Class = "UILabel"; text = "For Loved Ones"; ObjectID = "S4L-0C-aZl"; */
-"S4L-0C-aZl.text" = "For Loved Ones";
+/* Class = "UILabel"; text = "Per i cari"; ObjectID = "S4L-0C-aZl"; */
+"S4L-0C-aZl.text" = "Per i cari";
 
-/* Class = "UILabel"; text = "Choose from these categories"; ObjectID = "Tax-Up-iRt"; */
-"Tax-Up-iRt.text" = "Choose from these categories";
+/* Class = "UILabel"; text = "Scegli tra queste categorie"; ObjectID = "Tax-Up-iRt"; */
+"Tax-Up-iRt.text" = "Scegli tra queste categorie";
 
-/* Class = "UILabel"; text = "Select Payment Method"; ObjectID = "YHI-wv-iND"; */
-"YHI-wv-iND.text" = "Select Payment Method";
+/* Class = "UILabel"; text = "Seleziona il metodo di pagamento"; ObjectID = "YHI-wv-iND"; */
+"YHI-wv-iND.text" = "Seleziona il metodo di pagamento";
 
-/* Class = "UILabel"; text = "Choose from these categories"; ObjectID = "aH2-yL-ZQn"; */
-"aH2-yL-ZQn.text" = "Choose from these categories";
+/* Class = "UILabel"; text = "Scegli tra queste categorie"; ObjectID = "aH2-yL-ZQn"; */
+"aH2-yL-ZQn.text" = "Scegli tra queste categorie";
 
-/* Class = "UITextField"; placeholder = "Enter price here"; ObjectID = "d7r-NR-fZR"; */
-"d7r-NR-fZR.placeholder" = "Enter price here";
+/* Class = "UITextField"; placeholder = "Inserisci il prezzo qui"; ObjectID = "d7r-NR-fZR"; */
+"d7r-NR-fZR.placeholder" = "Inserisci il prezzo qui";
 
-/* Class = "UILabel"; text = "Edit these flowers"; ObjectID = "lqa-wq-qks"; */
-"lqa-wq-qks.text" = "Edit these flowers";
+/* Class = "UILabel"; text = "Modifica questi fiori"; ObjectID = "lqa-wq-qks"; */
+"lqa-wq-qks.text" = "Modifica questi fiori";
 
-/* Class = "UIButton"; configuration.title = "Pay"; ObjectID = "or1-CZ-Eje"; */
-"or1-CZ-Eje.configuration.title" = "Pay";
+/* Class = "UIButton"; configuration.title = "Paga"; ObjectID = "or1-CZ-Eje"; */
+"or1-CZ-Eje.configuration.title" = "Paga";
 
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "or1-CZ-Eje"; */
-"or1-CZ-Eje.normalTitle" = "Button";
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "or1-CZ-Eje"; */
+"or1-CZ-Eje.normalTitle" = "";
 
-/* Class = "UILabel"; text = "Pay with Stripe"; ObjectID = "qY7-e2-10C"; */
-"qY7-e2-10C.text" = "Pay with Stripe";
+/* Class = "UILabel"; text = "Paga con Stripe"; ObjectID = "qY7-e2-10C"; */
+"qY7-e2-10C.text" = "Paga con Stripe";
 
-/* Class = "UILabel"; text = "Pay with Apple Pay"; ObjectID = "ttc-zv-QK0"; */
-"ttc-zv-QK0.text" = "Pay with Apple Pay";
+/* Class = "UILabel"; text = "Paga con Apple Pay"; ObjectID = "ttc-zv-QK0"; */
+"ttc-zv-QK0.text" = "Paga con Apple Pay";
+

@@ -12,6 +12,8 @@ class SelectPaymentVC: BaseViewController {
     @IBOutlet weak var containerView3: UIView!
     @IBOutlet weak var containerView2: UIView!
     
+    @IBOutlet weak var payButton: UIButton!
+    
     let activeBorderColor: UIColor = UIColor.init(hexString: "#793EE5")
     let inactiveBorderColor: UIColor = UIColor.init(hexString: "#0B0B0B")
     
@@ -46,6 +48,7 @@ class SelectPaymentVC: BaseViewController {
         
         containerView1.layer.cornerRadius = 16.0
         containerView1.layer.masksToBounds = true
+        payButton.setTitle("Pay".localized(), for: .normal)
     }
     
     //MARK: - Send Email
@@ -60,7 +63,7 @@ class SelectPaymentVC: BaseViewController {
     
     @IBAction func onClickPayButton(_ sender: UIButton) {
         self.onPayCondolences?()
-        self.showAlert(message: "Payment Made Successfully", title: "Success", action: UIAlertAction(title: "OK", style: .default, handler: { _ in
+        self.showAlert(message: "Payment Made Successfully".localized(), title: "Success".localized(), action: UIAlertAction(title: "OK".localized(), style: .default, handler: { _ in
             self.dismiss(animated: true)
         }))
     }

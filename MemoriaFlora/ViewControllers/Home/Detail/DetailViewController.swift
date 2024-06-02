@@ -24,7 +24,7 @@ class DetailViewController: BaseViewController {
     
     @IBOutlet weak var shareBackground: UIView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var payTributeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var memory: Memory?
     var condolences: [Condolence] = []
@@ -41,6 +41,9 @@ class DetailViewController: BaseViewController {
         self.getCondolences()
         self.observeCondolences()
         topShare.setTitle("", for: .normal)
+        payTributeButton.setTitle("Pay for a Floral Tribute".localized(), for: .normal)
+        bottomShare.setTitle("Share".localized(), for: .normal)
+        setup()
     }
     
     override func viewDidLayoutSubviews() {
@@ -57,6 +60,19 @@ class DetailViewController: BaseViewController {
         MyUserDefaults.setDynamicLink(nil)
     }
     
+    private func setup() {
+        bottomShare.titleLabel?.adjustsFontSizeToFitWidth = true
+        bottomShare.titleLabel?.minimumScaleFactor = 0.5
+        bottomShare.titleLabel?.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        bottomShare.titleLabel?.lineBreakMode = .byTruncatingTail
+
+        // Center the title label within the button
+        bottomShare.titleLabel?.textAlignment = .center
+        bottomShare.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        bottomShare.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // Adjust the values as needed
+
+    }
+
     @IBAction func chooseFlowerButtonTap(_ sender: UIButton) {
         DispatchQueue.main.async {
             let vc = FlowersVC.instantiate(memory: self.memory!)
@@ -177,7 +193,7 @@ class DetailViewController: BaseViewController {
         DispatchQueue.main.async {
             self.nameLabel.text = self.memory?.userName ?? ""
             self.detailLabel.text = self.memory?.description ?? ""
-            self.demiseLabel.text = "Date of Demise: \(self.memory?.dateOfDemise ?? "")"
+            self.demiseLabel.text = "Date of Demise".localized() + ": \(self.memory?.dateOfDemise ?? "")"
             if let url = URL(string: self.memory?.imageUrl ?? "") {
                 self.imgView.kf.setImage(with: url)
             }
@@ -233,7 +249,7 @@ class DetailViewController: BaseViewController {
     }
     
     private func setNavigationBackButtonColor() {
-        self.title = "Pay Tribute"
+        self.title = "Pay Tribute".localized()
         navigationController?.navigationBar.tintColor = UIColor.init(hexString: "#865EE2")
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#865EE2")]
     }

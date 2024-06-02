@@ -5,4 +5,88 @@
 //  Created by ImranAftab on 6/2/24.
 //
 
-import Foundation
+"Create an account" = "Créer un compte";
+"Forgot Password" = "Mot de passe oublié";
+"Caro Estinto uses cookies for analytics, personalized contents and ads, using Caro Estinto's service you agree with Policy and Rules." = "Caro Estinto utilise des cookies pour l'analyse, les contenus personnalisés et les publicités. En utilisant le service de Caro Estinto, vous acceptez la Politique et les Règles.";
+"Create Account" = "Créer un compte";
+"Login" = "Connexion";
+"Forgot Password" = "Mot de passe oublié";
+"Share Memory" = "Partager un souvenir";
+"Logout" = "Déconnexion";
+"Delete Account" = "Supprimer le compte";
+"Create Memories" = "Créer des souvenirs";
+"Pay for a Floral Tribute" = "Payer pour un hommage floral";
+"Date of Demise" = "Date de décès";
+"Purchase Flower" = "Acheter une fleur";
+"Pay" = "Payer";
+"Update Flower" = "Mettre à jour la fleur";
+"This is an admin account, You can swipe left to delete or edit memories, You can also edit flower names images and prices" = "Ceci est un compte administrateur. Vous pouvez glisser vers la gauche pour supprimer ou modifier des souvenirs, vous pouvez également modifier les noms, images et prix des fleurs";
+
+"Profile" = "Profil";
+"Edit Flowers" = "Modifier les fleurs";
+"Please enter your email" = "Veuillez entrer votre e-mail";
+"Please enter a valid email" = "Veuillez entrer un e-mail valide";
+"Please enter a password" = "Veuillez entrer un mot de passe";
+"Alert" = "Alerte";
+"OK" = "OK";
+"Please enter your name" = "Veuillez entrer votre nom";
+"Please confirm your password" = "Veuillez confirmer votre mot de passe";
+"Passwords do not match" = "Les mots de passe ne correspondent pas";
+"User signed up successfully!" = "Utilisateur inscrit avec succès !";
+"Reset password email sent successfully" = "E-mail de réinitialisation du mot de passe envoyé avec succès";
+"Please select a flower category" = "Veuillez sélectionner une catégorie de fleurs";
+"Please select a flower for condolences" = "Veuillez sélectionner une fleur pour les condoléances";
+"No products found, Something went wrong" = "Aucun produit trouvé, quelque chose s'est mal passé";
+"Roses" = "Roses"; //Catégorie de fleurs
+"Orchids" = "Orchidées"; //Catégorie de fleurs
+"Carnations" = "Œillets"; //Catégorie de fleurs
+"Lilies" = "Lys"; //Catégorie de fleurs
+"Please enter price to update" = "Veuillez entrer le prix à mettre à jour";
+"Failed to convert image to data" = "Échec de la conversion de l'image en données";
+"Flowers data updated successfully!, Remember to adjust the item price on the app store to ensure accurate reflection within the app" = "Données des fleurs mises à jour avec succès ! N'oubliez pas d'ajuster le prix de l'article sur l'App Store pour garantir une réflexion précise dans l'application";
+"Enter price here" = "Entrez le prix ici";
+"User not found" = "Utilisateur non trouvé";
+"Please enter name" = "Veuillez entrer le nom";
+"Please enter Date of Demise" = "Veuillez entrer la date de décès";
+"Please enter description" = "Veuillez entrer la description";
+"Please select a picture" = "Veuillez sélectionner une image";
+"Upload failed. Please try again." = "Échec du téléchargement. Veuillez réessayer.";
+"Post updated successfully" = "Publication mise à jour avec succès";
+"Posted successfully" = "Publié avec succès";
+"Name" = "Nom";
+"Funeral Agency (Optional)" = "Agence funéraire (Optionnel)";
+"Reauthentication" = "Réauthentification";
+"Please enter your password to proceed" = "Veuillez entrer votre mot de passe pour continuer";
+"Password" = "Mot de passe";
+"Cancel" = "Annuler";
+"Failed to reauthenticate" = "Échec de la réauthentification";
+"Failed to delete user" = "Échec de la suppression de l'utilisateur";
+"Please enter your password to proceed" = "Veuillez entrer votre mot de passe pour continuer";
+"Payment Made Successfully" = "Paiement effectué avec succès";
+"Success" = "Succès";
+"Menu" = "Menu";
+"Add" = "Ajouter";
+"Funeral Agency" = "Agence funéraire";
+"Search" = "Rechercher";
+"Coral Charm" = "Charme de corail"; //Nom de la fleur
+"Blush Beauty" = "Beauté rose"; //Nom de la fleur
+"Lavender Love" = "Amour de lavande"; //Nom de la fleur
+"White Lily" = "Lys blanc"; //Nom de la fleur
+"Cassa Blanca Lily" = "Lys Casablanca"; //Nom de la fleur
+"Calla Lily" = "Lys Calla"; //Nom de la fleur
+"Scented Orchid" = "Orchidée parfumée"; //Nom de la fleur
+"Sunburst Orchid" = "Orchidée ensoleillée"; //Nom de la fleur
+"Dream Orchid" = "Orchidée de rêve"; //Nom de la fleur
+"Juliet" = "Juliette"; //Nom de la fleur
+"Blue Moon" = "Lune bleue"; //Nom de la fleur
+"Eden Rose" = "Rose d'Éden"; //Nom de la fleur
+"Pay Tribute" = "Rendre hommage";
+"Share" = "Partager";
+"Rules" = "Règles";
+"Policy" = "Politique";
+"Loading" = "Chargement";
+
+
+
+
+

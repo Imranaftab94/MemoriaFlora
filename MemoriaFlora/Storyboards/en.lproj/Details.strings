@@ -1,27 +1,27 @@
+
 /* Class = "UIButton"; configuration.title = "Pay for a Floral Tribute"; ObjectID = "AL8-NF-OLg"; */
-"AL8-NF-OLg.configuration.title" = "Pagar por um Tributo Floral";
+"AL8-NF-OLg.configuration.title" = "Pay for a Floral Tribute";
 
 /* Class = "UIButton"; normalTitle = ""; ObjectID = "AL8-NF-OLg"; */
 "AL8-NF-OLg.normalTitle" = "";
 
 /* Class = "UILabel"; text = "Date of demise: "; ObjectID = "NtL-Cv-NSc"; */
-"NtL-Cv-NSc.text" = "Data do falecimento: ";
+"NtL-Cv-NSc.text" = "Date of demise: ";
 
 /* Class = "UILabel"; text = "UserName"; ObjectID = "QCa-q8-TO9"; */
-"QCa-q8-TO9.text" = "Nome de utilizador";
+"QCa-q8-TO9.text" = "UserName";
 
 /* Class = "UIButton"; normalTitle = ""; ObjectID = "V2D-7u-DPB"; */
 "V2D-7u-DPB.normalTitle" = "";
 
 /* Class = "UIButton"; configuration.title = "Share"; ObjectID = "acf-BG-RdM"; */
-"acf-BG-RdM.configuration.title" = "Partilhar";
+"acf-BG-RdM.configuration.title" = "Share";
 
 /* Class = "UIButton"; normalTitle = ""; ObjectID = "acf-BG-RdM"; */
 "acf-BG-RdM.normalTitle" = "";
 
 /* Class = "UILabel"; text = "description"; ObjectID = "eg1-Yg-7GG"; */
-"eg1-Yg-7GG.text" = "descrição";
+"eg1-Yg-7GG.text" = "description";
 
 /* Class = "UILabel"; text = "Date of demise: "; ObjectID = "ygh-vo-5kZ"; */
-"ygh-vo-5kZ.text" = "Data do falecimento: ";
-
+"ygh-vo-5kZ.text" = "Date of demise: ";

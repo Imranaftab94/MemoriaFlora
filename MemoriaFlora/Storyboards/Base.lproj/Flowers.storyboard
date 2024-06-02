@@ -104,7 +104,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Caa-9h-yGC">
-                                <rect key="frame" x="350" y="83" width="27" height="25"/>
+                                <rect key="frame" x="350" y="89" width="27" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="0qr-t4-L36"/>
                                     <constraint firstAttribute="width" constant="27" id="9ag-IF-EJ3"/>
@@ -143,6 +143,7 @@
                         <outlet property="emptyFlowersLabel" destination="Fpy-w8-y0N" id="FcS-fX-dri"/>
                         <outlet property="flowerItemCollectionView" destination="uSm-EI-BhD" id="Dlm-R9-p78"/>
                         <outlet property="flowersCategoryCollectionView" destination="m1G-J5-mdH" id="zTQ-xV-vgO"/>
+                        <outlet property="purchaseFlowerButton" destination="7rv-q2-1md" id="VB4-RB-RVH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -326,6 +327,7 @@
                         <outlet property="containerView1" destination="W0e-Ur-8pn" id="0mi-1r-X1s"/>
                         <outlet property="containerView2" destination="a1d-Nu-Ect" id="KlK-vJ-CFR"/>
                         <outlet property="containerView3" destination="GyD-0H-vM5" id="ufe-X3-hfy"/>
+                        <outlet property="payButton" destination="or1-CZ-Eje" id="u5T-bU-phj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3T7-71-eBG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -518,6 +520,7 @@
                         <outlet property="flowerImageView" destination="6yL-D6-1R7" id="zs2-jT-ndL"/>
                         <outlet property="priceContainerView" destination="aAC-wj-DaN" id="jxq-As-JoK"/>
                         <outlet property="priceTextField" destination="d7r-NR-fZR" id="rsP-lx-DL7"/>
+                        <outlet property="updateFlower" destination="MNB-6M-zbg" id="L9W-u9-df7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="joK-gd-jRt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -19,21 +19,27 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var linkTextView: UITextView!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var forgotPassword: UIButton!
+    @IBOutlet weak var createAnAccount: UIButton!
+    @IBOutlet weak var appleButton: UIButton!
+    @IBOutlet weak var googleButton: UIButton!
+    
     var currentNonce: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViews()
-        
+        self.localized()
     }
     
     private func configureViews() {
-        let text = "Caro Estinto uses cookies for analytics, personalized contents and ads, using Caro Estinto's service you agree with Policy and Rules."
+        let text = "Caro Estinto uses cookies for analytics, personalized contents and ads, using Caro Estinto's service you agree with Policy and Rules.".localized()
         
         let attributedString = NSMutableAttributedString(string: text)
         
-        let policyRange = (text as NSString).range(of: "Policy")
-        let rulesRange = (text as NSString).range(of: "Rules")
+        let policyRange = (text as NSString).range(of: "Policy".localized())
+        let rulesRange = (text as NSString).range(of: "Rules".localized())
         
         attributedString.addAttribute(.link, value: "http://caroestinto.com/privatepolicy/", range: policyRange)
         attributedString.addAttribute(.link, value: "http://caroestinto.com/rules/", range: rulesRange)
@@ -53,6 +59,14 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
         linkTextView.isUserInteractionEnabled = true
         linkTextView.isEditable = false
         linkTextView.delegate = self
+    }
+    
+    func localized() {
+        self.loginButton.setTitle("Login".localized(), for: .normal)
+        self.appleButton.setTitle("", for: .normal)
+        self.googleButton.setTitle("", for: .normal)
+        self.forgotPassword.setTitle("Forgot Password".localized(), for: .normal)
+        self.createAnAccount.setTitle("Create an account".localized(), for: .normal)
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
@@ -141,17 +155,17 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     
     @IBAction func loginTapped(_ sender: UIButton) {
         guard let email = emailTextField.text, !email.isEmpty else {
-            showAlert(message: "Please enter your email")
+            showAlert(message: "Please enter your email".localized())
             return
         }
         
         guard isValidEmail(email) else {
-            showAlert(message: "Please enter a valid email")
+            showAlert(message: "Please enter a valid email".localized())
             return
         }
         
         guard let password = passwordTextField.text, !password.isEmpty else {
-            showAlert(message: "Please enter a password")
+            showAlert(message: "Please enter a password".localized())
             return
         }
         
@@ -218,8 +232,8 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     }
     
     private func showAlert(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let alert = UIAlertController(title: "Alert".localized(), message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK".localized(), style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
