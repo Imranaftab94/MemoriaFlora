@@ -50,7 +50,7 @@
 "BKC-2l-J0K.text" = "       ";
 
 /* Class = "UILabel"; text = "Sacred Memories"; ObjectID = "CY1-Mi-V83"; */
-"CY1-Mi-V83.text" = "Recuerdos Sagrados";
+"CY1-Mi-V83.text" = "En Memoria de";
 
 /* Class = "UILabel"; text = "New user?"; ObjectID = "Cxg-P6-U83"; */
 "Cxg-P6-U83.text" = "¿Usuario nuevo?";
@@ -86,7 +86,7 @@
 "Mwy-1R-oOI.placeholder" = " Contraseña";
 
 /* Class = "UILabel"; text = "Loving Memory"; ObjectID = "PE6-OV-zbq"; */
-"PE6-OV-zbq.text" = "Recuerdo Amoroso";
+"PE6-OV-zbq.text" = "En Memoria de";
 
 /* Class = "UIButton"; configuration.title = " "; ObjectID = "QU2-qL-dib"; */
 "QU2-qL-dib.configuration.title" = " ";
