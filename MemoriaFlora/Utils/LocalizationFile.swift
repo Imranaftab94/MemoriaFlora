@@ -70,7 +70,7 @@ extension String {
                 let bundle = Bundle(path: path!)
                 return NSLocalizedString(self, tableName: "Localizable", bundle: bundle!, value: self, comment: self)
             } else if appLanguage == SupportedLanguage.portuguese.rawValue {
-                let path = Bundle.main.path(forResource: "pt", ofType: "lproj")
+                let path = Bundle.main.path(forResource: "pt-PT", ofType: "lproj")
                 let bundle = Bundle(path: path!)
                 return NSLocalizedString(self, tableName: "Localizable", bundle: bundle!, value: self, comment: self)
             } else if appLanguage == SupportedLanguage.french.rawValue {
