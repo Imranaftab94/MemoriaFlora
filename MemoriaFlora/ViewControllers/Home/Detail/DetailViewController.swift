@@ -178,7 +178,8 @@ class DetailViewController: BaseViewController {
     //MARK: - FUNCTIONS
     
     func presentSharesSheet(link : String) {
-        let text = "🌹 In loving memory of \(nameLabel.text ?? ""), let's honor their memory together. Please join me in paying tribute by offering flowers. \n\(link) \n#InMemory #ForeverInOurHearts 🌹"
+        let text = getCondolenceMessage(nameLabel: nameLabel.text ?? "", link: link)
+        //"🌹 In loving memory of \(nameLabel.text ?? ""), let's honor their memory together. Please join me in paying tribute by offering flowers. \n\(link) \n#InMemory #ForeverInOurHearts 🌹"
         
         // set up activity view controller
         let textToShare = [ text ]
