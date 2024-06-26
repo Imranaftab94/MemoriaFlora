@@ -185,6 +185,8 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
             }
             
             allMemories.sort { $0.timestamp > $1.timestamp }
+            
+            print("Sorted timestamps: \(allMemories.map { $0.timestamp })")
                     
             self.memories = allMemories
             self.allMemoryUsers = allMemories

@@ -50,7 +50,8 @@ struct Memory {
               let createdByName = memoryData["createdByName"] as? String else {
             return nil
         }
-        let date = Date(timeIntervalSince1970: timestampString)
+        let normalizedTimestamp = Memory.normalizeTimestamp(timestampString)
+        let date = Date(timeIntervalSince1970: normalizedTimestamp)
         let funeralAgency = memoryData["funeralAgency"] as? String ?? ""
         return Memory(uid: uid,
                       userName: userName,
@@ -64,5 +65,10 @@ struct Memory {
                       createdById: createdById, 
                       createdByName: createdByName,
                       funeralAgency: funeralAgency)
+    }
+    
+    static func normalizeTimestamp(_ timestamp: TimeInterval) -> TimeInterval {
+        // If the timestamp is larger than a reasonable Unix timestamp (i.e., after year 2030 in seconds), it's probably in milliseconds
+        return timestamp > 1_893_456_000 ? timestamp / 1000 : timestamp
     }
 }

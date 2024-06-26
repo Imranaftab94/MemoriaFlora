@@ -9,7 +9,7 @@ import Foundation
 
 //live
 //let kMemories = "memories"
-//let kUsers = "users"
+//let kUusers = "users"
 //let kCondolences = "condolences"
 //
 
