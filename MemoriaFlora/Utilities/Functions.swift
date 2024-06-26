@@ -130,3 +130,31 @@ func createCondolencesEmailES(recipientName: String, purchaserName: String, flow
     return emailBody
 }
 
+func getCondolenceMessage(nameLabel: String, link: String) -> String {
+    switch DefaultManager.getAppLanguage() {
+    case "en":
+        return """
+        🌹 In loving memory of \(nameLabel), let's honor their memory together. Please join me in paying tribute by offering flowers. \n\(link) \n#InMemory #ForeverInOurHearts 🌹
+        """
+    case "es":
+        return """
+        🌹 En memoria amorosa de \(nameLabel), honremos su memoria juntos. Por favor, únase a mí para rendir homenaje ofreciendo flores. \n\(link) \n#EnMemoria #PorSiempreEnNuestrosCorazones 🌹
+        """
+    case "it":
+        return """
+        🌹 In memoria affettuosa di \(nameLabel), onoriamo insieme la loro memoria. Per favore, unisciti a me nel rendere omaggio offrendo fiori. \n\(link) \n#InMemoria #PerSempreNeiNostriCuori 🌹
+        """
+    case "fr":
+        return """
+        🌹 En mémoire affectueuse de \(nameLabel), honorons ensemble leur mémoire. Veuillez vous joindre à moi pour rendre hommage en offrant des fleurs. \n\(link) \n#EnMémoire #ÀJamaisDansNosCœurs 🌹
+        """
+    case "pt":
+        return """
+        🌹 Em memória amorosa de \(nameLabel), vamos honrar sua memória juntos. Por favor, junte-se a mim para prestar homenagem oferecendo flores. \n\(link) \n#EmMemória #ParaSempreEmNossosCorações 🌹
+        """
+    default:
+        return """
+        🌹 In loving memory of \(nameLabel), let's honor their memory together. Please join me in paying tribute by offering flowers. \n\(link) \n#InMemory #ForeverInOurHearts 🌹
+        """
+    }
+}
