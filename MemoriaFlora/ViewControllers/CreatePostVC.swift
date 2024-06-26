@@ -198,7 +198,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
             return
         }
         
-        let storageRef = Storage.storage().reference().child("memories").child(memoryKey)
+        let storageRef = Storage.storage().reference().child(kMemories).child(memoryKey)
         
         self.showProgressHUD()
         let uploadTask = storageRef.putData(imageData, metadata: nil) { (metadata, error) in
@@ -260,7 +260,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         }
         
         // Save memory data in the Realtime Database
-        Database.database().reference().child("memories").child(memoryKey).updateChildValues(updatedFields) { (error, ref) in
+        Database.database().reference().child(kMemories).child(memoryKey).updateChildValues(updatedFields) { (error, ref) in
             if let error = error {
                 print("Error saving memory data: \(error.localizedDescription)")
             } else {
@@ -302,10 +302,10 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
         let funeralAgency = funeralAgencyTextField.text ?? ""
         
         // Create a unique key for the memory
-        let memoryKey = Database.database().reference().child("memories").childByAutoId().key ?? ""
+        let memoryKey = Database.database().reference().child(kMemories).childByAutoId().key ?? ""
         
         // Reference to the storage
-        let storageRef = Storage.storage().reference().child("memories").child(memoryKey)
+        let storageRef = Storage.storage().reference().child(kMemories).child(memoryKey)
         
         // Upload image data to the storage
         self.showProgressHUD()
@@ -350,7 +350,7 @@ class CreatePostVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate 
                 ]
                 
                 // Save memory data in the Realtime Database
-                Database.database().reference().child("memories").child(memoryKey).setValue(memoryData) { (error, ref) in
+                Database.database().reference().child(kMemories).child(memoryKey).setValue(memoryData) { (error, ref) in
                     if let error = error {
                         print("Error saving memory data: \(error.localizedDescription)")
                     } else {

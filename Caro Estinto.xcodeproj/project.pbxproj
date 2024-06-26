@@ -68,6 +68,7 @@
 		E44686C72BCDCDD0001DF89B /* MemoriaFloraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686C62BCDCDD0001DF89B /* MemoriaFloraUITests.swift */; };
 		E44686C92BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44686C82BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift */; };
 		E458420A2BD3EC3C00B5937D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45842092BD3EC3C00B5937D /* DetailViewController.swift */; };
+		E4793DF72C11E0BC00EC6237 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4793DF62C11E0BC00EC6237 /* Constants.swift */; };
 		E4D8177C2BD278BC00F2C50D /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8177B2BD278BC00F2C50D /* Functions.swift */; };
 		E4ED8F5C2C0C894300189F41 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4ED8F5B2C0C894300189F41 /* Localizable.strings */; };
 		E4F978CB2C0BC36300330B8E /* Flowers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F978CA2C0BC36300330B8E /* Flowers.storyboard */; };
@@ -174,6 +175,7 @@
 		E44686C62BCDCDD0001DF89B /* MemoriaFloraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraUITests.swift; sourceTree = "<group>"; };
 		E44686C82BCDCDD0001DF89B /* MemoriaFloraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriaFloraUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E45842092BD3EC3C00B5937D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E4793DF62C11E0BC00EC6237 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E4D8177B2BD278BC00F2C50D /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		E4D8177F2BD289E900F2C50D /* MemoriaFlora.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MemoriaFlora.entitlements; sourceTree = "<group>"; };
 		E4ED8F5A2C0C894300189F41 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				0BAFC1972BD23CBF0079C7BD /* Extensions */,
 				0BAFC1942BD23C5E0079C7BD /* ThirdParty */,
 				0BAFC1902BD22EFA0079C7BD /* MyUserDefaults.swift */,
+				E4793DF62C11E0BC00EC6237 /* Constants.swift */,
 				E4F978E52C0BCBC800330B8E /* LocalizationFile.swift */,
 				E4ED8F5B2C0C894300189F41 /* Localizable.strings */,
 			);
@@ -674,6 +677,7 @@
 				0BAFC19B2BD23D120079C7BD /* BaseViewController.swift in Sources */,
 				0BDC27B72BD3D343001BA3BE /* FlowersVC.swift in Sources */,
 				0B6A205B2BDB2FC2005A83D3 /* AppController.swift in Sources */,
+				E4793DF72C11E0BC00EC6237 /* Constants.swift in Sources */,
 				0B7F2F002BE179E1009D3ED0 /* FcmAppDelegate.swift in Sources */,
 				0BEDFE4B2BE721DD004EF5A2 /* UpdateFlowerVC.swift in Sources */,
 				0B7F2F052BE1D04F009D3ED0 /* CondolenceVC.swift in Sources */,
@@ -931,7 +935,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MemoriaFlora/MemoriaFlora.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2TWXW6YH6K;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -952,7 +956,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MemoriaFlora.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -975,7 +979,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MemoriaFlora/MemoriaFlora.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2TWXW6YH6K;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -995,7 +999,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MemoriaFlora.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

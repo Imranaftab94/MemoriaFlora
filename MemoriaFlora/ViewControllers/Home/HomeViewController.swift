@@ -92,7 +92,7 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
         
         guard let uid = AppController.shared.user?.userId else { return }
         let databaseRef = Database.database().reference()
-        databaseRef.child("users").child(uid).updateChildValues(updatedData) { (error, ref) in
+        databaseRef.child(kUusers).child(uid).updateChildValues(updatedData) { (error, ref) in
             if let error = error {
                 print("An error occurred while updating FCM token: \(error.localizedDescription)")
             } else {
@@ -133,7 +133,7 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
     }
     
     private func observeMemories() {
-        let memoriesRef = Database.database().reference().child("memories")
+        let memoriesRef = Database.database().reference().child(kMemories)
                 
         memoriesRef.observe(.childAdded) { (snapshot) in
             guard let memoryData = snapshot.value as? [String: Any] else {
@@ -164,7 +164,7 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
     }
     
     private func fetchAllMemories(isShowProgress: Bool = false) {
-        let memoriesRef = Database.database().reference().child("memories")
+        let memoriesRef = Database.database().reference().child(kMemories)
         
         if isShowProgress {
             self.showProgressHUD()
@@ -212,7 +212,7 @@ class HomeViewController: BaseViewController, Refreshable, UIGestureRecognizerDe
     }
     
     private func deleteMemory(withUID uid: String, completion: (() -> Void)? = nil) {
-        let memoriesRef = Database.database().reference().child("memories")
+        let memoriesRef = Database.database().reference().child(kMemories)
         let memoryRef = memoriesRef.child(uid)
         memoryRef.removeValue { error, _ in
             if let error = error {

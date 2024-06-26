@@ -54,7 +54,7 @@ class SplashVC: BaseViewController {
     private func getUserFromDB(userId: String) {
         let databaseRef = Database.database().reference()
         
-        let query = databaseRef.child("users").queryOrdered(byChild: "userId").queryEqual(toValue: userId).queryLimited(toFirst: 1)
+        let query = databaseRef.child(kUusers).queryOrdered(byChild: "userId").queryEqual(toValue: userId).queryLimited(toFirst: 1)
         query.observeSingleEvent(of: .value) { (snapshot) in
             guard snapshot.exists() else {
                 print("User not found")

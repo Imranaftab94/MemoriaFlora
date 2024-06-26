@@ -93,7 +93,7 @@ class ProfileViewController: BaseViewController {
                             // User account deleted successfully
                             // Perform any additional cleanup or navigation
                             let databaseRef = Database.database().reference()
-                            let userRef = databaseRef.child("users").child(user.uid)
+                            let userRef = databaseRef.child(kUusers).child(user.uid)
                             
                             // Delete user data from the database
                             userRef.removeValue { error, _ in

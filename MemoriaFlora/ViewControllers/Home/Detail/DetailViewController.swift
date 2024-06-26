@@ -101,6 +101,9 @@ class DetailViewController: BaseViewController {
         linkBuilder?.iOSParameters = DynamicLinkIOSParameters(bundleID: "com.MemoriaFlora.App")
         linkBuilder?.iOSParameters?.appStoreID = "6499025659"
 
+        linkBuilder?.androidParameters = DynamicLinkAndroidParameters(packageName: "com.massimo.caroestinto")
+        linkBuilder?.androidParameters?.minimumVersion = 1 // replace with the actual minimum version code of your Android app
+
         linkBuilder?.shorten { (shortURL, _, error) in
             if let error = error {
                 print("Error creating dynamic link: \(error.localizedDescription)")
@@ -125,7 +128,7 @@ class DetailViewController: BaseViewController {
     // API CALL TO FETCH DETAILS
     private func observeMemory(withId id: String) {
         // Reference to the memories node for the user
-        let memoriesRef = Database.database().reference().child("memories")
+        let memoriesRef = Database.database().reference().child(kMemories)
         
         // Create a query to find the memory with the specified ID
         let memoryQuery = memoriesRef.queryOrdered(byChild: "id").queryEqual(toValue: id)
@@ -152,7 +155,7 @@ class DetailViewController: BaseViewController {
     // API CALL TO OBSERVE CHILD UPDATES OR CHANGES
     private func observeMemoryChanges(withId id: String) {
         // Reference to the memories node for the user
-        let memoriesRef = Database.database().reference().child("memories")
+        let memoriesRef = Database.database().reference().child(kMemories)
         
         // Create a query to find the memory with the specified ID
         let memoryQuery = memoriesRef.queryOrdered(byChild: "id").queryEqual(toValue: id)
@@ -219,7 +222,7 @@ class DetailViewController: BaseViewController {
     private func createCondolence(category: FlowerCategoryModel, flower: FlowerModel) {
         guard let memoryId = self.memory?.memoryKey else { return }
         
-        let condolenceId = Database.database().reference().child("condolences").child(memoryId).childByAutoId().key ?? ""
+        let condolenceId = Database.database().reference().child(kCondolences).child(memoryId).childByAutoId().key ?? ""
         
         guard let userId = AppController.shared.user?.userId else { return }
         
@@ -238,7 +241,7 @@ class DetailViewController: BaseViewController {
         ]
         
         // Save condolence data in the Realtime Database
-        Database.database().reference().child("condolences").child(memoryId).child(condolenceId).setValue(condolenceData) { [weak self] (error, ref) in
+        Database.database().reference().child(kCondolences).child(memoryId).child(condolenceId).setValue(condolenceData) { [weak self] (error, ref) in
             guard let self = self else { return }
             if let error = error {
                 print("Error saving condolence data: \(error.localizedDescription)")
@@ -294,7 +297,7 @@ class DetailViewController: BaseViewController {
         
         let databaseRef = Database.database().reference()
         
-        databaseRef.child("condolences").child(memoryId).observeSingleEvent(of: .value) { (snapshot) in
+        databaseRef.child(kCondolences).child(memoryId).observeSingleEvent(of: .value) { (snapshot) in
             guard snapshot.exists() else {
                 print("No condolences found for memory ID: \(memoryId)")
                 self.hideProgressHUD()
@@ -310,7 +313,7 @@ class DetailViewController: BaseViewController {
                     var condolence = Condolence.makeCondolence(condolenceData: condolenceData)
                     
                     dispatchGroup.enter()
-                    databaseRef.child("users").child(condolence.userId).observeSingleEvent(of: .value) { (userSnapshot) in
+                    databaseRef.child(kUusers).child(condolence.userId).observeSingleEvent(of: .value) { (userSnapshot) in
                         defer { dispatchGroup.leave() }
                         guard let userData = userSnapshot.value as? [String: Any] else { return }
                         
@@ -343,13 +346,13 @@ class DetailViewController: BaseViewController {
         let databaseRef = Database.database().reference()
         
         // Observe child events in the condolences node
-        databaseRef.child("condolences").child(memoryId).observe(.childAdded) { (snapshot) in
+        databaseRef.child(kCondolences).child(memoryId).observe(.childAdded) { (snapshot) in
             guard let condolenceData = snapshot.value as? [String: Any] else { return }
             var condolence = Condolence.makeCondolence(condolenceData: condolenceData)
             
             let userId = condolence.userId
             
-            databaseRef.child("users").child(userId).observeSingleEvent(of: .value) { (userSnapshot) in
+            databaseRef.child(kUusers).child(userId).observeSingleEvent(of: .value) { (userSnapshot) in
                 guard let userData = userSnapshot.value as? [String: Any],
                       let email = userData["email"] as? String,
                       let name = userData["name"] as? String else { return }

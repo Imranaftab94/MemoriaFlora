@@ -92,8 +92,8 @@ class FlowersVC: BaseViewController {
         let builder = MCOMessageBuilder()
         builder.header.to = [MCOAddress(displayName: "\(user?.name ?? "user").", mailbox: "\(memory?.createdByEmail ?? "")")]
         builder.header.from = MCOAddress(displayName: "Caro Estinto.", mailbox: "iaftab94uw@gmail.com")
-        builder.header.subject = "Condolences Flower Purchase Notification"
-        builder.textBody = createCondolencesEmail(recipientName: memory?.createdByName ?? "user", purchaserName: user?.name ?? "a user", flowerName: selectedFlower?.flowerName ?? "flower")
+        builder.header.subject = "Condolences Flower Purchase Notification".localized()
+        builder.textBody = createCondolencesEmail(recipientName: memory?.createdByName ?? "user", purchaserName: user?.name ?? "a user", flowerName: selectedFlower?.flowerName?.localized() ?? "flower")
         let rfc822Data = builder.data()
         let sendOperation = smtpSession.sendOperation(with: rfc822Data)
         sendOperation?.start { (error) -> Void in

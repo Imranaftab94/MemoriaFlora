@@ -100,7 +100,7 @@ class SignupViewController: BaseViewController {
                         return
                     }
                     
-                    databaseRef.child("users").child(uid).setValue(userData) { (error, ref) in
+                    databaseRef.child(kUusers).child(uid).setValue(userData) { (error, ref) in
                         if let error = error {
                             print("An error occurred while saving user data: \(error.localizedDescription)")
                         } else {

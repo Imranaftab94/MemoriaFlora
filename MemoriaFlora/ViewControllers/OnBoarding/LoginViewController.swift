@@ -137,7 +137,7 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
                             return
                         }
                         
-                        databaseRef.child("users").child(uid).updateChildValues(userData) { (error, ref) in
+                        databaseRef.child(kUusers).child(uid).updateChildValues(userData) { (error, ref) in
                             if let error = error {
                                 print("An error occurred while saving user data: \(error.localizedDescription)")
                             } else {
@@ -192,7 +192,7 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     private func getUserFromDB(userId: String) {
         let databaseRef = Database.database().reference()
         
-        let query = databaseRef.child("users").queryOrdered(byChild: "userId").queryEqual(toValue: userId).queryLimited(toFirst: 1)
+        let query = databaseRef.child(kUusers).queryOrdered(byChild: "userId").queryEqual(toValue: userId).queryLimited(toFirst: 1)
         self.showProgressHUD()
         query.observeSingleEvent(of: .value) { (snapshot) in
             self.hideProgressHUD()
@@ -351,7 +351,7 @@ extension LoginViewController : ASAuthorizationControllerDelegate {
                               return
                           }
                           
-                          databaseRef.child("users").child(uid).updateChildValues(userData) { (error, ref) in
+                          databaseRef.child(kUusers).child(uid).updateChildValues(userData) { (error, ref) in
                               if let error = error {
                                   print("An error occurred while saving user data: \(error.localizedDescription)")
                               } else {
