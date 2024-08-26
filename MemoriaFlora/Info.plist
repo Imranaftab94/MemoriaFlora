@@ -60,14 +60,14 @@
       <dict>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>fbAPP-ID</string>
+        <string>fb965711241750497</string>
       </array>
       </dict>
     </array>
     <key>FacebookAppID</key>
-    <string>425657187110434</string>
+    <string>965711241750497</string>
     <key>FacebookClientToken</key>
-    <string>4b3e6f6e5a5dd978afadd62be34fef86</string>
+    <string>877e80b382346011b9665d8f721a5d63</string>
     <key>FacebookDisplayName</key>
     <string>Caro Estinto</string>
     <key>CFBundleURLTypes</key>
@@ -75,7 +75,7 @@
         <dict>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>fb425657187110434</string>
+                <string>fb965711241750497</string>
             </array>
         </dict>
     </array>

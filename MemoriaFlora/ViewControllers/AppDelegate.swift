@@ -37,7 +37,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-      return GIDSignIn.sharedInstance.handle(url)
+//      return GIDSignIn.sharedInstance.handle(url)
+//        return ApplicationDelegate.shared.application(
+//            app,
+//            open: url,
+//            options: options
+//        )
+        let handledByGoogle = GIDSignIn.sharedInstance.handle(url)
+        let handledByFacebook = ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            options: options
+        )
+        
+        return handledByGoogle || handledByFacebook
+
     }
 //    func application(
 //        _ app: UIApplication,

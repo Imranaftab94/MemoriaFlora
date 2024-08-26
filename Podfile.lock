@@ -5,6 +5,14 @@ PODS:
   - AppAuth/Core (1.7.5)
   - AppAuth/ExternalUserAgent (1.7.5):
     - AppAuth/Core
+  - FBAEMKit (17.0.3):
+    - FBSDKCoreKit_Basics (= 17.0.3)
+  - FBSDKCoreKit (17.0.3):
+    - FBAEMKit (= 17.0.3)
+    - FBSDKCoreKit_Basics (= 17.0.3)
+  - FBSDKCoreKit_Basics (17.0.3)
+  - FBSDKLoginKit (17.0.3):
+    - FBSDKCoreKit (= 17.0.3)
   - Firebase (10.25.0):
     - Firebase/Core (= 10.25.0)
   - Firebase/Auth (10.25.0):
@@ -160,6 +168,8 @@ PODS:
   - Spring (1.0.6)
 
 DEPENDENCIES:
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - Firebase
   - Firebase/Auth
   - Firebase/DynamicLinks
@@ -176,6 +186,10 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AppAuth
+    - FBAEMKit
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
+    - FBSDKLoginKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAppCheckInterop
@@ -216,6 +230,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AppAuth: 501c04eda8a8d11f179dbe8637b7a91bb7e5d2fa
+  FBAEMKit: 9900b2edd99a2d21629a6277e6166f14c6215799
+  FBSDKCoreKit: 0791f8f68a8630931a4c12aa23a56cc021551596
+  FBSDKCoreKit_Basics: 46d6b472c0dd0a5a7e972c025033d1c567f54eb4
+  FBSDKLoginKit: b4a4eba1d62eb452544411824f41689adabd5bd2
   Firebase: 0312a2352584f782ea56f66d91606891d4607f06
   FirebaseAnalytics: ec00fe8b93b41dc6fe4a28784b8e51da0647a248
   FirebaseAppCheckInterop: 5da5ce93e8797a215e3f677fb0654b74e736c8b8
@@ -245,6 +263,6 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
 
-PODFILE CHECKSUM: 9c1efc3dca1ec3932ee60cdb4008c6921cab4a98
+PODFILE CHECKSUM: 653be99c66afeb6c1700f635239f97e637c9bf86
 
 COCOAPODS: 1.15.2

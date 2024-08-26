@@ -412,6 +412,7 @@ extension LoginViewController {
                     let name = userData["name"] as? String
                     
                     // Handle the user data as needed
+                    print("User: \(userData)")
                     print("User ID: \(userID ?? "")")
                     print("Name: \(name ?? "")")
                 }

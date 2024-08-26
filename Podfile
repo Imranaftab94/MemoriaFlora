@@ -19,6 +19,8 @@ target 'Caro Estinto' do
   pod 'mailcore2-ios'
   pod 'GoogleSignIn'
 #  pod 'FBSDKLoginKit'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
 
 
   post_install do |installer|
@@ -28,6 +30,8 @@ target 'Caro Estinto' do
                   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
                   config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
                   config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+                  config.build_settings['GENERATE_INFOPLIST_FILE'] = 'YES'
+
 
               end
           end
