@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0B18DC452BD40F5800483B4A /* SelectPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B18DC442BD40F5800483B4A /* SelectPaymentVC.swift */; };
+		0B50EECB2C33043F00AC2CEB /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0B50EECA2C33043F00AC2CEB /* FacebookCore */; };
+		0B50EECD2C33043F00AC2CEB /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0B50EECC2C33043F00AC2CEB /* FacebookLogin */; };
 		0B6A205B2BDB2FC2005A83D3 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A205A2BDB2FC2005A83D3 /* AppController.swift */; };
 		0B6E9C2E2BE686D30021EB19 /* EditFlowersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E9C2D2BE686D30021EB19 /* EditFlowersVC.swift */; };
 		0B79CAB92BDDD34000EEBC6A /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79CAB82BDDD34000EEBC6A /* InAppPurchaseManager.swift */; };
@@ -205,6 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B55453E1A01057E856704DA /* Pods_Caro_Estinto.framework in Frameworks */,
+				0B50EECB2C33043F00AC2CEB /* FacebookCore in Frameworks */,
+				0B50EECD2C33043F00AC2CEB /* FacebookLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +483,10 @@
 			dependencies = (
 			);
 			name = "Caro Estinto";
+			packageProductDependencies = (
+				0B50EECA2C33043F00AC2CEB /* FacebookCore */,
+				0B50EECC2C33043F00AC2CEB /* FacebookLogin */,
+			);
 			productName = MemoriaFlora;
 			productReference = E44686A22BCDCDCC001DF89B /* Caro Estinto.app */;
 			productType = "com.apple.product-type.application";
@@ -556,6 +564,9 @@
 				en,
 			);
 			mainGroup = E44686992BCDCDCC001DF89B;
+			packageReferences = (
+				0B50EEC92C33043F00AC2CEB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = E44686A32BCDCDCC001DF89B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1124,6 +1135,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B50EEC92C33043F00AC2CEB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B50EECA2C33043F00AC2CEB /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B50EEC92C33043F00AC2CEB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		0B50EECC2C33043F00AC2CEB /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B50EEC92C33043F00AC2CEB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E446869A2BCDCDCC001DF89B /* Project object */;
 }

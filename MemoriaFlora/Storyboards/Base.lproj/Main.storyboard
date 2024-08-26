@@ -270,7 +270,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="l3H-3w-rV9">
-                                                <rect key="frame" x="134" y="611.33333333333337" width="160" height="70"/>
+                                                <rect key="frame" x="89" y="611.33333333333337" width="250" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIm-8b-7p6">
                                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -294,6 +294,18 @@
                                                         <buttonConfiguration key="configuration" style="plain" image="login_google" title=" "/>
                                                         <connections>
                                                             <action selector="onClickLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IZp-hS-hWK"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ip1-mc-nli">
+                                                        <rect key="frame" x="180" y="0.0" width="70" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="70" id="JA8-Pa-WDv"/>
+                                                            <constraint firstAttribute="height" constant="70" id="MwQ-3k-rxM"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="login_facebook" title=" "/>
+                                                        <connections>
+                                                            <action selector="onClickFacebookLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K97-uc-5WI"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1361,9 +1373,10 @@
         <image name="ic_profile" width="96" height="96"/>
         <image name="ic_search" width="30" height="30"/>
         <image name="icons8-apple-logo-70" width="70" height="70"/>
+        <image name="login_facebook" width="70" height="70"/>
         <image name="login_google" width="70" height="70"/>
         <image name="logo" width="412" height="325"/>
-        <image name="person.circle.fill" catalog="system" width="32" height="32"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <image name="placeholderprofile" width="100" height="100"/>
         <namedColor name="ViewHeaderTextColor">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
