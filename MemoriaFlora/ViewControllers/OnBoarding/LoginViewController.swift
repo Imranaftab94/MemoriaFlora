@@ -13,6 +13,8 @@ import GoogleSignIn
 import FirebaseCore
 import CryptoKit
 import AuthenticationServices
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class LoginViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var rememberMeSwitchButton: UISwitch!
@@ -26,7 +28,7 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var googleButton: UIButton!
     
     var currentNonce: String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViews()
@@ -81,6 +83,11 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     @IBAction func onClickFacebookButton(_ sender: UIButton) {
         startSignInWithAppleFlow()
     }
+    
+    @IBAction func onClickFacebookLoginButton(_ sender: UIButton) {
+        facebookLogin()
+    }
+    
     
     @IBAction func onClickLoginButton(_ sender: UIButton) {
         self.showProgressHUD()
@@ -239,66 +246,66 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
     }
 }
 
-    //MARK: - APPLE SIGNIN
+//MARK: - APPLE SIGNIN
 
 extension LoginViewController : ASAuthorizationControllerDelegate {
     
     private func randomNonceString(length: Int = 32) -> String {
-      precondition(length > 0)
-      let charset: [Character] =
+        precondition(length > 0)
+        let charset: [Character] =
         Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-      var result = ""
-      var remainingLength = length
-
-      while remainingLength > 0 {
-        let randoms: [UInt8] = (0 ..< 16).map { _ in
-          var random: UInt8 = 0
-          let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
-          if errorCode != errSecSuccess {
-            fatalError(
-              "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
-            )
-          }
-          return random
+        var result = ""
+        var remainingLength = length
+        
+        while remainingLength > 0 {
+            let randoms: [UInt8] = (0 ..< 16).map { _ in
+                var random: UInt8 = 0
+                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+                if errorCode != errSecSuccess {
+                    fatalError(
+                        "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
+                    )
+                }
+                return random
+            }
+            
+            randoms.forEach { random in
+                if remainingLength == 0 {
+                    return
+                }
+                
+                if random < charset.count {
+                    result.append(charset[Int(random)])
+                    remainingLength -= 1
+                }
+            }
         }
-
-        randoms.forEach { random in
-          if remainingLength == 0 {
-            return
-          }
-
-          if random < charset.count {
-            result.append(charset[Int(random)])
-            remainingLength -= 1
-          }
-        }
-      }
-
-      return result
+        
+        return result
     }
-
+    
     @available(iOS 13, *)
     private func sha256(_ input: String) -> String {
-      let inputData = Data(input.utf8)
-      let hashedData = SHA256.hash(data: inputData)
-      let hashString = hashedData.compactMap {
-        String(format: "%02x", $0)
-      }.joined()
-
-      return hashString
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
+            String(format: "%02x", $0)
+        }.joined()
+        
+        return hashString
     }
     
     // Single-sign-on with Apple
     @available(iOS 13, *)
     func startSignInWithAppleFlow() {
-       
+        
         let nonce = randomNonceString()
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
         request.nonce = sha256(nonce)
-
+        
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.performRequests()
@@ -325,46 +332,46 @@ extension LoginViewController : ASAuthorizationControllerDelegate {
             print(credential)
             self.showProgressHUD()
             Auth.auth().signIn(with: credential) { authResult, error in
-                  self.hideProgressHUD()
-                  if let error = error {
-                      print("Error signing in: \(error.localizedDescription)")
-                      self.showAlert(message: error.localizedDescription)
-                      return
-                  } else {
-                      if let user = authResult?.user {
-                          if self.rememberMeSwitchButton.isOn {
-                              MyUserDefaults.setRememberMe(true)
-                          }
-                          
-                          // Save user data under the user ID
-                          let userData: [String: Any] = [
-                              "name": user.displayName ?? "",
-                              "email": user.email ?? "",
-                              "userDescription": "",
-                              "userId": user.uid,
-                          ]
-                          
-                          let databaseRef = Database.database().reference()
-                          let user = User(name: user.displayName ?? "", email: authResult?.user.email ?? "", userDescription: user.description, userId: user.uid)
-
-                          guard let uid = authResult?.user.uid else {
-                              return
-                          }
-                          
-                          databaseRef.child(kUusers).child(uid).updateChildValues(userData) { (error, ref) in
-                              if let error = error {
-                                  print("An error occurred while saving user data: \(error.localizedDescription)")
-                              } else {
-                                  print("User data saved successfully!")
-                              }
-                          }
-
-                          
-                          AppController.shared.user = user
-                          self.getUserFromDB(userId: authResult?.user.uid ?? "")
-                      }
-                  }
-              }
+                self.hideProgressHUD()
+                if let error = error {
+                    print("Error signing in: \(error.localizedDescription)")
+                    self.showAlert(message: error.localizedDescription)
+                    return
+                } else {
+                    if let user = authResult?.user {
+                        if self.rememberMeSwitchButton.isOn {
+                            MyUserDefaults.setRememberMe(true)
+                        }
+                        
+                        // Save user data under the user ID
+                        let userData: [String: Any] = [
+                            "name": user.displayName ?? "",
+                            "email": user.email ?? "",
+                            "userDescription": "",
+                            "userId": user.uid,
+                        ]
+                        
+                        let databaseRef = Database.database().reference()
+                        let user = User(name: user.displayName ?? "", email: authResult?.user.email ?? "", userDescription: user.description, userId: user.uid)
+                        
+                        guard let uid = authResult?.user.uid else {
+                            return
+                        }
+                        
+                        databaseRef.child(kUusers).child(uid).updateChildValues(userData) { (error, ref) in
+                            if let error = error {
+                                print("An error occurred while saving user data: \(error.localizedDescription)")
+                            } else {
+                                print("User data saved successfully!")
+                            }
+                        }
+                        
+                        
+                        AppController.shared.user = user
+                        self.getUserFromDB(userId: authResult?.user.uid ?? "")
+                    }
+                }
+            }
         }
     }
     
@@ -372,6 +379,45 @@ extension LoginViewController : ASAuthorizationControllerDelegate {
         // Handle error.
         print("Sign in with Apple errored: \(error)")
     }
+}
 
+extension LoginViewController {
+    func facebookLogin() {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let error = error {
+                // Handle login error here
+                print("Error: \(error.localizedDescription)")
+            } else if let result = result, !result.isCancelled {
+                // Login successful, you can access the user's Facebook data here
+                self.fetchFacebookUserData()
+            } else {
+                // Login was canceled by the user
+                print("Login was cancelled.")
+            }
+        }
+    }
+    // MARK: - Fetch Facebook User Data
     
+    func fetchFacebookUserData() {
+        if AccessToken.current != nil {
+            // You can make a Graph API request here to fetch user data
+            GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
+                if let error = error {
+                    // Handle API request error here
+                    print("Error: \(error.localizedDescription)")
+                } else if let userData = result as? [String: Any] {
+                    // Access the user data here
+                    let userID = userData["id"] as? String
+                    let name = userData["name"] as? String
+                    
+                    // Handle the user data as needed
+                    print("User ID: \(userID ?? "")")
+                    print("Name: \(name ?? "")")
+                }
+            }
+        } else {
+            print("No active Facebook access token.")
+        }
+    }
 }
