@@ -442,53 +442,20 @@ extension LoginViewController {
     }
     
     func authenticateUser(email: String, password: String, customUser: User) {
-        // Reference to the Realtime Database
-        let databaseRef = Database.database().reference()
-        
-        // Query to check if the user exists in the Realtime Database
-        let query = databaseRef.child(kUusers)
-            .queryOrdered(byChild: "email")
-            .queryEqual(toValue: email.lowercased())
-            .queryLimited(toFirst: 1)
-        
-        self.showProgressHUD()
-        
-        query.observeSingleEvent(of: .value) { snapshot in
-            self.hideProgressHUD()
-            
-            if snapshot.exists() {
-                // If the user exists in Realtime Database, sign in the user in Firebase Auth
-                self.signInUser(email: email, password: password, customUser: customUser)
-            } else {
-                // If the user doesn't exist in Realtime Database, create a new user in Firebase Auth
-                self.createUserInAuth(email: email, password: password, customUser: customUser)
-            }
-        }
-    }
-
-    func signInUser(email: String, password: String, customUser: User) {
         // Attempt to sign in the user with email and password
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             self.hideProgressHUD()
-            
+
+            // If user is successfully signed in
             if let user = authResult?.user {
-                // If sign in is successful and "Remember Me" is on, save the preference
                 if self.rememberMeSwitchButton.isOn {
                     MyUserDefaults.setRememberMe(true)
                 }
-                // Proceed to home since user already exists in Realtime Database
-                let user = User(
-                    name: customUser.name ?? "",
-                    email: user.email ?? "",
-                    userDescription: customUser.userDescription ?? "",
-                    userId: user.uid
-                )
-                AppController.shared.user = user
-                self.navigateToHome()
-            } else if let error = error {
-                // Handle sign-in error
-                print("Error signing in user: \(error.localizedDescription)")
-                self.showAlert(message: error.localizedDescription)
+                // Check if user exists in Realtime Database
+                self.checkUserInRealtimeDatabase(user: user, customUser: customUser)
+            } else {
+                // If user doesn't exist in Auth, create a new one
+                self.createUserInAuth(email: email, password: password, customUser: customUser)
             }
         }
     }
@@ -497,50 +464,74 @@ extension LoginViewController {
         // Create a new user in Firebase Authentication
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             self.hideProgressHUD()
-            
+
             if let error = error {
+                // If there is an error creating the user, display an alert
                 print("Error creating user in Auth: \(error.localizedDescription)")
                 self.showAlert(message: error.localizedDescription)
                 return
             }
-            
-            if let user = authResult?.user {
-                // After creating the user in Auth, create their profile in Realtime Database
+
+            guard let user = authResult?.user else { return }
+
+            // After creating the user in Auth, create their profile in Realtime Database
+            self.createUserInRealtimeDatabase(authUser: user, customUser: customUser)
+        }
+    }
+
+    func checkUserInRealtimeDatabase(user: FirebaseAuth.User, customUser: User) {
+        // Reference to the Realtime Database
+        let databaseRef = Database.database().reference()
+        
+        // Query to check if the user exists in the Realtime Database
+        let query = databaseRef.child(kUusers).queryOrdered(byChild: "userId").queryEqual(toValue: user.uid).queryLimited(toFirst: 1)
+        self.showProgressHUD()
+        query.observeSingleEvent(of: .value) { snapshot in
+            self.hideProgressHUD()
+
+            if snapshot.exists() {
+                // User exists in Realtime Database, proceed to home
+                let user = User(name: customUser.name ?? "", email: user.email ?? "", userDescription: user.description, userId: user.uid)
+                AppController.shared.user = user
+                self.navigateToHome()
+            } else {
+                // User does not exist in Realtime Database, create one
                 self.createUserInRealtimeDatabase(authUser: user, customUser: customUser)
             }
         }
     }
 
     func createUserInRealtimeDatabase(authUser: FirebaseAuth.User, customUser: User) {
+        // Reference to the Realtime Database
         let databaseRef = Database.database().reference()
+        
         let changeRequest = authUser.createProfileChangeRequest()
         changeRequest.displayName = customUser.name ?? "User"
-        
+        // User data to be saved in the Realtime Database
         let userData: [String: Any] = [
             "name": customUser.name ?? "",
             "email": customUser.email?.lowercased() ?? "",
-            "userDescription": customUser.userDescription ?? "",
+            "userDescription": "",
             "admin": false,
             "userId": authUser.uid,
             "fcmToken": ""
         ]
-        
-        databaseRef.child(kUusers).child(authUser.uid).setValue(userData) { error, _ in
+
+        // Save the user data under the user ID in the Realtime Database
+        databaseRef.child(kUusers).child(authUser.uid).setValue(userData) { error, ref in
             if let error = error {
                 print("An error occurred while saving user data: \(error.localizedDescription)")
-                return
-            }
-            
-            changeRequest.commitChanges { error in
-                if let error = error {
-                    print("An error occurred during profile update: \(error.localizedDescription)")
-                } else {
-                    AppController.shared.user = customUser
-                    self.showAlert(message: "Login successfully!") {
-                        self.navigateToHome()
-                    }
-                }
+            } else {
+                self.navigateToHome()
             }
         }
+        
+        changeRequest.commitChanges(completion: { error in
+            if let error = error {
+                print("An error occurred during naming-up", error.localizedDescription)
+            } else {
+                
+            }
+        })
     }
 }
