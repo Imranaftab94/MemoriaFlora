@@ -225,6 +225,34 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
         }
     }
     
+    private func checkUserOrRegisterForFacebook(userId: String) {
+        let databaseRef = Database.database().reference()
+        
+        let query = databaseRef.child(kUusers).queryOrdered(byChild: "userId").queryEqual(toValue: userId).queryLimited(toFirst: 1)
+        self.showProgressHUD()
+        query.observeSingleEvent(of: .value) { (snapshot) in
+            self.hideProgressHUD()
+            
+            if snapshot.exists() {
+                if let userData = snapshot.children.allObjects.first as? DataSnapshot,
+                   let userDataDict = userData.value as? [String: Any] {
+                    print("User data: \(userDataDict)")
+                    
+                    if let isAdmin = userDataDict["admin"] as? Bool {
+                        var user = AppController.shared.user
+                        user?.admin = isAdmin
+                        AppController.shared.user = user
+                    }
+                }
+                self.navigateToHome()
+            } else {
+                
+            }
+        } withCancel: { (error) in
+            print("Error fetching user data: \(error.localizedDescription)")
+        }
+    }
+    
     private func navigateToHome() {
         DispatchQueue.main.async {
             let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbarController") as! MainTabbarController
@@ -238,9 +266,11 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
         return emailPredicate.evaluate(with: email)
     }
     
-    private func showAlert(message: String) {
+    private func showAlert(message: String, completion: (() -> ())? = nil) {
         let alert = UIAlertController(title: "Alert".localized(), message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK".localized(), style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "OK".localized(), style: .default) {_ in 
+            completion?()
+        }
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
@@ -376,7 +406,6 @@ extension LoginViewController : ASAuthorizationControllerDelegate {
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
         print("Sign in with Apple errored: \(error)")
     }
 }
@@ -386,13 +415,10 @@ extension LoginViewController {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
             if let error = error {
-                // Handle login error here
                 print("Error: \(error.localizedDescription)")
             } else if let result = result, !result.isCancelled {
-                // Login successful, you can access the user's Facebook data here
                 self.fetchFacebookUserData()
             } else {
-                // Login was canceled by the user
                 print("Login was cancelled.")
             }
         }
@@ -400,25 +426,121 @@ extension LoginViewController {
     // MARK: - Fetch Facebook User Data
     
     func fetchFacebookUserData() {
-        if AccessToken.current != nil {
-            // You can make a Graph API request here to fetch user data
-            GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
+        GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else if let userData = result as? [String: Any] {
+                let userID = userData["id"] as? String ?? ""
+                let name = userData["name"] as? String ?? ""
+                let email = userData["email"] as? String ?? ""
+                let password = "facebooklogin66<>,@."
+
+                let user = User(name: name, email: email, userDescription: "User", userId: userID)
+                self.authenticateUser(email: email, password: password, customUser: user)
+            }
+        }
+    }
+    
+    func authenticateUser(email: String, password: String, customUser: User) {
+        // Reference to the Realtime Database
+        let databaseRef = Database.database().reference()
+        
+        // Query to check if the user exists in the Realtime Database
+        let query = databaseRef.child(kUusers)
+            .queryOrdered(byChild: "email")
+            .queryEqual(toValue: email.lowercased())
+            .queryLimited(toFirst: 1)
+        
+        self.showProgressHUD()
+        
+        query.observeSingleEvent(of: .value) { snapshot in
+            self.hideProgressHUD()
+            
+            if snapshot.exists() {
+                // If the user exists in Realtime Database, sign in the user in Firebase Auth
+                self.signInUser(email: email, password: password, customUser: customUser)
+            } else {
+                // If the user doesn't exist in Realtime Database, create a new user in Firebase Auth
+                self.createUserInAuth(email: email, password: password, customUser: customUser)
+            }
+        }
+    }
+
+    func signInUser(email: String, password: String, customUser: User) {
+        // Attempt to sign in the user with email and password
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            self.hideProgressHUD()
+            
+            if let user = authResult?.user {
+                // If sign in is successful and "Remember Me" is on, save the preference
+                if self.rememberMeSwitchButton.isOn {
+                    MyUserDefaults.setRememberMe(true)
+                }
+                // Proceed to home since user already exists in Realtime Database
+                let user = User(
+                    name: customUser.name ?? "",
+                    email: user.email ?? "",
+                    userDescription: customUser.userDescription ?? "",
+                    userId: user.uid
+                )
+                AppController.shared.user = user
+                self.navigateToHome()
+            } else if let error = error {
+                // Handle sign-in error
+                print("Error signing in user: \(error.localizedDescription)")
+                self.showAlert(message: error.localizedDescription)
+            }
+        }
+    }
+
+    func createUserInAuth(email: String, password: String, customUser: User) {
+        // Create a new user in Firebase Authentication
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            self.hideProgressHUD()
+            
+            if let error = error {
+                print("Error creating user in Auth: \(error.localizedDescription)")
+                self.showAlert(message: error.localizedDescription)
+                return
+            }
+            
+            if let user = authResult?.user {
+                // After creating the user in Auth, create their profile in Realtime Database
+                self.createUserInRealtimeDatabase(authUser: user, customUser: customUser)
+            }
+        }
+    }
+
+    func createUserInRealtimeDatabase(authUser: FirebaseAuth.User, customUser: User) {
+        let databaseRef = Database.database().reference()
+        let changeRequest = authUser.createProfileChangeRequest()
+        changeRequest.displayName = customUser.name ?? "User"
+        
+        let userData: [String: Any] = [
+            "name": customUser.name ?? "",
+            "email": customUser.email?.lowercased() ?? "",
+            "userDescription": customUser.userDescription ?? "",
+            "admin": false,
+            "userId": authUser.uid,
+            "fcmToken": ""
+        ]
+        
+        databaseRef.child(kUusers).child(authUser.uid).setValue(userData) { error, _ in
+            if let error = error {
+                print("An error occurred while saving user data: \(error.localizedDescription)")
+                return
+            }
+            
+            changeRequest.commitChanges { error in
                 if let error = error {
-                    // Handle API request error here
-                    print("Error: \(error.localizedDescription)")
-                } else if let userData = result as? [String: Any] {
-                    // Access the user data here
-                    let userID = userData["id"] as? String
-                    let name = userData["name"] as? String
-                    
-                    // Handle the user data as needed
-                    print("User: \(userData)")
-                    print("User ID: \(userID ?? "")")
-                    print("Name: \(name ?? "")")
+                    print("An error occurred during profile update: \(error.localizedDescription)")
+                } else {
+                    AppController.shared.user = customUser
+                    self.showAlert(message: "Login successfully!") {
+                        self.navigateToHome()
+                    }
                 }
             }
-        } else {
-            print("No active Facebook access token.")
         }
     }
 }
