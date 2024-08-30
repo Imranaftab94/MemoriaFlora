@@ -13,8 +13,8 @@ import GoogleSignIn
 import FirebaseCore
 import CryptoKit
 import AuthenticationServices
-import FBSDKCoreKit
-import FBSDKLoginKit
+import FacebookCore
+import FacebookLogin
 
 class LoginViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var rememberMeSwitchButton: UISwitch!
@@ -33,6 +33,18 @@ class LoginViewController: BaseViewController, UITextViewDelegate {
         super.viewDidLoad()
         self.configureViews()
         self.localized()
+//        let loginButton = FBLoginButton()
+//        loginButton.permissions = ["public_profile", "email"]
+//        loginButton.center = view.center
+//        loginButton.delegate = self
+//        self.view.addSubview(loginButton)
+        
+        if let accessToken = AccessToken.current {
+            // User is already logged in with facebook
+            print("User is already logged in")
+            print(accessToken)
+//            facebookFirebaseLogin(accessToken: accessToken.tokenString)
+        }
     }
     
     private func configureViews() {
@@ -412,126 +424,205 @@ extension LoginViewController : ASAuthorizationControllerDelegate {
 
 extension LoginViewController {
     func facebookLogin() {
-        let loginManager = LoginManager()
         loginManager.logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
+            
+            guard let accessToken = AccessToken.current else {
+                print("Failed to get access token")
+                return
+            }
+            
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if let error = error {
+                    print("Firebase login error: \(error.localizedDescription)")
+                    return
+                }
+                
+                // User is signed in
+                print("User is signed in with Firebase")
+                if let user = authResult?.user {
+                    
+                    //
+                    if self.rememberMeSwitchButton.isOn {
+                        MyUserDefaults.setRememberMe(true)
+                    }
+                    
+                    // Save user data under the user ID
+                    let userData: [String: Any] = [
+                        "name": user.displayName ?? "",
+                        "email": user.email ?? "",
+                        "userDescription": "",
+                        "userId": user.uid,
+                    ]
+                    
+                    let databaseRef = Database.database().reference()
+                    let user = User(name: user.displayName ?? "", email: authResult?.user.email ?? "", userDescription: user.description, userId: user.uid)
+                    
+                    guard let uid = authResult?.user.uid else {
+                        return
+                    }
+                    
+                    databaseRef.child(kUusers).child(uid).updateChildValues(userData) { (error, ref) in
+                        if let error = error {
+                            print("An error occurred while saving user data: \(error.localizedDescription)")
+                        } else {
+                            print("User data saved successfully!")
+                        }
+                    }
+                    
+                    AppController.shared.user = user
+                    self.getUserFromDB(userId: authResult?.user.uid ?? "")
+
+                    //
+                }
+
+            }
+
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             } else if let result = result, !result.isCancelled {
-                self.fetchFacebookUserData()
+//                self.fetchFacebookUserData()
             } else {
                 print("Login was cancelled.")
             }
         }
     }
+    
     // MARK: - Fetch Facebook User Data
     
-    func fetchFacebookUserData() {
-        GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-            } else if let userData = result as? [String: Any] {
-                let userID = userData["id"] as? String ?? ""
-                let name = userData["name"] as? String ?? ""
-                let email = userData["email"] as? String ?? ""
-                let password = "facebooklogin66<>,@."
-
-                let user = User(name: name, email: email, userDescription: "User", userId: userID)
-                self.authenticateUser(email: email, password: password, customUser: user)
-            }
-        }
-    }
+//    func fetchFacebookUserData() {
+//        GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
+//            if let error = error {
+//                print("Error: \(error.localizedDescription)")
+//            } else if let userData = result as? [String: Any] {
+//                let userID = userData["id"] as? String ?? ""
+//                let name = userData["name"] as? String ?? ""
+//                let email = userData["email"] as? String ?? ""
+//                let password = "facebooklogin66<>,@."
+//
+//                let user = User(name: name, email: email, userDescription: "User", userId: userID)
+//                self.authenticateUser(email: email, password: password, customUser: user)
+//            }
+//        }
+//    }
     
-    func authenticateUser(email: String, password: String, customUser: User) {
-        // Attempt to sign in the user with email and password
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            self.hideProgressHUD()
+//    func authenticateUser(email: String, password: String, customUser: User) {
+//        // Attempt to sign in the user with email and password
+//        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+//            self.hideProgressHUD()
+//
+//            // If user is successfully signed in
+//            if let user = authResult?.user {
+//                if self.rememberMeSwitchButton.isOn {
+//                    MyUserDefaults.setRememberMe(true)
+//                }
+//                // Check if user exists in Realtime Database
+//                self.checkUserInRealtimeDatabase(user: user, customUser: customUser)
+//            } else {
+//                // If user doesn't exist in Auth, create a new one
+//                self.createUserInAuth(email: email, password: password, customUser: customUser)
+//            }
+//        }
+//    }
+//
+//    func createUserInAuth(email: String, password: String, customUser: User) {
+//        // Create a new user in Firebase Authentication
+//        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+//            self.hideProgressHUD()
+//
+//            if let error = error {
+//                // If there is an error creating the user, display an alert
+//                print("Error creating user in Auth: \(error.localizedDescription)")
+//                self.showAlert(message: error.localizedDescription)
+//                return
+//            }
+//
+//            guard let user = authResult?.user else { return }
+//
+//            // After creating the user in Auth, create their profile in Realtime Database
+//            self.createUserInRealtimeDatabase(authUser: user, customUser: customUser)
+//        }
+//    }
 
-            // If user is successfully signed in
-            if let user = authResult?.user {
-                if self.rememberMeSwitchButton.isOn {
-                    MyUserDefaults.setRememberMe(true)
-                }
-                // Check if user exists in Realtime Database
-                self.checkUserInRealtimeDatabase(user: user, customUser: customUser)
-            } else {
-                // If user doesn't exist in Auth, create a new one
-                self.createUserInAuth(email: email, password: password, customUser: customUser)
-            }
-        }
-    }
+//    func checkUserInRealtimeDatabase(user: FirebaseAuth.User, customUser: User) {
+//        // Reference to the Realtime Database
+//        let databaseRef = Database.database().reference()
+//        
+//        // Query to check if the user exists in the Realtime Database
+//        let query = databaseRef.child(kUusers).queryOrdered(byChild: "userId").queryEqual(toValue: user.uid).queryLimited(toFirst: 1)
+//        self.showProgressHUD()
+//        query.observeSingleEvent(of: .value) { snapshot in
+//            self.hideProgressHUD()
+//
+//            if snapshot.exists() {
+//                // User exists in Realtime Database, proceed to home
+//                let user = User(name: customUser.name ?? "", email: user.email ?? "", userDescription: user.description, userId: user.uid)
+//                AppController.shared.user = user
+//                self.navigateToHome()
+//            } else {
+//                // User does not exist in Realtime Database, create one
+//                self.createUserInRealtimeDatabase(authUser: user, customUser: customUser)
+//            }
+//        }
+//    }
 
-    func createUserInAuth(email: String, password: String, customUser: User) {
-        // Create a new user in Firebase Authentication
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            self.hideProgressHUD()
-
-            if let error = error {
-                // If there is an error creating the user, display an alert
-                print("Error creating user in Auth: \(error.localizedDescription)")
-                self.showAlert(message: error.localizedDescription)
-                return
-            }
-
-            guard let user = authResult?.user else { return }
-
-            // After creating the user in Auth, create their profile in Realtime Database
-            self.createUserInRealtimeDatabase(authUser: user, customUser: customUser)
-        }
-    }
-
-    func checkUserInRealtimeDatabase(user: FirebaseAuth.User, customUser: User) {
-        // Reference to the Realtime Database
-        let databaseRef = Database.database().reference()
-        
-        // Query to check if the user exists in the Realtime Database
-        let query = databaseRef.child(kUusers).queryOrdered(byChild: "userId").queryEqual(toValue: user.uid).queryLimited(toFirst: 1)
-        self.showProgressHUD()
-        query.observeSingleEvent(of: .value) { snapshot in
-            self.hideProgressHUD()
-
-            if snapshot.exists() {
-                // User exists in Realtime Database, proceed to home
-                let user = User(name: customUser.name ?? "", email: user.email ?? "", userDescription: user.description, userId: user.uid)
-                AppController.shared.user = user
-                self.navigateToHome()
-            } else {
-                // User does not exist in Realtime Database, create one
-                self.createUserInRealtimeDatabase(authUser: user, customUser: customUser)
-            }
-        }
-    }
-
-    func createUserInRealtimeDatabase(authUser: FirebaseAuth.User, customUser: User) {
-        // Reference to the Realtime Database
-        let databaseRef = Database.database().reference()
-        
-        let changeRequest = authUser.createProfileChangeRequest()
-        changeRequest.displayName = customUser.name ?? "User"
-        // User data to be saved in the Realtime Database
-        let userData: [String: Any] = [
-            "name": customUser.name ?? "",
-            "email": customUser.email?.lowercased() ?? "",
-            "userDescription": "",
-            "admin": false,
-            "userId": authUser.uid,
-            "fcmToken": ""
-        ]
-
-        // Save the user data under the user ID in the Realtime Database
-        databaseRef.child(kUusers).child(authUser.uid).setValue(userData) { error, ref in
-            if let error = error {
-                print("An error occurred while saving user data: \(error.localizedDescription)")
-            } else {
-                self.navigateToHome()
-            }
-        }
-        
-        changeRequest.commitChanges(completion: { error in
-            if let error = error {
-                print("An error occurred during naming-up", error.localizedDescription)
-            } else {
-                
-            }
-        })
-    }
+//    func createUserInRealtimeDatabase(authUser: FirebaseAuth.User, customUser: User) {
+//        // Reference to the Realtime Database
+//        let databaseRef = Database.database().reference()
+//        
+//        let changeRequest = authUser.createProfileChangeRequest()
+//        changeRequest.displayName = customUser.name ?? "User"
+//        // User data to be saved in the Realtime Database
+//        let userData: [String: Any] = [
+//            "name": customUser.name ?? "",
+//            "email": customUser.email?.lowercased() ?? "",
+//            "userDescription": "",
+//            "admin": false,
+//            "userId": authUser.uid,
+//            "fcmToken": ""
+//        ]
+//
+//        // Save the user data under the user ID in the Realtime Database
+//        databaseRef.child(kUusers).child(authUser.uid).setValue(userData) { error, ref in
+//            if let error = error {
+//                print("An error occurred while saving user data: \(error.localizedDescription)")
+//            } else {
+//                self.navigateToHome()
+//            }
+//        }
+//        
+//        changeRequest.commitChanges(completion: { error in
+//            if let error = error {
+//                print("An error occurred during naming-up", error.localizedDescription)
+//            } else {
+//                
+//            }
+//        })
+//    }
 }
+
+//extension LoginViewController : LoginButtonDelegate {
+//    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: (any Error)?) {
+//        print(result?.token)
+//        print(error)
+//        facebookFirebaseLogin(accessToken: result?.token?.tokenString ?? "")
+//    }
+//    
+//
+//    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+//        print("logout")
+//    }
+//    
+//    func facebookFirebaseLogin(accessToken : String) {
+//        let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
+//            Auth.auth().signIn(with: credential) { (authResult, error) in
+//                if let error = error {
+//                    print("Error signing in: \(error)")
+//                    return
+//                }
+//                // User is signed in
+//                print("User signed in: \(authResult?.user.displayName ?? "")")
+//            }
+//    }
+//}

@@ -19,8 +19,8 @@ target 'Caro Estinto' do
   pod 'mailcore2-ios'
   pod 'GoogleSignIn'
 #  pod 'FBSDKLoginKit'
-pod 'FBSDKCoreKit'
-pod 'FBSDKLoginKit'
+pod 'FacebookCore'
+pod 'FacebookLogin'
 
 
   post_install do |installer|

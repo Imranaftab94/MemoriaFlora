@@ -49,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             open: url,
             options: options
         )
-        
         return handledByGoogle || handledByFacebook
 
     }

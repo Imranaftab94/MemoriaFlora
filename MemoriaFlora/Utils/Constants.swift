@@ -6,7 +6,8 @@
 //
 
 import Foundation
-
+import FacebookLogin
+import FacebookCore
 //live
 //let kMemories = "memories"
 //let kUusers = "users"
@@ -16,3 +17,5 @@ import Foundation
 let kMemories = "memories_test"
 let kUusers = "users_test"
 let kCondolences = "condolences_test"
+
+let loginManager = LoginManager()

@@ -138,6 +138,8 @@ class ProfileViewController: BaseViewController {
           print("Error signing out: %@", signOutError)
         }
 
+        loginManager.logOut()
+    
         let splashVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashVC") as! SplashVC
         let navigationVC = UINavigationController.init(rootViewController: splashVC)
         UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
