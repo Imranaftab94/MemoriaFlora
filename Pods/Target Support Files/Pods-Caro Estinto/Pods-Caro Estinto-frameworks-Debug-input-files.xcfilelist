@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-Caro Estinto/Pods-Caro Estinto-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework
+${BUILT_PRODUCTS_DIR}/AppCheckCore/AppCheckCore.framework
 ${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework
 ${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework
 ${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework
