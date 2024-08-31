@@ -11,7 +11,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb965711241750497</string>
+				<string>fb425657187110434</string>
 			</array>
 		</dict>
 		<dict>
@@ -24,9 +24,9 @@
 		</dict>
 	</array>
 	<key>FacebookAppID</key>
-	<string>965711241750497</string>
+	<string>425657187110434</string>
 	<key>FacebookClientToken</key>
-	<string>877e80b382346011b9665d8f721a5d63</string>
+	<string>4b3e6f6e5a5dd978afadd62be34fef86</string>
 	<key>FacebookDisplayName</key>
 	<string>Caro Estinto</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
@@ -70,8 +70,8 @@
 			</array>
 		</dict>
 	</dict>
-    <key>ITSAppUsesNonExemptEncryption</key>
-    <false/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
